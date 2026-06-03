@@ -46,6 +46,7 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
 verdict: "Лучший 8-ядерный CPU для тихих сборок AM5. 65W TDP с боксовым кулером."
+---
 
 # AMD Ryzen 7 7700 (65W)
 
