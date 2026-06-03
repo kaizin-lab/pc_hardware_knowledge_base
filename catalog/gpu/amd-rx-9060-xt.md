@@ -1,0 +1,134 @@
+---
+id: "amd-rx-9060-xt"
+type: "gpu"
+title: "AMD Radeon RX 9060 XT 16GB"
+vendor: "amd"
+status: "draft"
+tags: ["amd", "rdna4", "rx-9000", "gdpr6", "mid-range", "fsr4", "pcie-5.0", "1440p"]
+last_updated: "2026-06-03"
+links:
+  competitor_nvidia: "catalog/gpu/nvidia-rtx-5060-ti.md"
+  competitor_nvidia_budget: "catalog/gpu/nvidia-rtx-5060.md"
+  bigger_brother: "catalog/gpu/amd-rx-9070.md"
+  memory_type: "catalog/memory/ddr5.md"
+  concept_pcie: "concepts/pcie-lanes.md"
+  concept_power: "concepts/power-budget.md"
+specs:
+  gpu: "Navi 44 (RDNA 4)"
+  lithography: "TSMC N5 (5nm)"
+  stream_processors: 4096
+  compute_units: 64
+  ray_accelerators: 64 (3-е поколение)
+  ai_accelerators: 128
+  boost_clock: "2.85 GHz (Game Clock ~2.5 GHz)"
+  vram: "16 GB GDDR6 (128-bit)"
+  vram_bandwidth: "384 GB/s"
+  infinity_cache: "48 MB"
+  tbp: "200W"
+  power_connector: "1× 8-pin"
+  pcie: "PCIe 5.0 x8"
+  display_outputs: "3× DP 2.1 UHBR 13.5, 1× HDMI 2.1b"
+  msrp_usd: "$379"
+price_ru:
+  min: 41990
+  median: 48000
+  max: 56000
+  source: "price.ru (оценка)"
+  date: "2026-06-03"
+verdict: "Лучший FPS/₽ в сегменте $350–400. 16GB VRAM — главный козырь против RTX 5060 Ti 8GB и RTX 5060 12GB. В чистом растре обходит конкурентов NVIDIA. FSR 4 сделан на ML основе и вплотную приблизился к DLSS 4 по качеству. Но RT всё ещё слабее NVIDIA, а драйверы периодически преподносят сюрпризы в DX11. Выбор рационалиста."
+---
+
+# AMD Radeon RX 9060 XT 16GB
+
+## Архитектура и позиционирование
+
+RX 9060 XT построена на GPU Navi 44 — младшем чипе архитектуры RDNA 4. В отличие от RDNA 3 (чиплетный дизайн на старших моделях), Navi 44 — монолитный кристалл на зрелом техпроцессе TSMC N5. AMD масштабирует RDNA 4 сверху вниз, и RX 9060 XT наследует все ключевые улучшения новой архитектуры.
+
+Позиционируется как карта для 1440p в чистом растре и 1080p с трассировкой лучей. Главный аргумент AMD: 16GB VRAM — вдвое больше чем у RTX 5060 Ti 8GB за те же деньги.
+
+**Ключевое улучшение RDNA 4:** RT-ускорители 3-го поколения (значительный шаг вперёд по сравнению с RDNA 3), выделенные AI-акселераторы для FSR 4 (ML-based апскейлинг), улучшенный Infinity Cache 3-го поколения.
+
+## Характеристики
+
+- **GPU:** Navi 44 (RDNA 4)
+- **Техпроцесс:** TSMC N5 (5nm)
+- **Потоковых процессоров:** 4096 (64 CU)
+- **RT-ускорителей:** 64 (3-е поколение)
+- **AI-ускорителей:** 128
+- **Game Clock:** ~2.5 GHz
+- **Boost Clock:** 2.85 GHz
+- **VRAM:** 16 GB GDDR6
+- **Шина:** 128-bit
+- **Пропускная способность:** 384 GB/s
+- **Infinity Cache:** 48 MB
+- **TBP:** 200W
+- **Питание:** 1× 8-pin
+- **PCIe:** 5.0 x8
+- **Видеовыходы:** 3× DisplayPort 2.1 UHBR 13.5, 1× HDMI 2.1b
+- **MSRP (USD):** $379
+
+## 16GB на 128-bit — честно или маркетинг?
+
+16GB на 128-битной шине — необычная конфигурация. AMD использует 4 модуля GDDR6 по 4GB (вдвое более плотные чипы, чем у NVIDIA). Infinity Cache 48 MB компенсирует узкую шину.
+
+- **Преимущество:** 16GB дают запас для текстур высокого разрешения, моддинга и будущих игр. В Indiana Jones 1440p Supreme текстуры — 5060 Ti 8GB упирается в VRAM, RX 9060 XT нет.
+- **Недостаток:** 128-bit шина ограничивает пропускную способность — 384 GB/s. RTX 5060 Ti с GDDR7 имеет 448 GB/s на той же шине. В сценариях с высоким bandwidth (4K, RT) GDDR7 NVIDIA быстрее.
+- **Реальность:** в 1080p/1440p 128-bit с 48MB кэша достаточно. В 4K — карта не позиционируется для 4K.
+
+## Сравнение с конкурентами (Iron Man Argument)
+
+### RX 9060 XT 16GB ($379) vs RTX 5060 Ti 8GB ($379) и 16GB ($429)
+
+**Где RX 9060 XT сильнее:**
+- **VRAM за деньги:** 16GB за $379 vs 8GB за $379 (NVIDIA). Версия RTX 5060 Ti 16GB стоит $429 — на $50 дороже. AMD предлагает вдвое больше памяти за ту же цену.
+- **Чистый растр (без RT, без апскейлеров):** RX 9060 XT на 8–12% быстрее RTX 5060 Ti 8/16GB в raster-only тестах. Horizon Forbidden West 1440p: RX 9060 XT ~96 FPS vs RTX 5060 Ti ~85 FPS. Call of Duty BO6: RX 9060 XT ~130 FPS vs RTX 5060 Ti ~118 FPS.
+- **DisplayPort 2.1 UHBR 13.5:** полноценная пропускная способность для 4K 240Hz / 8K 60Hz. NVIDIA в этом классе имеет DP 2.1b с ограничениями (зависит от AIB).
+- **FSR 4:** ML-based апскейлинг нового поколения — качество вплотную приблизилось к DLSS 4. Артефакты минимальны, ghosting почти побеждён. Да, DLSS 4 всё ещё чуть лучше на мелких деталях, но разница перестала быть аргументом «против AMD».
+- **Цена:** $379 за 16GB vs $429 за 16GB у NVIDIA. В РФ экономия ~4 000–6 000 ₽.
+
+**Где RX 9060 XT слабее:**
+- **Трассировка лучей:** RT-ускорители RDNA 4 улучшены, но Blackwell RT-ядра 4-го поколения всё ещё впереди. Cyberpunk 2077 RT Ultra 1440p: RX 9060 XT ~42 FPS vs RTX 5060 Ti ~55 FPS (−24%). Path Tracing — разрыв больше (NVIDIA ~35 FPS vs AMD ~22 FPS).
+- **DLSS 4 MFG vs FSR 4 FG:** NVIDIA генерирует до 3 промежуточных кадров, AMD — один. В играх с поддержкой MFG (Cyberpunk, Alan Wake 2) NVIDIA обеспечивает субъективно более плавную картинку.
+- **CUDA-экосистема:** отсутствует. Blender, Adobe Premiere (CUDA-ускорение), AI-фреймворки — работают хуже или не работают вовсе. ROCm/HIP — прогресс есть, но «просто работает» пока не про AMD.
+- **Энергоэффективность:** 200W (AMD) vs 180W (NVIDIA) — NVIDIA экономичнее.
+- **Драйверы:** Adrenalin 2026 стабилен, но occasional микростаттеры в старых DX11-играх случаются. NVIDIA Game Ready — эталон.
+
+### Вердикт
+
+- **Чистый растр, 16GB VRAM, бюджет → RX 9060 XT.** Больше FPS, больше памяти, меньше денег. FSR 4 закрывает главную историческую претензию к AMD.
+- **RT-игры, CUDA, стриминг NVENC → RTX 5060 Ti 16GB.** Переплата $50 окупается DLSS 4 MFG и RT-лидерством.
+- **Никогда не берите 8GB-версию RTX 5060 Ti.** За $379 получаете карту, которая устареет по VRAM раньше чем по производительности чипа.
+
+## Российский рынок (июнь 2026)
+
+- **Диапазон цен:** 41 990–56 000 ₽
+- **Медиана:** ~48 000 ₽
+- **Типичные модели:** Sapphire Pulse, PowerColor Fighter, XFX Speedster QICK, ASRock Challenger
+
+Рекомендация: Sapphire Pulse или PowerColor Fighter по 45 000–48 000 ₽ — лучшие варианты. XFX Speedster QICK с заводским разгоном оправдан только при цене до 50 000 ₽.
+
+## Для кого
+
+**Подходит:**
+- 1440p-гейминг в чистом растре (Horizon, God of War, Call of Duty, Assassin's Creed)
+- 1080p с максимальными текстурами и запасом VRAM на 3+ года
+- Сборки с акцентом на FPS/₽
+- Апгрейд с RX 5700 XT / RX 6600 XT / RTX 2060 Super
+- Пользователи, которым не нужны CUDA и RT как приоритет
+
+**Не подходит:**
+- Игры с трассировкой лучей как основным приоритетом (Path Tracing — особенно)
+- Профессиональная работа с CUDA (Blender, AI/ML, Adobe Suite) — только NVIDIA
+- 4K-гейминг (нужна RX 9070 XT минимум)
+- Стриминг с кодированием на GPU (NVENC предпочтительнее)
+- Владельцы RX 7700 XT / RTX 4060 Ti 16GB — прирост недостаточен
+
+## Источники
+
+1. TechPowerUp — «AMD Radeon RX 9060 XT Review» (2025)
+2. Hardware Unboxed — «RX 9060 XT vs RTX 5060 Ti: 40 Game Benchmark»
+3. Gamers Nexus — «RDNA 4: RX 9060 XT Deep Dive»
+4. Digital Foundry — «FSR 4 vs DLSS 4: Image Quality Face-Off»
+5. AMD GPUOpen — RDNA 4 Architectural Overview
+6. Price.ru — рыночные цены, Москва (03.06.2026)
+7. Собственное тестирование лаборатории
