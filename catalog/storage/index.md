@@ -2,26 +2,24 @@
 id: "storage-index"
 type: "index"
 title: "Накопители"
-status: "verified"
+status: "draft"
 last_updated: "2025-06-03"
 ---
 
-# Накопители
+# Накопители (Storage)
+
+Актуальный стандарт — NVMe PCIe 4.0/5.0. SATA SSD — только для вторичного хранилища. HDD — не рассматриваем.
 
 ## Карта
 
-| Файл/Директория | Тип | Интерфейс | Скорость |
-|---|---|---|---|
-| `nvme/index.md` | NVMe SSD | PCIe | 3.5–14 ГБ/с |
-| `sata-ssd.md` | SATA SSD | SATA III | 560 МБ/с |
-| `hdd.md` | HDD | SATA III | 150–250 МБ/с |
+| Файл | Тип | Интерфейс | Скорость | Цена (₽) |
+|---|---|---|---|---|
+| `nvme/kingston-nv3-1tb.md` | NVMe SSD | PCIe 4.0 x4 | ~6 ГБ/с read | ~5 500 |
 
-## NVMe — по поколениям PCIe
+## Что ещё нужно заполнить
 
-| Директория | Поколение | Макс. пропускная способность |
-|---|---|---|
-| `nvme/pcie-gen4.md` | PCIe 4.0 x4 | ~7 ГБ/с |
-| `nvme/pcie-gen5.md` | PCIe 5.0 x4 | ~14 ГБ/с |
+- `nvme/` — NVMe Gen4 (SN850X, 990 Pro) и Gen5 (T700, 9100 Pro)
+- `sata-ssd.md` — SATA SSD для массового хранилища
 
 ## Связи
 
