@@ -36,6 +36,31 @@ specs:
   box_cooler: "Wraith Prism (в коробке, на грани возможностей)"
   package: "Retail (BOX)"
   release_date: "Q1 2023"
+profiles:
+  multi_ccd_disaggregated:
+    power_envelope: "mid"
+    steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
+    failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
+    optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
+    failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  dense_thermal_concentration:
+    power_envelope: "mid"
+    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
+    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
+    optimal_for_intents: ["office_productivity", "software_development"]
+    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  sub_5nm_lithography:
+    power_envelope: "mid"
+    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
+    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
+    optimal_for_intents: ["sff_build", "silent_build"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 verdict: "Уникальный процессор: 12 ядер / 24 потока с TDP всего 65W. Идеален для тихих рабочих станций и компактных сборок (SFF). Два CCD дают 64 MB L3. В играх уступает однокристальным Ryzen 7 из-за межчиплетной latency — это чисто рабочий инструмент с феноменальной энергоэффективностью."
 ---
 

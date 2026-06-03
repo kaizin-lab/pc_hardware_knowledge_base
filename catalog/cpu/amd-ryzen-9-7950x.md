@@ -37,6 +37,31 @@ specs:
   box_cooler: null
   package: "Retail (BOX, без кулера)"
   release_date: "Q3 2022"
+profiles:
+  multi_ccd_disaggregated:
+    power_envelope: "high"
+    steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
+    failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
+    optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
+    failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  dense_thermal_concentration:
+    power_envelope: "high"
+    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
+    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
+    optimal_for_intents: ["office_productivity", "software_development"]
+    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  sub_5nm_lithography:
+    power_envelope: "high"
+    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
+    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
+    optimal_for_intents: ["sff_build", "silent_build"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 verdict: "Флагманская 16-ядерная рабочая станция на AM5. Boost до 5.7 GHz — рекорд для Zen 4. Многопоточная производительность сопоставима с Threadripper предыдущего поколения. Требует мощного охлаждения (AIO 360 мм минимум). Для игр — избыточен, dual-CCD latency вредит фреймтайму. Чисто рабочий инструмент высшего уровня."
 ---
 

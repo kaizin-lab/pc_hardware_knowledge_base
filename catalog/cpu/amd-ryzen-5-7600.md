@@ -35,6 +35,31 @@ specs:
   box_cooler: "Wraith Stealth (в коробке)"
   package: "Retail (BOX)"
   release_date: "Q1 2023"
+profiles:
+  balanced_monolithic_norm:
+    power_envelope: "mid"
+    steel_man_desc: "Универсальный процессор: 6–8 ядер, единый кристалл (1 CCD), TDP 65–105W. Игры, разработка, офис — всё на хорошем уровне без специализации."
+    failure_mode_desc: "Отсутствие 3D V-Cache — проигрыш X3D в киберспорте на 15–25%. Отсутствие E-ядер — фоновая многозадачность менее эффективна."
+    optimal_for_intents: ["software_development", "office_productivity", "aaa_1080p_ultra", "aaa_1440p_high", "streaming"]
+    failure_for_intents: ["esports_1080p_360hz"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  dense_thermal_concentration:
+    power_envelope: "mid"
+    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
+    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
+    optimal_for_intents: ["office_productivity", "software_development"]
+    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  sub_5nm_lithography:
+    power_envelope: "mid"
+    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
+    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
+    optimal_for_intents: ["sff_build", "silent_build"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 verdict: "Золотая середина AM5: 6 ядер Zen 4, 65W, iGPU, боксовый кулер. Универсальный процессор для игровых сборок среднего уровня. На 3–4 тыс. ₽ дороже 7500F, но получаете iGPU и гарантию BOX."
 ---
 

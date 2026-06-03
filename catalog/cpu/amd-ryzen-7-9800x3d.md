@@ -35,6 +35,31 @@ specs:
   box_cooler: null
   package: "Retail (BOX, без кулера)"
   release_date: "Q4 2024"
+profiles:
+  cache_dominant_gaming:
+    power_envelope: "high"
+    steel_man_desc: "Киберспорт 1080p на низких. 3D V-Cache (L3 ≥ 96MB) — 1% Low FPS стабильно выше 240/360 Hz."
+    failure_mode_desc: "Тяжёлые FP32/AVX-512: рендеринг, компиляция. Тепловое сопротивление 3D-кэша снижает частоту на 300–500 МГц. Штраф 15–20%."
+    optimal_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
+    failure_for_intents: ["3d_rendering_cpu", "heavy_compilation", "scientific_computing"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  dense_thermal_concentration:
+    power_envelope: "high"
+    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
+    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
+    optimal_for_intents: ["office_productivity", "software_development"]
+    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+  sub_5nm_lithography:
+    power_envelope: "high"
+    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
+    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
+    optimal_for_intents: ["sff_build", "silent_build"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 verdict: "Абсолютный игровой бог. Zen 5 + 3D V-Cache 2-го поколения: 96 MB L3 + повышенные частоты (5.2 GHz против 5.0 у 7800X3D). Лучший игровой процессор на планете. Прямой наследник легендарного 7800X3D — быстрее, холоднее (3D V-Cache под CCD!), без частотных компромиссов. Цена высокая — это флагманский геймерский CPU, и он этого стоит."
 ---
 
