@@ -7,7 +7,7 @@ tags: ["vrm", "power-delivery", "motherboard", "overclocking"]
 last_updated: "2025-06-03"
 links:
   examples:
-    - "../catalog/motherboard/am5/msi-b650-tomahawk.md"
+    - "catalog/motherboard/am5/msi-b650-tomahawk.md"
 ---
 
 # Фазы питания (VRM): как не дать себя обмануть

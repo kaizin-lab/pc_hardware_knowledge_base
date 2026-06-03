@@ -7,7 +7,7 @@ tags: ["pcie", "lanes", "motherboard", "gpu", "storage"]
 last_updated: "2025-06-03"
 links:
   examples:
-    - "../catalog/motherboard/am5/msi-b650-tomahawk.md"
+    - "catalog/motherboard/am5/msi-b650-tomahawk.md"
 ---
 
 # Линии PCIe: как не потерять слоты при сборке

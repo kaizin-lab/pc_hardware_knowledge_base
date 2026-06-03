@@ -7,8 +7,8 @@ status: "verified"
 tags: ["amd", "zen4", "am5", "ddr5", "5nm"]
 last_updated: "2025-06-03"
 links:
-  socket: "../motherboard/am5/index.md"
-  memory_type: "../memory/ddr5.md"
+  socket: "catalog/motherboard/am5/index.md"
+  memory_type: "catalog/memory/ddr5.md"
   predecessor: null
   successor: "amd-ryzen-9000.md"
 specs:

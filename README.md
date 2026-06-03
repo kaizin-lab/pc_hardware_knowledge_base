@@ -29,9 +29,9 @@ status: "draft"                   # draft | review | verified
 tags: ["am5", "b650", "ddr5"]
 last_updated: "2025-06-03"
 links:
-  socket: "../cpu/amd-ryzen-7000.md"
-  memory_type: "../memory/ddr5.md"
-  chipset: "./b650.md"
+  socket: "catalog/cpu/amd-ryzen-7000.md"
+  memory_type: "catalog/memory/ddr5.md"
+  chipset: "catalog/motherboard/am5/b650.md"
 ---
 ```
 
@@ -65,4 +65,4 @@ python scripts/query.py --links-to catalog/memory/ddr5.md
 - `index.md` — **обязателен** в каждой директории. Это точка входа для LLM.
 - Имена файлов: `vendor-model.md` (строчные, дефисы). Пример: `msi-b650-tomahawk.md`
 - Статусы: `draft` → `review` → `verified`. Только `verified` считается авторитетным.
-- Все пути в `links:` — относительные от файла-источника.
+- Все пути в `links:` — от корня репо. Пример: `catalog/cpu/amd-ryzen-7000.md`

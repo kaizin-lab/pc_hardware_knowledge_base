@@ -8,14 +8,14 @@ tags: ["ddr5", "jedec", "on-die-ecc", "pmic"]
 last_updated: "2025-06-03"
 links:
   used_by_cpu:
-    - "../cpu/amd-ryzen-7000.md"
-    - "../cpu/amd-ryzen-9000.md"
-    - "../cpu/intel-core-14th.md"
-    - "../cpu/intel-core-ultra.md"
-  used_by_mb_am5: "../motherboard/am5/index.md"
-  used_by_mb_lga1700: "../motherboard/lga1700/index.md"
-  predecessor: "ddr4.md"
-  concept_timings: "../../concepts/memory-timings.md"
+    - "catalog/cpu/amd-ryzen-7000.md"
+    - "catalog/cpu/amd-ryzen-9000.md"
+    - "catalog/cpu/intel-core-14th.md"
+    - "catalog/cpu/intel-core-ultra.md"
+  used_by_mb_am5: "catalog/motherboard/am5/index.md"
+  used_by_mb_lga1700: "catalog/motherboard/lga1700/index.md"
+  predecessor: "catalog/memory/ddr4.md"
+  concept_timings: "concepts/memory-timings.md"
 specs:
   standard: "JEDEC DDR5"
   voltage: "1.1V (JEDEC) / 1.25–1.45V (XMP/EXPO)"

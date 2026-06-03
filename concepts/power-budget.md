@@ -7,7 +7,7 @@ tags: ["psu", "power", "gpu", "cpu", "atx"]
 last_updated: "2025-06-03"
 links:
   examples:
-    - "../catalog/psu/atx-3x.md"
+    - "catalog/psu/atx-3x.md"
 ---
 
 # Бюджет мощности: как выбрать блок питания

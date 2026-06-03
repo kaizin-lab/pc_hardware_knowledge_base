@@ -7,13 +7,13 @@ status: "verified"
 tags: ["am5", "b650", "ddr5", "atx", "wifi-6e", "mid-range", "overclocking"]
 last_updated: "2025-11-12"
 links:
-  socket: "../index.md"
-  memory_type: "../../../memory/ddr5.md"
-  chipset_spec: "../b650.md"
-  cpu_recommended: "../../../cpu/amd-ryzen-7000.md"
+  socket: "catalog/motherboard/am5/index.md"
+  memory_type: "catalog/memory/ddr5.md"
+  chipset_spec: "catalog/motherboard/am5/b650.md"
+  cpu_recommended: "catalog/cpu/amd-ryzen-7000.md"
   competitors:
-    - "asus-tuf-b650.md"
-    - "gigabyte-aorus-b650.md"
+    - "catalog/motherboard/am5/asus-tuf-b650.md"
+    - "catalog/motherboard/am5/gigabyte-aorus-b650.md"
 specs:
   socket: "AM5"
   chipset: "B650"

@@ -7,8 +7,8 @@ tags: ["memory", "ddr5", "ddr4", "timings", "overclocking"]
 last_updated: "2025-06-03"
 links:
   examples:
-    - "../catalog/memory/ddr5.md"
-    - "../catalog/cpu/amd-ryzen-7000.md"
+    - "catalog/memory/ddr5.md"
+    - "catalog/cpu/amd-ryzen-7000.md"
 ---
 
 # Тайминги памяти и режимы контроллера
