@@ -29,6 +29,21 @@ specs:
   display_outputs: "3× DP 2.1, 1× HDMI 2.1"
   msrp_usd: "$249"
   engineering_notes: "Полный BMG-G21: 24 Xe-ядра, 192-bit шина, 12GB через 6×2GB. 456 GB/s — лучшая сырая BW среди бюджетных карт (выше чем 448 GB/s у RTX 5060 Ti). XMX-движки (192) — XeSS 2 на уровне DLSS 3.5. RT неожиданно силён для $249. Но драйверы DX9/DX11 — ахиллесова пята, idle power 28-32W — в 3× выше NVIDIA. Лучшая инженерная эффективность (транзисторы/$/производительность) на рынке."
+profiles:
+  hardware_rt_accelerated_gen_3:
+    criteria_met: true
+    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
+    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
+    optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+  tensor_matrix_accelerated:
+    criteria_met: true
+    steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
+    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
+    failure_for_intents: []
+    failure_severity: "WARN"
 price_ru:
   min: 28990
   median: 32000

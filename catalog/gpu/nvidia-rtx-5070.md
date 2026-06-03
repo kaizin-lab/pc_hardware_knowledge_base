@@ -27,6 +27,21 @@ specs:
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$549"
   engineering_notes: "GB205 урезан: 6144 CUDA, 192-bit, 12GB, 672 GB/s. Мощный чип, задушенный маркетинговым решением по памяти. 12GB достаточно сегодня для 95% сценариев 1440p, но к 2028 станет bottleneck. 672 GB/s спасает в рамках VRAM-лимита (bandwidth не душит чип), но не расширяет его. NVIDIA сознательно ограничила для апселлинга к 5070 Ti (+16GB, +256-bit, +$200)."
+profiles:
+  hardware_rt_accelerated_gen_3:
+    criteria_met: true
+    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
+    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
+    optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+  tensor_matrix_accelerated:
+    criteria_met: true
+    steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
+    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
+    failure_for_intents: []
+    failure_severity: "WARN"
 price_ru:
   min: 62990
   median: 72000

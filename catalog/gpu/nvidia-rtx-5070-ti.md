@@ -27,6 +27,35 @@ specs:
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$749"
   engineering_notes: "Полный GB205: 7680 CUDA, 256-bit, 16GB, 896 GB/s — наконец без компромиссов в серии 70. То чем должна была быть RTX 5070. Прирост +25-30% над 4070 Ti Super. 16GB — sweet spot для 4K. 12V-2×6 — улучшенный стандарт после фиаско 12VHPWR. Лучший баланс цена/возможности в Blackwell."
+profiles:
+  enthusiast_unrestricted_tgp_300w:
+    criteria_met: true
+    steel_man_desc: "Нативный 4K-гейминг на максималках, профессиональный рендеринг, высокопроизводительный AI-инференс."
+    failure_mode_desc: "Компактные корпуса с плохой вентиляцией. 300–450W тепла → 55°C внутри → перегрев CPU и троттлинг."
+    optimal_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu", "llm_inference_20b", "video_editing_8k"]
+    failure_for_intents: ["silent_build", "sff_build"]
+    failure_severity: "BLOCK"
+  transient_spike_heavy:
+    criteria_met: true
+    steel_man_desc: "Динамичный 3D-рендеринг/гейминг. Мгновенный переход в P-state без микрофризов."
+    failure_mode_desc: "БП ATX 2.4 без ATX 3.0. Микросекундный скачок тока триггерит OCP → чёрный экран."
+    optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "3d_rendering_gpu"]
+    failure_for_intents: ["sff_build"]
+    failure_severity: "BLOCK"
+  hardware_rt_accelerated_gen_3:
+    criteria_met: true
+    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
+    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
+    optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+  tensor_matrix_accelerated:
+    criteria_met: true
+    steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
+    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
+    failure_for_intents: []
+    failure_severity: "WARN"
 price_ru:
   min: 84990
   median: 98000

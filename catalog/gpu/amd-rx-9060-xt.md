@@ -30,6 +30,28 @@ specs:
   display_outputs: "3× DP 2.1 UHBR 13.5, 1× HDMI 2.1b"
   msrp_usd: "$379"
   engineering_notes: "Navi 44 — младший RDNA 4 на TSMC N5. 64 CU на 128-bit с 48MB Infinity Cache 3-го поколения: эффективный bandwidth ~500-550 GB/s при кэш-хитах, при промахах падает до 384 GB/s. 16GB через 4×4GB модулей. FSR 4 на 128 AI-акселераторах — паритет с DLSS 4 CNN. RT 3-го поколения — +80% к RDNA 3, но всё ещё позади Blackwell. Поведение cache-dependent: в одних играх обгоняет 5060 Ti, в других проигрывает B580."
+profiles:
+  bandwidth_constrained_vram_rich:
+    criteria_met: true
+    steel_man_desc: "Локальный инференс LLM (7B–13B Q4_K_M). Карта позволяет загрузить модель полностью в VRAM без offload. Интерактивная скорость > 30 t/s."
+    failure_mode_desc: "Нативный 4K-гейминг на ультра. Узкая 128-bit шина становится bottleneck: fillrate падает, texture pop-in, фризы."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b"]
+    failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_severity: "BLOCK"
+  hardware_rt_accelerated_gen_3:
+    criteria_met: true
+    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
+    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
+    optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+  tensor_matrix_accelerated:
+    criteria_met: true
+    steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
+    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
+    failure_for_intents: []
+    failure_severity: "WARN"
 price_ru:
   min: 41990
   median: 48000

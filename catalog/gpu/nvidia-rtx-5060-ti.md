@@ -26,6 +26,35 @@ specs:
   msrp_usd: "$429"
   msrp_8gb: "$379"
   engineering_notes: "GB206 на TSMC 4NP. CUDA-ядер 4608 — всего +6% над AD106: архитектурный застой. Главный двигатель — GDDR7: 448 GB/s на 128-bit (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — минимальный порог для LLM. DLSS 4 MFG — маркетинг для карты этого класса: если базовый FPS <60, MFG даёт плавность но не отзывчивость. 8GB-версия — инженерно несостоятельна."
+profiles:
+  bandwidth_constrained_vram_rich:
+    criteria_met: true
+    steel_man_desc: "Локальный инференс LLM (7B–13B Q4_K_M). Карта позволяет загрузить модель полностью в VRAM без offload. Интерактивная скорость > 30 t/s."
+    failure_mode_desc: "Нативный 4K-гейминг на ультра. Узкая 128-bit шина становится bottleneck: fillrate падает, texture pop-in, фризы."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b"]
+    failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_severity: "BLOCK"
+  mainstream_efficiency_tgp_150w:
+    criteria_met: true
+    steel_man_desc: "Массовые игровые ПК среднего класса: 1080p/1440p. БП 500–550W. Минимальные требования к вентиляции, низкий шум."
+    failure_mode_desc: "Нативный 4K-гейминг. Недостаток вычислительных блоков не позволяет 60 FPS — снижение до Medium/Low."
+    optimal_for_intents: ["aaa_1080p_ultra", "aaa_1440p_high", "esports_1080p_240hz", "silent_build", "sff_build"]
+    failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing"]
+    failure_severity: "BLOCK"
+  hardware_rt_accelerated_gen_3:
+    criteria_met: true
+    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
+    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
+    optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+  tensor_matrix_accelerated:
+    criteria_met: true
+    steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
+    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
+    optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
+    failure_for_intents: []
+    failure_severity: "WARN"
 price_ru:
   min: 43990
   median: 52000
