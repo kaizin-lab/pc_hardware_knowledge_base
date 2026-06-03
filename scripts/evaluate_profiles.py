@@ -63,6 +63,31 @@ def parse_frontmatter(filepath: Path) -> dict[str, Any]:
         return {}
 
 
+# ── Power envelope helpers (MECE, reference-point-based) ──────────────
+
+GPU_REF = {"low": 150, "high": 280}   # RTX 5060 / RTX 5070 Ti anchors
+CPU_REF = {"low": 65, "high": 120}    # Ryzen 7500F / 7800X3D anchors
+
+def extract_number(value: Any) -> float | None:
+    """Extract first number from strings like '180W', '65W', '120W'."""
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    m = re.search(r"(\d+(?:\.\d+)?)", str(value))
+    return float(m.group(1)) if m else None
+
+def get_power_envelope(tgp: float, cmp_type: str) -> str | None:
+    """Determine MECE power envelope from TGP/TDP value."""
+    refs = GPU_REF if cmp_type == "gpu" else CPU_REF
+    if tgp < refs["low"]:
+        return "low"
+    elif tgp < refs["high"]:
+        return "mid"
+    else:
+        return "high"
+
+
 # ── Profile evaluator ────────────────────────────────────────────────
 
 def evaluate_component(
@@ -107,16 +132,38 @@ def evaluate_component(
         # Check failure modes
         failure_match = failure_for & user_intents
         if failure_match:
+            failure_type = profile_data.get("failure_type", "LINEAR_DEGRADATION")
+            # CLIFF_DROP всегда BLOCK, LINEAR_DEGRADATION — WARN
+            effective_severity = "BLOCK" if failure_type == "CLIFF_DROP" else severity
             entry = {
                 "profile": profile_name,
                 "conflict_intents": sorted(failure_match),
                 "failure_desc": profile_data.get("failure_mode_desc", ""),
-                "severity": severity,
+                "severity": effective_severity,
+                "failure_type": failure_type,
             }
-            if severity == "BLOCK":
+            if effective_severity == "BLOCK":
                 result["blocks"].append(entry)
             else:
                 result["warnings"].append(entry)
+
+        # Verify power_envelope matches component TGP (if both present)
+        expected_envelope = profile_data.get("power_envelope")
+        if expected_envelope and criteria_met:
+            specs = fm.get("specs", {})
+            # Try GPU TBP first, then CPU TDP
+            tgp_raw = specs.get("tbp") or specs.get("tdp") or specs.get("tgp")
+            if tgp_raw:
+                tgp_val = extract_number(tgp_raw)
+                if tgp_val is not None:
+                    actual_envelope = get_power_envelope(tgp_val, cmp_type)
+                    if actual_envelope and actual_envelope != expected_envelope:
+                        result.setdefault("envelope_mismatch", []).append({
+                            "profile": profile_name,
+                            "expected": expected_envelope,
+                            "actual": actual_envelope,
+                            "tgp": tgp_val,
+                        })
 
         # Profiles with no intersection
         if not (optimal_for & user_intents) and not (failure_for & user_intents):
@@ -275,9 +322,12 @@ def main():
                 all_warnings.append((result["id"], warn))
 
             for block in result["blocks"]:
-                print(f"  ✗ BLOCK:  {block['profile']} → несовместим с {block['conflict_intents']}")
+                print(f"  ✗ BLOCK:  {block['profile']} → несовместим с {block['conflict_intents']} [{block.get('failure_type', '?')}]")
                 print(f"           {block['failure_desc'][:120]}...")
                 all_blocks.append((result["id"], block))
+
+            for mismatch in result.get("envelope_mismatch", []):
+                print(f"  ⚡ ENVELOPE MISMATCH: {mismatch['profile']} expects {mismatch['expected']}, but TGP={mismatch['tgp']}W → {mismatch['actual']}")
 
             print()
 
