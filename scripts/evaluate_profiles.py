@@ -116,7 +116,7 @@ def evaluate_component(
         optimal_for = set(profile_data.get("optimal_for_intents", []))
         failure_for = set(profile_data.get("failure_for_intents", []))
         severity = profile_data.get("failure_severity", "WARN")
-        criteria_met = profile_data.get("criteria_met", False)
+        criteria_met = profile_data.get("criteria_met", True)  # absent = present = true
 
         if not criteria_met:
             continue

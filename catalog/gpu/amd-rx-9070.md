@@ -31,20 +31,28 @@ specs:
   msrp_usd: "$499"
   engineering_notes: "Navi 48 — урезанный чип (88/96 CU), но с сохранением полной 256-bit шины и 64MB Infinity Cache. Критическое решение AMD: memory subsystem не трогают (в отличие от NVIDIA где 5070 получает 192-bit вместо 256-bit). 640 GB/s как у XT-версии. Потеря 8 CU = -6-8% FPS. Позиционируется против RTX 5070 ($549, 12GB, 192-bit) и бьёт аргументом 16GB+256-bit за $499."
 profiles:
+  balanced_performance_gpu:
+    power_envelope: "mid"
+    steel_man_desc: "Предсказуемое масштабирование производительности. Стандартные сборки ATX с БП 600–750W. Не требует специального охлаждения или инфраструктуры."
+    failure_mode_desc: "Отсутствие специализации. Проигрывает enthusiast-картам в 4K, проигрывает low-power картам в SFF/тишине."
+    optimal_for_intents: ["aaa_1440p_high", "aaa_1080p_ultra", "esports_1080p_240hz", "software_development", "streaming"]
+    failure_for_intents: ["aaa_4k_path_tracing"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
   hardware_rt_accelerated_gen_3:
-    criteria_met: true
     steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
     failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
     optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
   tensor_matrix_accelerated:
-    criteria_met: true
     steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
     failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 price_ru:
   min: 55990
   median: 64000

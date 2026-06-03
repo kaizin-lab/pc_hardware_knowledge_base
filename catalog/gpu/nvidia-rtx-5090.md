@@ -27,34 +27,36 @@ specs:
   msrp_usd: "$1999"
   engineering_notes: "GB202 — максимальная конфигурация: 20480 CUDA, 512-bit, 32GB, 1792 GB/s. Единственная карта для 4K Path Tracing и LLM 13B-20B. 500W TBP требует инфраструктуры (БП 1000W+ ATX 3.1). Прирост +25-30% над 4090. Карта-инструмент, а не игрушка."
 profiles:
-  enthusiast_unrestricted_tgp_300w:
-    criteria_met: true
+  enthusiast_unrestricted_gpu:
+    power_envelope: "high"
     steel_man_desc: "Нативный 4K-гейминг на максималках, профессиональный рендеринг, высокопроизводительный AI-инференс."
-    failure_mode_desc: "Компактные корпуса с плохой вентиляцией. 300–450W тепла → 55°C внутри → перегрев CPU и троттлинг."
+    failure_mode_desc: "Компактные корпуса с плохой вентиляцией. 300–500W тепла → 55°C внутри → перегрев CPU и троттлинг."
     optimal_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu", "llm_inference_20b", "video_editing_8k"]
     failure_for_intents: ["silent_build", "sff_build"]
     failure_severity: "BLOCK"
+    failure_type: "CLIFF_DROP"
   transient_spike_heavy:
-    criteria_met: true
-    steel_man_desc: "Динамичный 3D-рендеринг/гейминг. Мгновенный переход в P-state без микрофризов."
+    power_envelope: "high"
+    steel_man_desc: "Динамичный 3D-рендеринг и гейминг. Мгновенный переход в P-state без микрофризов."
     failure_mode_desc: "БП ATX 2.4 без ATX 3.0. Микросекундный скачок тока триггерит OCP → чёрный экран."
     optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "3d_rendering_gpu"]
     failure_for_intents: ["sff_build"]
     failure_severity: "BLOCK"
+    failure_type: "CLIFF_DROP"
   hardware_rt_accelerated_gen_3:
-    criteria_met: true
     steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
     failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
     optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
   tensor_matrix_accelerated:
-    criteria_met: true
     steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
     failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 price_ru:
   min: 219990
   median: 260000

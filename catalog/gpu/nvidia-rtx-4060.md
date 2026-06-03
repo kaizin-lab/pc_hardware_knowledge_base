@@ -36,27 +36,28 @@ specs:
   msrp_usd: "$299"
   engineering_notes: "AD107 на TSMC 4N. 24MB L2-кэша (8× больше RTX 3060) — компенсирует 128-bit шину через hit rate ~50% в 1080p. Работает блестяще в 1080p, на 1440p hit rate падает — 272 GB/s bottleneck. 115W TGP — архитектурный шедевр энергоэффективности. 8GB VRAM — осознанный компромисс: карта умрёт по памяти раньше чем по compute. RT-ядра 3-го поколения + DLSS 3.5 — безальтернативна для RT в бюджете."
 profiles:
-  mainstream_efficiency_tgp_150w:
-    criteria_met: true
-    steel_man_desc: "Массовые игровые ПК среднего класса: 1080p/1440p. БП 500–550W. Минимальные требования к вентиляции, низкий шум."
+  mainstream_efficiency_gpu:
+    power_envelope: "low"
+    steel_man_desc: "Массовые игровые ПК: 1080p/1440p. БП 450–550W. Минимальные требования к вентиляции, низкий шум, SFF-совместимость."
     failure_mode_desc: "Нативный 4K-гейминг. Недостаток вычислительных блоков не позволяет 60 FPS — снижение до Medium/Low."
-    optimal_for_intents: ["aaa_1080p_ultra", "aaa_1440p_high", "esports_1080p_240hz", "silent_build", "sff_build"]
+    optimal_for_intents: ["aaa_1080p_ultra", "esports_1080p_240hz", "silent_build", "sff_build", "office_productivity"]
     failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing"]
     failure_severity: "BLOCK"
+    failure_type: "LINEAR_DEGRADATION"
   hardware_rt_accelerated_gen_3:
-    criteria_met: true
     steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
     failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
     optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
   tensor_matrix_accelerated:
-    criteria_met: true
     steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
     failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 price_ru:
   min: 29990
   median: 32000

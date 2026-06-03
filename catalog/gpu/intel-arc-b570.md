@@ -30,27 +30,28 @@ specs:
   msrp_usd: "$219"
   engineering_notes: "BMG-G21 урезан (20/24 Xe-ядер) на TSMC N5. 10GB через 5×2GB модулей на 160-bit шине — нечётная конфигурация (один 32-bit контроллер отключён). XMX-движки (160) дают сильный XeSS 2 и RT для бюджета. Но драйверный overhead DX9/DX11 — 20-30% потери FPS. Intel продаёт в убыток ради доли рынка."
 profiles:
-  mainstream_efficiency_tgp_150w:
-    criteria_met: true
-    steel_man_desc: "Массовые игровые ПК среднего класса: 1080p/1440p. БП 500–550W. Минимальные требования к вентиляции, низкий шум."
-    failure_mode_desc: "Нативный 4K-гейминг. Недостаток вычислительных блоков не позволяет 60 FPS — снижение до Medium/Low."
-    optimal_for_intents: ["aaa_1080p_ultra", "aaa_1440p_high", "esports_1080p_240hz", "silent_build", "sff_build"]
-    failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing"]
-    failure_severity: "BLOCK"
+  balanced_performance_gpu:
+    power_envelope: "mid"
+    steel_man_desc: "Предсказуемое масштабирование производительности. Стандартные сборки ATX с БП 600–750W. Не требует специального охлаждения или инфраструктуры."
+    failure_mode_desc: "Отсутствие специализации. Проигрывает enthusiast-картам в 4K, проигрывает low-power картам в SFF/тишине."
+    optimal_for_intents: ["aaa_1440p_high", "aaa_1080p_ultra", "esports_1080p_240hz", "software_development", "streaming"]
+    failure_for_intents: ["aaa_4k_path_tracing"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
   hardware_rt_accelerated_gen_3:
-    criteria_met: true
     steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
     failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
     optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
   tensor_matrix_accelerated:
-    criteria_met: true
     steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
     failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
     failure_for_intents: []
     failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 price_ru:
   min: 25990
   median: 29000

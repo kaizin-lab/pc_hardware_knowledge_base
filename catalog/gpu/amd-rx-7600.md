@@ -37,13 +37,14 @@ specs:
   msrp_usd: "$269"
   engineering_notes: "Navi 33 — монолитный RDNA 3 на TSMC N6. 32 CU на 128-bit — сбалансировано под 1080p (32MB Infinity Cache даёт hit rate ~50%). На 1440p hit rate падает до 30%, bandwidth 288 GB/s — bottleneck. 8GB через 4×2GB — потолок 128-bit шины без clamshell. Карта спроектирована умереть в 1080p ровно когда 8GB перестанут быть достаточными."
 profiles:
-  mainstream_efficiency_tgp_150w:
-    criteria_met: true
-    steel_man_desc: "Массовые игровые ПК среднего класса: 1080p/1440p. БП 500–550W. Минимальные требования к вентиляции, низкий шум."
-    failure_mode_desc: "Нативный 4K-гейминг. Недостаток вычислительных блоков не позволяет 60 FPS — снижение до Medium/Low."
-    optimal_for_intents: ["aaa_1080p_ultra", "aaa_1440p_high", "esports_1080p_240hz", "silent_build", "sff_build"]
-    failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing"]
-    failure_severity: "BLOCK"
+  balanced_performance_gpu:
+    power_envelope: "mid"
+    steel_man_desc: "Предсказуемое масштабирование производительности. Стандартные сборки ATX с БП 600–750W. Не требует специального охлаждения или инфраструктуры."
+    failure_mode_desc: "Отсутствие специализации. Проигрывает enthusiast-картам в 4K, проигрывает low-power картам в SFF/тишине."
+    optimal_for_intents: ["aaa_1440p_high", "aaa_1080p_ultra", "esports_1080p_240hz", "software_development", "streaming"]
+    failure_for_intents: ["aaa_4k_path_tracing"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 price_ru:
   min: 25990
   median: 28000
