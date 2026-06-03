@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5090 32GB"
 vendor: "nvidia"
 status: "draft"
-tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "flagship", "dlss4", "pcie-5.0", "4k", "workstation"]
+tags: ["nvidia", "blackwell", "gb202", "full-die-flagship", "tsmc-4np", "512bit-wide-bus", "32gb-vram-workstation", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "500w-tbp-extreme", "12v-2x6-power", "nvenc-9th-gen-triple", "cuda-ecosystem", "4k-path-tracing", "8k-video", "local-llm-viable", "productivity-workhorse", "no-compromises", "infrastructure-demanding"]
 last_updated: "2026-06-03"
 links:
   smaller_brother: "catalog/gpu/nvidia-rtx-5080.md"
@@ -25,6 +25,7 @@ specs:
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$1999"
+  engineering_notes: "GB202 — максимальная конфигурация: 20480 CUDA, 512-bit, 32GB, 1792 GB/s. Единственная карта для 4K Path Tracing и LLM 13B-20B. 500W TBP требует инфраструктуры (БП 1000W+ ATX 3.1). Прирост +25-30% над 4090. Карта-инструмент, а не игрушка."
 price_ru:
   min: 219990
   median: 260000

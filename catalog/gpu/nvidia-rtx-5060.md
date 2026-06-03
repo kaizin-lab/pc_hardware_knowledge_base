@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5060 8/12GB"
 vendor: "nvidia"
 status: "draft"
-tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "budget", "dlss4", "pcie-5.0", "1080p"]
+tags: ["nvidia", "blackwell", "gb206-cut", "tsmc-4np", "128bit-narrow-bus-gddr7", "12gb-vram-minimum", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "150w-tbp-silent", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-only", "silent-viable", "frametime-gaming-1080p"]
 last_updated: "2026-06-03"
 links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5060-ti.md"
@@ -25,6 +25,7 @@ specs:
   pcie: "PCIe 5.0 x8"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$299 (8GB) / $349 (12GB)"
+  engineering_notes: "GB206 урезан (3840/4608 CUDA, -17%) на TSMC 4NP. 12GB-версия: 448 GB/s через GDDR7 на 128-bit — bandwidth как у RTX 4060 Ti 16GB (288 GDDR6) но с 12GB. GDDR7 компенсирует узость шины в 1080p. 150W TBP — холодная и тихая. 8GB-версия за $299 — замануха: DLSS 4 снижает разрешение рендеринга, но текстуры требуют физический VRAM."
 price_ru:
   min: 31990
   median: 37000

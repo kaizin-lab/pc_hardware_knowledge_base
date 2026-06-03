@@ -10,7 +10,7 @@ price_ru:
   max: 29873
   source: "price.ru"
   date: "2026-06-03"
-tags: ["amd", "rdna3", "rx-7000", "gdpr6", "budget", "fsr3", "pcie-4.0", "1080p"]
+tags: ["amd", "rdna3", "navi33", "monolithic-die", "tsmc-n6", "128bit-narrow-bus", "8gb-vram-critical", "infinity-cache-32mb", "pcie4.0-x8", "raster-optimized", "rt-weak", "165w-tbp", "1x8pin-power", "amf-encoder", "1080p-only"]
 last_updated: "2026-06-03"
 links:
   competitor_nvidia: "catalog/gpu/nvidia-rtx-4060.md"
@@ -35,6 +35,7 @@ specs:
   pcie: "PCIe 4.0 x8"
   display_outputs: "3× DP 2.1, 1× HDMI 2.1"
   msrp_usd: "$269"
+  engineering_notes: "Navi 33 — монолитный RDNA 3 на TSMC N6. 32 CU на 128-bit — сбалансировано под 1080p (32MB Infinity Cache даёт hit rate ~50%). На 1440p hit rate падает до 30%, bandwidth 288 GB/s — bottleneck. 8GB через 4×2GB — потолок 128-bit шины без clamshell. Карта спроектирована умереть в 1080p ровно когда 8GB перестанут быть достаточными."
 price_ru:
   min: 25990
   median: 28000

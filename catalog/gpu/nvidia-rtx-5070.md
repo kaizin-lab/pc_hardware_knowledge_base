@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5070 12GB"
 vendor: "nvidia"
 status: "draft"
-tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "mid-range", "dlss4", "pcie-5.0", "1440p"]
+tags: ["nvidia", "blackwell", "gb205-cut", "tsmc-4np", "192bit-mid-bus", "12gb-vram-critical", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "220w-tbp", "12v-2x6-power", "nvenc-9th-gen", "cuda-ecosystem", "1440p-rt", "4k-vram-limited", "frametime-gaming-1440p", "vram-artificial-segmentation"]
 last_updated: "2026-06-03"
 links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5070-ti.md"
@@ -26,6 +26,7 @@ specs:
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$549"
+  engineering_notes: "GB205 урезан: 6144 CUDA, 192-bit, 12GB, 672 GB/s. Мощный чип, задушенный маркетинговым решением по памяти. 12GB достаточно сегодня для 95% сценариев 1440p, но к 2028 станет bottleneck. 672 GB/s спасает в рамках VRAM-лимита (bandwidth не душит чип), но не расширяет его. NVIDIA сознательно ограничила для апселлинга к 5070 Ti (+16GB, +256-bit, +$200)."
 price_ru:
   min: 62990
   median: 72000

@@ -4,7 +4,7 @@ type: "gpu"
 title: "Intel Arc B580 12GB"
 vendor: "intel"
 status: "draft"
-tags: ["intel", "arc", "battlemage", "xess2", "budget", "pcie-5.0", "1440p"]
+tags: ["intel", "battlemage", "bmg-g21-full", "xe2-hpg", "tsmc-n5", "192bit-honest-bus", "12gb-vram", "xmx-engines-192", "xess2-ml", "av1-encode", "pcie5.0-x8", "190w-tbp", "1x8pin-power", "rebar-mandatory", "dx12-vulkan-optimized", "dx11-penalty", "high-idle-power", "subsidized-pricing", "rt-surprisingly-good", "best-fps-per-dollar-budget", "no-cuda", "frametime-gaming-1080p"]
 last_updated: "2026-06-03"
 links:
   smaller_brother: "catalog/gpu/intel-arc-b570.md"
@@ -28,6 +28,7 @@ specs:
   pcie: "PCIe 5.0 x8"
   display_outputs: "3× DP 2.1, 1× HDMI 2.1"
   msrp_usd: "$249"
+  engineering_notes: "Полный BMG-G21: 24 Xe-ядра, 192-bit шина, 12GB через 6×2GB. 456 GB/s — лучшая сырая BW среди бюджетных карт (выше чем 448 GB/s у RTX 5060 Ti). XMX-движки (192) — XeSS 2 на уровне DLSS 3.5. RT неожиданно силён для $249. Но драйверы DX9/DX11 — ахиллесова пята, idle power 28-32W — в 3× выше NVIDIA. Лучшая инженерная эффективность (транзисторы/$/производительность) на рынке."
 price_ru:
   min: 28990
   median: 32000

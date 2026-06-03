@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5070 Ti 16GB"
 vendor: "nvidia"
 status: "draft"
-tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "mid-high", "dlss4", "pcie-5.0", "1440p", "4k"]
+tags: ["nvidia", "blackwell", "gb205-full", "tsmc-4np", "256bit-honest-bus", "16gb-vram-safe", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "280w-tbp", "12v-2x6-power", "nvenc-9th-gen-dual", "cuda-ecosystem", "1440p-ultra-rt", "4k-high", "local-llm-viable", "productivity-workhorse", "frametime-gaming-1440p", "best-balanced-blackwell"]
 last_updated: "2026-06-03"
 links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5080.md"
@@ -26,6 +26,7 @@ specs:
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$749"
+  engineering_notes: "Полный GB205: 7680 CUDA, 256-bit, 16GB, 896 GB/s — наконец без компромиссов в серии 70. То чем должна была быть RTX 5070. Прирост +25-30% над 4070 Ti Super. 16GB — sweet spot для 4K. 12V-2×6 — улучшенный стандарт после фиаско 12VHPWR. Лучший баланс цена/возможности в Blackwell."
 price_ru:
   min: 84990
   median: 98000

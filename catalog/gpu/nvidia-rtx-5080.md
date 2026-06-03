@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5080 16GB"
 vendor: "nvidia"
 status: "draft"
-tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "high-end", "dlss4", "pcie-5.0", "4k"]
+tags: ["nvidia", "blackwell", "gb203", "tsmc-4np", "256bit-honest-bus", "16gb-vram-critical-for-price", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "320w-tbp", "12v-2x6-power", "nvenc-9th-gen-dual", "cuda-ecosystem", "4k-ultra-rt", "productivity-workhorse", "local-llm-viable", "vram-artificial-segmentation"]
 last_updated: "2026-06-03"
 links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5090.md"
@@ -26,6 +26,7 @@ specs:
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$999"
+  engineering_notes: "GB203 — урезанный от GB202: 9728 CUDA, 256-bit, 16GB, 960 GB/s. Инженерная драма: 16GB при $999 — повторение ошибки RTX 3080 10GB. Через 2 года 16GB станет bottleneck для карты за $1000. GB203 физически поддерживает до 32GB через clamshell — маркетинг ограничил чтобы RTX 5090 выглядела necessary. Прирост +20-25% над 4080 Super — хорошо, но не революционно. Не превосходит RTX 4090 (24GB) в VRAM-тяжёлых нагрузках."
 price_ru:
   min: 109990
   median: 125000

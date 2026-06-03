@@ -4,7 +4,7 @@ type: "gpu"
 title: "AMD Radeon RX 9070 16GB"
 vendor: "amd"
 status: "draft"
-tags: ["amd", "rdna4", "rx-9000", "gdpr6", "mid-high", "fsr4", "pcie-5.0", "1440p", "4k"]
+tags: ["amd", "rdna4", "navi48", "cut-die", "tsmc-n5", "256bit-honest-bus", "16gb-vram-safe", "infinity-cache-64mb", "pcie5.0-x16", "fsr4-ml-based", "rt-3rd-gen-improved", "240w-tbp", "2x8pin-power", "dp2.1-uhbr13.5", "4k-entry", "1440p-ultra", "raster-optimized", "rt-mid", "local-llm-viable", "frametime-gaming-1440p"]
 last_updated: "2026-06-03"
 links:
   bigger_brother: "catalog/gpu/amd-rx-9070-xt.md"
@@ -29,6 +29,7 @@ specs:
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1 UHBR 13.5, 1× HDMI 2.1b"
   msrp_usd: "$499"
+  engineering_notes: "Navi 48 — урезанный чип (88/96 CU), но с сохранением полной 256-bit шины и 64MB Infinity Cache. Критическое решение AMD: memory subsystem не трогают (в отличие от NVIDIA где 5070 получает 192-bit вместо 256-bit). 640 GB/s как у XT-версии. Потеря 8 CU = -6-8% FPS. Позиционируется против RTX 5070 ($549, 12GB, 192-bit) и бьёт аргументом 16GB+256-bit за $499."
 price_ru:
   min: 55990
   median: 64000

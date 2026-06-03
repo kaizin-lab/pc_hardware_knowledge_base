@@ -4,7 +4,7 @@ type: "gpu"
 title: "AMD Radeon RX 9060 XT 16GB"
 vendor: "amd"
 status: "draft"
-tags: ["amd", "rdna4", "rx-9000", "gdpr6", "mid-range", "fsr4", "pcie-5.0", "1440p"]
+tags: ["amd", "rdna4", "navi44", "tsmc-n5", "128bit-narrow-bus", "16gb-vram-safe", "infinity-cache-48mb", "pcie5.0-x8", "fsr4-ml-based", "rt-3rd-gen", "200w-tbp", "1x8pin-power", "dp2.1-uhbr13.5", "raster-optimized", "rt-mid", "local-llm-viable", "cache-dependent"]
 last_updated: "2026-06-03"
 links:
   competitor_nvidia: "catalog/gpu/nvidia-rtx-5060-ti.md"
@@ -29,6 +29,7 @@ specs:
   pcie: "PCIe 5.0 x8"
   display_outputs: "3× DP 2.1 UHBR 13.5, 1× HDMI 2.1b"
   msrp_usd: "$379"
+  engineering_notes: "Navi 44 — младший RDNA 4 на TSMC N5. 64 CU на 128-bit с 48MB Infinity Cache 3-го поколения: эффективный bandwidth ~500-550 GB/s при кэш-хитах, при промахах падает до 384 GB/s. 16GB через 4×4GB модулей. FSR 4 на 128 AI-акселераторах — паритет с DLSS 4 CNN. RT 3-го поколения — +80% к RDNA 3, но всё ещё позади Blackwell. Поведение cache-dependent: в одних играх обгоняет 5060 Ti, в других проигрывает B580."
 price_ru:
   min: 41990
   median: 48000

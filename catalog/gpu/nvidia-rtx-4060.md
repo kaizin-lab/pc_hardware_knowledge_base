@@ -10,7 +10,7 @@ price_ru:
   max: 36000
   source: "price.ru (оценка по рынку)"
   date: "2026-06-03"
-tags: ["nvidia", "ada-lovelace", "rtx-40", "gdpr6", "budget", "dlss3", "pcie-4.0", "1080p"]
+tags: ["nvidia", "ada-lovelace", "ad107", "tsmc-4n", "128bit-narrow-bus", "8gb-vram-critical", "24mb-l2-cache", "pcie4.0-x8", "dlss3.5", "rt-3rd-gen", "115w-tgp-silent", "1x8pin-power", "nvenc-8th-gen", "cuda-ecosystem", "1080p-only", "rt-leader-budget", "silent-viable"]
 last_updated: "2026-06-03"
 links:
   competitor_amd: "catalog/gpu/amd-rx-7600.md"
@@ -34,6 +34,7 @@ specs:
   pcie: "PCIe 4.0 x8"
   display_outputs: "3× DP 1.4a, 1× HDMI 2.1"
   msrp_usd: "$299"
+  engineering_notes: "AD107 на TSMC 4N. 24MB L2-кэша (8× больше RTX 3060) — компенсирует 128-bit шину через hit rate ~50% в 1080p. Работает блестяще в 1080p, на 1440p hit rate падает — 272 GB/s bottleneck. 115W TGP — архитектурный шедевр энергоэффективности. 8GB VRAM — осознанный компромисс: карта умрёт по памяти раньше чем по compute. RT-ядра 3-го поколения + DLSS 3.5 — безальтернативна для RT в бюджете."
 price_ru:
   min: 29990
   median: 32000

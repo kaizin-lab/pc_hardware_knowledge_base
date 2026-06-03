@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5060 Ti 16GB"
 vendor: "nvidia"
 status: "verified"
-tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "mid-range", "dlss4", "pcie-5.0"]
+tags: ["nvidia", "blackwell", "gb206", "tsmc-4np", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "compute-stagnation", "local-llm-viable", "frametime-gaming-1080p"]
 last_updated: "2026-06-03"
 links:
   predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
@@ -25,6 +25,7 @@ specs:
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$429"
   msrp_8gb: "$379"
+  engineering_notes: "GB206 на TSMC 4NP. CUDA-ядер 4608 — всего +6% над AD106: архитектурный застой. Главный двигатель — GDDR7: 448 GB/s на 128-bit (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — минимальный порог для LLM. DLSS 4 MFG — маркетинг для карты этого класса: если базовый FPS <60, MFG даёт плавность но не отзывчивость. 8GB-версия — инженерно несостоятельна."
 price_ru:
   min: 43990
   median: 52000

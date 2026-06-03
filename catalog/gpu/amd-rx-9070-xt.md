@@ -4,7 +4,7 @@ type: "gpu"
 title: "AMD Radeon RX 9070 XT 16GB"
 vendor: "amd"
 status: "draft"
-tags: ["amd", "rdna4", "rx-9000", "gdpr6", "high-end", "fsr4", "pcie-5.0", "4k"]
+tags: ["amd", "rdna4", "navi48-xt", "full-die", "tsmc-n5", "256bit-honest-bus", "16gb-vram-safe", "infinity-cache-64mb", "pcie5.0-x16", "fsr4-ml-based", "rt-3rd-gen-improved", "280w-tbp", "2x8pin-power", "dp2.1-uhbr13.5", "4k-capable", "raster-leader", "rt-upper-mid", "local-llm-viable", "frametime-gaming-1440p", "best-fps-per-dollar-high-end"]
 last_updated: "2026-06-03"
 links:
   smaller_brother: "catalog/gpu/amd-rx-9070.md"
@@ -29,6 +29,7 @@ specs:
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1 UHBR 13.5, 1× HDMI 2.1b"
   msrp_usd: "$599"
+  engineering_notes: "Navi 48 XT — полный чип RDNA 4: 96 CU, 256-bit шина, 64MB Infinity Cache. 640 GB/s raw + кэш = эффективно 800-900 GB/s. Без узких мест для 4K. FSR 4 на 192 AI-акселераторах. Стратегия AMD: выиграть raster war и VRAM war — 16GB на 256-bit против 12GB на 192-bit у RTX 5070. RT улучшен на 80%, но Blackwell RT-ядра всё ещё на 40-50% быстрее в Path Tracing."
 price_ru:
   min: 65990
   median: 75000
