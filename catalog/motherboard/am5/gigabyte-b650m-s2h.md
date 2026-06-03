@@ -5,7 +5,7 @@ title: "GIGABYTE B650M S2H"
 vendor: "gigabyte"
 status: "verified"
 tags: ["am5", "b650", "ddr5", "matx", "budget", "no-wifi"]
-last_updated: "2025-06-03"
+last_updated: "2026-06-03"
 links:
   socket: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
@@ -38,7 +38,7 @@ price_ru:
   median: 7800
   max: 8520
   source: "price.ru"
-  date: "2025-06-03"
+  date: "2026-06-03"
 verdict: "Бюджетный вход в AM5. Достаточна для Ryzen 5 7500F/7600. Всего 2 слота RAM — не для 4-канальных конфигураций. Не для Ryzen 9."
 ---
 
@@ -90,7 +90,7 @@ B650M S2H — самый доступный вход в платформу AM5 �
 
 Несмотря на бюджетность, плата имеет **Q-Flash Plus** — обновление BIOS без процессора. Критично важно, поскольку B650-платы могут поставляться с BIOS, не поддерживающим Ryzen 9000 (Granite Ridge). Обновление через USB-флешку и кнопку на плате решает проблему.
 
-## Российский рынок (июнь 2025)
+## Российский рынок (июнь 2026)
 
 **Диапазон: 6 652–8 520 ₽, медиана ~7 800 ₽.**
 

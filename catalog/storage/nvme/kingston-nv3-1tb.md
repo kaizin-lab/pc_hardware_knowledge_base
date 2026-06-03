@@ -5,7 +5,7 @@ title: "Kingston NV3 1TB NVMe SSD"
 vendor: "kingston"
 status: "verified"
 tags: ["nvme", "pcie-4.0", "dramless", "qlc", "budget"]
-last_updated: "2025-06-03"
+last_updated: "2026-06-03"
 links:
   pcie_gen: "catalog/storage/nvme/pcie-gen4.md"
   concept_pcie: "concepts/pcie-lanes.md"
@@ -28,7 +28,7 @@ price_ru:
   median: 11800
   max: 13490
   source: "price.ru"
-  date: "2025-06-03"
+  date: "2026-06-03"
 verdict: "Бюджетный PCIe 4.0 SSD без DRAM-буфера. QLC-память — не для интенсивной записи. Для игр и системы — отлично. Для рабочей станции с большими объёмами записи — искать TLC с DRAM."
 ---
 
@@ -74,7 +74,7 @@ QLC (Quad-Level Cell) = 4 бита на ячейку. Плюсы: высокая
 
 Без DRAM-буфера и с эффективным контроллером — греется умеренно. В большинстве сценариев радиатор не требуется. Но в корпусах с плохой вентиляцией или при непрерывной нагрузке — желателен даже простой радиатор материнской платы.
 
-## Российский рынок (июнь 2025)
+## Российский рынок (июнь 2026)
 
 **Диапазон: 11 225–13 490 ₽, медиана ~11 800 ₽.**
 
@@ -101,4 +101,4 @@ NV3 оправдан, если нужна скорость PCIe 4.0 за мин�
 
 1. Kingston NV3 Product Page (kingston.com)
 2. TechPowerUp SSD Database (techpowerup.com)
-3. Price.ru — рыночные цены, Москва (03.06.2025)
+3. Price.ru — рыночные цены, Москва (03.06.2026)

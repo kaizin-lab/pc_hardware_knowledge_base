@@ -5,7 +5,7 @@ title: "NVIDIA GeForce RTX 5060 Ti 16GB"
 vendor: "nvidia"
 status: "verified"
 tags: ["nvidia", "blackwell", "rtx-50", "gdpr7", "mid-range", "dlss4", "pcie-5.0"]
-last_updated: "2025-06-03"
+last_updated: "2026-06-03"
 links:
   predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
   competitor_amd: "catalog/gpu/amd-rx-9060-xt.md"
@@ -30,7 +30,7 @@ price_ru:
   median: 52000
   max: 65640
   source: "price.ru"
-  date: "2025-06-03"
+  date: "2026-06-03"
 verdict: "Прирост над RTX 4060 Ti минимален (+7% FP32). Выбор между 8GB и 16GB критичен — младшая версия теряет до 15% FPS в 4K и местами в 1080p. 16GB — осмысленный минимум."
 ---
 
@@ -72,7 +72,7 @@ Indiana Jones and the Great Circle — даже 16GB недостаточно д
 - **Разгон:** GPU GB206 превосходно разгоняется даже в условиях ограниченного TBP. Прирост от оверклокинга ощутимый.
 - **Шум:** Palit Infinity 3 — не тихая. Palit Dual — откровенно шумная. Выбор кулера имеет значение.
 
-## Российский рынок (июнь 2025)
+## Российский рынок (июнь 2026)
 
 | Модель | Диапазон цен |
 |---|---|
@@ -121,6 +121,6 @@ RX 9060 XT дешевле и с 16GB, но проигрывает в RT и не 
 ## Источники
 
 1. 3dnews.ru — «Обзор видеокарты NVIDIA GeForce RTX 5060 Ti: не ошибись с гигабайтами» (14.05.2025)
-2. Price.ru — рыночные цены, Москва (03.06.2025)
+2. Price.ru — рыночные цены, Москва (03.06.2026)
 3. Спецификации NVIDIA GB206 (techpowerup.com)
 4. Собственное тестирование лаборатории: Palit Dual и Infinity 3
