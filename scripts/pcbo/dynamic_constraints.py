@@ -42,12 +42,11 @@ def _eval_gaming(intent: dict, dynamic: dict, params: dict) -> dict:
     target_fps = params.get("target_fps", 60)
 
     min_vram = _vram(dynamic, resolution, settings)
-    gpu_prof = _gpu_prof(dynamic, resolution, target_fps)
     maut_r = _maut(dynamic, resolution)
     bw = _bandwidth(dynamic, resolution, settings)
 
     matrix = intent.get("profile_interaction_matrix", {})
-    mandatory = [gpu_prof] if gpu_prof else []
+    mandatory = []  # range replaces single profile
     block = [b["profile"] for b in matrix.get("strict_block", []) if "bandwidth_constrained" not in b["profile"]]
     if bw == "BLOCK":
         block.append("concepts/epistemological-profiles.md#bandwidth_constrained_vram_rich")
@@ -64,12 +63,30 @@ def _eval_gaming(intent: dict, dynamic: dict, params: dict) -> dict:
         "resolved_mandatory_profiles": mandatory,
         "resolved_block_profiles": block,
         "resolved_warn_profiles": warn,
+        "profile_range": _gpu_range(dynamic, resolution),
         "min_vram_gb": min_vram,
         "maut_weights": maut_r["maut_weights"],
         "noise_load": maut_r.get("noise_load", "A2"),
         "thermal_state": maut_r.get("thermal_state", "T_Safe"),
-        "effective_params": {"resolution": resolution, "settings": settings, "target_fps": target_fps, "gpu_profile": gpu_prof, "bandwidth_rule": bw}
+        "effective_params": {"resolution": resolution, "settings": settings, "target_fps": target_fps, "bandwidth_rule": bw}
     }
+
+
+def _gpu_range(d: dict, res: str) -> dict:
+    """Get profile range for given resolution from YAML config.
+    Returns {"min": "profile_name", "max": "profile_name"}.
+    """
+    c = d.get("profile_range", {}).get("config", {})
+    default = {"min": "mainstream_efficiency_gpu", "max": "balanced_performance_gpu"}
+    return c.get(res, c.get("default", default))
+
+
+def _gpu_range_min(d: dict, res: str) -> str:
+    return _gpu_range(d, res)["min"]
+
+
+def _gpu_range_max(d: dict, res: str) -> str:
+    return _gpu_range(d, res)["max"]
 
 
 def _vram(d: dict, res: str, sett: str) -> int:

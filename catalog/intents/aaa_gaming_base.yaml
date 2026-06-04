@@ -94,30 +94,18 @@ dynamic_constraints:
         medium_note: "Средние текстуры — экономия 2GB"
       generation_note: "База привязана к Blackwell/RDNA 4 (2026). При выходе UE6 или новых консолей — пересмотреть 4K base до 20GB."
 
-  # --- 2. Профиль GPU ---
-  target_gpu_profile:
-    function: "evaluate_gpu_profile"
-    description: "Какой профиль GPU mandatory для данного разрешения и целевого FPS."
+  # --- 2. Профильный диапазон GPU (v3.4) ---
+  profile_range:
+    function: "evaluate_gpu_range"
+    description: "Диапазон допустимых профилей GPU: min (минимально достаточный) — max (максимально оправданный). Ниже min=BLOCK, выше max=WARN (избыточен)."
     config:
-      # Формат: "<resolution>_<target_fps>": "<profile_reference>"
-      "1080p_60fps":  "concepts/epistemological-profiles.md#mainstream_efficiency_gpu"
-      "1080p_60fps_note": "RTX 5060 / RX 7600 / Arc B580 — карты 150W достаточно."
-      "1080p_120fps": "concepts/epistemological-profiles.md#balanced_performance_gpu"
-      "1080p_120fps_note": "RTX 5060 Ti / RX 9060 XT — нужно больше чипов."
-      "1080p_240fps": "concepts/epistemological-profiles.md#balanced_performance_gpu"
-      "1080p_240fps_note": "RTX 5070 / RX 9070 — киберспорт на high, не AAA."
-
-      "1440p_60fps":  "concepts/epistemological-profiles.md#balanced_performance_gpu"
-      "1440p_60fps_note": "RTX 5070 / RX 9070 — стандарт для 1440p."
-      "1440p_120fps": "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
-      "1440p_120fps_note": "RTX 5070 Ti / RX 9070 XT / RTX 5080 — высокая частота."
-      "1440p_240fps": "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
-      "1440p_240fps_note": "RTX 5080 / RTX 4090 — топ для 1440p 240Hz."
-
-      "4K_60fps":     "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
-      "4K_60fps_note": "RTX 5070 Ti (на грани) / RTX 5080 — входной билет в 4K."
-      "4K_120fps":    "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
-      "4K_120fps_note": "RTX 5090 — единственная карта для нативного 4K 120+."
+      "1080p":  {"min": "mainstream_efficiency_gpu", "max": "balanced_performance_gpu"}
+      "1440p":  {"min": "balanced_performance_gpu",  "max": "enthusiast_unrestricted_gpu"}
+      "4K":     {"min": "enthusiast_unrestricted_gpu", "max": "enthusiast_unrestricted_gpu"}
+      note: >
+        1080p: RTX 5060 (mainstream) — optimal. RTX 5070 (balanced) — WARN (overkill).
+        1440p: RX 9070 (balanced) — optimal. RTX 5070 Ti (enthusiast) — WARN (избыточен, но допустим).
+        4K: только enthusiast. RTX 5080 ✅, RTX 5090 ⚠️ WARN.
 
   # --- 3. MAUT-веса ---
   maut_weights:

@@ -100,13 +100,14 @@ cpu_power_envelope_high:
 
 ---
 
-## Схема профиля (YAML Schema v3.3)
+## Схема профиля (YAML Schema v3.4)
 
 ```yaml
 profiles:
   profile_name:
     criteria_met: true|false           # per-component
-    power_envelope: "low"|"mid"|"high" # ссылка на MECE-envelope (новое)
+    power_envelope: "low"|"mid"|"high" # ссылка на MECE-envelope
+    profile_tier: 1|2|3                # порядковый номер в диапазоне (новое v3.4)
     # --- LLM layer ---
     steel_man_desc: "..."
     failure_mode_desc: "..."
@@ -114,7 +115,35 @@ profiles:
     optimal_for_intents: ["intent_a"]
     failure_for_intents: ["intent_x"]
     failure_severity: "WARN"|"BLOCK"
-    failure_type: "LINEAR_DEGRADATION"|"CLIFF_DROP"   # новое
+    failure_type: "LINEAR_DEGRADATION"|"CLIFF_DROP"
+```
+
+### Профильный диапазон (Profile Range) — новое в v3.4
+
+Профиль — не точка, а **диапазон** от минимально допустимого до максимального.
+Как комплектации автомобиля: базовая → полный фарш, но машина одна.
+
+Интент определяет `acceptable_profile_range: {min: X, max: Y}`:
+- **Ниже min** → BLOCK: компонент недостаточен для задачи
+- **В диапазоне [min, max]** → optimal: steel-man, соответствует задаче
+- **Выше max** → WARN: компонент избыточен (переплата, излишний нагрев),
+  но функционально подходит
+
+**Пример для AAA-гейминга:**
+- 1080p: min=`mainstream_efficiency_gpu` (tier 1), max=`balanced_performance_gpu` (tier 2)
+  → RTX 5060 ✅ optimal, RTX 5070 ⚠️ WARN (overkill для 1080p)
+- 1440p: min=`balanced_performance_gpu` (tier 2), max=`enthusiast_unrestricted_gpu` (tier 3)
+  → RX 9070 ✅ optimal, RTX 5070 Ti ⚠️ WARN (избыточен, но допустим)
+- 4K: min=`enthusiast_unrestricted_gpu` (tier 3), max=`enthusiast_unrestricted_gpu` (tier 3)
+  → только флагманы. RTX 5080 ✅, RTX 5090 ⚠️ WARN (512-bit overkill)
+
+### Порядок профилей GPU (tier ordering)
+
+```yaml
+gpu_profile_tiers:
+  1: "mainstream_efficiency_gpu"       # TGP < 150W, 1080p
+  2: "balanced_performance_gpu"        # TGP 150-280W, 1440p
+  3: "enthusiast_unrestricted_gpu"     # TGP ≥ 280W, 4K
 ```
 
 ---
