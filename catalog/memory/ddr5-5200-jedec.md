@@ -29,6 +29,17 @@ price_ru:
   source: "price.ru (оценка)"
   date: "2026-06-03"
 verdict: "Максимальная стабильность без разгона. Нулевой риск ошибок памяти. Выбор для серверов, рабочих станций и критических систем, где стабильность важнее производительности."
+
+profiles:
+  jedec_native_safe:
+    capability_level: 1
+    capability_level: 1
+    steel_man_desc: "DDR5-5200 CL40 на JEDEC-напряжении 1.1V. Серверная стабильность без XMP/EXPO-сюрпризов. Нулевой уровень soft-bit errors даже под 24/7 нагрузкой."
+    failure_mode_desc: "Киберспорт с FPS > 200: latency > 85 нс ограничивает 1% Low. GPU простаивает на 20–30% в ожидании данных из памяти."
+    optimal_for_intents: ["home_server_24_7", "scientific_computing", "virtualization", "data_engineering", "office_productivity"]
+    failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz", "aaa_1440p_high"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 ---
 
 # DDR5-5200 CL40 32GB (2×16GB)

@@ -30,6 +30,7 @@ price_ru:
 profiles:
   aio_liquid_high_tdp:
     steel_man_desc: "AIO 360мм+. Единственный способ охлаждать CPU с TDP > 200W без троттлинга под sustained нагрузкой."
+    capability_level: 4
     failure_mode_desc: "Требует корпус с поддержкой 360мм радиатора. Помпа + 3 вентилятора = дополнительные точки отказа. Цена выше воздушных кулеров в 2–3 раза."
     optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "video_editing_8k"]
     failure_for_intents: ["sff_build", "office_productivity"]

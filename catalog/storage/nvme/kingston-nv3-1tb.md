@@ -32,6 +32,7 @@ price_ru:
 profiles:
   dram_less_hmb_cached:
     steel_man_desc: "Клиентская ОС: браузер, игры. Короткие записи до 20–30 ГБ поглощаются SLC-кэшем — скорости уровня премиум-дисков при цене на 30–40% ниже."
+    capability_level: 1
     failure_mode_desc: "Непрерывная многопоточная запись (СУБД, импорт RAW). После исчерпания SLC-кэша — задержки до 40 мс, скорость ≤ 350 МБ/с (уровень SATA III)."
     optimal_for_intents: ["office_productivity", "software_development", "aaa_1080p_ultra"]
     failure_for_intents: ["video_editing_4k", "video_editing_8k", "data_engineering"]

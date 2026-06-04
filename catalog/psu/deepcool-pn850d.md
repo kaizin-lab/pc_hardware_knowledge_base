@@ -25,6 +25,7 @@ price_ru:
 profiles:
   atx_3x_transient_capable:
     steel_man_desc: "850W Gold с ATX 3.1 и родным 12V-2x6. Уверенно держит transient spike RTX 5080/5090. Модульные кабели — чистая сборка в любом корпусе."
+    capability_level: 2
     failure_mode_desc: "Для RTX 5090 с разгоном — на пределе. При sustained load > 800W в жарком корпусе может уходить в перегрев."
     optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "esports_1080p_240hz", "software_development", "llm_inference"]
     failure_for_intents: ["llm_training_lora_24h", "aaa_4k_path_tracing_5090_oc"]

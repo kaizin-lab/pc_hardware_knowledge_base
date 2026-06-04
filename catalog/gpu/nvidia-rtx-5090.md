@@ -29,6 +29,7 @@ specs:
 profiles:
   enthusiast_unrestricted_gpu:
     power_envelope: "high"
+    capability_level: 3
     steel_man_desc: "Нативный 4K-гейминг на максималках, профессиональный рендеринг, высокопроизводительный AI-инференс."
     failure_mode_desc: "Компактные корпуса с плохой вентиляцией. 300–500W тепла → 55°C внутри → перегрев CPU и троттлинг."
     optimal_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu", "llm_inference_20b", "video_editing_8k"]
@@ -37,6 +38,7 @@ profiles:
     failure_type: "CLIFF_DROP"
   transient_spike_heavy:
     power_envelope: "high"
+    capability_level: 3
     steel_man_desc: "Динамичный 3D-рендеринг и гейминг. Мгновенный переход в P-state без микрофризов."
     failure_mode_desc: "БП ATX 2.4 без ATX 3.0. Микросекундный скачок тока триггерит OCP → чёрный экран."
     optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "3d_rendering_gpu"]

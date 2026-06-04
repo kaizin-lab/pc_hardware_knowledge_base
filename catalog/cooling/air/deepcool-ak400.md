@@ -28,6 +28,7 @@ price_ru:
 profiles:
   air_tower_standard:
     steel_man_desc: "Одно/двухбашенный воздушный кулер с TDP-рейтингом 150–250W. Достаточен для большинства потребительских CPU. Нулевой риск протечки, не требует обслуживания."
+    capability_level: 1
     failure_mode_desc: "Процессоры с TDP > 150W под длительной нагрузкой. Температура уходит в зону T_Hot (85°C+), возможен лёгкий throttling."
     optimal_for_intents: ["aaa_1080p_ultra", "esports_1080p_240hz", "software_development", "office_productivity", "silent_build"]
     failure_for_intents: ["heavy_compilation", "3d_rendering_cpu"]

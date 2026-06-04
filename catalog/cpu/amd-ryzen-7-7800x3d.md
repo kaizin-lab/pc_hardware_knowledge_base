@@ -39,6 +39,7 @@ specs:
 profiles:
   cache_dominant_gaming:
     power_envelope: "high"
+    capability_level: 3
     steel_man_desc: "Киберспорт 1080p на низких. 3D V-Cache (L3 ≥ 96MB) — 1% Low FPS стабильно выше 240/360 Hz."
     failure_mode_desc: "Тяжёлые FP32/AVX-512: рендеринг, компиляция. Тепловое сопротивление 3D-кэша снижает частоту на 300–500 МГц. Штраф 15–20%."
     optimal_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
@@ -47,6 +48,7 @@ profiles:
     failure_type: "LINEAR_DEGRADATION"
   dense_thermal_concentration:
     power_envelope: "high"
+    capability_level: 2
     steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
     failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
     optimal_for_intents: ["office_productivity", "software_development"]

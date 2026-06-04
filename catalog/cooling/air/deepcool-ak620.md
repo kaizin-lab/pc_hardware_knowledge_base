@@ -28,6 +28,7 @@ price_ru:
 profiles:
   air_tower_high_tdp:
     steel_man_desc: "Двухбашенный воздушный кулер с TDP-рейтингом 250W+. Справляется с разогнанными и high-TDP процессорами. Надёжнее AIO (нет помпы)."
+    capability_level: 2
     failure_mode_desc: "Габариты — высота 160 мм, ширина до 138 мм. Блокирует доступ к слотам RAM на некоторых платах. Требует корпус с запасом по высоте кулера."
     optimal_for_intents: ["heavy_compilation", "3d_rendering_cpu", "scientific_computing"]
     failure_for_intents: ["sff_build"]

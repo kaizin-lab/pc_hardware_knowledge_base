@@ -23,6 +23,7 @@ price_ru:
 profiles:
   sound_dampened_thermal_trap:
     criteria_met: true
+    capability_level: 2
     steel_man_desc: "Сборки средней мощности (TDP ≤ 200W). Полное поглощение писка дросселей и шелеста вентиляторов. Абсолютная тишина в простое."
     failure_mode_desc: "Системы > 400W. Узкие воздухозаборники → 50–55°C внутри → вентиляторы на 80% PWM → шум превышает открытый mesh-корпус."
     optimal_for_intents: ["silent_build", "office_productivity", "home_server_24_7"]

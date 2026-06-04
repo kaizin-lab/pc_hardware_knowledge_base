@@ -39,6 +39,7 @@ specs:
 profiles:
   multi_ccd_disaggregated:
     power_envelope: "mid"
+    capability_level: 3
     steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
     failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
     optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
@@ -47,6 +48,7 @@ profiles:
     failure_type: "LINEAR_DEGRADATION"
   dense_thermal_concentration:
     power_envelope: "mid"
+    capability_level: 2
     steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
     failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
     optimal_for_intents: ["office_productivity", "software_development"]

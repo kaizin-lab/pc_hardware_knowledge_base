@@ -32,6 +32,17 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
 verdict: "Прямой наследник PK750D. 750W Gold за 7 000 ₽ — отличный бюджетный БП для сборок с RTX 5070 и ниже. ATX 3.1 с 12V-2×6. Не модульный. Рейтинг 4.8."
+
+profiles:
+  atx_3x_transient_capable:
+    capability_level: 2
+    capability_level: 2
+    steel_man_desc: "750W Gold с ATX 3.1 и родным 12V-2x6. Достаточен для RTX 5070 Ti / RX 9070 XT. DC-DC топология, полный набор защит. 5 лет гарантии."
+    failure_mode_desc: "Немодульный — все кабели жёстко выведены, избыточные кабели занимают место. Для RTX 5080 — на пределе по ваттажу при sustained load. Нет 80+ Platinum эффективности."
+    optimal_for_intents: ["aaa_1440p_high", "esports_1080p_240hz", "software_development", "streaming"]
+    failure_for_intents: ["aaa_4k_path_tracing_5090_oc", "llm_training_lora_24h"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 ---
 
 # Deepcool PN750D 750W 80+ Gold

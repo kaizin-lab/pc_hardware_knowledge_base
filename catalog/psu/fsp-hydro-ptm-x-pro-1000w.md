@@ -25,6 +25,7 @@ price_ru:
 profiles:
   atx_3x_transient_capable:
     steel_man_desc: "1000W Platinum с японскими конденсаторами. Золотой стандарт для RTX 5090. 12V-2x6 на 600W — полностью раскрывает флагманскую карту. FDB-вентилятор, полностью модульная конструкция, высочайший КПД."
+    capability_level: 2
     failure_mode_desc: "Избыточен для систем без флагманского GPU. Цена ~20 000 ₽ — переплата, если не используется 600W по 12V-2x6."
     optimal_for_intents: ["aaa_4k_path_tracing", "llm_training_lora", "aaa_4k_ultra", "llm_inference", "workstation_rendering"]
     failure_for_intents: ["office_productivity", "esports_1080p_240hz"]

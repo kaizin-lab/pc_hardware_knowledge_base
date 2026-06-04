@@ -38,6 +38,17 @@ conflicts:
     effect: "SATA ports 5-6 disabled"
     severity: "moderate"
 verdict: "Флагманский уровень VRM в среднем сегменте. Оптимальна для Ryzen 7 и Ryzen 9."
+
+profiles:
+  mainstream_platform:
+    capability_level: 2
+    capability_level: 2
+    steel_man_desc: "B650 с 14+2+1 фазами (80A SPS) — запас мощности для любого Ryzen 9 на стоке. 3× M.2 (1× Gen5 + 2× Gen4), 2.5G LAN, Wi-Fi 6E, ALC4080 аудио. FLASHBACK+ и EZ Debug LED."
+    failure_mode_desc: "6 реальных фаз с удвоителями — под экстремальным разгоном транзиенты хуже чем у плат с нативными фазами. Цена на 50% выше бюджетных B650M."
+    optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "software_development", "streaming", "video_editing_4k"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 ---
 
 # MSI MAG B650 TOMAHAWK WIFI

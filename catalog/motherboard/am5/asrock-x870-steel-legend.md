@@ -30,6 +30,17 @@ price_ru:
   source: "price.ru (оценка)"
   date: "2026-06-03"
 verdict: "Флагманская плата на X870 под Zen 5. 16+2+1 фаз на 80A SPS, PCIe 5.0 x16 без отъёма линий при любом заполнении M.2. 5GbE + Wi-Fi 7. Идеальна для Ryzen 9 с множеством NVMe-накопителей."
+
+profiles:
+  enthusiast_platform:
+    capability_level: 3
+    capability_level: 3
+    steel_man_desc: "X870 с 16+2+1 фазами (80A SPS) и нефлагманским ценником. Все 16 линий PCIe 5.0 у GPU всегда — без бифуркации. 4× M.2 (1× Gen5), Wi-Fi 7, 5GbE LAN."
+    failure_mode_desc: "Избыточен для игровых сборок с одной видеокартой и одним NVMe. Разница с B850 Riptide в CPU-рендеринге и играх — в пределах погрешности. Переплата за неиспользуемые линии."
+    optimal_for_intents: ["video_editing_8k", "data_engineering", "virtualization", "scientific_computing", "llm_training_lora"]
+    failure_for_intents: ["aaa_1080p_ultra", "esports_1080p_240hz"]
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 ---
 
 # ASRock X870 Steel Legend

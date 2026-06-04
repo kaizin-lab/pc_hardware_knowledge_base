@@ -30,6 +30,7 @@ price_ru:
 profiles:
   aio_liquid_standard:
     steel_man_desc: "AIO 240–280мм. Лучше воздушных кулеров для импульсных нагрузок (burst) за счёт теплоёмкости жидкости. Эстетика, доступ к RAM."
+    capability_level: 3
     failure_mode_desc: "Риск протечки (низкий, но не нулевой). Помпа — дополнительная точка отказа. Срок службы 5–7 лет (против 15+ у воздуха)."
     optimal_for_intents: ["aaa_4k_ultra", "video_editing_4k", "streaming", "silent_build"]
     failure_for_intents: ["home_server_24_7"]

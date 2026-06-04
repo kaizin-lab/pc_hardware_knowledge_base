@@ -23,6 +23,7 @@ price_ru:
 profiles:
   sound_dampened_thermal_trap:
     criteria_met: false
+    capability_level: 2
     steel_man_desc: "Mesh-передняя панель + 4×120mm вентилятора из коробки — airflow-ориентированный корпус, полная противоположность глухим шумопоглощающим корпусам. Предназначен для максимального продува."
     failure_mode_desc: "Шумопоглощение отсутствует. Виброизоляции PSU нет. Открытая mesh-панель пропускает весь шум вентиляторов наружу — непригоден для абсолютной тишины."
     optimal_for_intents: ["aaa_1080p_ultra", "aaa_4k_ultra", "esports_1080p_240hz"]

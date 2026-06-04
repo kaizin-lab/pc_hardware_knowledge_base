@@ -32,6 +32,7 @@ price_ru:
 profiles:
   bifurcation_shared_lanes:
     steel_man_desc: "B850 Riptide предлагает PCIe 5.0 x16 для GPU и три M.2-слота (1× Gen5 + 2× Gen4). При использовании только M2_1 (Gen5) конфликтов нет — GPU получает полные 16 линий."
+    capability_level: 2
     failure_mode_desc: "При задействовании M2_2 или M2_3 линии могут отбираться у основного PCIe-слота через бифуркацию. Это типично для B850: чипсет имеет ограниченное количество линий, и вендор вынужден делить линии CPU между GPU и дополнительными M.2."
     optimal_for_intents: ["video_editing_4k", "data_engineering", "virtualization"]
     failure_for_intents: ["llm_inference_13b", "llm_inference_20b", "llm_training_lora"]

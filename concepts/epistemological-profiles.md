@@ -504,6 +504,16 @@ jedec_native_safe:
   failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz", "aaa_1440p_high"]
   failure_severity: "WARN"
   failure_type: "LINEAR_DEGRADATION"
+
+### ЭКСТРЕМУМ: ddr5_6400_uclk_instability
+```yaml
+ddr5_6400_uclk_instability:
+  steel_man_desc: "DDR5-6400 на Hynix A-die — максимальная пропускная способность на AM5. В играх с высокими требованиями к bandwidth (MSFS 2024, Star Citizen) даёт +5-7% FPS при ручном тюнинге."
+  failure_mode_desc: "AMD AM5: контроллер памяти (UCLK) нестабилен в синхронном режиме 1:1 выше 6000 MT/s. Принудительный переход в режим 1:2 (UCLK=MCLK/2) после 6200 MT/s — латентность возрастает на 12-15 нс, прирост bandwidth нивелируется. Intel: стабильный Gear 2, но выигрыш над 6000 CL30 минимален."
+  optimal_for_intents: ["esports_1080p_360hz", "scientific_computing"]
+  failure_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "software_development"]
+  failure_severity: "WARN"
+  failure_type: "LINEAR_DEGRADATION"
 ```
 
 ---

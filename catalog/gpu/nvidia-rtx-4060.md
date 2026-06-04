@@ -38,6 +38,7 @@ specs:
 profiles:
   mainstream_efficiency_gpu:
     power_envelope: "low"
+    capability_level: 1
     steel_man_desc: "Массовые игровые ПК: 1080p/1440p. БП 450–550W. Минимальные требования к вентиляции, низкий шум, SFF-совместимость."
     failure_mode_desc: "Нативный 4K-гейминг. Недостаток вычислительных блоков не позволяет 60 FPS — снижение до Medium/Low."
     optimal_for_intents: ["aaa_1080p_ultra", "esports_1080p_240hz", "silent_build", "sff_build", "office_productivity"]

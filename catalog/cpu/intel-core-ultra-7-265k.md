@@ -44,6 +44,7 @@ specs:
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"
+    capability_level: 2
     steel_man_desc: "Стриминг + фоновая многозадачность. E-ядра разгружают P-ядра: OBS на E-ядрах, игра на P-ядрах."
     failure_mode_desc: "Старые ОС без аппаратного планировщика. Realtime-потоки могут попасть на E-ядра → ×2–3 падение."
     optimal_for_intents: ["streaming", "software_development", "video_editing_4k"]

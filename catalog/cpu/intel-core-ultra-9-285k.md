@@ -43,6 +43,7 @@ specs:
 profiles:
   multi_ccd_disaggregated:
     power_envelope: "high"
+    capability_level: 3
     steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
     failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
     optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
@@ -51,6 +52,7 @@ profiles:
     failure_type: "LINEAR_DEGRADATION"
   hybrid_asymmetric_efficiency:
     power_envelope: "high"
+    capability_level: 2
     steel_man_desc: "Стриминг + фоновая многозадачность. E-ядра разгружают P-ядра: OBS на E-ядрах, игра на P-ядрах."
     failure_mode_desc: "Старые ОС без аппаратного планировщика. Realtime-потоки могут попасть на E-ядра → ×2–3 падение."
     optimal_for_intents: ["streaming", "software_development", "video_editing_4k"]

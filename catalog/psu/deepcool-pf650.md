@@ -24,6 +24,7 @@ price_ru:
 profiles:
   atx_2x_budget_reliable:
     steel_man_desc: "Блок питания ATX 2.4, проверенный временем. Достаточен для систем без мощных GPU (TGP < 200W). Лучшая цена/ватт."
+    capability_level: 1
     failure_mode_desc: "Не рассчитан на пиковые нагрузки современных GPU. Transient spike > 150% TGP может триггерить OCP — аварийное выключение."
     optimal_for_intents: ["aaa_1080p_ultra", "aaa_1440p_high", "esports_1080p_240hz", "office_productivity", "software_development"]
     failure_for_intents: ["aaa_4k_path_tracing", "llm_training_lora"]

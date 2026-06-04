@@ -30,6 +30,17 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
 verdict: "Лучший выбор для AM5: DDR5-6000 CL30 попадает точно в sweet spot Zen 4/5 (MCLK:UCLK 1:1). SK Hynix A-die — разгонный потенциал до 8000+. Рыночная цена 45–50k — дорого, но стандарт качества."
+
+profiles:
+  standard_ddr5_xmp:
+    capability_level: 2
+    capability_level: 2
+    steel_man_desc: "DDR5-6000 CL30 на Hynix A-die — золотой стандарт AM5. Синхронный режим UCLK=MCLK (1:1) без penalty по латентности. Low-profile 33 мм — совместимость с любым воздушным кулером."
+    failure_mode_desc: "Цена на 20–25% выше бюджетных DDR5-5600. JEDEC-фоллбэк 4800 CL40 при сбросе BIOS — система загрузится, но FPS просядет до восстановления EXPO."
+    optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "esports_1080p_240hz", "software_development"]
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
 ---
 
 # G.Skill Ripjaws S5 32GB DDR5-6000 CL30

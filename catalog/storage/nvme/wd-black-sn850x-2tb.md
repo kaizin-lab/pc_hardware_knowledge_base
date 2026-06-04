@@ -30,6 +30,7 @@ price_ru:
 profiles:
   standard_tlc_dram_ssd:
     steel_man_desc: "Стандартный NVMe SSD с DRAM-кэшем. Предсказуемая производительность под любой нагрузкой: игры, ОС, разработка."
+    capability_level: 2
     failure_mode_desc: "Цена на 20–30% выше DRAM-less аналогов при сравнимых скоростях в клиентских сценариях."
     optimal_for_intents: ["software_development", "video_editing_4k", "data_engineering", "office_productivity"]
     failure_for_intents: []

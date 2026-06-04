@@ -37,6 +37,7 @@ specs:
 profiles:
   balanced_monolithic_norm:
     power_envelope: "mid"
+    capability_level: 2
     steel_man_desc: "Универсальный процессор: 6–8 ядер, единый кристалл (1 CCD), TDP 65–105W. Игры, разработка, офис — всё на хорошем уровне без специализации."
     failure_mode_desc: "Отсутствие 3D V-Cache — проигрыш X3D в киберспорте на 15–25%. Отсутствие E-ядер — фоновая многозадачность менее эффективна."
     optimal_for_intents: ["software_development", "office_productivity", "aaa_1080p_ultra", "aaa_1440p_high", "streaming"]
@@ -45,6 +46,7 @@ profiles:
     failure_type: "LINEAR_DEGRADATION"
   dense_thermal_concentration:
     power_envelope: "mid"
+    capability_level: 2
     steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
     failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
     optimal_for_intents: ["office_productivity", "software_development"]
