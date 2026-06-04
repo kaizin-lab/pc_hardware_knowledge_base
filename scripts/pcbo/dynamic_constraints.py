@@ -81,10 +81,9 @@ def _gpu_min_capability(d: dict, res: str) -> str:
 def _get_min_capability(d: dict, component_type: str, res: str | None = None) -> str:
     """Get minimum capability for any component type from intent config."""
     mc = d.get("min_capability", {}).get(component_type, {}).get("config", {})
-    # Try resolution-specific, then default, then fallback
     if res and res in mc:
         return mc[res]
-    return mc.get("default", list(CAPABILITY_MAP_BY_TYPE.get(component_type, {}).keys())[0] if CAPABILITY_MAP_BY_TYPE.get(component_type) else "unknown")
+    return mc.get("default", "unknown")
 
 
 def _vram(d: dict, res: str, sett: str) -> int:

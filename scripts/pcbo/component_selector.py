@@ -253,8 +253,9 @@ def select_ram(
     min_capacity_gb: int = 32,
     budget_remaining: int = 999999,
     ecc: bool = False,
+    min_capability: str | None = None,
 ) -> list[Candidate]:
-    """STATE_4a: подбор RAM."""
+    """STATE_4a: подбор RAM с profile matching."""
     candidates = []
     ram_dir = CATALOG / "memory"
     if not ram_dir.exists():
@@ -274,14 +275,20 @@ def select_ram(
         if cap < min_capacity_gb:
             continue
 
+        profiles = fm.get("profiles", {})
+        comp_level, margin = _margin_check(profiles, "memory", min_capability)
+        if margin < 0:
+            continue
+
         candidates.append(Candidate(
             id=fm.get("id", f.stem),
             type="memory",
             title=fm.get("title", f.stem),
             price=price,
             specs={"capacity": int(cap), "speed": specs.get("speed", ""), "type": specs.get("type", "DDR5")},
-            profiles=[],
-            rationale=f"{int(cap)}GB {specs.get('speed', '')}"
+            profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
+            margin=margin,
+            rationale=f"{int(cap)}GB {specs.get('speed', '')}, margin={margin:+d}"
         ))
 
     candidates.sort(key=lambda c: c.price)
@@ -293,8 +300,9 @@ def select_ram(
 def select_storage(
     sustained_write_required: bool = False,
     budget_remaining: int = 999999,
+    min_capability: str | None = None,
 ) -> list[Candidate]:
-    """STATE_4b: подбор SSD. Если sustained_write — исключает DRAM-less и QLC."""
+    """STATE_4b: подбор SSD с profile matching. Если sustained_write — исключает DRAM-less и QLC."""
     candidates = []
     storage_dir = CATALOG / "storage" / "nvme"
     if not storage_dir.exists():
@@ -311,11 +319,14 @@ def select_storage(
 
         profiles = fm.get("profiles", {})
         if sustained_write_required:
-            # Exclude DRAM-less and QLC
             if "dram_less_hmb_cached" in profiles and profiles["dram_less_hmb_cached"].get("criteria_met", True):
                 continue
             if "read_heavy_static" in profiles and profiles["read_heavy_static"].get("criteria_met", True):
                 continue
+
+        comp_level, margin = _margin_check(profiles, "storage", min_capability)
+        if margin < 0:
+            continue
 
         candidates.append(Candidate(
             id=fm.get("id", f.stem),
@@ -324,7 +335,8 @@ def select_storage(
             price=price,
             specs={"capacity": fm.get("specs", {}).get("capacity", "")},
             profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
-            rationale="sustained_write OK" if sustained_write_required else "client use"
+            margin=margin,
+            rationale=f"{'sustained_write' if sustained_write_required else 'client'}, margin={margin:+d}"
         ))
 
     candidates.sort(key=lambda c: c.price)
@@ -338,9 +350,10 @@ def select_mb(
     form_factor: str = "ATX",
     budget_remaining: int = 999999,
     ecc_required: bool = False,
-    no_bifurcation_required: bool = False,  # для AI-инференса
+    no_bifurcation_required: bool = False,
+    min_capability: str | None = None,
 ) -> list[Candidate]:
-    """STATE_5a: подбор материнской платы."""
+    """STATE_5a: подбор материнской платы с profile matching."""
     candidates = []
     mb_dir = CATALOG / "motherboard"
     if not mb_dir.exists():
@@ -364,11 +377,14 @@ def select_mb(
                 continue
 
             profiles = fm.get("profiles", {})
-            # No-bifurcation check
             if no_bifurcation_required:
                 bif = profiles.get("bifurcation_shared_lanes", {})
                 if bif.get("criteria_met", False):
-                    continue  # BLOCK: эта плата отнимает линии
+                    continue
+
+            comp_level, margin = _margin_check(profiles, "motherboard", min_capability)
+            if margin < 0:
+                continue
 
             candidates.append(Candidate(
                 id=fm.get("id", f.stem),
@@ -377,7 +393,8 @@ def select_mb(
                 price=price,
                 specs={"socket": socket, "form_factor": specs.get("form_factor", "ATX")},
                 profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
-                rationale=f"{specs.get('chipset', '')} {specs.get('form_factor', '')}"
+                margin=margin,
+                rationale=f"{specs.get('chipset', '')} {specs.get('form_factor', '')}, margin={margin:+d}"
             ))
 
     candidates.sort(key=lambda c: c.price)
@@ -391,8 +408,9 @@ def select_psu(
     atx3x_required: bool = False,
     sfx_required: bool = False,
     budget_remaining: int = 999999,
+    min_capability: str | None = None,
 ) -> list[Candidate]:
-    """STATE_5b: подбор БП."""
+    """STATE_5b: подбор БП с profile matching."""
     candidates = []
     psu_dir = CATALOG / "psu"
     if not psu_dir.exists():
@@ -419,6 +437,10 @@ def select_psu(
             if "atx_3x_transient_capable" not in profiles:
                 continue
 
+        comp_level, margin = _margin_check(profiles, "psu", min_capability)
+        if margin < 0:
+            continue
+
         candidates.append(Candidate(
             id=fm.get("id", f.stem),
             type="psu",
@@ -426,7 +448,8 @@ def select_psu(
             price=price,
             specs={"wattage": int(wattage), "atx_version": specs.get("atx_version", "")},
             profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
-            rationale=f"{int(wattage)}W {specs.get('atx_version', '')}"
+            margin=margin,
+            rationale=f"{int(wattage)}W {specs.get('atx_version', '')}, margin={margin:+d}"
         ))
 
     candidates.sort(key=lambda c: c.price)
@@ -439,8 +462,9 @@ def select_cooler(
     cpu_tdp_w: int = 65,
     max_height_mm: int = 999,
     budget_remaining: int = 999999,
+    min_capability: str | None = None,
 ) -> list[Candidate]:
-    """STATE_5c: подбор кулера."""
+    """STATE_5c: подбор кулера с profile matching."""
     candidates = []
     for sub in ["air", "liquid"]:
         cool_dir = CATALOG / "cooling" / sub
@@ -465,14 +489,20 @@ def select_cooler(
             if tdp_rating < cpu_tdp_w:
                 continue
 
+            profiles = fm.get("profiles", {})
+            comp_level, margin = _margin_check(profiles, "cooling", min_capability)
+            if margin < 0:
+                continue
+
             candidates.append(Candidate(
                 id=fm.get("id", f.stem),
                 type="cooling",
                 title=fm.get("title", f.stem),
                 price=price,
                 specs={"tdp_rating": int(tdp_rating), "height_mm": int(height), "type": sub},
-                profiles=[],
-                rationale=f"TDP {int(tdp_rating)}W, {int(height)}mm, {sub}"
+                profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
+                margin=margin,
+                rationale=f"TDP {int(tdp_rating)}W, {int(height)}mm, {sub}, margin={margin:+d}"
             ))
 
     candidates.sort(key=lambda c: c.price)
@@ -486,8 +516,9 @@ def select_case(
     cooler_height_mm: int = 155,
     form_factor: str = "ATX",
     budget_remaining: int = 999999,
+    min_capability: str | None = None,
 ) -> list[Candidate]:
-    """STATE_5d: подбор корпуса."""
+    """STATE_5d: подбор корпуса с profile matching."""
     candidates = []
     case_dir = CATALOG / "case"
     if not case_dir.exists():
@@ -512,14 +543,20 @@ def select_case(
         if max_cooler < cooler_height_mm:
             continue
 
+        profiles = fm.get("profiles", {})
+        comp_level, margin = _margin_check(profiles, "case", min_capability)
+        if margin < 0:
+            continue
+
         candidates.append(Candidate(
             id=fm.get("id", f.stem),
             type="case",
             title=fm.get("title", f.stem),
             price=price,
             specs={"max_gpu_mm": int(max_gpu), "max_cooler_mm": int(max_cooler)},
-            profiles=[],
-            rationale=f"GPU ≤{int(max_gpu)}mm, cooler ≤{int(max_cooler)}mm"
+            profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
+            margin=margin,
+            rationale=f"GPU ≤{int(max_gpu)}mm, cooler ≤{int(max_cooler)}mm, margin={margin:+d}"
         ))
 
     candidates.sort(key=lambda c: c.price)
