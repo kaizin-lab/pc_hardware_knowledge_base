@@ -32,13 +32,18 @@ links:
 
 ## Карта интентов
 
-| Интент | Домен | Файл | Тип | Ключевое ограничение |
+| Интент | Домен | Файл | Тип | Параметры |
 |---|---|---|---|---|
-| AAA Gaming (все разрешения) | A: Гейминг | `aaa_gaming_base.yaml` | **Абстрактный (параметризуемый)** | Профиль GPU, VRAM и MAUT-веса — из resolution+settings |
-| Киберспорт 360Hz | A: Гейминг | `esports_competitive_360hz.yaml` | Конкретный | CPU frame time, 3D V-Cache mandatory |
-| AI Inference Local | B: Compute | `ai_inference_local_pro.yaml` | Конкретный | VRAM ≥12GB, тензорные ядра |
-| Data Engineering | B: Compute | `data_engineering_spark_local.yaml` | Конкретный | RAM ≥64GB, DRAM SSD mandatory |
-| SFF Compact Portable | C: Physical | `sff_compact_itx_portable.yaml` | Конкретный | SFX PSU, GPU ≤320mm, cooler ≤155mm |
+| AAA Gaming | A: Гейминг | `aaa_gaming_base.yaml` | **Абстрактный** | resolution, settings, target_fps |
+| AI Inference | B: Compute | `ai_inference_base.yaml` | **Абстрактный** | model_size, quantization, context_length |
+| Data Engineering | B: Compute | `data_engineering_base.yaml` | **Абстрактный** | dataset_size, workload |
+| Киберспорт 360Hz | A: Гейминг | `esports_competitive_360hz.yaml` | Конкретный | — |
+| SFF Compact Portable | C: Physical | `sff_compact_itx_portable.yaml` | Конкретный | — |
+
+**Устаревшие (заменены абстрактными):**
+- `aaa_gaming_4k_unrestricted.yaml` → `aaa_gaming_base`
+- `ai_inference_local_pro.yaml` → `ai_inference_base`
+- `data_engineering_spark_local.yaml` → `data_engineering_base`
 
 ### Абстрактный интент AAA Gaming Base
 
