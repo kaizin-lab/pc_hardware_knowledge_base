@@ -40,10 +40,10 @@ links:
 | Киберспорт 360Hz | A: Гейминг | `esports_competitive_360hz.yaml` | Конкретный | — |
 | SFF Compact Portable | C: Physical | `sff_compact_itx_portable.yaml` | Конкретный | — |
 
-**Устаревшие (заменены абстрактными):**
-- `aaa_gaming_4k_unrestricted.yaml` → `aaa_gaming_base`
-- `ai_inference_local_pro.yaml` → `ai_inference_base`
-- `data_engineering_spark_local.yaml` → `data_engineering_base`
+**Устаревшие (удалены):**
+- ~~`aaa_gaming_4k_unrestricted.yaml`~~ → `aaa_gaming_base`
+- ~~`ai_inference_local_pro.yaml`~~ → `ai_inference_base`
+- ~~`data_engineering_spark_local.yaml`~~ → `data_engineering_base`
 
 ### Абстрактный интент AAA Gaming Base
 
