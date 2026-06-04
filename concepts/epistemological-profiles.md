@@ -185,6 +185,51 @@ gpu_capability_levels:
 | RTX 5090 для 4K: WARN (max=enthusiast) | RTX 5090 для 4K: margin=0 → SATISFIES, MAUT оценит цену |
 | Ad-hoc изобретение | Стандартная модель SysML/ISO 15288 |
 
+### Capability Levels — все типы компонентов (v4.1)
+
+```yaml
+gpu_capability_levels:
+  1: "mainstream_efficiency_gpu"       # TGP < 150W, 1080p
+  2: "balanced_performance_gpu"        # TGP 150-280W, 1440p
+  3: "enthusiast_unrestricted_gpu"     # TGP ≥ 280W, 4K
+
+cpu_capability_levels:
+  1: "budget_efficiency_cpu"           # 6 ядер, 65W (Ryzen 5 7500F / Core Ultra 5 225F)
+  2: "balanced_multicore_cpu"          # 8 ядер, 65-105W (Ryzen 7 7700 / Core Ultra 7 265K)
+  3: "high_core_count_cpu"             # 12-16 ядер, 120W+ (Ryzen 9 7950X / Core Ultra 9 285K)
+
+ram_capability_levels:
+  1: "jedec_native_safe"               # JEDEC 5200, базовые тайминги — стабильность > скорость
+  2: "standard_ddr5_xmp"               # XMP/EXPO 6000 CL30 — стандарт для игр и работы
+  3: "high_frequency_low_latency"      # 6400+ CL32 — overclocking, esports, scientific
+
+storage_capability_levels:
+  1: "dram_less_hmb_cached"            # Клиентский SSD без sustained write
+  2: "standard_tlc_dram_ssd"           # TLC + DRAM — sustained write ≥ 1.5 GB/s
+  3: "gen5_high_bandwidth"             # PCIe 5.0, >10 GB/s — video_editing_8k
+
+mb_capability_levels:
+  1: "budget_platform"                 # mATX, базовый VRM, 1-2 M.2 (B650M)
+  2: "mainstream_platform"             # ATX, хороший VRM, 2-3 M.2, ECC (B850)
+  3: "enthusiast_platform"             # ATX, флагманский VRM, 4 M.2, no bifurcation (X870/X670E)
+
+psu_capability_levels:
+  1: "atx_2x_budget_reliable"          # 650W, без ATX 3.0 — офис, бюджетные сборки
+  2: "atx_3x_transient_capable"        # 750W+, ATX 3.0/3.1 — стандарт для GPU ≥ 200W
+  3: "high_wattage_enthusiast"         # 1000W+, ATX 3.1 — multi-GPU, экстремальный разгон
+
+cooling_capability_levels:
+  1: "air_tower_standard"              # Башенный кулер, до 150W TDP
+  2: "air_tower_high_tdp"              # Двухбашенный, до 250W TDP
+  3: "aio_liquid_standard"             # 240-280mm AIO, до 300W TDP
+  4: "aio_liquid_high_tdp"             # 360mm+, >300W — HEDT, разгон
+
+case_capability_levels:
+  1: "budget_mesh"                     # Mesh-панель, 4 вентилятора — достаточный airflow
+  2: "sound_dampened_thermal_trap"     # Шумоподавление, ограниченный airflow
+  3: "premium_airflow"                 # Mesh + фильтры + тихие вентиляторы — silent build
+```
+
 ---
 
 ## Профили GPU

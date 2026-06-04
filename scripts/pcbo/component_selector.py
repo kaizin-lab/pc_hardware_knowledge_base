@@ -36,8 +36,8 @@ SCRIPTS = ROOT / "scripts"
 # Import evaluate_profiles functions
 sys.path.insert(0, str(SCRIPTS))
 from evaluate_profiles import (
-    parse_frontmatter, evaluate_component, GPU_PROFILE_TIERS,
-    get_profile_tier, VALID_INTENTS
+    parse_frontmatter, evaluate_component, CAPABILITY_MAP_BY_TYPE,
+    get_capability_level, VALID_INTENTS
 )
 
 
@@ -54,7 +54,23 @@ class Candidate:
     rationale: str = ""
 
 
-# ═══════════════════ GPU ═══════════════════
+def _margin_check(profiles: dict, cmp_type: str, min_capability: str | None) -> tuple[int, int]:
+    """Return (comp_level, margin) for margin analysis. margin = level − min_level."""
+    if not min_capability:
+        return (0, 0)
+    cap_map = CAPABILITY_MAP_BY_TYPE.get(cmp_type, {})
+    if not cap_map:
+        return (0, 0)
+    comp_tiers = []
+    for pname, pd in profiles.items():
+        level = cap_map.get(pname)
+        if level is not None and pd.get("criteria_met", True):
+            comp_tiers.append(level)
+    if not comp_tiers:
+        return (0, 0)
+    comp_level = max(comp_tiers)
+    min_level = cap_map.get(min_capability, 1)
+    return (comp_level, comp_level - min_level)
 
 def select_gpu(
     min_capability: str,
@@ -100,17 +116,18 @@ def select_gpu(
 
         # Profile check
         profiles = fm.get("profiles", {})
+        cap_map = CAPABILITY_MAP_BY_TYPE.get("gpu", {})
         comp_tiers = []
         for pname, pd in profiles.items():
-            tier = get_profile_tier(pname, GPU_PROFILE_TIERS)
-            if tier is not None and pd.get("criteria_met", True):
-                comp_tiers.append((pname, tier))
+            level = cap_map.get(pname)
+            if level is not None and pd.get("criteria_met", True):
+                comp_tiers.append((pname, level))
 
         if not comp_tiers:
             continue
 
         comp_level = max(t for _, t in comp_tiers)
-        min_level = GPU_PROFILE_TIERS.get(min_capability, 1)
+        min_level = cap_map.get(min_capability, 1)
         margin = comp_level - min_level
 
         if margin < 0:
@@ -161,11 +178,12 @@ def select_cpu(
     socket: str = "AM5",
     budget_remaining: int = 999999,
     maut_cpu_weight: float = 0.25,
+    min_capability: str | None = None,
     preferred_profiles: list[str] | None = None,
     blocked_profiles: list[str] | None = None,
 ) -> list[Candidate]:
     """
-    STATE_3.0: подбор CPU под сокет и бюджет.
+    STATE_3.0: подбор CPU под сокет, бюджет и profile matching.
     """
     candidates = []
     cpu_dir = CATALOG / "cpu"
@@ -188,14 +206,19 @@ def select_cpu(
         profiles = fm.get("profiles", {})
         profile_list = [p for p, pd in profiles.items() if pd.get("criteria_met", True)]
 
+        # Margin analysis (v4.1)
+        comp_level, margin = _margin_check(profiles, "cpu", min_capability)
+        if margin < 0:
+            continue  # FAIL
+
         # Check blocked
         if blocked_profiles:
             if any(bp.split("#")[-1] in profiles for bp in blocked_profiles):
                 continue
 
-        # MAUT: perf_score based on cores/threads relative to max
         cores = _extract_cores(specs)
-        perf_score = min(cores / 16, 1.0)  # нормализовано к 16 ядрам
+        perf_score = min(cores / 16, 1.0)
+        margin_penalty = 1.0 / (1 + margin) if margin > 0 else 1.0
 
         candidates.append(Candidate(
             id=fm.get("id", f.stem),
@@ -204,9 +227,9 @@ def select_cpu(
             price=price,
             specs={"cores": cores, "tdp": _extract_tdp(specs), "socket": socket},
             profiles=profile_list,
-            margin=0,
+            margin=margin,
             maut_score=0,
-            rationale=f"{cores} ядер, TDP {_extract_tdp(specs)}W"
+            rationale=f"{cores} ядер, TDP {_extract_tdp(specs)}W, margin={margin:+d}"
         ))
 
     if not candidates:
@@ -217,7 +240,8 @@ def select_cpu(
         cores = c.specs.get("cores", 1)
         perf_score = min(cores / 16, 1.0)
         price_score = 1.0 - (c.price / max_price) if max_price > 0 else 1.0
-        c.maut_score = perf_score * maut_cpu_weight + price_score * (1 - maut_cpu_weight)
+        margin_score = 1.0 / (1 + c.margin) if c.margin >= 0 else 0
+        c.maut_score = margin_score * 0.3 + perf_score * maut_cpu_weight + price_score * (1 - maut_cpu_weight - 0.3)
 
     candidates.sort(key=lambda c: c.maut_score, reverse=True)
     return candidates

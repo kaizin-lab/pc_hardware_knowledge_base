@@ -73,11 +73,18 @@ def _eval_gaming(intent: dict, dynamic: dict, params: dict) -> dict:
 
 
 def _gpu_min_capability(d: dict, res: str) -> str:
-    """Get minimum capability requirement for given resolution.
-    Returns capability level string (e.g. 'balanced_performance_gpu').
-    """
-    c = d.get("min_capability", {}).get("config", {})
+    """Get minimum GPU capability requirement for given resolution."""
+    c = d.get("min_capability", {}).get("gpu", {}).get("config", {})
     return c.get(res, "mainstream_efficiency_gpu")
+
+
+def _get_min_capability(d: dict, component_type: str, res: str | None = None) -> str:
+    """Get minimum capability for any component type from intent config."""
+    mc = d.get("min_capability", {}).get(component_type, {}).get("config", {})
+    # Try resolution-specific, then default, then fallback
+    if res and res in mc:
+        return mc[res]
+    return mc.get("default", list(CAPABILITY_MAP_BY_TYPE.get(component_type, {}).keys())[0] if CAPABILITY_MAP_BY_TYPE.get(component_type) else "unknown")
 
 
 def _vram(d: dict, res: str, sett: str) -> int:

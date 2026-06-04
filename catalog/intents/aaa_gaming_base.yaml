@@ -94,23 +94,48 @@ dynamic_constraints:
         medium_note: "Средние текстуры — экономия 2GB"
       generation_note: "База привязана к Blackwell/RDNA 4 (2026). При выходе UE6 или новых консолей — пересмотреть 4K base до 20GB."
 
-  # --- 2. Minimum Capability Requirement (v4.0, ISO 15288 §6.4.3) ---
+  # --- 2. Minimum Capability Requirements (v4.1) ---
   min_capability:
-    function: "evaluate_min_capability"
-    description: >
-      Минимальный уровень способности GPU для данного разрешения
-      (satisficing threshold per Simon, 1956).
-      margin = capability_level − min_capability:
-        margin < 0 → FAIL (BLOCK)
-        margin = 0 → SATISFIES (optimal)
-        margin > 0 → SATISFIES WITH EXCESS MARGIN (WARN: gold plating, NASA §4.2.1.6)
-    config:
-      "1080p": "mainstream_efficiency_gpu"
-      "1080p_note": "RTX 5060 (L1): margin=0 SATISFIES. RTX 5070 (L2): margin=+1 WARN (overkill)."
-      "1440p": "balanced_performance_gpu"
-      "1440p_note": "RX 9070 (L2): margin=0 SATISFIES. RTX 5070 Ti (L3): margin=+1 WARN."
-      "4K":    "enthusiast_unrestricted_gpu"
-      "4K_note": "RTX 5080 (L3): margin=0 SATISFIES. RTX 5090 (L3): margin=0 — MAUT оценит цену."
+    gpu:
+      function: "evaluate_min_capability"
+      config:
+        "1080p": "mainstream_efficiency_gpu"
+        "1440p": "balanced_performance_gpu"
+        "4K":    "enthusiast_unrestricted_gpu"
+    cpu:
+      config:
+        "1080p": "budget_efficiency_cpu"
+        "1440p": "budget_efficiency_cpu"
+        "4K":    "budget_efficiency_cpu"
+      note: "Для AAA-гейминга на всех разрешениях CPU вторичен — 6 ядер достаточно."
+    ram:
+      config:
+        "1080p": "standard_ddr5_xmp"
+        "1440p": "standard_ddr5_xmp"
+        "4K":    "standard_ddr5_xmp"
+      note: "XMP/EXPO для стабильного frametime."
+    storage:
+      config:
+        default: "dram_less_hmb_cached"
+      note: "Игры читают, sustained write не требуется."
+    mb:
+      config:
+        default: "budget_platform"
+      note: "B650M достаточно для игровой сборки."
+    psu:
+      config:
+        "1080p": "atx_2x_budget_reliable"
+        "1440p": "atx_3x_transient_capable"
+        "4K":    "atx_3x_transient_capable"
+      note: "1440p+: GPU ≥ 220W → ATX 3.0 для transient spikes."
+    cooling:
+      config:
+        default: "air_tower_standard"
+      note: "65W CPU — любой башенный кулер."
+    case:
+      config:
+        default: "budget_mesh"
+      note: "Mesh для airflow под GPU."
 
   # --- 3. MAUT-веса ---
   maut_weights:

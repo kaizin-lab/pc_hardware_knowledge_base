@@ -68,19 +68,73 @@ def parse_frontmatter(filepath: Path) -> dict[str, Any]:
 GPU_REF = {"low": 150, "high": 280}   # RTX 5060 / RTX 5070 Ti anchors
 CPU_REF = {"low": 65, "high": 120}    # Ryzen 7500F / 7800X3D anchors
 
-# ── Profile tier ordering (v3.4: диапазон комплектаций) ──────────────
+# ── Capability level maps (v4.1, ISO 15288 §6.4.9) ──────────────
 
-GPU_PROFILE_TIERS = {
+GPU_CAPABILITY_LEVELS = {
     "mainstream_efficiency_gpu": 1,
     "balanced_performance_gpu": 2,
     "enthusiast_unrestricted_gpu": 3,
 }
 
-def get_profile_tier(profile_name: str, tier_map: dict) -> int | None:
-    """Return tier number for a profile, or None if not in tier system."""
-    return tier_map.get(profile_name)
+CPU_CAPABILITY_LEVELS = {
+    "budget_efficiency_cpu": 1,
+    "balanced_multicore_cpu": 2,
+    "high_core_count_cpu": 3,
+}
 
-def extract_number(value: Any) -> float | None:
+RAM_CAPABILITY_LEVELS = {
+    "jedec_native_safe": 1,
+    "standard_ddr5_xmp": 2,
+    "high_frequency_low_latency": 3,
+}
+
+STORAGE_CAPABILITY_LEVELS = {
+    "dram_less_hmb_cached": 1,
+    "standard_tlc_dram_ssd": 2,
+    "gen5_high_bandwidth": 3,
+}
+
+MB_CAPABILITY_LEVELS = {
+    "budget_platform": 1,
+    "mainstream_platform": 2,
+    "enthusiast_platform": 3,
+}
+
+PSU_CAPABILITY_LEVELS = {
+    "atx_2x_budget_reliable": 1,
+    "atx_3x_transient_capable": 2,
+    "high_wattage_enthusiast": 3,
+}
+
+COOLING_CAPABILITY_LEVELS = {
+    "air_tower_standard": 1,
+    "air_tower_high_tdp": 2,
+    "aio_liquid_standard": 3,
+    "aio_liquid_high_tdp": 4,
+}
+
+CASE_CAPABILITY_LEVELS = {
+    "budget_mesh": 1,
+    "sound_dampened_thermal_trap": 2,
+    "premium_airflow": 3,
+}
+
+CAPABILITY_MAP_BY_TYPE = {
+    "gpu": GPU_CAPABILITY_LEVELS,
+    "cpu": CPU_CAPABILITY_LEVELS,
+    "memory": RAM_CAPABILITY_LEVELS,
+    "ram": RAM_CAPABILITY_LEVELS,
+    "storage": STORAGE_CAPABILITY_LEVELS,
+    "motherboard": MB_CAPABILITY_LEVELS,
+    "psu": PSU_CAPABILITY_LEVELS,
+    "cooling": COOLING_CAPABILITY_LEVELS,
+    "case": CASE_CAPABILITY_LEVELS,
+}
+
+def get_capability_level(profile_name: str, cmp_type: str) -> int | None:
+    """Return capability level for a profile, or None if not in capability system."""
+    cap_map = CAPABILITY_MAP_BY_TYPE.get(cmp_type, {})
+    return cap_map.get(profile_name)
     """Extract first number from strings like '180W', '65W', '120W'."""
     if value is None:
         return None
@@ -189,17 +243,17 @@ def evaluate_component(
             if criteria_met:
                 result["irrelevant"].append(profile_name)
 
-    # ── Margin Analysis (v4.0, ISO 15288 §6.4.9 / SysML Satisfy) ──
-    if min_capability and cmp_type == "gpu":
+    # ── Margin Analysis (v4.1, ISO 15288 §6.4.9) — all types ──
+    cap_map = CAPABILITY_MAP_BY_TYPE.get(cmp_type, {})
+    if min_capability and cap_map:
         comp_tiers = []
         for pname, pd in profiles.items():
-            tier = get_profile_tier(pname, GPU_PROFILE_TIERS)
-            if tier is not None and pd.get("criteria_met", True):
-                comp_tiers.append((pname, tier))
+            level = cap_map.get(pname)
+            if level is not None and pd.get("criteria_met", True):
+                comp_tiers.append((pname, level))
 
         if comp_tiers:
-            min_level = GPU_PROFILE_TIERS.get(min_capability, 1)
-            # Use the HIGHEST capability level the component has
+            min_level = cap_map.get(min_capability, 1)
             comp_level = max(t for _, t in comp_tiers)
             margin = comp_level - min_level
 
