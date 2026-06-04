@@ -100,17 +100,17 @@ cpu_power_envelope_high:
 
 ---
 
-## Схема профиля (YAML Schema v3.4)
+## Схема профиля (YAML Schema v4.0 — ISO 15288 / SysML Satisfy)
 
 ```yaml
 profiles:
   profile_name:
     criteria_met: true|false           # per-component
     power_envelope: "low"|"mid"|"high" # ссылка на MECE-envelope
-    profile_tier: 1|2|3                # порядковый номер в диапазоне (новое v3.4)
+    capability_level: 1|2|3            # уровень способности (DoDAF CV-2)
     # --- LLM layer ---
-    steel_man_desc: "..."
-    failure_mode_desc: "..."
+    steel_man_desc: "..."              # что компонент делает лучше всех
+    failure_mode_desc: "..."           # чем жертвует
     # --- Python layer ---
     optimal_for_intents: ["intent_a"]
     failure_for_intents: ["intent_x"]
@@ -118,33 +118,72 @@ profiles:
     failure_type: "LINEAR_DEGRADATION"|"CLIFF_DROP"
 ```
 
-### Профильный диапазон (Profile Range) — новое в v3.4
+### Requirement Satisfaction with Margin Analysis (v4.0)
 
-Профиль — не точка, а **диапазон** от минимально допустимого до максимального.
-Как комплектации автомобиля: базовая → полный фарш, но машина одна.
+**Основание:** ISO/IEC/IEEE 15288:2023 §6.4.3 (System Requirements Definition),
+§6.4.9 (Verification); SysML Clause 16 «satisfy» relationship;
+NASA SE Handbook §4.2.1.6 (Gold Plating).
 
-Интент определяет `acceptable_profile_range: {min: X, max: Y}`:
-- **Ниже min** → BLOCK: компонент недостаточен для задачи
-- **В диапазоне [min, max]** → optimal: steel-man, соответствует задаче
-- **Выше max** → WARN: компонент избыточен (переплата, излишний нагрев),
-  но функционально подходит
+**Модель:**
+
+Интент определяет **minimum capability requirement** — минимальный уровень
+способности, необходимый для выполнения задачи. Компонент либо **satisfies**
+требование, либо нет. Это бинарное отношение (SysML `«satisfy»`).
+
+```
+Компонент:
+  capability_level = N (tier из профиля)
+
+Интент:
+  min_capability = M (минимально допустимый уровень)
+
+Оценка (Verification per ISO 15288 §6.4.9):
+  margin = N − M
+
+  margin < 0  → FAIL (BLOCK): компонент недостаточен
+  margin = 0  → SATISFIES (optimal): точно соответствует требованию
+  margin > 0  → SATISFIES WITH EXCESS MARGIN (WARN):
+                 gold plating risk (NASA §4.2.1.6).
+                 Компонент функционально подходит, но имеет избыточный запас —
+                 переплата, излишний нагрев, сложность.
+                 MAUT оценит, оправдан ли избыток.
+
+  Satisficing (Simon, 1956): поиск останавливается на первом
+  компоненте с margin ≥ 0. Дальнейшее увеличение margin не повышает
+  utility (Keeney & Raiffa, 1976: ∂U/∂x ≈ 0 за пределами satisficing threshold).
+```
 
 **Пример для AAA-гейминга:**
-- 1080p: min=`mainstream_efficiency_gpu` (tier 1), max=`balanced_performance_gpu` (tier 2)
-  → RTX 5060 ✅ optimal, RTX 5070 ⚠️ WARN (overkill для 1080p)
-- 1440p: min=`balanced_performance_gpu` (tier 2), max=`enthusiast_unrestricted_gpu` (tier 3)
-  → RX 9070 ✅ optimal, RTX 5070 Ti ⚠️ WARN (избыточен, но допустим)
-- 4K: min=`enthusiast_unrestricted_gpu` (tier 3), max=`enthusiast_unrestricted_gpu` (tier 3)
-  → только флагманы. RTX 5080 ✅, RTX 5090 ⚠️ WARN (512-bit overkill)
+- 1080p: min_capability = `mainstream_efficiency_gpu` (level 1)
+  → RTX 5060 (L1): margin=0 → SATISFIES ✅
+  → RTX 5070 (L2): margin=+1 → SATISFIES WITH EXCESS MARGIN ⚠️ (gold plating: overkill для 1080p)
+- 1440p: min_capability = `balanced_performance_gpu` (level 2)
+  → RX 9070 (L2): margin=0 → SATISFIES ✅
+  → RTX 5070 Ti (L3): margin=+1 → SATISFIES WITH EXCESS MARGIN ⚠️ (избыточен, но допустим)
+- 4K: min_capability = `enthusiast_unrestricted_gpu` (level 3)
+  → RTX 5080 (L3): margin=0 → SATISFIES ✅
+  → RTX 5090 (L3): margin=0 → SATISFIES ✅
+  → Примечание: RTX 5090 имеет тот же capability level что 5080, но MAUT
+    выявит переплату через вес цены/TGP в функции полезности —
+    не через margin analysis.
 
-### Порядок профилей GPU (tier ordering)
+### Capability Levels (DoDAF CV-2 taxonomy)
 
 ```yaml
-gpu_profile_tiers:
+gpu_capability_levels:
   1: "mainstream_efficiency_gpu"       # TGP < 150W, 1080p
   2: "balanced_performance_gpu"        # TGP 150-280W, 1440p
   3: "enthusiast_unrestricted_gpu"     # TGP ≥ 280W, 4K
 ```
+
+### Отличие от v3.4 (profile_range — удалён)
+
+| v3.4 (ad-hoc) | v4.0 (ISO 15288 / SysML) |
+|---|---|
+| `profile_range: {min, max}` — два порога | `min_capability` — один порог (satisficing threshold) |
+| «Выше max» = WARN (второй порог) | margin > 0 = WARN (gold plating) — без второго порога |
+| RTX 5090 для 4K: WARN (max=enthusiast) | RTX 5090 для 4K: margin=0 → SATISFIES, MAUT оценит цену |
+| Ad-hoc изобретение | Стандартная модель SysML/ISO 15288 |
 
 ---
 

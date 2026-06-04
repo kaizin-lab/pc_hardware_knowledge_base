@@ -94,18 +94,23 @@ dynamic_constraints:
         medium_note: "Средние текстуры — экономия 2GB"
       generation_note: "База привязана к Blackwell/RDNA 4 (2026). При выходе UE6 или новых консолей — пересмотреть 4K base до 20GB."
 
-  # --- 2. Профильный диапазон GPU (v3.4) ---
-  profile_range:
-    function: "evaluate_gpu_range"
-    description: "Диапазон допустимых профилей GPU: min (минимально достаточный) — max (максимально оправданный). Ниже min=BLOCK, выше max=WARN (избыточен)."
+  # --- 2. Minimum Capability Requirement (v4.0, ISO 15288 §6.4.3) ---
+  min_capability:
+    function: "evaluate_min_capability"
+    description: >
+      Минимальный уровень способности GPU для данного разрешения
+      (satisficing threshold per Simon, 1956).
+      margin = capability_level − min_capability:
+        margin < 0 → FAIL (BLOCK)
+        margin = 0 → SATISFIES (optimal)
+        margin > 0 → SATISFIES WITH EXCESS MARGIN (WARN: gold plating, NASA §4.2.1.6)
     config:
-      "1080p":  {"min": "mainstream_efficiency_gpu", "max": "balanced_performance_gpu"}
-      "1440p":  {"min": "balanced_performance_gpu",  "max": "enthusiast_unrestricted_gpu"}
-      "4K":     {"min": "enthusiast_unrestricted_gpu", "max": "enthusiast_unrestricted_gpu"}
-      note: >
-        1080p: RTX 5060 (mainstream) — optimal. RTX 5070 (balanced) — WARN (overkill).
-        1440p: RX 9070 (balanced) — optimal. RTX 5070 Ti (enthusiast) — WARN (избыточен, но допустим).
-        4K: только enthusiast. RTX 5080 ✅, RTX 5090 ⚠️ WARN.
+      "1080p": "mainstream_efficiency_gpu"
+      "1080p_note": "RTX 5060 (L1): margin=0 SATISFIES. RTX 5070 (L2): margin=+1 WARN (overkill)."
+      "1440p": "balanced_performance_gpu"
+      "1440p_note": "RX 9070 (L2): margin=0 SATISFIES. RTX 5070 Ti (L3): margin=+1 WARN."
+      "4K":    "enthusiast_unrestricted_gpu"
+      "4K_note": "RTX 5080 (L3): margin=0 SATISFIES. RTX 5090 (L3): margin=0 — MAUT оценит цену."
 
   # --- 3. MAUT-веса ---
   maut_weights:

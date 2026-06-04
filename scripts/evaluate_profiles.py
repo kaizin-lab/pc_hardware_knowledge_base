@@ -104,14 +104,14 @@ def get_power_envelope(tgp: float, cmp_type: str) -> str | None:
 
 def evaluate_component(
     filepath: Path, user_intents: set[str],
-    profile_range: dict | None = None
+    min_capability: str | None = None
 ) -> dict[str, Any]:
     """Evaluate a single component against user intents. Returns conflicts.
     
-    profile_range (v3.4): {"min": "profile_name", "max": "profile_name"}
-    - Компонент с профилем ниже min → BLOCK (недостаточен)
-    - Компонент с профилем в [min, max] → optimal
-    - Компонент с профилем выше max → WARN (избыточен)
+    min_capability (v4.0, ISO 15288 §6.4.9): минимальный capability level.
+    - capability < min → FAIL (BLOCK): компонент недостаточен
+    - capability = min → SATISFIES (optimal)
+    - capability > min → SATISFIES WITH EXCESS MARGIN (WARN): gold plating
     """
     fm = parse_frontmatter(filepath)
     profiles = fm.get("profiles", {})
@@ -189,46 +189,50 @@ def evaluate_component(
             if criteria_met:
                 result["irrelevant"].append(profile_name)
 
-    # ── Profile Range check (v3.4) ─────────────────────────────────
-    if profile_range and cmp_type == "gpu":
-        min_profile = profile_range.get("min")
-        max_profile = profile_range.get("max")
-        if min_profile and max_profile:
-            comp_tiers = []
-            for pname, pd in profiles.items():
-                tier = get_profile_tier(pname, GPU_PROFILE_TIERS)
-                if tier is not None and pd.get("criteria_met", True):
-                    comp_tiers.append((pname, tier))
+    # ── Margin Analysis (v4.0, ISO 15288 §6.4.9 / SysML Satisfy) ──
+    if min_capability and cmp_type == "gpu":
+        comp_tiers = []
+        for pname, pd in profiles.items():
+            tier = get_profile_tier(pname, GPU_PROFILE_TIERS)
+            if tier is not None and pd.get("criteria_met", True):
+                comp_tiers.append((pname, tier))
 
-            if comp_tiers:
-                min_tier = GPU_PROFILE_TIERS.get(min_profile, 1)
-                max_tier = GPU_PROFILE_TIERS.get(max_profile, 3)
-                # Use the HIGHEST tier the component has (= most capable profile)
-                best_tier = max(t for _, t in comp_tiers)
+        if comp_tiers:
+            min_level = GPU_PROFILE_TIERS.get(min_capability, 1)
+            # Use the HIGHEST capability level the component has
+            comp_level = max(t for _, t in comp_tiers)
+            margin = comp_level - min_level
 
-                if best_tier < min_tier:
-                    result["blocks"].append({
-                        "profile": "profile_range",
-                        "conflict_intents": sorted(user_intents),
-                        "failure_desc": f"Компонент tier {best_tier} ниже минимального tier {min_tier} ({min_profile}). Недостаточен для задачи.",
-                        "severity": "BLOCK",
-                        "failure_type": "CLIFF_DROP",
-                    })
-                elif best_tier > max_tier:
-                    result["warnings"].append({
-                        "profile": "profile_range",
-                        "conflict_intents": sorted(user_intents),
-                        "failure_desc": f"Компонент tier {best_tier} выше максимального tier {max_tier} ({max_profile}). Избыточен — переплата, излишний нагрев.",
-                        "severity": "WARN",
-                        "failure_type": "LINEAR_DEGRADATION",
-                    })
-                else:
-                    # In range — mark as optimal
-                    result["optimal"].append({
-                        "profile": f"profile_range[{min_profile}..{max_profile}]",
-                        "matched_intents": sorted(user_intents),
-                        "steel_man": f"tier {best_tier} в диапазоне [{min_tier}..{max_tier}]",
-                    })
+            if margin < 0:
+                result["blocks"].append({
+                    "profile": "requirement_satisfaction",
+                    "conflict_intents": sorted(user_intents),
+                    "failure_desc": (
+                        f"FAIL: capability level {comp_level} ниже требуемого {min_level} "
+                        f"({min_capability}). margin={margin}. Компонент недостаточен."
+                    ),
+                    "severity": "BLOCK",
+                    "failure_type": "CLIFF_DROP",
+                })
+            elif margin == 0:
+                result["optimal"].append({
+                    "profile": f"satisfies({min_capability})",
+                    "matched_intents": sorted(user_intents),
+                    "steel_man": f"margin=0: точно соответствует требованию",
+                })
+            else:  # margin > 0
+                result["warnings"].append({
+                    "profile": "requirement_satisfaction",
+                    "conflict_intents": sorted(user_intents),
+                    "failure_desc": (
+                        f"SATISFIES WITH EXCESS MARGIN: capability level {comp_level} "
+                        f"выше требуемого {min_level} ({min_capability}). "
+                        f"margin=+{margin}. Gold plating risk (NASA §4.2.1.6): "
+                        f"переплата, излишний нагрев."
+                    ),
+                    "severity": "WARN",
+                    "failure_type": "LINEAR_DEGRADATION",
+                })
 
     return result
 
@@ -293,7 +297,7 @@ def main():
     entry_type = None
     target_component = None
     do_transitivity = False
-    profile_range: dict | None = None
+    min_capability: str | None = None
 
     args = sys.argv[1:]
     i = 0
@@ -317,10 +321,8 @@ def main():
         elif args[i] == "--check-transitivity":
             do_transitivity = True
             i += 1
-        elif args[i] == "--profile-range" and i + 1 < len(args):
-            raw = args[i + 1]
-            parts = raw.split(",")
-            profile_range = {"min": parts[0], "max": parts[1] if len(parts) > 1 else parts[0]}
+        elif args[i] == "--min-capability" and i + 1 < len(args):
+            min_capability = args[i + 1]
             i += 2
         else:
             i += 1
@@ -372,7 +374,7 @@ def main():
     all_blocks = []
 
     for fp in entries:
-        result = evaluate_component(fp, user_intents, profile_range)
+        result = evaluate_component(fp, user_intents, min_capability)
 
         if result["optimal"] or result["warnings"] or result["blocks"]:
             rel = str(fp.resolve().relative_to(ROOT.resolve()))

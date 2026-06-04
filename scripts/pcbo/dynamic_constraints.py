@@ -63,7 +63,7 @@ def _eval_gaming(intent: dict, dynamic: dict, params: dict) -> dict:
         "resolved_mandatory_profiles": mandatory,
         "resolved_block_profiles": block,
         "resolved_warn_profiles": warn,
-        "profile_range": _gpu_range(dynamic, resolution),
+        "min_capability": _gpu_min_capability(dynamic, resolution),
         "min_vram_gb": min_vram,
         "maut_weights": maut_r["maut_weights"],
         "noise_load": maut_r.get("noise_load", "A2"),
@@ -72,21 +72,12 @@ def _eval_gaming(intent: dict, dynamic: dict, params: dict) -> dict:
     }
 
 
-def _gpu_range(d: dict, res: str) -> dict:
-    """Get profile range for given resolution from YAML config.
-    Returns {"min": "profile_name", "max": "profile_name"}.
+def _gpu_min_capability(d: dict, res: str) -> str:
+    """Get minimum capability requirement for given resolution.
+    Returns capability level string (e.g. 'balanced_performance_gpu').
     """
-    c = d.get("profile_range", {}).get("config", {})
-    default = {"min": "mainstream_efficiency_gpu", "max": "balanced_performance_gpu"}
-    return c.get(res, c.get("default", default))
-
-
-def _gpu_range_min(d: dict, res: str) -> str:
-    return _gpu_range(d, res)["min"]
-
-
-def _gpu_range_max(d: dict, res: str) -> str:
-    return _gpu_range(d, res)["max"]
+    c = d.get("min_capability", {}).get("config", {})
+    return c.get(res, "mainstream_efficiency_gpu")
 
 
 def _vram(d: dict, res: str, sett: str) -> int:
