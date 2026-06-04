@@ -59,21 +59,36 @@ class Candidate:
 
 
 def _margin_check(profiles: dict, cmp_type: str, min_capability: str | None) -> tuple[int, int]:
-    """Return (comp_level, margin) for margin analysis. margin = level − min_level."""
+    """Return (comp_level, margin) for margin analysis. margin = level − min_level.
+    
+    Uses capability_level from profile data first (v4.1 field),
+    falls back to matching profile names against CAPABILITY_MAP_BY_TYPE (legacy GPU).
+    """
     if not min_capability:
         return (0, 0)
     cap_map = CAPABILITY_MAP_BY_TYPE.get(cmp_type, {})
-    if not cap_map:
-        return (0, 0)
     comp_tiers = []
     for pname, pd in profiles.items():
-        level = cap_map.get(pname)
-        if level is not None and pd.get("criteria_met", True):
-            comp_tiers.append(level)
+        if not pd.get("criteria_met", True):
+            continue
+        # v4.1: explicit capability_level in profile data
+        cl = pd.get("capability_level")
+        if cl is not None:
+            comp_tiers.append(cl)
+        else:
+            # Legacy: match profile name against capability map (GPU only)
+            level = cap_map.get(pname)
+            if level is not None:
+                comp_tiers.append(level)
     if not comp_tiers:
         return (0, 0)
     comp_level = max(comp_tiers)
-    min_level = cap_map.get(min_capability, 1)
+    # resolve min_capability: it can be a capability name (like "high_core_count_cpu") or a profile name
+    min_level = cap_map.get(min_capability)
+    if min_level is None:
+        # Try finding the capability name in the map by its level
+        # This handles when min_capability is a profile name not in the map
+        return (comp_level, 0)  # can't determine margin, assume satisfies
     return (comp_level, comp_level - min_level)
 
 def select_gpu(

@@ -1,68 +1,106 @@
 ---
-id: "amd-ryzen-7-9800x3d"
-type: "cpu"
-title: "AMD Ryzen 7 9800X3D — КИБЕРСПОРТ БОГ"
-vendor: "amd"
-status: "draft"
-tags: ["amd", "zen5", "am5", "ddr5", "3d-v-cache", "gaming", "120w", "8-core", "x3d", "киберспорт", "второе-поколение"]
-last_updated: "2026-06-03"
+id: amd-ryzen-7-9800x3d
+type: cpu
+title: AMD Ryzen 7 9800X3D — КИБЕРСПОРТ БОГ
+vendor: amd
+status: draft
+tags:
+- amd
+- zen5
+- am5
+- ddr5
+- 3d-v-cache
+- gaming
+- 120w
+- 8-core
+- x3d
+- киберспорт
+- второе-поколение
+last_updated: '2026-06-03'
 links:
-  platform: "catalog/motherboard/am5/index.md"
-  memory_type: "catalog/memory/ddr5.md"
-  family: "catalog/cpu/amd-ryzen-9000.md"
-  prev_gen: "catalog/cpu/amd-ryzen-7-7800x3d.md"
-  competitor_intel: "catalog/cpu/intel-core-ultra-9-285k.md"
+  platform: catalog/motherboard/am5/index.md
+  memory_type: catalog/memory/ddr5.md
+  family: catalog/cpu/amd-ryzen-9000.md
+  prev_gen: catalog/cpu/amd-ryzen-7-7800x3d.md
+  competitor_intel: catalog/cpu/intel-core-ultra-9-285k.md
   concepts:
-    - "concepts/power-budget.md"
-    - "concepts/3d-v-cache.md"
+  - concepts/power-budget.md
+  - concepts/3d-v-cache.md
 specs:
-  socket: "AM5 (LGA1718)"
-  architecture: "Zen 5 (Granite Ridge) + 3D V-Cache 2-го поколения"
-  lithography: "TSMC 4nm (CCD) + 6nm (IOD), 3D V-Cache 2G"
+  socket: AM5 (LGA1718)
+  architecture: Zen 5 (Granite Ridge) + 3D V-Cache 2-го поколения
+  lithography: TSMC 4nm (CCD) + 6nm (IOD), 3D V-Cache 2G
   cores: 8
   threads: 16
-  base_clock: "4.7 GHz"
-  boost_clock: "5.2 GHz"
-  l2_cache: "8 MB (1 MB × 8)"
-  l3_cache: "96 MB (32 MB on-die + 64 MB 3D V-Cache 2G)"
-  tdp: "120W"
-  ppt: "162W (default)"
-  tjmax: "89°C (ограничение 3D V-Cache)"
-  pcie_lanes: "28 (24 usable), PCIe 5.0"
-  memory: "DDR5 only, dual-channel, до 5600 JEDEC / 6000+ EXPO"
-  max_memory: "128 GB (4×32 GB или 2×48 GB)"
-  igpu: "RDNA 2 (2 CUs, 2200 MHz, базовый вывод)"
+  base_clock: 4.7 GHz
+  boost_clock: 5.2 GHz
+  l2_cache: 8 MB (1 MB × 8)
+  l3_cache: 96 MB (32 MB on-die + 64 MB 3D V-Cache 2G)
+  tdp: 120W
+  ppt: 162W (default)
+  tjmax: 89°C (ограничение 3D V-Cache)
+  pcie_lanes: 28 (24 usable), PCIe 5.0
+  memory: DDR5 only, dual-channel, до 5600 JEDEC / 6000+ EXPO
+  max_memory: 128 GB (4×32 GB или 2×48 GB)
+  igpu: RDNA 2 (2 CUs, 2200 MHz, базовый вывод)
   box_cooler: null
-  package: "Retail (BOX, без кулера)"
-  release_date: "Q4 2024"
+  package: Retail (BOX, без кулера)
+  release_date: Q4 2024
 profiles:
   cache_dominant_gaming:
-    power_envelope: "high"
+    power_envelope: high
     capability_level: 3
-    steel_man_desc: "Киберспорт 1080p на низких. 3D V-Cache (L3 ≥ 96MB) — 1% Low FPS стабильно выше 240/360 Hz."
-    failure_mode_desc: "Тяжёлые FP32/AVX-512: рендеринг, компиляция. Тепловое сопротивление 3D-кэша снижает частоту на 300–500 МГц. Штраф 15–20%."
-    optimal_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
-    failure_for_intents: ["3d_rendering_cpu", "heavy_compilation", "scientific_computing"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
+    steel_man_desc: Киберспорт 1080p на низких. 3D V-Cache (L3 ≥ 96MB) — 1% Low FPS
+      стабильно выше 240/360 Hz.
+    failure_mode_desc: 'Тяжёлые FP32/AVX-512: рендеринг, компиляция. Тепловое сопротивление
+      3D-кэша снижает частоту на 300–500 МГц. Штраф 15–20%.'
+    optimal_for_intents:
+    - esports_1080p_240hz
+    - esports_1080p_360hz
+    failure_for_intents:
+    - 3d_rendering_cpu
+    - heavy_compilation
+    - scientific_computing
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
   dense_thermal_concentration:
-    power_envelope: "high"
+    power_envelope: high
     capability_level: 2
-    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
-    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
-    optimal_for_intents: ["office_productivity", "software_development"]
-    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
+    steel_man_desc: 'Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту
+      до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды.'
+    failure_mode_desc: Длительная нагрузка. Тепловое сопротивление толстой IHS (≥
+      1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%.
+    optimal_for_intents:
+    - office_productivity
+    - software_development
+    failure_for_intents:
+    - 3d_rendering_cpu
+    - scientific_computing
+    - heavy_compilation
+    - silent_build
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
   sub_5nm_lithography:
-    power_envelope: "high"
-    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
-    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
-    optimal_for_intents: ["sff_build", "silent_build"]
+    power_envelope: high
+    steel_man_desc: Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления.
+    failure_mode_desc: Разгон с V > 1.35В → ускоренная электромиграция и выход из
+      строя.
+    optimal_for_intents:
+    - sff_build
+    - silent_build
     failure_for_intents: []
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
-verdict: "Абсолютный игровой бог. Zen 5 + 3D V-Cache 2-го поколения: 96 MB L3 + повышенные частоты (5.2 GHz против 5.0 у 7800X3D). Лучший игровой процессор на планете. Прямой наследник легендарного 7800X3D — быстрее, холоднее (3D V-Cache под CCD!), без частотных компромиссов. Цена высокая — это флагманский геймерский CPU, и он этого стоит."
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
+verdict: 'Абсолютный игровой бог. Zen 5 + 3D V-Cache 2-го поколения: 96 MB L3 + повышенные
+  частоты (5.2 GHz против 5.0 у 7800X3D). Лучший игровой процессор на планете. Прямой
+  наследник легендарного 7800X3D — быстрее, холоднее (3D V-Cache под CCD!), без частотных
+  компромиссов. Цена высокая — это флагманский геймерский CPU, и он этого стоит.'
+price_ru:
+  min: 55000
+  median: 62000
+  max: 70000
+  source: price.ru
+  date: '2026-06-04'
 ---
 
 # AMD Ryzen 7 9800X3D — КИБЕРСПОРТ БОГ

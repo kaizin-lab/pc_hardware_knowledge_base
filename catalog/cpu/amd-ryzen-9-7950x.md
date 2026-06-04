@@ -1,70 +1,106 @@
 ---
-id: "amd-ryzen-9-7950x"
-type: "cpu"
-title: "AMD Ryzen 9 7950X (170W) — ФЛАГМАН AM5"
-vendor: "amd"
-status: "draft"
-tags: ["amd", "zen4", "am5", "ddr5", "170w", "16-core", "dual-ccd", "флагман", "рабочая-станция"]
-last_updated: "2026-06-03"
+id: amd-ryzen-9-7950x
+type: cpu
+title: AMD Ryzen 9 7950X (170W) — ФЛАГМАН AM5
+vendor: amd
+status: draft
+tags:
+- amd
+- zen4
+- am5
+- ddr5
+- 170w
+- 16-core
+- dual-ccd
+- флагман
+- рабочая-станция
+last_updated: '2026-06-03'
 links:
-  platform: "catalog/motherboard/am5/index.md"
-  memory_type: "catalog/memory/ddr5.md"
-  family: "catalog/cpu/amd-ryzen-7000.md"
-  down_variant: "catalog/cpu/amd-ryzen-9-7900.md"
-  down_variant_x: "catalog/cpu/amd-ryzen-9-7900x.md"
-  x3d_alt: "catalog/cpu/amd-ryzen-9-7950x3d.md"
-  competitor_intel: "catalog/cpu/intel-core-14900k.md"
+  platform: catalog/motherboard/am5/index.md
+  memory_type: catalog/memory/ddr5.md
+  family: catalog/cpu/amd-ryzen-7000.md
+  down_variant: catalog/cpu/amd-ryzen-9-7900.md
+  down_variant_x: catalog/cpu/amd-ryzen-9-7900x.md
+  x3d_alt: catalog/cpu/amd-ryzen-9-7950x3d.md
+  competitor_intel: catalog/cpu/intel-core-14900k.md
   concepts:
-    - "concepts/power-budget.md"
-    - "concepts/dual-ccd.md"
+  - concepts/power-budget.md
+  - concepts/dual-ccd.md
 specs:
-  socket: "AM5 (LGA1718)"
-  architecture: "Zen 4 (Raphael), dual-CCD"
-  lithography: "TSMC 5nm (CCD ×2) + 6nm (IOD)"
+  socket: AM5 (LGA1718)
+  architecture: Zen 4 (Raphael), dual-CCD
+  lithography: TSMC 5nm (CCD ×2) + 6nm (IOD)
   cores: 16
   threads: 32
-  base_clock: "4.5 GHz"
-  boost_clock: "5.7 GHz"
-  l2_cache: "16 MB (1 MB × 16)"
-  l3_cache: "64 MB (32 MB × 2 CCD)"
-  tdp: "170W"
-  ppt: "230W (default)"
-  tjmax: "95°C"
-  pcie_lanes: "28 (24 usable), PCIe 5.0"
-  memory: "DDR5 only, dual-channel, до 5200 JEDEC / 6000+ EXPO"
-  max_memory: "128 GB (4×32 GB или 2×48 GB)"
-  igpu: "RDNA 2 (2 CUs, 2200 MHz, базовый вывод)"
+  base_clock: 4.5 GHz
+  boost_clock: 5.7 GHz
+  l2_cache: 16 MB (1 MB × 16)
+  l3_cache: 64 MB (32 MB × 2 CCD)
+  tdp: 170W
+  ppt: 230W (default)
+  tjmax: 95°C
+  pcie_lanes: 28 (24 usable), PCIe 5.0
+  memory: DDR5 only, dual-channel, до 5200 JEDEC / 6000+ EXPO
+  max_memory: 128 GB (4×32 GB или 2×48 GB)
+  igpu: RDNA 2 (2 CUs, 2200 MHz, базовый вывод)
   box_cooler: null
-  package: "Retail (BOX, без кулера)"
-  release_date: "Q3 2022"
+  package: Retail (BOX, без кулера)
+  release_date: Q3 2022
 profiles:
   multi_ccd_disaggregated:
-    power_envelope: "high"
+    power_envelope: high
     capability_level: 3
-    steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
-    failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
-    optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
-    failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
+    steel_man_desc: 'Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер
+      без HEDT-тарифа.'
+    failure_mode_desc: Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе
+      потока между CCD.
+    optimal_for_intents:
+    - 3d_rendering_cpu
+    - scientific_computing
+    - heavy_compilation
+    failure_for_intents:
+    - esports_1080p_240hz
+    - esports_1080p_360hz
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
   dense_thermal_concentration:
-    power_envelope: "high"
+    power_envelope: high
     capability_level: 2
-    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
-    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
-    optimal_for_intents: ["office_productivity", "software_development"]
-    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
+    steel_man_desc: 'Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту
+      до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды.'
+    failure_mode_desc: Длительная нагрузка. Тепловое сопротивление толстой IHS (≥
+      1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%.
+    optimal_for_intents:
+    - office_productivity
+    - software_development
+    failure_for_intents:
+    - 3d_rendering_cpu
+    - scientific_computing
+    - heavy_compilation
+    - silent_build
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
   sub_5nm_lithography:
-    power_envelope: "high"
-    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
-    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
-    optimal_for_intents: ["sff_build", "silent_build"]
+    power_envelope: high
+    steel_man_desc: Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления.
+    failure_mode_desc: Разгон с V > 1.35В → ускоренная электромиграция и выход из
+      строя.
+    optimal_for_intents:
+    - sff_build
+    - silent_build
     failure_for_intents: []
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
-verdict: "Флагманская 16-ядерная рабочая станция на AM5. Boost до 5.7 GHz — рекорд для Zen 4. Многопоточная производительность сопоставима с Threadripper предыдущего поколения. Требует мощного охлаждения (AIO 360 мм минимум). Для игр — избыточен, dual-CCD latency вредит фреймтайму. Чисто рабочий инструмент высшего уровня."
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
+verdict: Флагманская 16-ядерная рабочая станция на AM5. Boost до 5.7 GHz — рекорд
+  для Zen 4. Многопоточная производительность сопоставима с Threadripper предыдущего
+  поколения. Требует мощного охлаждения (AIO 360 мм минимум). Для игр — избыточен,
+  dual-CCD latency вредит фреймтайму. Чисто рабочий инструмент высшего уровня.
+price_ru:
+  min: 55000
+  median: 62000
+  max: 70000
+  source: price.ru
+  date: '2026-06-04'
 ---
 
 # AMD Ryzen 9 7950X (170W) — ФЛАГМАН AM5

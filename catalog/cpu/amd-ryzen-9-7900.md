@@ -1,69 +1,106 @@
 ---
-id: "amd-ryzen-9-7900"
-type: "cpu"
-title: "AMD Ryzen 9 7900 (65W) — 12 ЯДЕР, 65W"
-vendor: "amd"
-status: "draft"
-tags: ["amd", "zen4", "am5", "ddr5", "65w", "12-core", "dual-ccd", "box-cooler", "рабочая-станция", "тихая-сборка"]
-last_updated: "2026-06-03"
+id: amd-ryzen-9-7900
+type: cpu
+title: AMD Ryzen 9 7900 (65W) — 12 ЯДЕР, 65W
+vendor: amd
+status: draft
+tags:
+- amd
+- zen4
+- am5
+- ddr5
+- 65w
+- 12-core
+- dual-ccd
+- box-cooler
+- рабочая-станция
+- тихая-сборка
+last_updated: '2026-06-03'
 links:
-  platform: "catalog/motherboard/am5/index.md"
-  memory_type: "catalog/memory/ddr5.md"
-  family: "catalog/cpu/amd-ryzen-7000.md"
-  up_variant: "catalog/cpu/amd-ryzen-9-7950x.md"
-  down_variant: "catalog/cpu/amd-ryzen-7-7700.md"
-  x_variant: "catalog/cpu/amd-ryzen-9-7900x.md"
+  platform: catalog/motherboard/am5/index.md
+  memory_type: catalog/memory/ddr5.md
+  family: catalog/cpu/amd-ryzen-7000.md
+  up_variant: catalog/cpu/amd-ryzen-9-7950x.md
+  down_variant: catalog/cpu/amd-ryzen-7-7700.md
+  x_variant: catalog/cpu/amd-ryzen-9-7900x.md
   concepts:
-    - "concepts/power-budget.md"
-    - "concepts/dual-ccd.md"
+  - concepts/power-budget.md
+  - concepts/dual-ccd.md
 specs:
-  socket: "AM5 (LGA1718)"
-  architecture: "Zen 4 (Raphael), dual-CCD"
-  lithography: "TSMC 5nm (CCD ×2) + 6nm (IOD)"
+  socket: AM5 (LGA1718)
+  architecture: Zen 4 (Raphael), dual-CCD
+  lithography: TSMC 5nm (CCD ×2) + 6nm (IOD)
   cores: 12
   threads: 24
-  base_clock: "3.7 GHz"
-  boost_clock: "5.4 GHz"
-  l2_cache: "12 MB (1 MB × 12)"
-  l3_cache: "64 MB (32 MB × 2 CCD)"
-  tdp: "65W"
-  ppt: "88W (default)"
-  tjmax: "95°C"
-  pcie_lanes: "28 (24 usable), PCIe 5.0"
-  memory: "DDR5 only, dual-channel, до 5200 JEDEC / 6000+ EXPO"
-  max_memory: "128 GB (4×32 GB или 2×48 GB)"
-  igpu: "RDNA 2 (2 CUs, 2200 MHz, базовый вывод)"
-  box_cooler: "Wraith Prism (в коробке, на грани возможностей)"
-  package: "Retail (BOX)"
-  release_date: "Q1 2023"
+  base_clock: 3.7 GHz
+  boost_clock: 5.4 GHz
+  l2_cache: 12 MB (1 MB × 12)
+  l3_cache: 64 MB (32 MB × 2 CCD)
+  tdp: 65W
+  ppt: 88W (default)
+  tjmax: 95°C
+  pcie_lanes: 28 (24 usable), PCIe 5.0
+  memory: DDR5 only, dual-channel, до 5200 JEDEC / 6000+ EXPO
+  max_memory: 128 GB (4×32 GB или 2×48 GB)
+  igpu: RDNA 2 (2 CUs, 2200 MHz, базовый вывод)
+  box_cooler: Wraith Prism (в коробке, на грани возможностей)
+  package: Retail (BOX)
+  release_date: Q1 2023
 profiles:
   multi_ccd_disaggregated:
-    power_envelope: "mid"
+    power_envelope: mid
     capability_level: 3
-    steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
-    failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
-    optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
-    failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
+    steel_man_desc: 'Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер
+      без HEDT-тарифа.'
+    failure_mode_desc: Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе
+      потока между CCD.
+    optimal_for_intents:
+    - 3d_rendering_cpu
+    - scientific_computing
+    - heavy_compilation
+    failure_for_intents:
+    - esports_1080p_240hz
+    - esports_1080p_360hz
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
   dense_thermal_concentration:
-    power_envelope: "mid"
+    power_envelope: mid
     capability_level: 2
-    steel_man_desc: "Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды."
-    failure_mode_desc: "Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%."
-    optimal_for_intents: ["office_productivity", "software_development"]
-    failure_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "silent_build"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
+    steel_man_desc: 'Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту
+      до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды.'
+    failure_mode_desc: Длительная нагрузка. Тепловое сопротивление толстой IHS (≥
+      1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%.
+    optimal_for_intents:
+    - office_productivity
+    - software_development
+    failure_for_intents:
+    - 3d_rendering_cpu
+    - scientific_computing
+    - heavy_compilation
+    - silent_build
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
   sub_5nm_lithography:
-    power_envelope: "mid"
-    steel_man_desc: "Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления."
-    failure_mode_desc: "Разгон с V > 1.35В → ускоренная электромиграция и выход из строя."
-    optimal_for_intents: ["sff_build", "silent_build"]
+    power_envelope: mid
+    steel_man_desc: Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления.
+    failure_mode_desc: Разгон с V > 1.35В → ускоренная электромиграция и выход из
+      строя.
+    optimal_for_intents:
+    - sff_build
+    - silent_build
     failure_for_intents: []
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
-verdict: "Уникальный процессор: 12 ядер / 24 потока с TDP всего 65W. Идеален для тихих рабочих станций и компактных сборок (SFF). Два CCD дают 64 MB L3. В играх уступает однокристальным Ryzen 7 из-за межчиплетной latency — это чисто рабочий инструмент с феноменальной энергоэффективностью."
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
+verdict: 'Уникальный процессор: 12 ядер / 24 потока с TDP всего 65W. Идеален для тихих
+  рабочих станций и компактных сборок (SFF). Два CCD дают 64 MB L3. В играх уступает
+  однокристальным Ryzen 7 из-за межчиплетной latency — это чисто рабочий инструмент
+  с феноменальной энергоэффективностью.'
+price_ru:
+  min: 38000
+  median: 42000
+  max: 48000
+  source: price.ru
+  date: '2026-06-04'
 ---
 
 # AMD Ryzen 9 7900 (65W) — 12 ЯДЕР, 65W
