@@ -33,6 +33,10 @@ ROOT = Path(__file__).resolve().parent.parent.parent  # scripts/pcbo → scripts
 CATALOG = ROOT / "catalog"
 SCRIPTS = ROOT / "scripts"
 
+# Engineering clearances (mm) — from PCBO Skill 3 (structural)
+GPU_INSTALL_CLEARANCE_MM = 10    # зазор на монтаж GPU в корпус
+COOLER_SIDE_PANEL_CLEARANCE_MM = 5  # зазор между кулером и боковой панелью
+
 # Import evaluate_profiles functions
 sys.path.insert(0, str(SCRIPTS))
 from evaluate_profiles import (
@@ -254,6 +258,7 @@ def select_ram(
     budget_remaining: int = 999999,
     ecc: bool = False,
     min_capability: str | None = None,
+    blocked_profiles: list[str] | None = None,
 ) -> list[Candidate]:
     """STATE_4a: подбор RAM с profile matching."""
     candidates = []
@@ -276,6 +281,17 @@ def select_ram(
             continue
 
         profiles = fm.get("profiles", {})
+        
+        # Blocked profiles check
+        if blocked_profiles:
+            blocked = False
+            for bp in blocked_profiles:
+                if bp in profiles and profiles[bp].get("criteria_met", True):
+                    blocked = True
+                    break
+            if blocked:
+                continue
+        
         comp_level, margin = _margin_check(profiles, "memory", min_capability)
         if margin < 0:
             continue
@@ -538,9 +554,9 @@ def select_case(
         specs = fm.get("specs", {})
         max_gpu = _extract_number(specs.get("max_gpu_mm", "0"))
         max_cooler = _extract_number(specs.get("max_cooler_mm", "0"))
-        if max_gpu < gpu_length_mm:
+        if max_gpu < gpu_length_mm + GPU_INSTALL_CLEARANCE_MM:
             continue
-        if max_cooler < cooler_height_mm:
+        if max_cooler < cooler_height_mm + COOLER_SIDE_PANEL_CLEARANCE_MM:
             continue
 
         profiles = fm.get("profiles", {})
@@ -623,11 +639,6 @@ class PhysicalViolation:
     component: str      # component id
     constraint: str     # what was required
     actual: str         # what the component provides
-
-
-# Engineering clearances (mm) — from PCBO Skill 3 (structural)
-GPU_INSTALL_CLEARANCE_MM = 10    # зазор на монтаж GPU в корпус
-COOLER_SIDE_PANEL_CLEARANCE_MM = 5  # зазор между кулером и боковой панелью
 
 
 def validate_physical_compatibility(
