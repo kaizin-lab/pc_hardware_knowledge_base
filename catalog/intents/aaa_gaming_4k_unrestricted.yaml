@@ -1,0 +1,95 @@
+# aaa_gaming_4k_unrestricted
+# Домен: Гейминг (визуальный максимум, упор в шину и VRAM GPU)
+# 
+# ДИРЕКТИВА LLM: все ссылки вида path/to/file.md#section — navigable references.
+# Загрузи файл, найди секцию, извлеки конкретику. Без этого расчёты не делать.
+
+uri: "intent#aaa_gaming_4k_unrestricted"
+type: "SystemRequirementsVector"
+domain: "gaming"
+description: >
+  AAA-гейминг в нативном 4K на максимальных настройках с трассировкой
+  лучей/путей. Экстремальная нагрузка на видеопамять и шину GPU.
+  Процессор вторичен — любой современный 6–8 ядер справится.
+
+requirements:
+  budget_allocation_priority: "GPU"
+  domain_modules_required: ["pcbo:modules/gaming"]
+
+  constraints:
+    max_acceptable_noise_load: "A3"
+    max_acceptable_noise_note: "GPU под 300W+ неизбежно шумит. A3 терпимо — игра перекрывает."
+    max_acceptable_thermal_state: "T_Warm"
+    max_acceptable_thermal_note: "Современные GPU держат частоты до 83°C. Главное — без throttling."
+    min_ram_capacity_gb: 32
+    min_ram_note: "Современные AAA + фон (браузер, Discord). 32GB — стандарт 2026."
+    min_storage_sustained_write: false
+    min_storage_note: "Игры читают, не пишут. DirectStorage требует NVMe, sustained write нет."
+
+  maut_weights:
+    performance_importance: 0.85
+    performance_note: "VRAM и шина — главные bottleneck'и"
+    silence_importance: 0.15
+    silence_note: "Не критично: игра громкая, наушники"
+    thermal_margin_importance: 0.5
+    thermal_note: "Достаточно отсутствия throttling"
+    upgrade_longevity_importance: 0.4
+    longevity_note: "GPU — самый частый апгрейд"
+
+profile_interaction_matrix:
+  mandatory_steel_man:
+    - profile: "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
+      reason: "Только флагманские карты (TGP ≥ 280W) способны на нативный 4K 60+ FPS с трассировкой. 256-bit шина — минимум."
+    - profile: "concepts/epistemological-profiles.md#atx_3x_transient_capable"
+      reason: "Карты ≥ 280W генерируют transient spikes. БП ATX 3.0/3.1 с 12V-2×6 обязателен. Без него — аварийное выключение."
+
+  strict_block:
+    - profile: "concepts/epistemological-profiles.md#bandwidth_constrained_vram_rich"
+      reason: "128-bit шина независимо от VRAM. В 4K fillrate упирается в bandwidth → texture pop-in, фризы. CLIFF_DROP — BLOCK."
+    - profile: "concepts/epistemological-profiles.md#sub_75w_slot_powered"
+      reason: "75W через слот недостаточно для любых вычислений за пределами рабочего стола. BLOCK."
+
+# --- ПАРАМЕТРИЧЕСКАЯ ЗОНА ---
+# Для производных интентов (1440p, 1080p) — динамические constraints.
+# Числа здесь — канонический конфиг, НЕ магические числа в коде.
+
+dynamic_constraints:
+  vram_minimum_gb:
+    function: "evaluate_vram_requirement"
+    description: "Минимальный VRAM для AAA-гейминга. Вычисляется из resolution + settings."
+    config:
+      base:
+        "1080p": 8
+        "1440p": 12
+        "4K": 16
+      modifiers:
+        ultra: +2
+        path_tracing: +4
+        high: 0
+        medium: -2
+      generation_note: "База привязана к Blackwell/RDNA4 (2026). При выходе UE6 — пересмотреть 4K base."
+
+  target_gpu_profile:
+    function: "evaluate_gpu_profile"
+    description: "Профиль GPU, соответствующий разрешению и целевому FPS."
+    config:
+      "1080p_60fps": "concepts/epistemological-profiles.md#mainstream_efficiency_gpu"
+      "1080p_240fps": "concepts/epistemological-profiles.md#balanced_performance_gpu"
+      "1440p_60fps": "concepts/epistemological-profiles.md#balanced_performance_gpu"
+      "1440p_120fps": "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
+      "4K_60fps": "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
+      "4K_120fps": "concepts/epistemological-profiles.md#enthusiast_unrestricted_gpu"
+
+  maut_weights:
+    function: "adjust_maut_weights_for_gaming"
+    description: "Сдвиг весов CPU/GPU в зависимости от разрешения."
+    config:
+      "1080p":
+        cpu_weight: 0.4
+        gpu_weight: 0.6
+      "1440p":
+        cpu_weight: 0.25
+        gpu_weight: 0.75
+      "4K":
+        cpu_weight: 0.1
+        gpu_weight: 0.9

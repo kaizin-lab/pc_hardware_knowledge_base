@@ -337,7 +337,16 @@ standard_tlc_dram_ssd:
 ```yaml
 dram_less_hmb_cached:
   steel_man_desc: "Клиентская ОС: браузер, игры. Короткие записи до 20–30 ГБ поглощаются SLC-кэшем — скорости уровня премиум-дисков при цене на 30–40% ниже."
-  failure_mode_desc: "Непрерывная многопоточная запись (СУБД, импорт RAW). После исчерпания SLC-кэша — задержки до 40 мс, скорость ≤ 350 МБ/с (уровень SATA III)."
+  failure_mode_desc: >
+    Два механизма отказа под sustained нагрузкой:
+    (1) Производительность: после исчерпания SLC-кэша — задержки до 40 мс,
+    скорость ≤ 350 МБ/с (уровень SATA III). Непрерывная многопоточная запись
+    (СУБД, Spark shuffle) — критическое падение.
+    (2) Ресурс (HIGH WRITE AMPLIFICATION): контроллер без DRAM не держит
+    таблицу FTL в быстрой памяти → постоянная перезапись служебных блоков
+    NAND при каждом мелком IO. Фактический TBW исчерпывается в 3–5 раз
+    быстрее паспортного. Под системными логами СУБД — деградация и выход
+    из строя через 6–12 месяцев.
   optimal_for_intents: ["office_productivity", "software_development", "aaa_1080p_ultra"]
   failure_for_intents: ["video_editing_4k", "video_editing_8k", "data_engineering"]
   failure_severity: "BLOCK"
