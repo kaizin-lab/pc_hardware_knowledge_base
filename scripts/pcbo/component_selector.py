@@ -613,6 +613,125 @@ def _extract_cores(specs: dict) -> int:
     return int(_extract_number(cores_raw))
 
 
+# ═══════════════════ Physical Compatibility Validation ═══════════════════
+
+@dataclass
+class PhysicalViolation:
+    check: str          # e.g. "gpu_length"
+    severity: str       # "BLOCK" | "WARN"
+    message: str
+    component: str      # component id
+    constraint: str     # what was required
+    actual: str         # what the component provides
+
+
+# Engineering clearances (mm) — from PCBO Skill 3 (structural)
+GPU_INSTALL_CLEARANCE_MM = 10    # зазор на монтаж GPU в корпус
+COOLER_SIDE_PANEL_CLEARANCE_MM = 5  # зазор между кулером и боковой панелью
+
+
+def validate_physical_compatibility(
+    gpu: dict | None = None,      # {"id": ..., "specs": {"length_mm": ..., "thickness_slots": ...}}
+    cooler: dict | None = None,   # {"id": ..., "specs": {"height_mm": ...}}
+    case: dict | None = None,     # {"id": ..., "specs": {"max_gpu_mm": ..., "max_cooler_mm": ..., "form_factor": ...}}
+    mb: dict | None = None,       # {"id": ..., "specs": {"form_factor": ...}}
+    psu: dict | None = None,      # {"id": ..., "specs": {"form_factor": ..., "sfx": bool}}
+    sfx_required: bool = False,
+) -> list[PhysicalViolation]:
+    """Validate physical compatibility between components in a build.
+
+    Checks (in order of severity):
+      1. GPU length vs case max_gpu_mm (with install clearance)
+      2. Cooler height vs case max_cooler_mm (with side panel clearance)
+      3. MB form_factor vs case form_factor compatibility
+      4. PSU form_factor vs case/sff requirement
+      5. PCIe slot spacing vs GPU thickness (deferred to Skill 9)
+
+    Returns list of PhysicalViolation. Empty list = PASS.
+    """
+    violations = []
+
+    # 1. GPU length vs case
+    if gpu and case:
+        gpu_len = float(gpu.get("specs", {}).get("length_mm", gpu.get("specs", {}).get("length", 0)) or 0)
+        case_max = float(case.get("specs", {}).get("max_gpu_mm", 0) or 0)
+        if gpu_len > 0 and case_max > 0:
+            required = gpu_len + GPU_INSTALL_CLEARANCE_MM
+            if case_max < required:
+                violations.append(PhysicalViolation(
+                    check="gpu_length",
+                    severity="BLOCK",
+                    message=f"GPU {gpu['id']} ({gpu_len:.0f}mm) + {GPU_INSTALL_CLEARANCE_MM}mm clearance = {required:.0f}mm > case max {case_max:.0f}mm",
+                    component=gpu.get("id", "?"),
+                    constraint=f"max_gpu_mm ≥ {required:.0f}",
+                    actual=f"case max_gpu_mm = {case_max:.0f}"
+                ))
+
+    # 2. Cooler height vs case
+    if cooler and case:
+        cooler_h = float(cooler.get("specs", {}).get("height_mm", 0) or 0)
+        case_cooler_max = float(case.get("specs", {}).get("max_cooler_mm", 0) or 0)
+        if cooler_h > 0 and case_cooler_max > 0:
+            required = cooler_h + COOLER_SIDE_PANEL_CLEARANCE_MM
+            if case_cooler_max < required:
+                violations.append(PhysicalViolation(
+                    check="cooler_height",
+                    severity="BLOCK",
+                    message=f"Cooler {cooler['id']} ({cooler_h:.0f}mm) + {COOLER_SIDE_PANEL_CLEARANCE_MM}mm clearance = {required:.0f}mm > case max {case_cooler_max:.0f}mm",
+                    component=cooler.get("id", "?"),
+                    constraint=f"max_cooler_mm ≥ {required:.0f}",
+                    actual=f"case max_cooler_mm = {case_cooler_max:.0f}"
+                ))
+
+    # 3. MB form_factor vs case
+    if mb and case:
+        mb_ff = str(mb.get("specs", {}).get("form_factor", "")).upper()
+        case_ff_raw = case.get("specs", {}).get("form_factor", "")
+        # case form_factor may be a list like ["ATX", "mATX", "ITX"]
+        if isinstance(case_ff_raw, list):
+            case_ffs = [f.upper() for f in case_ff_raw]
+        else:
+            case_ffs = [str(case_ff_raw).upper()]
+        if mb_ff and case_ffs and case_ffs != ['']:
+            # ITX fits everywhere; mATX fits ATX/mATX; ATX only fits ATX
+            if mb_ff == "ITX":
+                pass  # always compatible
+            elif mb_ff == "MATX" and "MATX" not in case_ffs and "ATX" not in case_ffs:
+                violations.append(PhysicalViolation(
+                    check="mb_form_factor",
+                    severity="BLOCK",
+                    message=f"MB {mb['id']} is {mb_ff} but case supports {case_ffs}",
+                    component=mb.get("id", "?"),
+                    constraint=f"case form_factor includes {mb_ff}",
+                    actual=f"case form_factors = {case_ffs}"
+                ))
+            elif mb_ff == "ATX" and "ATX" not in case_ffs:
+                violations.append(PhysicalViolation(
+                    check="mb_form_factor",
+                    severity="BLOCK",
+                    message=f"MB {mb['id']} is {mb_ff} but case supports {case_ffs}",
+                    component=mb.get("id", "?"),
+                    constraint=f"case form_factor includes ATX",
+                    actual=f"case form_factors = {case_ffs}"
+                ))
+
+    # 4. PSU form_factor vs case / SFF requirement
+    if psu:
+        psu_sfx = bool(psu.get("specs", {}).get("sfx", False))
+        psu_ff = str(psu.get("specs", {}).get("form_factor", "")).upper()
+        if sfx_required and not psu_sfx and "SFX" not in psu_ff:
+            violations.append(PhysicalViolation(
+                check="psu_form_factor",
+                severity="BLOCK",
+                message=f"SFF build requires SFX PSU but {psu['id']} is {psu_ff}",
+                component=psu.get("id", "?"),
+                constraint="PSU must be SFX form factor",
+                actual=f"PSU form_factor = {psu_ff}"
+            ))
+
+    return violations
+
+
 # ═══════════════════ Self-test ═══════════════════
 
 if __name__ == "__main__":
@@ -641,3 +760,42 @@ if __name__ == "__main__":
     psus = select_psu(min_wattage=700, atx3x_required=False, budget_remaining=12000)
     for p in psus:
         print(f"  {p.id:30s} {p.price:>7,d}₽  {p.rationale}")
+
+    print("\n=== Physical Compatibility Test ===")
+    # Test 1: GPU barely fits (304 + 10 = 314 > 310)
+    v = validate_physical_compatibility(
+        gpu={"id": "rtx-5070", "specs": {"length_mm": 304}},
+        case={"id": "tight-case", "specs": {"max_gpu_mm": 310}}
+    )
+    print(f"  GPU 304mm + 10mm > case 310mm: {'BLOCK' if v else 'PASS (unexpected)'}")
+
+    # Test 2: GPU way too long
+    v = validate_physical_compatibility(
+        gpu={"id": "rtx-5090", "specs": {"length_mm": 348}},
+        case={"id": "sff-case", "specs": {"max_gpu_mm": 320}}
+    )
+    print(f"  GPU 348mm + 10mm > case 320mm: {'BLOCK' if v else 'PASS (unexpected)'}")
+
+    # Test 3: Cooler won't fit (160 + 5 = 165 > 158)
+    v = validate_physical_compatibility(
+        cooler={"id": "ak620", "specs": {"height_mm": 160}},
+        case={"id": "tight-case", "specs": {"max_cooler_mm": 158}}
+    )
+    print(f"  Cooler 160mm + 5mm > case 158mm: {'BLOCK' if v else 'PASS (unexpected)'}")
+
+    # Test 4: ATX PSU for SFF build
+    v = validate_physical_compatibility(
+        psu={"id": "pn850d", "specs": {"form_factor": "ATX"}},
+        sfx_required=True
+    )
+    print(f"  ATX PSU for SFF build: {'BLOCK' if v else 'PASS (unexpected)'}")
+
+    # Test 5: All good — PASS
+    v = validate_physical_compatibility(
+        gpu={"id": "rx-9070", "specs": {"length_mm": 285}},
+        cooler={"id": "ak400", "specs": {"height_mm": 155}},
+        case={"id": "cc560", "specs": {"max_gpu_mm": 380, "max_cooler_mm": 165, "form_factor": "ATX"}},
+        mb={"id": "b650-s2h", "specs": {"form_factor": "mATX"}},
+        psu={"id": "pn850d", "specs": {"form_factor": "ATX"}},
+    )
+    print(f"  Full compatibility: {'PASS' if not v else f'{len(v)} violations'}")
