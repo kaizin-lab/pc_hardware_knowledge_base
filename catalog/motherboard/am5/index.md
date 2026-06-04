@@ -3,7 +3,7 @@ id: "am5-motherboard-index"
 type: "index"
 title: "Материнские платы AM5"
 status: "verified"
-last_updated: "2025-06-03"
+last_updated: "2026-06-03"
 ---
 
 # AM5 (LGA1718) — материнские платы
@@ -27,13 +27,13 @@ last_updated: "2025-06-03"
 |---|---|---|---|---|---|
 | `msi-b650-tomahawk.md` | MSI | B650 | ATX | 14+2+1 (80A SPS) | ~17 000 |
 | `gigabyte-b650m-s2h.md` | Gigabyte | B650 | mATX | 6+2+1 | ~8 800 |
+| `asrock-b850-riptide.md` | ASRock | B850 | ATX | 14+2+1 (80A SPS) | ~18 000 |
+| `asrock-x870-steel-legend.md` | ASRock | X870 | ATX | 16+2+1 (80A SPS) | ~28 000 |
 
 ### Что ещё нужно заполнить
 
 - B650E: ASRock Riptide, ASUS Strix
-- B850: обновлённые средние платы (Wi-Fi 7, USB4 опционально)
-- X870: флагманские платы под Zen 5
-- LGA1851: платы под Intel Arrow Lake (Z890, B860) — **новая папка**
+- Другие производители X870/B850: MSI, Gigabyte, ASUS
 
 ## Что смотреть при выборе AM5-платы
 

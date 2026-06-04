@@ -433,6 +433,80 @@ sound_dampened_thermal_trap:
 
 ---
 
+## Профили PSU
+
+### НОРМА: atx_3x_transient_capable
+```yaml
+atx_3x_transient_capable:
+  steel_man_desc: "Блок питания ATX 3.0/3.1 с поддержкой пиковых нагрузок до 200% номинала. Выдерживает transient spike современных GPU без аварийного отключения."
+  failure_mode_desc: "Высокая цена относительно ATX 2.4 аналогов (+20–40%). Избыточен для систем без мощных GPU (TGP < 200W)."
+  optimal_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu", "llm_training_lora"]
+  failure_for_intents: []
+  failure_severity: "WARN"
+  failure_type: "LINEAR_DEGRADATION"
+```
+
+### НОРМА: atx_2x_budget_reliable
+```yaml
+atx_2x_budget_reliable:
+  steel_man_desc: "Блок питания ATX 2.4, проверенный временем стандарт. Достаточен для систем без мощных GPU (TGP < 200W). Лучшая цена/ватт."
+  failure_mode_desc: "Не рассчитан на пиковые нагрузки современных GPU (RTX 5080/5090). Transient spike > 150% TGP может триггерить OCP — аварийное выключение."
+  optimal_for_intents: ["aaa_1080p_ultra", "aaa_1440p_high", "esports_1080p_240hz", "office_productivity", "software_development"]
+  failure_for_intents: ["aaa_4k_path_tracing", "llm_training_lora"]
+  failure_severity: "BLOCK"
+  failure_type: "CLIFF_DROP"
+```
+
+---
+
+## Профили Cooling
+
+### НОРМА: air_tower_standard
+```yaml
+air_tower_standard:
+  steel_man_desc: "Одно/двухбашенный воздушный кулер с TDP-рейтингом 150–250W. Достаточен для большинства потребительских CPU. Нулевой риск протечки, не требует обслуживания."
+  failure_mode_desc: "Процессоры с TDP > 150W под длительной нагрузкой. Температура уходит в зону T_Hot (85°C+), возможен лёгкий throttling."
+  optimal_for_intents: ["aaa_1080p_ultra", "esports_1080p_240hz", "software_development", "office_productivity", "silent_build"]
+  failure_for_intents: ["heavy_compilation", "3d_rendering_cpu"]
+  failure_severity: "WARN"
+  failure_type: "LINEAR_DEGRADATION"
+```
+
+### ЭКСТРЕМУМ: air_tower_high_tdp
+```yaml
+air_tower_high_tdp:
+  steel_man_desc: "Двухбашенный воздушный кулер с TDP-рейтингом 250W+. Справляется с разогнанными и high-TDP процессорами. Надёжнее AIO (нет помпы)."
+  failure_mode_desc: "Габариты — высота 155–165мм, ширина до 140мм. Блокирует доступ к слотам RAM на некоторых платах. Требует корпус с запасом по высоте кулера."
+  optimal_for_intents: ["heavy_compilation", "3d_rendering_cpu", "scientific_computing"]
+  failure_for_intents: ["sff_build"]
+  failure_severity: "BLOCK"
+  failure_type: "LINEAR_DEGRADATION"
+```
+
+### НОРМА: aio_liquid_standard
+```yaml
+aio_liquid_standard:
+  steel_man_desc: "AIO 240–280мм. Лучше воздушных кулеров для импульсных нагрузок (burst) за счёт теплоёмкости жидкости. Эстетика, доступ к RAM."
+  failure_mode_desc: "Риск протечки (низкий, но не нулевой). Помпа — дополнительная точка отказа. Срок службы 5–7 лет (против 15+ у воздуха)."
+  optimal_for_intents: ["aaa_4k_ultra", "video_editing_4k", "streaming", "silent_build"]
+  failure_for_intents: ["home_server_24_7"]
+  failure_severity: "WARN"
+  failure_type: "LINEAR_DEGRADATION"
+```
+
+### ЭКСТРЕМУМ: aio_liquid_high_tdp
+```yaml
+aio_liquid_high_tdp:
+  steel_man_desc: "AIO 360мм+. Единственный способ охлаждать CPU с TDP > 200W без троттлинга под sustained нагрузкой."
+  failure_mode_desc: "Требует корпус с поддержкой 360мм радиатора. Помпа + 3 вентилятора = дополнительные точки отказа. Цена выше воздушных кулеров в 2–3 раза."
+  optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation", "video_editing_8k"]
+  failure_for_intents: ["sff_build", "office_productivity"]
+  failure_severity: "BLOCK"
+  failure_type: "LINEAR_DEGRADATION"
+```
+
+---
+
 ## Сводка: что изменилось с v3.2
 
 | Изменение | v3.2 | v3.3 |

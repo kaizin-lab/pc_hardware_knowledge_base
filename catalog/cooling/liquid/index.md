@@ -13,6 +13,8 @@ last_updated: "2025-06-03"
 | Файл | Тип | Радиатор | Целевые CPU |
 |---|---|---|---|
 | `aio.md` | AIO (All-In-One) | 240/280/360/420 мм | 200W+ TDP |
+| `arctic-liquid-freezer-iii-240.md` | AIO 240 мм | 240 мм (277×120×38) | до 200W sustained |
+| `arctic-liquid-freezer-iii-360.md` | AIO 360 мм | 360 мм (398×120×38) | до 300W sustained |
 
 ## Ключевые параметры
 
