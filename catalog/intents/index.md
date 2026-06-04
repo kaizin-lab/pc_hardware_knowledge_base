@@ -32,12 +32,37 @@ links:
 
 ## Карта интентов
 
-| Интент | Домен | Файл | Ключевое ограничение |
-|---|---|---|---|
-| Киберспорт 360Hz | A: Гейминг | `esports_competitive_360hz.yaml` | CPU frame time, 3D V-Cache mandatory |
-| AAA 4K Unrestricted | A: Гейминг | `aaa_gaming_4k_unrestricted.yaml` | VRAM ≥16GB, 256-bit bus minimum |
-| AI Inference Local | B: Compute | `ai_inference_local_pro.yaml` | VRAM ≥12GB, тензорные ядра |
-| Data Engineering | B: Compute | `data_engineering_spark_local.yaml` | RAM ≥64GB, DRAM SSD mandatory |
+| Интент | Домен | Файл | Тип | Ключевое ограничение |
+|---|---|---|---|---|
+| AAA Gaming (все разрешения) | A: Гейминг | `aaa_gaming_base.yaml` | **Абстрактный (параметризуемый)** | Профиль GPU, VRAM и MAUT-веса — из resolution+settings |
+| Киберспорт 360Hz | A: Гейминг | `esports_competitive_360hz.yaml` | Конкретный | CPU frame time, 3D V-Cache mandatory |
+| AI Inference Local | B: Compute | `ai_inference_local_pro.yaml` | Конкретный | VRAM ≥12GB, тензорные ядра |
+| Data Engineering | B: Compute | `data_engineering_spark_local.yaml` | Конкретный | RAM ≥64GB, DRAM SSD mandatory |
+| SFF Compact Portable | C: Physical | `sff_compact_itx_portable.yaml` | Конкретный | SFX PSU, GPU ≤320mm, cooler ≤155mm |
+
+### Абстрактный интент AAA Gaming Base
+
+Покрывает ВСЕ разрешения через параметризацию. Агент НЕ использует
+`mandatory_steel_man` напрямую (он пустой). Вместо этого:
+
+1. Парсит NL-запрос → `{resolution, settings, target_fps}`
+2. Вызывает `scripts/pcbo/dynamic_constraints.py::evaluate_dynamic_constraints()`
+3. Получает конкретные профили, VRAM, MAUT-веса под это разрешение
+
+**Примеры (7 сценариев):**
+
+| Разрешение | Настройки | FPS | VRAM | GPU-профиль | Bandwidth |
+|---|---|---|---|---|---|
+| 1080p | high | 60 | 8 GB | mainstream_efficiency | WARN |
+| 1080p | ultra | 120 | 10 GB | balanced_performance | WARN |
+| 1440p | high | 60 | 12 GB | balanced_performance | WARN |
+| 1440p | ultra | 60 | 14 GB | balanced_performance | ⚠️ BLOCK |
+| 4K | high | 60 | 16 GB | enthusiast_unrestricted | ⚠️ BLOCK |
+| 4K | ultra | 60 | 18 GB | enthusiast_unrestricted | ⚠️ BLOCK |
+| 4K | path_tracing | 60 | 20 GB | enthusiast_unrestricted | ⚠️ BLOCK |
+
+**Устаревший:** `aaa_gaming_4k_unrestricted.yaml` — заменён на `aaa_gaming_base`.
+Оставлен для обратной совместимости, но новые сборки — только через base.
 | SFF Compact Portable | C: Physical | `sff_compact_itx_portable.yaml` | SFX PSU, GPU ≤320mm, cooler ≤155mm |
 
 ## Как использовать
