@@ -15,7 +15,7 @@ specs:
   certification: "80 Plus Gold"
   cabling: "модульные"
   fan: "135mm FDB"
-  acoustic_profile: "active_low_noise"  # FDB подшипник, тихий, но semi-passive порог высокий
+  acoustic_profile: "active_low_noise"  # FDB подшипник, тихий (~20 dBA), но без fan-stop — всегда вращается
   protections: ["OPP", "OVP", "UVP", "SCP", "OTP"]
   12v_2x6: true
   12v_2x6_power: "450W (native)"

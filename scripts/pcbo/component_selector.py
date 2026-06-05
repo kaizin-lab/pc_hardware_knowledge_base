@@ -56,6 +56,7 @@ class Candidate:
     margin: int = 0          # capability − min_capability (GPU only)
     maut_score: float = 0.0
     rationale: str = ""
+    warnings: list = field(default_factory=list)  # completeness / ontology WARN messages
 
 
 def _margin_check(profiles: dict, cmp_type: str, min_capability: str | None) -> tuple[int, int]:
@@ -478,9 +479,20 @@ def select_psu(
                 continue
 
         # Acoustic filter
+        ACOUSTIC_RANK = {"semi_passive": 1, "active_low_noise": 2, "active_standard": 3}
+        psu_acoustic = specs.get("acoustic_profile")
+        # Completeness check: PSU is acoustic_emitter per domain_impact_matrix →
+        # if KB entry missing acoustic_profile → assign worst-case, record WARN
+        completeness_warnings = []
+        if psu_acoustic is None:
+            psu_acoustic = "active_standard"  # worst-case per completeness_rules
+            completeness_warnings.append(
+                f"KB entry '{f.stem}' missing acoustic_profile — "
+                f"assigned worst-case 'active_standard' (rank 3). "
+                f"Update KB entry with actual acoustic data."
+            )
+
         if max_acoustic_class:
-            ACOUSTIC_RANK = {"semi_passive": 1, "active_low_noise": 2, "active_standard": 3}
-            psu_acoustic = specs.get("acoustic_profile", "active_standard")
             max_rank = ACOUSTIC_RANK.get(max_acoustic_class, 3)
             psu_rank = ACOUSTIC_RANK.get(psu_acoustic, 3)
             if psu_rank > max_rank:
@@ -498,7 +510,8 @@ def select_psu(
             specs={"wattage": int(wattage), "atx_version": specs.get("atx_version", "")},
             profiles=[p for p in profiles if profiles[p].get("criteria_met", True)],
             margin=margin,
-            rationale=f"{int(wattage)}W {specs.get('atx_version', '')}, margin={margin:+d}"
+            rationale=f"{int(wattage)}W {specs.get('atx_version', '')}, margin={margin:+d}",
+            warnings=completeness_warnings
         ))
 
     candidates.sort(key=lambda c: c.price)

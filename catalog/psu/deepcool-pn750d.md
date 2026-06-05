@@ -20,7 +20,7 @@ specs:
   pcie_8pin: "4× 8-pin (2 кабеля)"
   fan_size: "120 мм"
   fan_bearing: "Hydro Bearing"
-  acoustic_profile: "active_low_noise"  # Hydro Bearing, semi-passive при <150W
+  acoustic_profile: "active_low_noise"  # Hydro Bearing, без fan-stop, всегда вращается. Тихий (~22 dBA) но не 0 RPM
   pfc: "Активный"
   topology: "DC-DC"
   protections: "OVP, UVP, OPP, OTP, SCP"
