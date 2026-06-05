@@ -6,6 +6,12 @@ vendor: "amd"
 status: "draft"
 tags: ["amd", "zen5", "am5", "ddr5", "65w", "igpu", "8-core"]
 last_updated: "2026-06-03"
+price_ru:
+  min: 25000
+  median: 28000
+  max: 32000
+  source: "price.ru"
+  date: "2026-06-04"
 links:
   platform: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"

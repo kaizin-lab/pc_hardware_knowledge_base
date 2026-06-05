@@ -6,6 +6,12 @@ vendor: "amd"
 status: "draft"
 tags: ["amd", "zen4", "am5", "ddr5", "105w", "igpu", "6-core", "no-box-cooler"]
 last_updated: "2026-06-03"
+price_ru:
+  min: 16000
+  median: 18000
+  max: 21000
+  source: "price.ru"
+  date: "2026-06-04"
 links:
   platform: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
