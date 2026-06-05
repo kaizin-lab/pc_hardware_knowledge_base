@@ -440,8 +440,17 @@ def select_psu(
     sfx_required: bool = False,
     budget_remaining: int = 999999,
     min_capability: str | None = None,
+    max_acoustic_class: str | None = None,  # "semi_passive" | "active_low_noise" | None
 ) -> list[Candidate]:
-    """STATE_5b: подбор БП с profile matching."""
+    """STATE_5b: подбор БП с profile matching и акустическим фильтром.
+
+    max_acoustic_class — максимально допустимый уровень шума:
+      - "semi_passive": только БП с fan-stop (0 dBA в idle)
+      - "active_low_noise": допускается тихий вентилятор (FDB/Hydro)
+      - None (default): без фильтрации
+    Фильтр relative: semi_passive < active_low_noise < active_standard.
+    При max_acoustic_class="active_low_noise" пропускаются semi_passive И active_low_noise.
+    """
     candidates = []
     psu_dir = CATALOG / "psu"
     if not psu_dir.exists():
@@ -466,6 +475,15 @@ def select_psu(
         profiles = fm.get("profiles", {})
         if atx3x_required:
             if "atx_3x_transient_capable" not in profiles:
+                continue
+
+        # Acoustic filter
+        if max_acoustic_class:
+            ACOUSTIC_RANK = {"semi_passive": 1, "active_low_noise": 2, "active_standard": 3}
+            psu_acoustic = specs.get("acoustic_profile", "active_standard")
+            max_rank = ACOUSTIC_RANK.get(max_acoustic_class, 3)
+            psu_rank = ACOUSTIC_RANK.get(psu_acoustic, 3)
+            if psu_rank > max_rank:
                 continue
 
         comp_level, margin = _margin_check(profiles, "psu", min_capability)

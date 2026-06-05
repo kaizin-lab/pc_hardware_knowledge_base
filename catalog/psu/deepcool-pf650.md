@@ -14,6 +14,7 @@ specs:
   certification: "80 Plus Bronze"
   cabling: "фиксированные (non-modular)"
   fan: "120mm"
+  acoustic_profile: "active_standard"  # бюджетный вентилятор, всегда audible
   protections: ["OPP", "OVP", "UVP", "SCP"]
   12v_rail_w: 588
   12v_2x6: false

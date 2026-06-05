@@ -20,6 +20,7 @@ specs:
   pcie_8pin: "4× 8-pin (2 кабеля)"
   fan_size: "120 мм"
   fan_bearing: "Hydro Bearing"
+  acoustic_profile: "active_low_noise"  # Hydro Bearing, semi-passive при <150W
   pfc: "Активный"
   topology: "DC-DC"
   protections: "OVP, UVP, OPP, OTP, SCP"
@@ -35,7 +36,6 @@ verdict: "Прямой наследник PK750D. 750W Gold за 7 000 ₽ — �
 
 profiles:
   atx_3x_transient_capable:
-    capability_level: 2
     capability_level: 2
     steel_man_desc: "750W Gold с ATX 3.1 и родным 12V-2x6. Достаточен для RTX 5070 Ti / RX 9070 XT. DC-DC топология, полный набор защит. 5 лет гарантии."
     failure_mode_desc: "Немодульный — все кабели жёстко выведены, избыточные кабели занимают место. Для RTX 5080 — на пределе по ваттажу при sustained load. Нет 80+ Platinum эффективности."

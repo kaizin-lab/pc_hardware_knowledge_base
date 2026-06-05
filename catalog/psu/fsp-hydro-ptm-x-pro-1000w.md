@@ -14,6 +14,7 @@ specs:
   certification: "80 Plus Platinum"
   cabling: "полностью модульные"
   fan: "135mm FDB"
+  acoustic_profile: "semi_passive"  # Platinum, premium — fan stop до ~300W
   protections: ["OPP", "OVP", "UVP", "SCP", "OTP", "OCP"]
   12v_2x6: true
   12v_2x6_power: "600W (native)"
