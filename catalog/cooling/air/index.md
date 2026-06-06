@@ -3,7 +3,7 @@ id: "air-cooling-index"
 type: "index"
 title: "Воздушное охлаждение"
 status: "verified"
-last_updated: "2025-06-03"
+last_updated: "2026-06-06"
 ---
 
 # Воздушное охлаждение
@@ -15,6 +15,8 @@ last_updated: "2025-06-03"
 | `tower-coolers.md` | Башенные кулеры | 150–250W | 155–165 мм |
 | `deepcool-ak400.md` | Односекционная башня | 220W | 155 мм |
 | `deepcool-ak620.md` | Двухбашенный | 260W | 160 мм |
+| `be-quiet-dark-rock-tf-2.md` | Top-flow dual-heatsink | 230W | 134 мм |
+| `noctua-nh-c14s.md` | Top-flow C-type | ~150W | 115/82 мм |
 
 ## Ключевые параметры
 
