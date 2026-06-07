@@ -3,7 +3,7 @@ id: "psu-index"
 type: "index"
 title: "Блоки питания"
 status: "draft"
-last_updated: "2026-06-05"
+last_updated: "2026-06-07"
 ---
 
 # Блоки питания (PSU)
@@ -26,6 +26,7 @@ last_updated: "2026-06-05"
 ### Silent / Semi-Passive (semi_passive)
 Fan-stop при низкой нагрузке → 0 dBA в простое. Для сборок с требованием тишины.
 
+- `seasonic-focus-gx-650.md` — Seasonic Focus GX-650 — 650W — ATX 3.0 — 80+ Gold — ~9 000 ₽
 - `be-quiet-pure-power-12m-750w.md` — be quiet! Pure Power 12M — 750W — ATX 3.1 — 80+ Gold — ~10 000 ₽
 - `corsair-rm750e.md` — Corsair RM750e — 750W — ATX 3.0 — 80+ Gold — ~9 500 ₽
 - `seasonic-focus-gx-750.md` — Seasonic Focus GX — 750W — ATX 3.0 — 80+ Gold — ~12 000 ₽
@@ -34,6 +35,7 @@ Fan-stop при низкой нагрузке → 0 dBA в простое. Дл�
 ### Flagship / Workstation (semi_passive, high wattage)
 Для RTX 5080/5090 и круглосуточной нагрузки.
 
+- `seasonic-prime-tx-850.md` — Seasonic Prime TX-850 — 850W — ATX 3.0 — 80+ Titanium — ~25 000 ₽
 - `fsp-hydro-ptm-x-pro-1000w.md` — FSP Hydro PTM X Pro — 1000W — ATX 3.1 — 80+ Platinum — ~20 000 ₽
 
 ## Acoustic-легенда (как читать `acoustic_profile`)

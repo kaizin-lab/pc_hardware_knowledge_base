@@ -26,32 +26,34 @@ links:
 ## Структура
 
 | Директория | Entry | Охват |
-|---|---|---|
-| `cpu/` | **17** | AMD Zen 4 (8) + Zen 5 (3) + Intel Arrow Lake (6) |
+|---|---|---|---|
+| `cpu/` | **22** | AMD Zen 4 (8) + Zen 5 (5) + Intel Arrow Lake (6) + Raptor Lake Refresh (3) |
 | `gpu/` | **13** | NVIDIA 50xx (6) + 4060 + AMD RX 9000 (3) + 7600 + Intel Arc B (2) |
-| `motherboard/` | **5** | AM5: Tomahawk B650, B650M S2H, B850 Riptide, X870 Steel Legend + LGA1851: Z890 Pro RS |
-| `memory/` | **5** | DDR5: обзор + Ripjaws S5 (6000 CL30) + 6400 CL32 + 5200 JEDEC + DDR4-обзор |
-| `storage/nvme/` | **4** | NVMe: Kingston NV3, Samsung 990 Pro, WD SN850X, Crucial T700 |
-| `psu/` | **4** | Deepcool PN750D, PF650, PN850D, FSP Hydro PTM X Pro 1000W |
-| `cooling/` | **4** | Air: AK400, AK620. Liquid: LF3 240, LF3 360 |
-| `case/` | **2** | Deepcool CC560, Be Quiet Pure Base 500 |
-| `intents/` | **5** | Esports 360Hz, AAA 4K, AI Inference, Data Eng, SFF Compact |
+| `motherboard/` | **14** | AM5 (11): ProArt X870E, ProArt B650E, B650 Eagle, B650M S2H, B650 Tomahawk, B850 Riptide, B650E PG Riptide, B650 Creator, X870 Steel Legend, X670E Taichi, X670E Aorus Master. LGA1700 (3): ProArt Z790-E, Z790 Taichi, MEG Z790 Ace. | LGA1851: Z890 Pro RS |
+| `memory/` | **5** | DDR5: обзор + Ripjaws S5 (6000 CL30) + 6400 CL32 + 5200 JEDEC + DDR5-5600 CL36 |
+| `storage/nvme/` | **7** | NVMe: NV3 1TB, KC3000 1TB, 990 Pro 2TB, SN850X 2TB, T700 1TB, MP700 1TB, **T700 2TB** |
+| `psu/` | **10** | Semi-passive (7): PP12M 750W, RM750e, Focus GX-650/750, Straight Power 12 750W, **Prime TX-850**, Hydro PTM X Pro 1000W. Active (3): PN750D, PN850D, PF650 |
+| `cooling/` | **10** | Air (7): AK400, AK620, Dark Rock 4, Dark Rock TF 2, NH-C14S, NH-D15, NH-P1. Liquid (3): LF3 240, **LF3 280**, LF3 360 |
+| `case/` | **4** | CC560, Pure Base 500, Define 7, Dark Base 701 |
+| `audio-interface/` | **8** | RME (2), MOTU (2), Focusrite (2), UA Apollo (2) — T0-T3 |
+| `intents/` | **6** | Esports 360Hz, AAA 4K, AI Inference, Data Eng, SFF Compact, **DAW Zero-DPC** |
 
-**Всего: 54 entry + 5 интентов = 59 артефактов**
+**Всего: 94 entry + 6 интентов = 100 артефактов**
 
 ## Прогресс наполнения
 
 - ✅ **GPU** — полная линейка NVIDIA 50xx, AMD RX 9000/7000, Intel Arc Battlemage
-- ✅ **CPU** — все актуальные Zen 4, Zen 5, Arrow Lake
-- ✅ **Материнские платы** — AM5 (4) + LGA1851 (1)
-- ✅ **Память** — DDR5 (4) + DDR4-обзор
-- ✅ **Накопители** — NVMe Gen4/Gen5 (4)
-- ✅ **БП** — ATX 3.x (3) + ATX 2.x бюджет (1)
-- ✅ **Охлаждение** — воздушное (2) + СЖО (2)
-- ✅ **Корпуса** — бюджет mesh (1) + sound-dampened (1)
-- ✅ **Интенты** — 5 полярных (esports, 4K, AI, data, SFF)
+- ✅ **CPU** — все актуальные Zen 4, Zen 5, Arrow Lake + Raptor Lake Refresh (i5/i7/i9 14th Gen)
+- ✅ **Материнские платы** — AM5 (8) + LGA1851 (1)
+- ✅ **Память** — DDR5 (5) + DDR4-обзор
+- ✅ **Накопители** — NVMe Gen4/Gen5 (6)
+- ✅ **БП** — ATX 3.x (8) + ATX 2.x бюджет (1)
+- ✅ **Охлаждение** — воздушное (7) + СЖО (3)
+- ✅ **Корпуса** — бюджет mesh (1) + sound-dampened (3)
+- ✅ **Аудиоинтерфейсы** — полный охват T0-T3 (8)
+- ✅ **Интенты** — 6 полярных (esports, 4K, AI, data, SFF, **DAW**)
 
-**Все категории покрыты!** Дальнейшее наполнение — точечное, под конкретные gaps в intent coverage.
+**Все категории покрыты!** DAW-домен: 33 новых entry + 3 концепта + 1 референс + 1 intent + 2 workload profiles. LGA1700 (3 MB) добавлен.
 
 ## Сквозные концепты
 
@@ -63,6 +65,9 @@ links:
 - `pcie-lanes.md` — линии PCIe, конфликты, sharing groups
 - `memory-timings.md` — тайминги, ранги, MCLK:UCLK
 - `power-budget.md` — бюджет мощности, пики потребления, ATX-спецификации
+- `dpc-latency.md` — DPC Latency: классы, источники, измерение (аудио-домен)
+- `audio-interface-drivers.md` — Driver Quality Taxonomy T0-T3
+- `daw-acoustic-class.md` — A0_Studio: расширение акустической модели
 
 ## Скрипты
 

@@ -14,6 +14,8 @@ last_updated: "2026-06-04"
 |---|---|---|---|---|
 | `deepcool-cc560.md` | Mid Tower ATX | Высокий (mesh) | ~3 000 ₽ | 4 вентилятора в комплекте, клиренс кулера 155 мм ⚠️ |
 | `be-quiet-pure-base-500.md` | Mid Tower ATX | Ограниченный (глухая) | ~7 500 ₽ | Битумная шумоизоляция, виброразвязка PSU |
+| `fractal-define-7.md` | Mid Tower ATX | Ограниченный (глухая + ModuVent) | ~14 000 ₽ | Битумные маты все панели, 185 мм cooler |
+| `be-quiet-dark-base-701.md` | Full Tower ATX | Высокий (mesh) + звукоизоляция | ~16 000 ₽ | 3× Silent Wings 4 140mm, mesh-перед |
 
 ## Параметры выбора
 

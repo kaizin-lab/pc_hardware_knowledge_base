@@ -12,6 +12,7 @@ links:
   case_compatibility: "catalog/case/"
 specs:
   type: "air_dual_tower"
+  layout_type: "tower"
   height_mm: 160
   width_mm: 138
   depth_mm: 110
@@ -19,6 +20,10 @@ specs:
   heatpipes: "6×6mm"
   fans: "2×120mm PWM (500–1850 RPM)"
   sockets: ["AM5", "AM4", "LGA1700", "LGA1851", "LGA1200"]
+  # 3D Envelope (v1.4 — keep-out zones)
+  bottom_clearance_mm: 40
+  horizontal_outlay_radius_mm: 69
+  ram_clearance_mm: 40
 price_ru:
   min: 5200
   median: 6000

@@ -5,7 +5,7 @@ title: "MSI MAG B650 TOMAHAWK WIFI"
 vendor: "msi"
 status: "verified"
 tags: ["am5", "b650", "ddr5", "atx", "wifi-6e", "mid-range", "overclocking"]
-last_updated: "2025-11-12"
+last_updated: "2026-06-07"
 links:
   socket: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
@@ -13,6 +13,11 @@ links:
   cpu_recommended: "catalog/cpu/amd-ryzen-7000.md"
   competitors:
     - "catalog/motherboard/am5/asus-tuf-b650.md"
+price_ru:
+  min: 15000
+  median: 17000
+  max: 20000
+  source: "DAW reference, June 2026"
     - "catalog/motherboard/am5/gigabyte-aorus-b650.md"
 specs:
   socket: "AM5"
@@ -27,6 +32,9 @@ specs:
   m2_slots: "3× M.2 · M2_1: CPU PCIe 5.0 x4, M2_2: chipset PCIe 4.0 x4, M2_3: chipset PCIe 4.0 x4"
   sata_ports: 6
   lan: "2.5G Realtek RTL8125BG"
+  # 3D Envelope (v1.4 — keep-out zones)
+  vrm_heatsink_height_max_mm: 42
+  ram_slot_offset_x_mm: 55
   wifi: "Wi-Fi 6E (802.11ax, 6GHz, 2×2 MIMO)"
   bluetooth: "5.3"
   audio: "Realtek ALC4080 (SNR 120dB, 32-bit/192kHz)"

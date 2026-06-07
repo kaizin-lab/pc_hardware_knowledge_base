@@ -22,6 +22,9 @@ specs:
   m2_slots: "1× PCIe 5.0 x4, 2× PCIe 4.0 x4"
   sata_ports: 4
   network: "Realtek RTL8125BG 2.5GbE, Wi-Fi 6E"
+  # 3D Envelope (v1.4 — keep-out zones)
+  vrm_heatsink_height_max_mm: 44
+  ram_slot_offset_x_mm: 55
   audio: "Realtek ALC897"
   flashback: true
   bifurcation_risk: true

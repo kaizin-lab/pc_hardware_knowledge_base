@@ -19,9 +19,12 @@ specs:
   vrm: "16+2+1 (80A SPS)"
   memory: "4× DDR5, до 8200+ MT/s"
   pcie_slots: "1× PCIe 5.0 x16 (электрически x16 всегда)"
-  m2_slots: "1× PCIe 5.0 x4, 3× PCIe 4.0 x4 (без отъёма линий у GPU)"
+  m2_slots: "1× PCIe 5.0 x4, 3× PCIe 4.0 x4"
   sata_ports: 4
-  network: "Realtek 5GbE, Wi-Fi 7"
+  network: "Realtek RTL8125BG 2.5GbE, Wi-Fi 7"
+  # 3D Envelope (v1.4 — keep-out zones)
+  vrm_heatsink_height_max_mm: 45
+  ram_slot_offset_x_mm: 55
   audio: "Realtek ALC4080"
   flashback: true
   bifurcation_risk: false

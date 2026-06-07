@@ -10,12 +10,18 @@ links:
   concept_power: "concepts/power-budget.md"
   case_compatibility: "catalog/case/"
 specs:
-  type: "air_top_flow_dual"
+  type: "air_tower_standard"
+  layout_type: "top_flow"
   height_mm: 134
   tdp_rating_w: 230
   heatpipes: "6×6mm"
-  fans: "1× Silent Wings 3 135mm PWM + 1× Silent Wings 135mm PWM"
-  noise_dba:
+  fans: "1×Silent Wings 3 135mm + 1×Silent Wings 135mm"
+  sockets: ["AM5", "AM4", "LGA1700", "LGA1851"]
+  # 3D Envelope (v1.4 — keep-out zones)
+  bottom_clearance_mm: 40
+  horizontal_outlay_radius_mm: 80
+  ram_clearance_mm: 40
+  mounting_note: "Оптимальная ориентация: изгиб тепловых трубок в сторону задней панели" 
     min: 12
     max: 27.1
   sockets: ["AM5", "AM4", "LGA1700", "LGA1851", "LGA1200"]

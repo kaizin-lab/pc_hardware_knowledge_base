@@ -39,6 +39,7 @@ links:
 | Data Engineering | B: Compute | `data_engineering_base.yaml` | **Абстрактный** | dataset_size, workload |
 | Киберспорт 360Hz | A: Гейминг | `esports_competitive_360hz.yaml` | Конкретный | — |
 | SFF Compact Portable | C: Physical | `sff_compact_itx_portable.yaml` | Конкретный | — |
+| **DAW Zero-DPC Latency** | **D: Audio** | `daw_zero_dpc_latency.yaml` | **Конкретный** | — |
 
 **Устаревшие (удалены):**
 - ~~`aaa_gaming_4k_unrestricted.yaml`~~ → `aaa_gaming_base`

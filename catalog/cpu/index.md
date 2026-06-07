@@ -3,12 +3,12 @@ id: "cpu-index"
 type: "index"
 title: "Процессоры"
 status: "verified"
-last_updated: "2025-06-03"
+last_updated: "2026-06-07"
 ---
 
 # Процессоры (CPU)
 
-Актуальные процессоры для настольных ПК. Только последние поколения: Zen 4/5 (AM5) и Arrow Lake (LGA1851).
+Актуальные процессоры для настольных ПК. Zen 4/5 (AM5), Arrow Lake (LGA1851), Raptor Lake Refresh (LGA1700).
 
 ## Карта
 
@@ -29,7 +29,16 @@ last_updated: "2025-06-03"
 |---|---|---|---|---|---|---|
 | `amd-ryzen-5-9600x.md` | R5 9600X | 6C/12T | 65W | RDNA2 | — | ~23 800 |
 | `amd-ryzen-7-9700x.md` | R7 9700X | 8C/16T | 65W | RDNA2 | — | ~32 400 |
+| `amd-ryzen-9-9900x.md` | R9 9900X | 12C/24T | 120W | RDNA2 | — | ~33 500 |
 | `amd-ryzen-7-9800x3d.md` | R7 9800X3D | 8C/16T | 120W | RDNA2 | ✓ | ~51 400 |
+| `amd-ryzen-9-9950x.md` | R9 9950X | 12C/24T | 170W | RDNA2 | — | ~40 400 |
+
+### Intel LGA1700 — Raptor Lake (Refresh)
+| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
+|---|---|---|---|---|---|
+| `intel-core-i5-14600k.md` | i5-14600K | 6P+8E/20T | 125W | UHD 770 | ~22 000 |
+| `intel-core-i7-14700k.md` | i7-14700K | 8P+12E/28T | 253W | UHD 770 | ~45 000 |
+| `intel-core-i9-14900k.md` | i9-14900K | 8P+16E/32T | 253W | UHD 770 | ~39 999–46 990 |
 
 ### Intel LGA1851 — Arrow Lake
 | Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
@@ -49,12 +58,15 @@ last_updated: "2025-06-03"
 
 1. **Бюджетный гейминг** → R5 7500F (нет iGPU, но дешевле всех) или Ultra 5 225F
 2. **Киберспорт/max FPS** → 7800X3D или 9800X3D (3D V-Cache — король frametime)
-3. **AI/рабочая станция** → R9 7950X (16 ядер) или Ultra 9 285K (24 ядра)
+3. **AI/рабочая станция** → R9 9950X (Zen 5, 12C/24T, AVX-512), R9 7950X (16 ядер), Ultra 9 285K (24 ядра) или i9-14900K (8P+16E/32T)
 4. **Тихая сборка** → TDP 65W: R5 7600, R7 7700, R9 7900, Ultra 5 225F, Ultra 7 265F
+5. **DAW / видеомонтаж 4K** → R9 9950X (лучший для DAW, +18% к i9-285K в DSP), R9 9900X (12C Zen 5, дешевле 9950X) или i7-14700K (20 потоков + QuickSync) / Ultra 7 265K — отличный баланс ядер и IPC
+6. **Стриминг + гейминг** → i5-14600K / i7-14700K / i9-14900K: E-ядра берут OBS, P-ядра — игру
 
 ## Связи
 
 - Все AM5 → `../motherboard/am5/`
 - Все LGA1851 → `../motherboard/lga1851/` (если создана)
+- Все LGA1700 → `../motherboard/lga1700/` (если создана)
 - Память → `../memory/`
 - Сквозной → `../../concepts/power-budget.md`

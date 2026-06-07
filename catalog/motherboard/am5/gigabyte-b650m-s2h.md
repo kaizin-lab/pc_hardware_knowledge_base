@@ -26,6 +26,9 @@ specs:
   m2_slots: "1× M.2 PCIe 5.0 x4 (CPU)"
   sata_ports: 4
   lan: "1G Realtek RTL8111H"
+  # 3D Envelope (v1.4 — keep-out zones)
+  vrm_heatsink_height_max_mm: 35
+  ram_slot_offset_x_mm: 50
   wifi: null
   bluetooth: null
   audio: "Realtek ALC897 (старый бюджетный кодек)"

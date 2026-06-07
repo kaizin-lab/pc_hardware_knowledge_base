@@ -13,12 +13,17 @@ links:
 specs:
   type: "air_tower"
   height_mm: 155
-  width_mm: 120
-  depth_mm: 45
+  type: "air_tower"
+  layout_type: "tower"
+  height_mm: 155
   tdp_rating_w: 220
   heatpipes: "4×6mm"
   fans: "1×120mm PWM (500–1850 RPM)"
   sockets: ["AM5", "AM4", "LGA1700", "LGA1851", "LGA1200"]
+  # 3D Envelope (v1.4 — keep-out zones)
+  bottom_clearance_mm: 40
+  horizontal_outlay_radius_mm: 60
+  ram_clearance_mm: 40
 price_ru:
   min: 2500
   median: 3000
