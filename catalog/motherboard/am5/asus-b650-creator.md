@@ -24,6 +24,7 @@ specs:
   m2_slots: 3
   m2_gen5: 0
   m2_gen4: 3
+  m2_topology: "M2_1: CPU PCIe 4.0 x4, M2_2: PCH PCIe 4.0 x4, M2_3: PCH PCIe 4.0 x4"
   pcie_5_x16: false
   pcie_4_x16: true
   vrm: "12+2 фазы, 60A DrMOS"
