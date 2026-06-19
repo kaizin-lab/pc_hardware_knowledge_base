@@ -13,6 +13,7 @@ Usage:
     python query.py --status verified --type cpu
     python query.py --list-types
     python query.py --id msi-b650-tomahawk
+    python query.py --search "RTX 5060"
 
 Output: list of relative file paths (one per line).
 """
@@ -128,6 +129,14 @@ def matches(entry: dict[str, Any], args: argparse.Namespace) -> bool:
         if not found:
             return False
 
+    # Fuzzy search: match substring in title or id (case-insensitive)
+    if args.search:
+        query = args.search.lower()
+        title = entry.get("title", "").lower()
+        eid = entry.get("id", "").lower()
+        if query not in title and query not in eid:
+            return False
+
     return True
 
 
@@ -142,6 +151,7 @@ def main():
     parser.add_argument("--socket", help="Filter by socket (am5, lga1700, ...)")
     parser.add_argument("--id", help="Find exact entry by id")
     parser.add_argument("--links-to", help="Find entries that link TO the given relative path")
+    parser.add_argument("--search", help="Fuzzy search: match substring in title or id (case-insensitive)")
     parser.add_argument("--list-types", action="store_true", help="List all component types in the KB")
     parser.add_argument("--list-tags", action="store_true", help="List all tags")
     parser.add_argument("--list-vendors", action="store_true", help="List all vendors")
