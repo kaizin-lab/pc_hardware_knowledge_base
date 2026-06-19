@@ -7,7 +7,7 @@ status: "verified"
 tags: ["nvidia", "blackwell", "gb206", "tsmc-4n", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "compute-stagnation", "local-llm-viable", "frametime-gaming-1080p"]
 last_updated: "2026-06-19"
 links:
-  predecessor: "catalog/gpu/nvidia-rtx-4060.md"
+  predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
   competitor_amd: "catalog/gpu/amd-rx-9060-xt.md"
   memory_type: "catalog/memory/ddr5.md"
   concept_pcie: "concepts/pcie-lanes.md"
