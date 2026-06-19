@@ -3,7 +3,7 @@ id: "gpu-index"
 type: "index"
 title: "Видеокарты"
 status: "verified"
-last_updated: "2025-06-03"
+last_updated: "2026-06-19"
 ---
 
 # Видеокарты (GPU)
@@ -18,7 +18,7 @@ last_updated: "2025-06-03"
 | Файл | Модель | VRAM | TBP | Цена (₽) | Позиционирование |
 |---|---|---|---|---|---|
 | `nvidia-rtx-5060.md` | RTX 5060 | 8 GB | 145W | ~35 000 | 1080p High |
-| `nvidia-rtx-5060-ti.md` | RTX 5060 Ti | 16 GB | 180W | ~37 500 | 1440p Entry |
+| `nvidia-rtx-5060-ti.md` | RTX 5060 Ti | 16 GB | 180W | ~52 000 | 1440p Entry |
 | `nvidia-rtx-5070.md` | RTX 5070 | 12 GB | 250W | ~54 000 | 1440p High |
 | `nvidia-rtx-5070-ti.md` | RTX 5070 Ti | 16 GB | 300W | ~74 000 | 4K Entry / 1440p Ultra |
 | `nvidia-rtx-5080.md` | RTX 5080 | 16 GB | 360W | ~108 000 | 4K High |
