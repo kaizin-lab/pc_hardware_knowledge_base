@@ -4,17 +4,17 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5060 Ti 16GB"
 vendor: "nvidia"
 status: "verified"
-tags: ["nvidia", "blackwell", "gb206", "tsmc-4np", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "compute-stagnation", "local-llm-viable", "frametime-gaming-1080p"]
-last_updated: "2026-06-03"
+tags: ["nvidia", "blackwell", "gb206", "tsmc-4n", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "compute-stagnation", "local-llm-viable", "frametime-gaming-1080p"]
+last_updated: "2026-06-19"
 links:
-  predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
+  predecessor: "catalog/gpu/nvidia-rtx-4060.md"
   competitor_amd: "catalog/gpu/amd-rx-9060-xt.md"
   memory_type: "catalog/memory/ddr5.md"
   concept_pcie: "concepts/pcie-lanes.md"
   concept_power: "concepts/power-budget.md"
 specs:
   gpu: "GB206 (Blackwell)"
-  lithography: "TSMC 4NP (5nm)"
+  lithography: "TSMC 4N (5nm)"
   cuda_cores: 4608
   boost_clock: "2.57 GHz"
   vram: "16 GB GDDR7 (128-bit)"
@@ -25,7 +25,7 @@ specs:
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$429"
   msrp_8gb: "$379"
-  engineering_notes: "GB206 на TSMC 4NP. CUDA-ядер 4608 — всего +6% над AD106: архитектурный застой. Главный двигатель — GDDR7: 448 GB/s на 128-bit (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — минимальный порог для LLM. DLSS 4 MFG — маркетинг для карты этого класса: если базовый FPS <60, MFG даёт плавность но не отзывчивость. 8GB-версия — инженерно несостоятельна."
+  engineering_notes: "GB206 на TSMC 4N. CUDA-ядер 4608 — всего +6% над AD106: архитектурный застой. Главный двигатель — GDDR7: 448 GB/s на 128-bit (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — минимальный порог для LLM. DLSS 4 MFG — маркетинг для карты этого класса: если базовый FPS <60, MFG даёт плавность но не отзывчивость. 8GB-версия — инженерно несостоятельна."
 profiles:
   balanced_performance_gpu:
     power_envelope: "mid"
@@ -64,7 +64,7 @@ price_ru:
   median: 52000
   max: 65640
   source: "price.ru"
-  date: "2026-06-03"
+  date: "2026-06-19"
 verdict: "Прирост над RTX 4060 Ti минимален (+7% FP32). Выбор между 8GB и 16GB критичен — младшая версия теряет до 15% FPS в 4K и местами в 1080p. 16GB — осмысленный минимум."
 ---
 
@@ -72,7 +72,7 @@ verdict: "Прирост над RTX 4060 Ti минимален (+7% FP32). Вы�
 
 ## Архитектура и позиционирование
 
-RTX 5060 Ti — дебютный продукт на GPU GB206, самом компактном чипе линейки Blackwell. Производится по техпроцессу TSMC 4NP (оптимизированный 5nm), тому же что и RTX 40-й серии. Единственный двигатель роста производительности — архитектурные усовершенствования Blackwell.
+RTX 5060 Ti — дебютный продукт на GPU GB206, самом компактном чипе линейки Blackwell. Производится по техпроцессу TSMC 4N (оптимизированный 5nm), тому же что и RTX 40-й серии. Единственный двигатель роста производительности — архитектурные усовершенствования Blackwell.
 
 | Параметр | RTX 4060 Ti | RTX 5060 Ti | Δ |
 |---|---|---|---|
