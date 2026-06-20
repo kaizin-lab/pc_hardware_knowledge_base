@@ -4,11 +4,12 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5060 Ti 16GB"
 vendor: "nvidia"
 status: "verified"
-tags: ["nvidia", "blackwell", "gb206", "tsmc-4n", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "local-llm-viable", "frametime-gaming-1080p"]
+tags: ["blackwell", "rtx-50-series", "128-bit", "16gb-vram", "gddr7", "180w", "pcie-5.0"]
 last_updated: "2026-06-19"
 links:
-  predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
+  smaller_brother: "catalog/gpu/nvidia-rtx-5060.md"
   competitor_amd: "catalog/gpu/amd-rx-9060-xt.md"
+  predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
   memory_type: "catalog/memory/ddr5.md"
   concept_pcie: "concepts/pcie-lanes.md"
   concept_power: "concepts/power-budget.md"
@@ -25,12 +26,12 @@ specs:
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$429"
   msrp_8gb: "$379"
-  engineering_notes: "GB206 на TSMC 4N: 4608 CUDA (+6% над AD106). GDDR7 28 Gbps на 128-bit даёт 448 GB/s (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — позволяет загрузить LLM 7B-13B Q4_K_M в VRAM без offload. DLSS 4 MFG генерирует до 3 промежуточных кадров; при базовом FPS <60 отзывчивость ниже. 8GB: те же 28 Gbps чипы GDDR7, bandwidth 448 GB/s. Объём памяти — 8GB. +7% FP32 относительно RTX 4060 Ti (AD106). 8GB: $379 MSRP, 16GB: $429 MSRP, разница $50. 8GB: на 10-15% ниже FPS чем 16GB при 1440p ultra. 16GB достаточно для текстур high-resolution."
+engineering_notes: "GB206 — полноценный чип Blackwell для 60-класса (4608 CUDA — все SM активны). GDDR7 28 Gbps на 128-битной шине даёт 448 GB/s — прирост 55.6% над RTX 4060 Ti (288 GB/s GDDR6) при той же ширине шины. Рост TBP до 180W (+20W vs 4060 Ti) обусловлен переходом GDDR7 и 4608 ядер. PCIe 5.0 x8 эквивалентен по пропускной способности PCIe 4.0 x16 (~32 GT/s) — на платах с PCIe 3.0 потеря до 5%. 12V-2×6 опционален: большинство AIB используют классический 8-pin. DP 2.1b поддерживает UHBR13.5 (54 Gbps на линию) — до 4K 480Hz с DSC."
 profiles:
   balanced_performance_gpu:
     power_envelope: "mid"
     capability_level: 2
-    steel_man_desc: "Предсказуемое масштабирование производительности. Стандартные сборки ATX с БП 600–750W. Не требует специального охлаждения или инфраструктуры."
+    steel_man_desc: "Предсказуемое масштабирование производительности. Стандартные сборки ATX с БП 600-750W. Не требует специального охлаждения или инфраструктуры."
     failure_mode_desc: "Отсутствие специализации. Проигрывает enthusiast-картам в 4K, проигрывает low-power картам в SFF/тишине."
     optimal_for_intents: ["aaa_1440p_high", "aaa_1080p_ultra", "esports_1080p_240hz", "software_development", "streaming"]
     failure_for_intents: ["aaa_4k_path_tracing"]
@@ -39,22 +40,22 @@ profiles:
   bandwidth_constrained_vram_rich:
     power_envelope: "mid"
     capability_level: 2
-    steel_man_desc: "Локальный инференс LLM (7B–13B Q4_K_M). Карта позволяет загрузить модель полностью в VRAM без offload."
+    steel_man_desc: "Локальный инференс LLM (7B-13B Q4_K_M). Карта позволяет загрузить модель полностью в VRAM без offload."
     failure_mode_desc: "Нативный 4K-гейминг на ультра. Узкая 128-bit шина становится bottleneck."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b"]
     failure_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu"]
     failure_severity: "BLOCK"
     failure_type: "CLIFF_DROP"
   hardware_rt_accelerated_gen_3:
-    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
-    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
+    steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение x4-5 vs растеризация."
+    failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают - dark silicon."
     optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
     failure_for_intents: []
     failure_severity: "WARN"
     failure_type: "LINEAR_DEGRADATION"
   tensor_matrix_accelerated:
     steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
-    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
+    failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают - паразитный нагрев."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
     failure_for_intents: []
     failure_severity: "WARN"
@@ -65,94 +66,154 @@ price_ru:
   max: 65640
   source: "price.ru"
   date: "2026-06-19"
+observations:
+  - id: "obs-001"
+    source_id: "ts"
+    source_confidence: 0.95
+    observation_quality: 0.92
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077"
+    game_version: "2.2 (Apr 2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 79
+    p1_fps: 0
+  - id: "obs-002"
+    source_id: "kg"
+    source_confidence: 0.95
+    observation_quality: 0.90
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Alan Wake 2"
+    game_version: "1.2.x (Nov 2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 61
+    p1_fps: 0
+  - id: "obs-003"
+    source_id: "kg"
+    source_confidence: 0.95
+    observation_quality: 0.90
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Alan Wake 2"
+    game_version: "1.2.x (Nov 2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 43
+    p1_fps: 0
+  - id: "obs-004"
+    source_id: "alk"
+    source_confidence: 0.75
+    observation_quality: 0.70
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Black Myth: Wukong"
+    game_version: "benchmark tool (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Cinematic"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 53
+    p1_fps: 46
+  - id: "obs-005"
+    source_id: "ez"
+    source_confidence: 0.70
+    observation_quality: 0.65
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Hogwarts Legacy"
+    game_version: "2026 build"
+    config:
+      resolution: "1920x1080"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 120
+    p1_fps: 90
 ---
 
 # NVIDIA GeForce RTX 5060 Ti
 
 ## Архитектура и позиционирование
 
-RTX 5060 Ti — дебютный продукт на GPU GB206, самом компактном чипе линейки Blackwell. Производится по техпроцессу TSMC 4N (оптимизированный 5nm), тому же что и RTX 40-й серии. Единственный двигатель роста производительности — архитектурные усовершенствования Blackwell.
+RTX 5060 Ti — видеокарта среднего сегмента на архитектуре **Blackwell**, выпущенная 16 апреля 2025 года. Базируется на полноценном GPU **GB206** без отключения вычислительных блоков: все 4608 CUDA-ядер активны. Производится по техпроцессу **TSMC 4N** (оптимизированный 5-нм класс), общему для всей линейки RTX 50 [^fact-1] [^fact-2].
 
-| Параметр | RTX 4060 Ti | RTX 5060 Ti | Δ |
-|---|---|---|---|
-| GPU | AD106 | GB206 | Новое поколение |
-| CUDA-ядер | 4352 | 4608 | +6% |
-| Boost-частота | 2.54 GHz | 2.57 GHz | +1% |
-| VRAM | 8/16 GB GDDR6 | 8/16 GB GDDR7 | +пропускная способность |
-| Шина | 128-bit | 128-bit | = |
-| TBP | 160W | 180W | +12.5% |
-| MSRP (16GB) | $499 | $429 | −14% |
+**Позиционирование:** между RTX 5060 (GB206-250-A1, 3840 CUDA) и RTX 5070 (GB205, 6144 CUDA). Доступна в двух вариантах: 16 GB ($429 MSRP) и 8 GB ($379 MSRP). Разница в $50 между 8GB и 16GB-версиями — вдвое меньше, чем у предшественника RTX 4060 Ti ($100) [^fact-3] [^fact-4].
 
-**+7% FP32 относительно RTX 4060 Ti (AD106). Прирост bandwidth: +56% (GDDR7 vs GDDR6).**
+**Ключевое изменение поколения:** переход с GDDR6 (288 GB/s на RTX 4060 Ti) на GDDR7 28 Gbps (448 GB/s) при той же ширине шины 128-bit — прирост bandwidth 55.6% [^fact-5].
 
-## VRAM: 8GB vs 16GB — это важно
+## Характеристики
 
-Обе версии используют 128-битную шину. Но:
-
-| Версия | Игры 1080p | Игры 1440p | Игры 4K |
-|---|---|---|---|
-| 8GB | Ок в большинстве | Потери в тяжёлых | −15% avg FPS |
-| 16GB | Без проблем | Без проблем | Комфортно не везде |
-
-Indiana Jones and the Great Circle — даже 16GB недостаточно для трассировки путей без артефактов.
-
-8GB: ~42 000 ₽. 16GB: ~52 000 ₽. Разница ~10 000 ₽. 8GB: на 10-15% ниже FPS при 1440p ultra.
-
-## Энергопотребление и нагрев
-
-- **TBP 180W** — референс. Реальные замеры: обе версии (Palit Dual, Infinity 3) держатся в пределах 186W.
-- **Разъём питания:** большинство AIB-карт используют 1× 8-pin. 12V-2×6 — опционально на старших моделях.
-- **Разгон:** GPU GB206 демонстрирует запас по частоте при 180W TBP.
-- **Шум:** Palit Infinity 3: [данные отсутствуют]. Palit Dual: [данные отсутствуют].
-
-## Российский рынок (июнь 2026)
-
-| Модель | Диапазон цен |
+| Параметр | Значение |
 |---|---|
-| Gigabyte Windforce Max OC | 46 190–50 809 ₽ |
-| Palit Dual | 47 239–55 200 ₽ |
-| MSI Shadow 2X OC Plus | 50 430 ₽ |
-| Inno3D Twin X2 | 50 980 ₽ |
-| MSI Gaming OC | 51 963–55 710 ₽ |
-| Gigabyte Eagle OC | 43 990–51 963 ₽ |
-| MSI Ventus 3X OC | 57 160 ₽ |
-| Asus TUF | 65 640 ₽ |
+| GPU | GB206 (Blackwell) [^fact-1] |
+| Техпроцесс | TSMC 4N (5nm) [^fact-2] |
+| CUDA-ядер | 4608 [^fact-1] |
+| Boost Clock | 2.57 GHz (2572 MHz) [^fact-1] |
+| VRAM | 16 GB GDDR7 (128-bit); также 8 GB вариант [^fact-1] [^fact-4] |
+| Пропускная способность | 448 GB/s (28 Gbps × 128-bit / 8) [^fact-5] |
+| TBP | 180W [^fact-1] [^fact-2] |
+| Разъём питания | 1× 8-pin (стандарт AIB); 12V-2×6 опционально [^fact-6] |
+| PCIe | PCIe 5.0 x8 (физический слот x16) [^fact-7] |
+| Видеовыходы | 3× DisplayPort 2.1b, 1× HDMI 2.1b [^fact-6] |
+| MSRP (16GB) | $429 [^fact-3] |
+| MSRP (8GB) | $379 [^fact-3] |
 
-**Рыночный диапазон (16GB): 44 000–66 000 ₽, медиана ~52 000 ₽.**
+## Performance Data
 
+| Игра | Config | avg_fps | p1_fps | Источник |
+|---|---|---|---|---|
+| Cyberpunk 2077 | 1440p Ultra, RT Off, Native | 79 | — | TechSpot [^obs-1] |
+| Alan Wake 2 | 1080p High, RT Off, Native | 61 | — | KitGuru [^obs-2] |
+| Alan Wake 2 | 1440p High, RT Off, Native | 43 | — | KitGuru [^obs-2] |
+| Black Myth: Wukong | 1440p Cinematic, RT Off, Native | 53 | 46 | ALKtech [^obs-3] |
+| Hogwarts Legacy | 1080p Ultra, RT Off, Native | ~120 | ~90 | EVEzone [^obs-4] |
 
-## DLSS 4 и Multi Frame Generation
+## Сравнение
 
-При TBP 180W и 4608 CUDA: DLSS 4 MFG генерирует до 3 кадров. При базовом FPS <60 отзывчивость ниже.
-
-## Для кого
-
-**Подходит:**
-- 1080p-гейминг на ультра-настройках (16GB — обязательно)
-- 1440p со средними/высокими настройками
-- Киберспорт (высокий FPS в 1080p)
-- Бюджетные рабочие станции (CUDA, но не профессиональный рендеринг)
-
-**Ограничения:**
-- 4K-гейминг (нужна RTX 5070 Ti / 5080)
-- Трассировка лучей в тяжёлых тайтлах (Indiana Jones, Cyberpunk RT Overdrive)
-- Профессиональный 3D-рендеринг (мало VRAM, узкая шина)
-
-## Сравнение с конкурентами
-
-| Параметр | RTX 5060 Ti 16GB | RX 9060 XT 16GB | RTX 4070 12GB |
+| Параметр | RTX 5060 Ti 16GB | RTX 4060 Ti 16GB | RTX 5060 8GB |
 |---|---|---|---|
-| VRAM | 16 GB GDDR7 | 16 GB GDDR6 | 12 GB GDDR6X |
-| TBP | 180W | ~200W | 200W |
-| RT Performance | Средний | Ниже | Выше |
-| DLSS/FSR | DLSS 4 + MFG | FSR 4 | DLSS 3.5 |
-| Цена (РФ) | ~52 000 ₽ | ~48 000 ₽ | ~55 000 ₽ (б/у) |
+| GPU | GB206 (Blackwell) | AD106 (Ada Lovelace) | GB206-250 (Blackwell) |
+| CUDA-ядер | 4608 | 4352 | 3840 |
+| VRAM | 16 GB GDDR7 | 16 GB GDDR6 | 8 GB GDDR7 |
+| Шина | 128-bit | 128-bit | 128-bit |
+| Bandwidth | 448 GB/s | 288 GB/s | 448 GB/s |
+| TBP | 180W | 165W | 145W |
+| PCIe | 5.0 x8 | 4.0 x8 | 5.0 x8 |
+| MSRP | $429 | $499 | $299 |
 
-RX 9060 XT дешевле и с 16GB, но проигрывает в RT и не имеет аналога DLSS 4 MFG. RTX 4070 (б/у) — мощнее в чистом рендере, но 12GB VRAM ограничивает в 4K.
+## Epistemic Notes
 
-## Источники
+[^fact-1]: TechPowerUp GPU Database — NVIDIA GeForce RTX 5060 Ti 8 GB (c4246) и 16 GB (c4292): GB206, 4608 CUDA, 2407/2572 MHz, 128-bit GDDR7. https://www.techpowerup.com/gpu-specs/geforce-rtx-5060-ti-8-gb.c4246
 
-1. 3dnews.ru — «Обзор видеокарты NVIDIA GeForce RTX 5060 Ti: не ошибись с гигабайтами» (14.05.2025)
-2. Price.ru — рыночные цены, Москва (03.06.2026)
-3. Спецификации NVIDIA GB206 (techpowerup.com)
-4. Собственное тестирование лаборатории: Palit Dual и Infinity 3
+[^fact-2]: Notebookcheck Tech — GeForce RTX 5060 Ti Benchmarks and Specs: GB206, TSMC 4N FinFET (5nm), 180W TGP. https://www.notebookcheck.net/Nvidia-GeForce-RTX-5060-Ti-Benchmarks-and-Specs.935681.0.html
+
+[^fact-3]: Wikipedia — GeForce RTX 50 series: MSRP $379 (8GB) / $429 (16GB), $50 difference vs $100 for 4060 Ti. https://en.wikipedia.org/wiki/GeForce_RTX_50_series
+
+[^fact-4]: NVIDIA Official — GeForce RTX 5060 Family: 8GB/16GB GDDR7, Blackwell architecture. https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/
+
+[^fact-5]: Guru3D — MSI RTX 5060 Ti TRIO OC review: 128-bit, 28 Gbps GDDR7 → 448 GB/s bandwidth. PCGamesN — RTX 5060 Ti review: memory bandwidth increase from 288 to 448 GB/s. https://www.guru3d.com/review/msi-geforce-rtx-5060-ti-trio-oc-review/
+
+[^fact-6]: PNY product listing (Newegg) — RTX 5060 Ti: 1× 8-pin power, 3× DP 2.1b, 1× HDMI 2.1b, PCIe 5.0 x8. Reddit r/hardware RTX 5060 Ti roundup — 12V-2×6 on select models. https://www.reddit.com/r/hardware/comments/1k1e6b1/rtx_5060_ti_roundup_5_models_tested_compared/
+
+[^fact-7]: TechPowerUp — NVIDIA GeForce RTX 5060 Ti PCI-Express x8 Scaling: PCIe 5.0 x8 interface. https://www.techpowerup.com/review/nvidia-geforce-rtx-5060-ti-pci-express-x8-scaling/3.html
+
+[^obs-1]: TechSpot — Nvidia GeForce RTX 5060 Ti 16GB Review (Apr 2025): Cyberpunk 2077, 1440p Ultra, 79 fps avg, matching RTX 4070 and RX 7700 XT. https://www.techspot.com/review/2979-nvidia-geforce-rtx-5060-ti-16gb/
+
+[^obs-2]: KitGuru — Nvidia RTX 5060 Ti 16GB Review (Nov 2025): Alan Wake 2, 1080p: 61 fps avg (17% faster than 4060 Ti 16GB), 1440p: 43 fps avg. https://www.kitguru.net/components/graphic-cards/dominic-moass/nvidia-rtx-5060-ti-16gb-review-ft-gigabyte-palit/all/1/
+
+[^obs-3]: ALKtech — MSI GeForce RTX 5060 Ti 16G GAMING TRIO OC Review: Black Myth Wukong Benchmark Tool, 53 avg / 46 min / 60 max fps (1440p). https://www.alktech.co/articles/review-msi-geforce-rtx-5060-ti-16g-gaming-trio-oc
+
+[^obs-4]: EVEzone — RTX 5060 Ti Hogwarts Legacy FPS Performance Benchmark (May 2026): 1080p Ultra, above 120 fps avg, 1% lows above 90 fps. https://evezone.evetech.co.za/performance-pulse/rtx-5060-ti-hogwarts-legacy-fps-performance-benchmark-best-settings/
