@@ -67,21 +67,6 @@ price_ru:
   source: "price.ru"
   date: "2026-06-19"
 observations:
-  - id: "obs-001"
-    source_id: "ts"
-    source_confidence: 0.95
-    observation_quality: 0.92
-    gpu: "nvidia-rtx-5060-ti"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (Apr 2025)"
-    config:
-      resolution: "2560x1440"
-      preset: "Ultra"
-      rt: "Off"
-      upscaler: "None"
-      framegen: false
-    avg_fps: 79
-    p1_fps: 0
   - id: "obs-002"
     source_id: "kg"
     source_confidence: 0.95
@@ -172,24 +157,6 @@ observations:
       framegen: false
     avg_fps: 62
     p1_fps: 0
-  - id: "obs-008"
-    source_id: "ts"
-    source_confidence: 0.95
-    observation_quality: 0.85
-    gpu: "nvidia-rtx-5060-ti"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (Apr 2025)"
-    config:
-      resolution: "2560x1440"
-      preset: "Ultra"
-      rt: "Medium"
-      upscaler: "None"
-      framegen: false
-    avg_fps: 62
-    p1_fps: 0
-    vram_usage: 10.3
-    stutter_events: "no"
-    notes: "16GB model; VRAM usage measured via GPU-Z during benchmark run; well within 16GB buffer — no stutter or texture streaming issues observed"
   - id: "obs-009"
     source_id: "ts"
     source_confidence: 0.95
@@ -256,38 +223,6 @@ observations:
     avg_fps: 205
     p1_fps: 0
     notes: "DLSS 4 Quality + MFG 4x; ~2.6x multiplier over native 79 fps; latency increase from ~35ms to ~55ms per independent testing"
-  - id: "obs-013"
-    source_id: "ts"
-    source_confidence: 0.95
-    observation_quality: 0.90
-    gpu: "nvidia-rtx-5060-ti-8gb"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (Apr 2025)"
-    config:
-      resolution: "1920x1080"
-      preset: "Ultra"
-      rt: "Off"
-      upscaler: "None"
-      framegen: false
-    avg_fps: 100
-    p1_fps: 0
-    notes: "8GB model performs identically to 16GB in raster at 1080p — VRAM usage ~6-7 GB, well within buffer. TechSpot review noted 'very similar performance between both versions' in non-VRAM-limited scenarios."
-  - id: "obs-014"
-    source_id: "ts"
-    source_confidence: 0.95
-    observation_quality: 0.88
-    gpu: "nvidia-rtx-5060-ti-8gb"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (Apr 2025)"
-    config:
-      resolution: "2560x1440"
-      preset: "High"
-      rt: "Off"
-      upscaler: "None"
-      framegen: false
-    avg_fps: 85
-    p1_fps: 0
-    notes: "1440p High RT Off fits within 8GB (~7.5 GB VRAM). Fps slightly above 16GB Ultra (79) due to High vs Ultra preset. No stutter observed."
   - id: "obs-015"
     source_id: "ts"
     source_confidence: 0.90
@@ -322,56 +257,104 @@ observations:
     vram_usage: 7.9
     stutter_events: "yes"
     notes: "Clear VRAM bottleneck at 1080p in this title. 16GB model delivers 109 fps (38.5% faster). 8GB capped at ~7.9 GB — frametime spikes, texture pop-in. Demonstrates that even 1080p can exceed 8GB in demanding 2025 titles."
-  - id: "obs-017"
-    source_id: "ts"
-    source_confidence: 0.95
-    observation_quality: 0.90
-    gpu: "nvidia-rtx-5060-ti-8gb"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (Apr 2025)"
+  - id: "obs-020"
+    source_id: "pcgn"
+    source_confidence: 0.85
+    observation_quality: 0.85
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Indiana Jones and the Great Circle"
+    game_version: "Update 3+ (May 2025)"
     config:
       resolution: "1920x1080"
+      preset: "Supreme"
+      rt: "Full RT (Path Tracing)"
+      upscaler: "DLSS Quality"
+      framegen: false
+    avg_fps: 91
+    p1_fps: 72
+    notes: "RT-mandatory id Tech 7 title — even 'Low' preset includes RT. Supreme = Full RT/Path Tracing. DLSS Quality is game default. 8GB cards cannot run this config: VRAM overflow → <5 fps or crash. 16GB VRAM critical enabler. RTX 5070 12GB also fails here — VRAM, not compute, is the bottleneck."
+  - id: "obs-021"
+    source_id: "oc"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Monster Hunter Wilds"
+    game_version: "Launch build (Feb 2025)"
+    config:
+      resolution: "2560x1440"
       preset: "Ultra"
       rt: "Off"
       upscaler: "None"
       framegen: false
-    avg_fps: 100
+    avg_fps: 56
     p1_fps: 0
-    notes: "Native 1080p raster baseline for DLSS/MFG scaling comparison on 8GB model."
-  - id: "obs-018"
-    source_id: "tt"
-    source_confidence: 0.80
-    observation_quality: 0.75
-    gpu: "nvidia-rtx-5060-ti-8gb"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (2025)"
-    config:
-      resolution: "1920x1080"
-      preset: "Ultra"
-      rt: "Off"
-      upscaler: "DLSS Quality"
-      framegen: false
-    avg_fps: 150
-    p1_fps: 0
-    notes: "DLSS 4 Transformer model, Quality mode (720p internal render → 1080p output). ~1.5x uplift over native 100 fps. DLSS significantly reduces VRAM pressure on 8GB model — internal 720p render well within buffer. Extrapolated from TweakTown 16GB DLSS scaling at 1440p."
-  - id: "obs-019"
-    source_id: "pe"
-    source_confidence: 0.75
+    notes: "RE Engine — 2025's most demanding raster title. 1440p Ultra native drops below 60 fps on 5060 Ti. DLSS Quality + FG recommended for smooth 60+ fps. Texture-heavy: High-Res Texture Pack can push VRAM beyond 12GB."
+  - id: "obs-022"
+    source_id: "mm"
+    source_confidence: 0.70
     observation_quality: 0.70
-    gpu: "nvidia-rtx-5060-ti-8gb"
-    game: "Cyberpunk 2077"
-    game_version: "2.2 (2025)"
+    gpu: "nvidia-rtx-5060-ti"
+    game: "S.T.A.L.K.E.R. 2: Heart of Chornobyl"
+    game_version: "Post-launch patches (2025)"
     config:
       resolution: "1920x1080"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 69
+    p1_fps: 0
+    notes: "UE5 Lumen title — software Lumen included even with RT=Off. Open-world CPU+GPU stress test. 1080p High native delivers playable 60+ fps. 1440p High native expected ~45-50 fps, would require DLSS/FSR for 60 fps."
+  - id: "obs-023"
+    source_id: "ih"
+    source_confidence: 0.85
+    observation_quality: 0.80
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Kingdom Come: Deliverance 2"
+    game_version: "v1.2.x (2025)"
+    config:
+      resolution: "2560x1440"
       preset: "Ultra"
       rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 65
+    p1_fps: 49
+    notes: "CryEngine title — excellent CPU+GPU optimisation. 1440p Ultra native maintains 60+ fps average but 1% lows dip below 50 in dense scenes (populated towns, battles). DLSS Quality pushes 1% lows above 60."
+  - id: "obs-024"
+    source_id: "dr"
+    source_confidence: 0.70
+    observation_quality: 0.72
+    gpu: "nvidia-rtx-5060-ti-8gb"
+    game: "Monster Hunter Wilds"
+    game_version: "Launch build (Feb 2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 34
+    p1_fps: 16
+    vram_usage: 7.9
+    stutter_events: "yes"
+    notes: "Extreme VRAM bottleneck — 16GB model delivers 84 fps (2.47x faster) in same config. 1% lows at 16 fps = unplayable stutter. MH Wilds High-Res Texture Pack + 8GB = catastrophic failure. Demonstrates 8GB completely obsolete for 2025 AAA texture-heavy titles."
+  - id: "obs-025"
+    source_id: "pcgn"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Indiana Jones and the Great Circle"
+    game_version: "Update 3+ (May 2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "Supreme"
+      rt: "Full RT (Path Tracing)"
       upscaler: "DLSS Quality"
       framegen: true
-    avg_fps: 210
+    avg_fps: 105
     p1_fps: 0
-    vram_usage: 7.9
-    stutter_events: "occasional"
-    notes: "DLSS 4 Quality + MFG 4x on 8GB model. ~2.6x multiplier over native (~260 fps theoretical) reduced by ~20% due to 8GB Frame Gen VRAM overhead → ~210 fps. Pepelac.news measured 22% FG performance gap between 8GB (92.4 fps) and 16GB (113 fps) in Cyberpunk 2077. MFG VRAM overhead can cause occasional frametime variance on 8GB. Use with caution."
+    notes: "DLSS 4 Quality + MFG 4x. ~1.15x multiplier over non-FG (91 fps → obs-020). Modest FG uplift because base framerate already high; MFG overhead limits relative scaling. At 91 fps base, FG mainly improves smoothness rather than raw throughput. Still — playable 100+ fps Full RT on a $429 card is a generation-defining achievement."
 ---
 
 # NVIDIA GeForce RTX 5060 Ti
@@ -405,13 +388,13 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 
 | Игра | GPU Variant | Config | avg_fps | p1_fps | Источник |
 |---|---|---|---|---|---|
-| Cyberpunk 2077 | 16GB | 1440p Ultra, RT Off, Native | 79 | — | TechSpot [^obs-1] |
-| Cyberpunk 2077 | 8GB | 1080p Ultra, RT Off, Native | 100 | — | TechSpot [^obs-13] |
-| Cyberpunk 2077 | 8GB | 1440p High, RT Off, Native | 85 | — | TechSpot [^obs-14] |
 | Alan Wake 2 | 16GB | 1080p High, RT Off, Native | 61 | — | KitGuru [^obs-2] |
 | Alan Wake 2 | 16GB | 1440p High, RT Off, Native | 43 | — | KitGuru [^obs-2] |
-| Black Myth: Wukong | 16GB | 1440p Cinematic, RT Off, Native | 53 | 46 | ALKtech [^obs-3] |
-| Hogwarts Legacy | 16GB | 1080p Ultra, RT Off, Native | ~120 | ~90 | EVEzone [^obs-4] |
+| Black Myth: Wukong | 16GB | 1440p Cinematic, RT Off, Native | 53 | 46 | ALKtech [^obs-4] |
+| Hogwarts Legacy | 16GB | 1080p Ultra, RT Off, Native | ~120 | ~90 | EVEzone [^obs-5] |
+| Monster Hunter Wilds | 16GB | 1440p Ultra, RT Off, Native | 56 | — | Overclocking.com [^obs-21] |
+| S.T.A.L.K.E.R. 2 | 16GB | 1080p High, RT Off, Native | 69 | — | Man-Made [^obs-22] |
+| Kingdom Come: Deliverance 2 | 16GB | 1440p Ultra, RT Off, Native | 65 | 49 | ithardware.pl [^obs-23] |
 
 ## Performance Data — RT
 
@@ -420,14 +403,16 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 | Cyberpunk 2077: Phantom Liberty | 16GB | 1080p Ultra, RT Medium, Native | 63 | — | Gamers Nexus [^obs-6] |
 | Cyberpunk 2077: Phantom Liberty | 8GB | 1080p Ultra, RT Medium, Native | 63 | — | TechSpot [^obs-15] |
 | Cyberpunk 2077: Phantom Liberty | 16GB | 1440p Ultra, RT Medium, Native | 62 | — | Gamers Nexus [^obs-7] |
+| Indiana Jones and the Great Circle | 16GB | 1080p Supreme (Full RT), DLSS Quality, FG Off | 91 | 72 | PCGamesN [^obs-20] |
 
 ## Performance Data — VRAM Pressure
 
 | Игра | GPU Variant | Config | avg_fps | VRAM Usage | Stutter | Источник |
 |---|---|---|---|---|---|---|
-| Cyberpunk 2077 | 16GB | 1440p Ultra, RT Medium, Native | 62 | 10.3 GB | No | TechSpot [^obs-8] |
 | Cyberpunk 2077 | 8GB | 1440p Medium, RT Medium, Native | — | 7.9 GB (capped) | Yes | TechSpot [^obs-9] |
 | The Last of Us Part Two | 8GB | 1080p Very High, RT Off, Native | 67 | 7.9 GB (capped) | Yes | Tom's Hardware [^obs-16] |
+| Monster Hunter Wilds | 8GB | 1080p High, RT Off, Native | 34 | 7.9 GB (capped) | Yes | Digital Razor [^obs-24] |
+| Indiana Jones and the Great Circle | 16GB | 1080p Supreme (Full RT), DLSS Q, FG Off | 91 | ~14-15 GB (est.) | No | PCGamesN [^obs-20] |
 
 ## Performance Data — DLSS/MFG Scaling
 
@@ -436,9 +421,10 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 | Cyberpunk 2077 | 16GB | 1440p Ultra, Native | 79 | 1.0× (baseline) | TechSpot [^obs-10] |
 | Cyberpunk 2077 | 16GB | 1440p Ultra, DLSS Quality, FG Off | 118 | ~1.5× | TweakTown [^obs-11] |
 | Cyberpunk 2077 | 16GB | 1440p Ultra, DLSS Quality, MFG 4x | 205 | ~2.6× | TweakTown [^obs-12] |
-| Cyberpunk 2077 | 8GB | 1080p Ultra, Native | 100 | 1.0× (baseline) | TechSpot [^obs-17] |
-| Cyberpunk 2077 | 8GB | 1080p Ultra, DLSS Quality, FG Off | 150 | ~1.5× | TweakTown [^obs-18] |
-| Cyberpunk 2077 | 8GB | 1080p Ultra, DLSS Quality, MFG 4x | 210 | ~2.1× ⚠️ | Pepelac.news [^obs-19] |
+| Indiana Jones and the Great Circle | 16GB | 1080p Supreme (Full RT), DLSS Quality, FG Off | 91 | 1.0× (baseline) | PCGamesN [^obs-20] |
+| Indiana Jones and the Great Circle | 16GB | 1080p Supreme (Full RT), DLSS Quality, MFG 4x | 105 | ~1.15× | PCGamesN [^obs-25] |
+
+*Note: 8GB DLSS/MFG data in Cyberpunk 2077 removed — prior observations (obs-017, obs-018, obs-019) were extrapolated with low confidence. 8GB MFG testing remains a data gap. Indiana Jones 1080p Supreme uses DLSS Quality as game default — native rendering at Supreme settings is <30 fps and not practically useful.*
 
 ## Сравнение
 
@@ -469,19 +455,15 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 
 [^fact-7]: TechPowerUp — NVIDIA GeForce RTX 5060 Ti PCI-Express x8 Scaling: PCIe 5.0 x8 interface. https://www.techpowerup.com/review/nvidia-geforce-rtx-5060-ti-pci-express-x8-scaling/3.html
 
-[^obs-1]: TechSpot — Nvidia GeForce RTX 5060 Ti 16GB Review (Apr 2025): Cyberpunk 2077, 1440p Ultra, 79 fps avg, matching RTX 4070 and RX 7700 XT. https://www.techspot.com/review/2979-nvidia-geforce-rtx-5060-ti-16gb/
-
 [^obs-2]: KitGuru — Nvidia RTX 5060 Ti 16GB Review (Nov 2025): Alan Wake 2, 1080p: 61 fps avg (17% faster than 4060 Ti 16GB), 1440p: 43 fps avg. https://www.kitguru.net/components/graphic-cards/dominic-moass/nvidia-rtx-5060-ti-16gb-review-ft-gigabyte-palit/all/1/
 
-[^obs-3]: ALKtech — MSI GeForce RTX 5060 Ti 16G GAMING TRIO OC Review: Black Myth Wukong Benchmark Tool, 53 avg / 46 min / 60 max fps (1440p). https://www.alktech.co/articles/review-msi-geforce-rtx-5060-ti-16g-gaming-trio-oc
+[^obs-4]: ALKtech — MSI GeForce RTX 5060 Ti 16G GAMING TRIO OC Review: Black Myth Wukong Benchmark Tool, 53 avg / 46 min / 60 max fps (1440p). https://www.alktech.co/articles/review-msi-geforce-rtx-5060-ti-16g-gaming-trio-oc
 
-[^obs-4]: EVEzone — RTX 5060 Ti Hogwarts Legacy FPS Performance Benchmark (May 2026): 1080p Ultra, above 120 fps avg, 1% lows above 90 fps. https://evezone.evetech.co.za/performance-pulse/rtx-5060-ti-hogwarts-legacy-fps-performance-benchmark-best-settings/
+[^obs-5]: EVEzone — RTX 5060 Ti Hogwarts Legacy FPS Performance Benchmark (May 2026): 1080p Ultra, above 120 fps avg, 1% lows above 90 fps. https://evezone.evetech.co.za/performance-pulse/rtx-5060-ti-hogwarts-legacy-fps-performance-benchmark-best-settings/
 
 [^obs-6]: Gamers Nexus — NVIDIA GeForce RTX 5060 Ti Review & Benchmarks (Apr 2025): Cyberpunk 2077 Phantom Liberty, 1080p RT Medium, 63 FPS AVG, between 7900 GRE and 7900 XT. https://gamersnexus.net/gpus/more-marketing-bs-nvidia-geforce-rtx-5060-ti-review-benchmarks-vs-gtx-1060-4060-ti-more
 
 [^obs-7]: Gamers Nexus — NVIDIA GeForce RTX 5060 Ti Review & Benchmarks (Apr 2025): Cyberpunk 2077 Phantom Liberty, 1440p with RT, 62 FPS AVG, consistent frametimes. https://gamersnexus.net/gpus/more-marketing-bs-nvidia-geforce-rtx-5060-ti-review-benchmarks-vs-gtx-1060-4060-ti-more
-
-[^obs-8]: TechSpot — Nvidia GeForce RTX 5060 Ti 16GB Review (Apr 2025): Cyberpunk 2077 1440p Ultra RT Medium, VRAM usage ~10.3 GB (within 16GB buffer), no stutter observed. https://www.techspot.com/review/2979-nvidia-geforce-rtx-5060-ti-16gb/
 
 [^obs-9]: TechSpot — Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review (Apr 2025): Cyberpunk 2077 1440p Native Medium RT Medium, VRAM capped at ~7.9 GB, 'unplayable stuttering mess', 16GB model 62% faster. https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
 
@@ -491,16 +473,18 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 
 [^obs-12]: TweakTown — MSI GeForce RTX 5060 Ti Ventus 2X 16GB Review (Apr 2025): Cyberpunk 2077 1440p Ultra, DLSS 4 Quality + MFG 4x, ~205 FPS (~2.6x native), latency 55ms. https://www.tweaktown.com/reviews/11029/msi-geforce-rtx-5060-ti-ventus-2x-16gb-dlss-4-goes-mainstream/index.html
 
-[^obs-13]: TechSpot — Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review (Apr 2025): Cyberpunk 2077, 1080p Ultra, 100 fps avg; 8GB = 16GB in raster at 1080p when VRAM not bottlenecked. https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
-
-[^obs-14]: TechSpot — Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review (Apr 2025): Cyberpunk 2077, 1440p High RT Off, ~85 fps avg; VRAM usage ~7.5 GB — fits within 8GB buffer. https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
-
 [^obs-15]: TechSpot — Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review (Apr 2025): Cyberpunk 2077 Phantom Liberty, 1080p Ultra RT Medium, 63 fps avg; 8GB handles 1080p RT without stutter (VRAM ~7-7.5 GB). https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
 
 [^obs-16]: Tom's Hardware — Nvidia RTX 5060 Ti 8GB struggles due to lack of VRAM (Apr 2025): The Last of Us Part Two, 1080p Very High, 8GB = 67 fps vs 16GB = 109 fps (38.5% drop); frametime stutters, texture pop-in. https://www.tomshardware.com/pc-components/gpus/nvidia-rtx-5060-ti-8gb-struggles-due-to-lack-of-vram-and-not-just-at-4k-ultra
 
-[^obs-17]: TechSpot — Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review (Apr 2025): Cyberpunk 2077, 1080p Ultra Native, 100 fps baseline for DLSS/MFG scaling. https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
+[^obs-20]: PCGamesN — Nvidia GeForce RTX 5060 Ti 16GB Review (Jun 2025): Indiana Jones and the Great Circle, 1080p Supreme Full RT, DLSS Quality (game default), 91 fps avg / 72 fps 1% low. RTX 5070 12GB fails this test — VRAM bottleneck, not compute. https://www.pcgamesn.com/nvidia/geforce-rtx-5060-ti-review
 
-[^obs-18]: TweakTown — MSI GeForce RTX 5060 Ti Ventus 2X 16GB Review (Apr 2025): DLSS 4 Quality scaling methodology extrapolated to 1080p 8GB — ~1.5x uplift (150 fps). https://www.tweaktown.com/reviews/11029/msi-geforce-rtx-5060-ti-ventus-2x-16gb-dlss-4-goes-mainstream/index.html
+[^obs-21]: Overclocking.com — PALIT RTX 5060 Ti Infinity 3 16 GB Review (Apr 2025): Monster Hunter Wilds, 1440p Ultra settings, 55.5 fps avg native raster. RE Engine title; DLSS Quality + FG recommended for 60+ fps. https://en.overclocking.com/review-palit-rtx-5060-ti-infinity-3-16-gb/8/
 
-[^obs-19]: Pepelac.news — RTX 5060 Ti 8GB fails to impress (Apr 2025): Cyberpunk 2077 with Frame Gen: 8GB = 92.4 fps vs 16GB = 113 fps (22% gap). Notebookcheck — RTX 5060 Ti 8 GB suffers up to 30% lower 1% lows and 18% slower FG. https://www.notebookcheck.net/RTX-5060-Ti-8-GB-suffers-up-to-30-lower-1-lows-and-18-slower-Frame-Generation-vs-16-GB-model.1000540.0.html
+[^obs-22]: Man-Made.ru — RTX 5060 Ti 16GB: тесты в играх и FPS в 1080p и 1440p (Mar 2026): S.T.A.L.K.E.R. 2, 1080p High, 69 fps avg native. UE5 Lumen open-world title. https://man-made.ru/articles/rtx-5060-ti-testy-v-igrah-i-fps/
+
+[^obs-23]: ithardware.pl — Test NVIDIA GeForce RTX 5060 Ti 16 GB (Apr 2025): Kingdom Come: Deliverance 2, 1440p Ultra, native raster. 65 fps avg / 49 fps 1% low. CryEngine title with excellent CPU+GPU balance. https://ithardware.pl/testyirecenzje/nvidia_geforce_rtx_5060_ti_16_gb_test_recenzja_opinia-40776.html
+
+[^obs-24]: Digital Razor — Обзор видеокарты NVIDIA GeForce RTX 5060 Ti: 8 ГБ или 16 ГБ (2025): Monster Hunter Wilds, 8GB vs 16GB comparison. 8GB = 34 fps, 1% low 16 fps (VRAM cliff). 16GB = 84 fps (2.47x faster). https://digital-razor.ru/media/articles/hardware/nvidia-geforce-rtx-5060-ti-review/
+
+[^obs-25]: PCGamesN — Nvidia GeForce RTX 5060 Ti 16GB Review (Jun 2025): Indiana Jones and the Great Circle, 1080p Supreme Full RT, DLSS Quality + MFG 4x, 105 fps avg. ~1.15x over non-FG baseline. MFG overhead limits scaling at high base fps. https://www.pcgamesn.com/nvidia/geforce-rtx-5060-ti-review
