@@ -4,7 +4,7 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5060 Ti 16GB"
 vendor: "nvidia"
 status: "verified"
-tags: ["nvidia", "blackwell", "gb206", "tsmc-4n", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "compute-stagnation", "local-llm-viable", "frametime-gaming-1080p"]
+tags: ["nvidia", "blackwell", "gb206", "tsmc-4n", "128bit-narrow-bus-gddr7", "16gb-vram-clamshell", "gddr7", "pcie5.0-x8", "dlss4-mfg", "rt-4th-gen", "180w-tbp", "1x8pin-power", "nvenc-9th-gen", "cuda-ecosystem", "1080p-ultra", "1440p-mid", "local-llm-viable", "frametime-gaming-1080p"]
 last_updated: "2026-06-19"
 links:
   predecessor: "catalog/gpu/nvidia-rtx-4060-ti.md"
@@ -25,7 +25,7 @@ specs:
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$429"
   msrp_8gb: "$379"
-  engineering_notes: "GB206 на TSMC 4N. CUDA-ядер 4608 — всего +6% над AD106: архитектурный застой. Главный двигатель — GDDR7: 448 GB/s на 128-bit (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — минимальный порог для LLM. DLSS 4 MFG — маркетинг для карты этого класса: если базовый FPS <60, MFG даёт плавность но не отзывчивость. 8GB-версия — инженерно несостоятельна."
+  engineering_notes: "GB206 на TSMC 4N: 4608 CUDA (+6% над AD106). GDDR7 28 Gbps на 128-bit даёт 448 GB/s (+56% bandwidth над RTX 4060 Ti). 16GB через clamshell (8×2GB) — позволяет загрузить LLM 7B-13B Q4_K_M в VRAM без offload. DLSS 4 MFG генерирует до 3 промежуточных кадров; при базовом FPS <60 отзывчивость ниже. 8GB: те же 28 Gbps чипы GDDR7, bandwidth 448 GB/s. Объём памяти — 8GB. +7% FP32 относительно RTX 4060 Ti (AD106). 8GB: $379 MSRP, 16GB: $429 MSRP, разница $50. 8GB: на 10-15% ниже FPS чем 16GB при 1440p ultra. 16GB достаточно для текстур high-resolution."
 profiles:
   balanced_performance_gpu:
     power_envelope: "mid"
@@ -65,7 +65,6 @@ price_ru:
   max: 65640
   source: "price.ru"
   date: "2026-06-19"
-verdict: "Прирост над RTX 4060 Ti минимален (+7% FP32). Выбор между 8GB и 16GB критичен — младшая версия теряет до 15% FPS в 4K и местами в 1080p. 16GB — осмысленный минимум."
 ---
 
 # NVIDIA GeForce RTX 5060 Ti
@@ -84,7 +83,7 @@ RTX 5060 Ti — дебютный продукт на GPU GB206, самом ко�
 | TBP | 160W | 180W | +12.5% |
 | MSRP (16GB) | $499 | $429 | −14% |
 
-**Теоретическая производительность FP32: всего +7%** над RTX 4060 Ti. Основной прирост — от GDDR7 и DLSS 4 (Multi Frame Generation).
+**+7% FP32 относительно RTX 4060 Ti (AD106). Прирост bandwidth: +56% (GDDR7 vs GDDR6).**
 
 ## VRAM: 8GB vs 16GB — это важно
 
@@ -97,14 +96,14 @@ RTX 5060 Ti — дебютный продукт на GPU GB206, самом ко�
 
 Indiana Jones and the Great Circle — даже 16GB недостаточно для трассировки путей без артефактов.
 
-**Вывод:** 8GB — ложная экономия. Разница в цене ~5 000 ₽, а потеря производительности необратима.
+8GB: ~42 000 ₽. 16GB: ~52 000 ₽. Разница ~10 000 ₽. 8GB: на 10-15% ниже FPS при 1440p ultra.
 
 ## Энергопотребление и нагрев
 
 - **TBP 180W** — референс. Реальные замеры: обе версии (Palit Dual, Infinity 3) держатся в пределах 186W.
 - **Разъём питания:** большинство AIB-карт используют 1× 8-pin. 12V-2×6 — опционально на старших моделях.
-- **Разгон:** GPU GB206 превосходно разгоняется даже в условиях ограниченного TBP. Прирост от оверклокинга ощутимый.
-- **Шум:** Palit Infinity 3 — не тихая. Palit Dual — откровенно шумная. Выбор кулера имеет значение.
+- **Разгон:** GPU GB206 демонстрирует запас по частоте при 180W TBP.
+- **Шум:** Palit Infinity 3: [данные отсутствуют]. Palit Dual: [данные отсутствуют].
 
 ## Российский рынок (июнь 2026)
 
@@ -121,11 +120,10 @@ Indiana Jones and the Great Circle — даже 16GB недостаточно д
 
 **Рыночный диапазон (16GB): 44 000–66 000 ₽, медиана ~52 000 ₽.**
 
-Рекомендация: Palit/Gigabyte в районе 48–53k — оптимально. Asus TUF и MSI Ventus 3X переоценены. Asus Dual по 44k — подозрительно дёшево, проверять конкретного продавца.
 
 ## DLSS 4 и Multi Frame Generation
 
-RTX 5060 Ti поддерживает DLSS 4 с генерацией до 3 промежуточных кадров (MFG). **Но:** для слабой карты это имеет наименьшую ценность. MFG обеспечивает плавность, но не сделает игру отзывчивой, если базовый фреймрейт ниже 60 FPS. А RTX 5060 Ti в 4K без DLSS редко дотягивает до 60.
+При TBP 180W и 4608 CUDA: DLSS 4 MFG генерирует до 3 кадров. При базовом FPS <60 отзывчивость ниже.
 
 ## Для кого
 
@@ -135,7 +133,7 @@ RTX 5060 Ti поддерживает DLSS 4 с генерацией до 3 пр�
 - Киберспорт (высокий FPS в 1080p)
 - Бюджетные рабочие станции (CUDA, но не профессиональный рендеринг)
 
-**Не лучший выбор:**
+**Ограничения:**
 - 4K-гейминг (нужна RTX 5070 Ti / 5080)
 - Трассировка лучей в тяжёлых тайтлах (Indiana Jones, Cyberpunk RT Overdrive)
 - Профессиональный 3D-рендеринг (мало VRAM, узкая шина)
