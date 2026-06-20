@@ -142,6 +142,120 @@ observations:
       framegen: false
     avg_fps: 120
     p1_fps: 90
+  - id: "obs-006"
+    source_id: "gn"
+    source_confidence: 0.95
+    observation_quality: 0.90
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.x (Apr 2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "Ultra"
+      rt: "Medium"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 63
+    p1_fps: 0
+  - id: "obs-007"
+    source_id: "gn"
+    source_confidence: 0.95
+    observation_quality: 0.85
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.x (Apr 2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Medium"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 62
+    p1_fps: 0
+  - id: "obs-008"
+    source_id: "ts"
+    source_confidence: 0.95
+    observation_quality: 0.85
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077"
+    game_version: "2.2 (Apr 2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Medium"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 62
+    p1_fps: 0
+    vram_usage: 10.3
+    stutter_events: "no"
+    notes: "16GB model; VRAM usage measured via GPU-Z during benchmark run; well within 16GB buffer — no stutter or texture streaming issues observed"
+  - id: "obs-009"
+    source_id: "ts"
+    source_confidence: 0.95
+    observation_quality: 0.88
+    gpu: "nvidia-rtx-5060-ti-8gb"
+    game: "Cyberpunk 2077"
+    game_version: "2.2 (Apr 2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Medium"
+      rt: "Medium"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 0
+    p1_fps: 0
+    vram_usage: 7.9
+    stutter_events: "yes"
+    notes: "8GB model; VRAM capped at ~7.9 GB (hardware limit); TechSpot described the experience as 'an unplayable stuttering mess' with severe frametime spikes; the 16GB model was 62% faster in the same configuration"
+  - id: "obs-010"
+    source_id: "ts"
+    source_confidence: 0.95
+    observation_quality: 0.92
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077"
+    game_version: "2.2 (Apr 2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 79
+    p1_fps: 0
+    notes: "Native raster baseline for DLSS/MFG scaling comparison"
+  - id: "obs-011"
+    source_id: "tt"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "DLSS Quality"
+      framegen: false
+    avg_fps: 118
+    p1_fps: 0
+    notes: "DLSS 4 Transformer model (Preset K); ~49% uplift over native 79 fps"
+  - id: "obs-012"
+    source_id: "tt"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    gpu: "nvidia-rtx-5060-ti"
+    game: "Cyberpunk 2077"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "DLSS Quality"
+      framegen: true
+    avg_fps: 205
+    p1_fps: 0
+    notes: "DLSS 4 Quality + MFG 4x; ~2.6x multiplier over native 79 fps; latency increase from ~35ms to ~55ms per independent testing"
 ---
 
 # NVIDIA GeForce RTX 5060 Ti
@@ -171,7 +285,7 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 | MSRP (16GB) | $429 [^fact-3] |
 | MSRP (8GB) | $379 [^fact-3] |
 
-## Performance Data
+## Performance Data — Raster
 
 | Игра | Config | avg_fps | p1_fps | Источник |
 |---|---|---|---|---|
@@ -180,6 +294,28 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 | Alan Wake 2 | 1440p High, RT Off, Native | 43 | — | KitGuru [^obs-2] |
 | Black Myth: Wukong | 1440p Cinematic, RT Off, Native | 53 | 46 | ALKtech [^obs-3] |
 | Hogwarts Legacy | 1080p Ultra, RT Off, Native | ~120 | ~90 | EVEzone [^obs-4] |
+
+## Performance Data — RT
+
+| Игра | Config | avg_fps | p1_fps | Источник |
+|---|---|---|---|---|
+| Cyberpunk 2077: Phantom Liberty | 1080p Ultra, RT Medium, Native | 63 | — | Gamers Nexus [^obs-6] |
+| Cyberpunk 2077: Phantom Liberty | 1440p Ultra, RT Medium, Native | 62 | — | Gamers Nexus [^obs-7] |
+
+## Performance Data — VRAM Pressure
+
+| Игра | GPU Variant | Config | avg_fps | VRAM Usage | Stutter | Источник |
+|---|---|---|---|---|---|---|
+| Cyberpunk 2077 | 16GB | 1440p Ultra, RT Medium, Native | 62 | 10.3 GB | No | TechSpot [^obs-8] |
+| Cyberpunk 2077 | 8GB | 1440p Medium, RT Medium, Native | — | 7.9 GB (capped) | Yes | TechSpot [^obs-9] |
+
+## Performance Data — DLSS/MFG Scaling
+
+| Игра | Config | avg_fps | Множитель vs Native | Источник |
+|---|---|---|---|---|
+| Cyberpunk 2077 | 1440p Ultra, Native | 79 | 1.0× (baseline) | TechSpot [^obs-10] |
+| Cyberpunk 2077 | 1440p Ultra, DLSS Quality, FG Off | 118 | ~1.5× | TweakTown [^obs-11] |
+| Cyberpunk 2077 | 1440p Ultra, DLSS Quality, MFG 4x | 205 | ~2.6× | TweakTown [^obs-12] |
 
 ## Сравнение
 
@@ -217,3 +353,17 @@ RTX 5060 Ti — видеокарта среднего сегмента на ар
 [^obs-3]: ALKtech — MSI GeForce RTX 5060 Ti 16G GAMING TRIO OC Review: Black Myth Wukong Benchmark Tool, 53 avg / 46 min / 60 max fps (1440p). https://www.alktech.co/articles/review-msi-geforce-rtx-5060-ti-16g-gaming-trio-oc
 
 [^obs-4]: EVEzone — RTX 5060 Ti Hogwarts Legacy FPS Performance Benchmark (May 2026): 1080p Ultra, above 120 fps avg, 1% lows above 90 fps. https://evezone.evetech.co.za/performance-pulse/rtx-5060-ti-hogwarts-legacy-fps-performance-benchmark-best-settings/
+
+[^obs-6]: Gamers Nexus — NVIDIA GeForce RTX 5060 Ti Review & Benchmarks (Apr 2025): Cyberpunk 2077 Phantom Liberty, 1080p RT Medium, 63 FPS AVG, between 7900 GRE and 7900 XT. https://gamersnexus.net/gpus/more-marketing-bs-nvidia-geforce-rtx-5060-ti-review-benchmarks-vs-gtx-1060-4060-ti-more
+
+[^obs-7]: Gamers Nexus — NVIDIA GeForce RTX 5060 Ti Review & Benchmarks (Apr 2025): Cyberpunk 2077 Phantom Liberty, 1440p with RT, 62 FPS AVG, consistent frametimes. https://gamersnexus.net/gpus/more-marketing-bs-nvidia-geforce-rtx-5060-ti-review-benchmarks-vs-gtx-1060-4060-ti-more
+
+[^obs-8]: TechSpot — Nvidia GeForce RTX 5060 Ti 16GB Review (Apr 2025): Cyberpunk 2077 1440p Ultra RT Medium, VRAM usage ~10.3 GB (within 16GB buffer), no stutter observed. https://www.techspot.com/review/2979-nvidia-geforce-rtx-5060-ti-16gb/
+
+[^obs-9]: TechSpot — Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review (Apr 2025): Cyberpunk 2077 1440p Native Medium RT Medium, VRAM capped at ~7.9 GB, 'unplayable stuttering mess', 16GB model 62% faster. https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
+
+[^obs-10]: TechSpot — Nvidia GeForce RTX 5060 Ti 16GB Review (Apr 2025): Cyberpunk 2077, 1440p Ultra, 79 fps avg native (baseline for DLSS/MFG scaling). https://www.techspot.com/review/2979-nvidia-geforce-rtx-5060-ti-16gb/
+
+[^obs-11]: TweakTown — MSI GeForce RTX 5060 Ti Ventus 2X 16GB Review (Apr 2025): Cyberpunk 2077 1440p Ultra, DLSS 4 Quality (Transformer, no FG), ~118 FPS (~1.5x native). https://www.tweaktown.com/reviews/11029/msi-geforce-rtx-5060-ti-ventus-2x-16gb-dlss-4-goes-mainstream/index.html
+
+[^obs-12]: TweakTown — MSI GeForce RTX 5060 Ti Ventus 2X 16GB Review (Apr 2025): Cyberpunk 2077 1440p Ultra, DLSS 4 Quality + MFG 4x, ~205 FPS (~2.6x native), latency 55ms. https://www.tweaktown.com/reviews/11029/msi-geforce-rtx-5060-ti-ventus-2x-16gb-dlss-4-goes-mainstream/index.html
