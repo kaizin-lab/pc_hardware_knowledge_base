@@ -10,13 +10,37 @@
 
 ---
 
-## 1. Reader State A — Модель ДО чтения
+## 1. Reader State A — Модель ДО чтения (retrieval-driven)
 
-1. «128-битная шина = бюджетный сегмент. Это карта для 1080p, не выше.»
-2. «GDDR7 на 128 бит — маркетинг. Всё равно упрётся в ширину шины.»
-3. «RT и Path Tracing на карте за $379–429 — фикция. Реально работающий RT начинается с 5070 и выше.»
-4. «8 GB VRAM в 2025 году — устарело. Это карта-однодневка, обречённая на stutter при первом же текстурном апдейте.»
-5. «16 GB на 128-битной шине — дисбаланс. Памяти много, но канал узкий: всё равно не вытянет 1440p native.»
+*Подтверждённые убеждения читательского сообщества. Каждое снабжено ссылкой на источник — реальное обсуждение или обзор.*
+
+1. **«128-битная шина в 2025 году — это преступление. Карта упрётся в ширину шины на 1440p, что бы там ни говорили про GDDR7.»** — Пользователь r/gpu называет 128-bit шину «nasty work in 2025, as criminal or more than 8GB», другой участник r/buildapc пишет: «the memory bus is at 128-bit on the 5060ti, will bottleneck performances in high rez and heavy workloads.» Шина воспринимается как классовый маркер бюджетного сегмента — эвристика, унаследованная с эпохи GDDR5/GDDR6 [^state-1] [^state-2].
+
+2. **«GDDR7 на 128 бит — маркетинговая заплатка. Скорость памяти выросла, но узкое место никуда не делось.»** — В мегатреде r/buildapc launch day участники спорят: одни утверждают, что «bandwidth likely isn't as bad» с GDDR7, другие парируют — «the 5060ti needs to hit like 4070 performance levels… to be worth it in any capacity.» Сообщество разделено: есть понимание цифр (448 GB/s), но нет доверия к архитектурному решению [^state-1] [^state-3].
+
+3. **«8 GB VRAM в 2025 году — instantly obsolete. Карта-однодневка, обречённая на stutter при первом же текстурном апдейте.»** — Заголовок обзора TechSpot «Instantly Obsolete: Nvidia RTX 5060 Ti 8GB» стал мемом. Пользователь r/buildapc подтверждает: «we already have games that are out right now that the 5060 TI 8 GB can't handle at max settings because of VRAM issues.» Overclock3D перепечатывает: «RTX 5060 Ti 8GB 'Instantly Obsolete' reviewer confirms after testing.» Консенсус: 8GB — заведомо мёртвый SKU [^state-4] [^state-5].
+
+4. **«RT и Path Tracing на карте за $379–429 — фикция. Реально работающий RT начинается с 5070 и выше.»** — В r/nvidia ветка «Anyone recommending the 5060ti 16gb?» собирает скептические ответы: RT-блоки 60-класса воспринимаются как галочка для спецификации. IXBT в обзоре пишет: карта обеспечивает комфорт «при отключенных трассировке лучей и технологиях масштабирования» — формулировка, закрепляющая убеждение, что RT на этой карте нерабочий [^state-6] [^state-7].
+
+5. **«16 GB на 128-битной шине — архитектурный дисбаланс. Буфер большой, канал узкий: памяти много, но скорость доступа не позволяет ей работать в полную силу.»** — Убеждение о пропорциональности bandwidth и capacity: если канал узкий, большой буфер — пустая трата. Digital Razor (русскоязычный обзор) прямо предупреждает: «Узкая 128-битная шина и 8 ГБ памяти станут узким местом. Разумнее накопить бюджет на модели RTX 5060 Ti с 16 ГБ или RTX 5070» — даже в рекомендации 16GB-версии шина остаётся предметом беспокойства [^state-8] [^state-2].
+
+**Источники State A:**
+
+[^state-1]: Reddit r/buildapc — RTX 5060 Ti Review Megathread (16 Apr 2025). 2000+ комментариев; доминирующие темы: 128-bit bus, GDDR7 bandwidth, 8GB vs 16GB. https://www.reddit.com/r/buildapc/comments/1k0n7ey/rtx_5060_ti_review_megathread/
+
+[^state-2]: Reddit r/gpu — «RTX 5060 Ti's sitting on shelves in-store» (17 Apr 2025). Комментарий: «The 128-bit bus is nasty work in 2025, as criminal or more than 8GB.» https://www.reddit.com/r/gpu/comments/1k1o1yn/rtx_5060_tis_sitting_on_shelves_instore/
+
+[^state-3]: Reddit r/hardware — «NVIDIA GeForce RTX 5060 and 5060 Ti with GDDR7 128-bit» (8 Apr 2025). Предрелизное обсуждение: «The 5060ti needs to hit like 4070 performance levels… to be worth it in any capacity.» https://www.reddit.com/r/hardware/comments/1juaf0d/nvidia_geforce_rtx_5060_and_5060_ti_with_gddr7/
+
+[^state-4]: TechSpot — «Instantly Obsolete: Nvidia RTX 5060 Ti 8GB Review» (23 Apr 2025). Заголовок стал мемом; 8GB-версия описана как «an unplayable stuttering mess» в CP2077 1440p RT Medium. https://www.techspot.com/review/2980-nvidia-geforce-rtx-5060-ti-8gb/
+
+[^state-5]: Reddit r/buildapc — «My experience with the RTX 5060 and its 8GB of VRAM» (1 Sep 2025). Пользователь: «we already have games that are out right now that the 5060 TI 8 GB can't handle at max settings because of VRAM issues.» https://www.reddit.com/r/buildapc/comments/1n5vq04/my_experience_with_the_rtx_5060_and_its_8gb_of/
+
+[^state-6]: Reddit r/nvidia — «Anyone recommending the 5060ti 16gb?» (5 Nov 2025). Обсуждение viability RT/Path Tracing на 60-классе; скепсис в отношении RT-блоков. https://www.reddit.com/r/nvidia/comments/1op1354/anyone_recommending_the_5060ti_16gb/
+
+[^state-7]: IXBT.com — «Обзор видеоускорителя Nvidia GeForce RTX 5060 Ti» (25 Apr 2025). «…будет обеспечивать хороший комфорт во всех играх на высоких настройках качества при отключенных трассировке лучей и технологиях масштабирования в разрешениях до 1440p.» https://www.ixbt.com/3dv/nvidia-geforce-rtx-5060-ti-review.html
+
+[^state-8]: Digital Razor — «RTX 5060 vs RTX 3060: тесты, сравнение и стоит ли обновляться» (2025). «Узкая 128-битная шина и 8 ГБ памяти станут узким местом. Разумнее накопить бюджет на модели RTX 5060 Ti с 16 ГБ или RTX 5070.» https://digital-razor.ru/media/articles/hardware/rtx-5060-vs-rtx-3060/
 
 ---
 
