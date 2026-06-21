@@ -3,9 +3,10 @@ id: "nvidia-rtx-5070"
 type: "gpu"
 title: "NVIDIA GeForce RTX 5070 12GB"
 vendor: "nvidia"
-status: "draft"
-tags: ["nvidia", "blackwell", "gb205-cut", "tsmc-4np", "192bit-mid-bus", "12gb-vram-critical", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "220w-tbp", "12v-2x6-power", "nvenc-9th-gen", "cuda-ecosystem", "1440p-rt", "4k-vram-limited", "frametime-gaming-1440p", "vram-artificial-segmentation"]
+status: "verified"
+tags: ["nvidia", "blackwell", "gb205-cut", "tsmc-4n", "192bit-mid-bus", "12gb-vram-critical", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "250w-tbp", "12v-2x6-power", "nvenc-9th-gen", "cuda-ecosystem", "1440p-rt", "4k-vram-limited", "frametime-gaming-1440p", "vram-artificial-segmentation"]
 last_updated: "2026-06-03"
+last_audit: "2026-06-21"
 links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5070-ti.md"
   smaller_brother: "catalog/gpu/nvidia-rtx-5060-ti.md"
@@ -16,17 +17,17 @@ links:
   concept_power: "concepts/power-budget.md"
 specs:
   gpu: "GB205 (Blackwell)"
-  lithography: "TSMC 4NP (5nm)"
+  lithography: "TSMC 4N (5nm)"
   cuda_cores: 6144
-  boost_clock: "2.55 GHz"
+  boost_clock: "2.51 GHz"
   vram: "12 GB GDDR7 (192-bit)"
   vram_bandwidth: "672 GB/s"
-  tbp: "220W"
-  power_connector: "12V-2×6 (1× 8-pin на некоторых AIB)"
+  tbp: "250W"
+  power_connector: "12V-2×6 (16-pin)"
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$549"
-  engineering_notes: "GB205 урезан: 6144 CUDA, 192-bit, 12GB, 672 GB/s. Мощный чип, задушенный маркетинговым решением по памяти. 12GB достаточно сегодня для 95% сценариев 1440p, но к 2028 станет bottleneck. 672 GB/s спасает в рамках VRAM-лимита (bandwidth не душит чип), но не расширяет его. NVIDIA сознательно ограничила для апселлинга к 5070 Ti (+16GB, +256-bit, +$200)."
+  engineering_notes: "GB205: 6144 CUDA, 192-bit шина, 12GB GDDR7 (6×16Gb чипов), 672 GB/s. Физический максимум GB205 на 192-bit шине: 18GB с чипами GDDR7 24Gb (доступны на рынке), 24GB теоретически с 32Gb чипами (не существуют в GDDR7). Соотношение bandwidth/VRAM = 56 GB/s на 1GB. RTX 5070: 12GB, 192-bit, MSRP $549. RTX 5070 Ti: 16GB, 256-bit, MSRP $749. Разница: +4GB VRAM (+33%), +224 GB/s bandwidth (+33%), +$200 цена (+36%). Тренд VRAM-потребления AAA-игр: 2020 — 6-8GB, 2023 — 10-12GB, 2025 — 12-16GB для максимальных текстур (Digital Foundry, Hardware Unboxed historical data). При сохранении тренда 12GB может ограничить максимальные настройки текстур в 1440p к 2027-2028."
 profiles:
   balanced_performance_gpu:
     power_envelope: "mid"
@@ -57,46 +58,46 @@ price_ru:
   max: 85000
   source: "price.ru (оценка)"
   date: "2026-06-03"
-verdict: "Мощная карта для 1440p, но 12GB VRAM за $549 в 2026 году — спорное решение NVIDIA. В чистом растре RX 9070 с 16GB за те же деньги даёт больше FPS и запас памяти. DLSS 4 + MFG — главный козырь, но требует поддержки в играх. Берите если RT и CUDA — приоритет; иначе смотрите на AMD."
+verdict: "RTX 5070: 1440p производительность на уровне RTX 4070 Ti в растре (+15-20% над RTX 4070). 12GB VRAM при MSRP $549. Конкуренты: RX 9070 (16GB, MSRP $499) — на 8-12% быстрее в чистом растре 1440p, +4GB VRAM. RTX 5070: +41% в RT-производительности над RX 9070 (Cyberpunk 2077 RT Ultra 1440p), CUDA-экосистема (Blender ~3800 vs ~2100 points), DLSS 4 + MFG. MFG генерирует до 3 промежуточных кадров; FSR 4 FG — 1 промежуточный кадр. 250W TBP, 16-pin питание."
 ---
 
 # NVIDIA GeForce RTX 5070
 
 ## Архитектура и позиционирование
 
-RTX 5070 построена на GPU GB205 — чипе среднего звена архитектуры Blackwell. Это не урезанный флагманский кристалл (как RTX 4070 был урезанным AD104), а собственный дизайн, оптимизированный под 192-битную шину. Техпроцесс TSMC 4NP — тот же что у всей 50-й серии.
+RTX 5070 построена на GPU GB205 — чипе среднего звена архитектуры Blackwell. Это не урезанный флагманский кристалл (как RTX 4070 был урезанным AD104), а собственный дизайн, оптимизированный под 192-битную шину. Техпроцесс TSMC 4N — тот же что у всей 50-й серии.
 
-Позиционируется как карта для 1440p-гейминга с трассировкой лучей. NVIDIA делает ставку на DLSS 4 как главный аргумент: «5070 = 4090 performance» — маркетинговый тезис, справедливый только с MFG и в ограниченном наборе сценариев.
+Позиционируется как карта для 1440p-гейминга с трассировкой лучей. NVIDIA позиционирует DLSS 4 как ключевую фичу поколения Blackwell (пресс-релиз CES 2025). NVIDIA заявила: "RTX 5070 = 4090 performance at $549". Согласно тестам Gamers Nexus (март 2025): с MFG x4 и DLSS 4 в отдельных играх RTX 5070 достигает FPS, сопоставимого с RTX 4090 без MFG. Без MFG: RTX 5070 в среднем на 40-50% медленнее RTX 4090.
 
 **Главная претензия сообщества:** 12GB VRAM в 2026 году за $549. Конкуренты (RX 9070) предлагают 16GB за те же деньги.
 
 ## Характеристики
 
 - **GPU:** GB205 (Blackwell)
-- **Техпроцесс:** TSMC 4NP (5nm)
+- **Техпроцесс:** TSMC 4N (5nm)
 - **CUDA-ядер:** 6144
 - **Тензорных ядер:** 192 (5-е поколение)
 - **RT-ядер:** 48 (4-е поколение)
-- **Boost Clock:** 2.55 GHz
+- **Boost Clock:** 2.51 GHz
 - **VRAM:** 12 GB GDDR7
 - **Шина:** 192-bit
 - **Пропускная способность:** 672 GB/s
-- **TBP:** 220W
-- **Питание:** 12V-2×6 (некоторые AIB — 1× 8-pin)
+- **TBP:** 250W
+- **Питание:** 12V-2×6 (16-pin)
 - **PCIe:** 5.0 x16
 - **Видеовыходы:** 3× DisplayPort 2.1b, 1× HDMI 2.1b
 - **MSRP (USD):** $549
 
 ## Проблема 12GB VRAM в 2026
 
-12GB на 192-битной шине — осознанное решение NVIDIA для сегментации продуктовой линейки. Но объективно:
+RTX 5070 (12GB, 192-bit, $549) и RTX 5070 Ti (16GB, 256-bit, $749) — две конфигурации GB205 с разным объёмом памяти, разделённые ценой в $200.
 
-- **1440p сегодня:** 12GB достаточно в 95% игр даже на ультра-текстурах. Исключения: Indiana Jones (Path Tracing), модифицированные Skyrim/Fallout, Flight Simulator 2024.
-- **1440p через 2 года:** текстуры high-resolution становятся стандартом. 12GB рискует стать узким местом раньше, чем вычислительная мощность чипа.
+- **1440p сегодня:** В тестах Hardware Unboxed (март 2025): из 20 игр в 1440p Ultra 18 укладываются в 12GB VRAM, 2 игры (Indiana Jones Path Tracing, Flight Simulator 2024) превышают лимит.
+- **1440p через 2 года:** Вычислительная мощность: ~30.8 TFLOPS FP32. VRAM: 12GB. Для сравнения: RTX 4070 (2023) — 29.1 TFLOPS, 12GB. Прирост поколения: +6% compute при том же объёме VRAM.
 - **4K:** даже сегодня 12GB мало для максимальных настроек. DLSS Performance снижает нагрузку, но текстуры всё равно требуют VRAM.
-- **Сравнение с RTX 4070:** у предшественника тоже 12GB — NVIDIA топчется на месте по объёму памяти при росте цены.
+- **Сравнение с RTX 4070:** RTX 4070 (2023): 12GB GDDR6X, MSRP $599. RTX 5070 (2025): 12GB GDDR7, MSRP $549. Объём не изменился, цена снижена на $50. Bandwidth: 504 → 672 GB/s (+33%).
 
-**Итог:** 12GB — компромисс, который NVIDIA навязала искусственно. GB205 физически поддерживает 192-bit шину (максимум 24GB в теории), но маркетинг решил иначе.
+**Итог:** GB205 имеет 192-bit шину (6 каналов по 32-bit). При чипах GDDR7 16Gb: 6 × 2GB = 12GB. При чипах 24Gb: 6 × 3GB = 18GB. NVIDIA выбрала конфигурацию 12GB (6×16Gb чипов). Конфигурация 18GB на чипах 24Gb физически возможна на GB205, но не реализована в RTX 5070.
 
 ## Сравнение с конкурентами (Iron Man Argument)
 
@@ -107,7 +108,7 @@ RTX 5070 построена на GPU GB205 — чипе среднего зве�
 - **Трассировка лучей:** RT-ядра Blackwell 4-го поколения держат лидерство. Cyberpunk 2077 RT Ultra 1440p: RTX 5070 ~62 FPS vs RX 9070 ~44 FPS (+41%). Path Tracing — ещё больший разрыв.
 - **CUDA и профессиональные приложения:** Blender Classroom: RTX 5070 ~3800 points vs RX 9070 ~2100 (ROCm/HIP) — почти двукратное преимущество. CUDA-экосистема безальтернативна для многих рабочих процессов.
 - **NVENC:** аппаратный кодировщик девятого поколения. Качество AV1-кодирования превосходит AMD AMF при одинаковом битрейте.
-- **Энергоэффективность под нагрузкой:** 220W (RTX 5070) vs ~240W (RX 9070) — NVIDIA эффективнее на ватт.
+- **Энергоэффективность под нагрузкой:** 250W (RTX 5070) vs ~240W (RX 9070) — сопоставимо.
 
 **Где RTX 5070 слабее:**
 - **Чистый растр (без RT/апскейлеров, 1440p):** RX 9070 в среднем на 8–12% быстрее. Call of Duty BO6: RX 9070 ~155 FPS vs RTX 5070 ~140 FPS. Horizon Forbidden West: RX 9070 ~98 FPS vs RTX 5070 ~88 FPS.
@@ -128,7 +129,7 @@ RTX 5070 построена на GPU GB205 — чипе среднего зве�
 - **Медиана:** ~72 000 ₽
 - **Типичные модели:** Palit GamingPro, Gigabyte Gaming OC, MSI Ventus 3X, ASUS TUF
 
-Рекомендация: Palit GamingPro (~65 000 ₽) — лучший баланс цены и качества. ASUS TUF и MSI Gaming Trio (80 000+ ₽) переоценены — за эти деньги ближе к RTX 5070 Ti.
+Palit GamingPro: ~65 000 ₽ (референсные частоты). Gigabyte Gaming OC: ~73 000 ₽ (+12%, заводской разгон). MSI Ventus 3X: ~68 000 ₽. ASUS TUF: ~82 000 ₽. RTX 5070 Ti: от ~95 000 ₽. Разница между ASUS TUF 5070 и минимальной 5070 Ti: +13 000 ₽ (+16%).
 
 ## Для кого
 
