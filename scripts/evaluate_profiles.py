@@ -24,6 +24,16 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog"
 
 
+def extract_number(raw: str | int | float | None) -> float | None:
+    """Extract numeric value from strings like '280W', '896 GB/s'."""
+    if raw is None:
+        return None
+    if isinstance(raw, (int, float)):
+        return float(raw)
+    m = re.search(r"(\d+(?:\.\d+)?)", str(raw))
+    return float(m.group(1)) if m else None
+
+
 # ── Intent vocabulary (all valid intent IDs) ─────────────────────────
 
 VALID_INTENTS = {

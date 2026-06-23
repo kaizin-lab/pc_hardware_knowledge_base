@@ -4,8 +4,31 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 5070 Ti 16GB"
 vendor: "nvidia"
 status: "draft"
-tags: ["nvidia", "blackwell", "gb205-full", "tsmc-4np", "256bit-honest-bus", "16gb-vram-safe", "gddr7", "pcie5.0-x16", "dlss4-mfg", "rt-4th-gen-leader", "280w-tbp", "12v-2x6-power", "nvenc-9th-gen-dual", "cuda-ecosystem", "1440p-ultra-rt", "4k-high", "local-llm-viable", "productivity-workhorse", "frametime-gaming-1440p", "best-balanced-blackwell"]
-last_updated: "2026-06-03"
+tags:
+  [
+    "nvidia",
+    "blackwell",
+    "gb203-cut",
+    "tsmc-4np",
+    "70sm-8960cuda",
+    "256bit-bus",
+    "16gb-gddr7",
+    "896gbps-bandwidth",
+    "pcie5.0-x16",
+    "12v-2x6-300w",
+    "nvenc-9th-gen-dual",
+    "dlss4-mfg",
+    "rt-4th-gen",
+    "tensor-5th-gen-fp4",
+    "cuda-ecosystem",
+    "1440p-ultra-rt",
+    "4k-high-dlss",
+    "16gb-local-llm",
+    "productivity-workhorse",
+    "best-perf-per-watt-blackwell",
+    "enthusiast-tier",
+  ]
+last_updated: "2026-06-20"
 links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5080.md"
   smaller_brother: "catalog/gpu/nvidia-rtx-5070.md"
@@ -15,22 +38,23 @@ links:
   concept_pcie: "concepts/pcie-lanes.md"
   concept_power: "concepts/power-budget.md"
 specs:
-  gpu: "GB205 (Blackwell, полный чип)"
+  gpu: "GB203-300-A1 (Blackwell, урезанный, 70 из 84 SM)"
   lithography: "TSMC 4NP (5nm)"
-  cuda_cores: 7680
-  boost_clock: "2.62 GHz"
+  cuda_cores: 8960
+  boost_clock: "2.45 GHz (2452 MHz reference)"
   vram: "16 GB GDDR7 (256-bit)"
   vram_bandwidth: "896 GB/s"
-  tbp: "280W"
+  tbp: "300W"
   power_connector: "12V-2×6"
   pcie: "PCIe 5.0 x16"
   display_outputs: "3× DP 2.1b, 1× HDMI 2.1b"
   msrp_usd: "$749"
-  engineering_notes: "Полный GB205: 7680 CUDA, 256-bit, 16GB, 896 GB/s — наконец без компромиссов в серии 70. То чем должна была быть RTX 5070. Прирост +25-30% над 4070 Ti Super. 16GB — sweet spot для 4K. 12V-2×6 — улучшенный стандарт после фиаско 12VHPWR. Лучший баланс цена/возможности в Blackwell."
+  engineering_notes: "GB203-300-A1: чип верхнего сегмента Blackwell, урезанный до 70 SM из 84 возможных (83.3%). 8960 CUDA при полном потенциале 10752 — агрессивный binning из-за уровня дефектов на TSMC 4NP. 256-битная шина и 16GB сохранены полностью — архитектурный паттерн «широкая память, урезанные шейдеры», оптимизирующий карту под bandwidth-critical сценарии (1440p/4K RT). Прирост над 4070 Ti Super +25-30%. Лучший perf/W в линейке Blackwell: 300W TBP при 2.45 GHz — консервативный voltage-frequency curve, стабильный буст без агрессивного троттлинга."
 profiles:
   enthusiast_unrestricted_gpu:
-    power_envelope: "high"
+    criteria_met: true
     capability_level: 3
+    power_envelope: "high"
     steel_man_desc: "Нативный 4K-гейминг на максималках, профессиональный рендеринг, высокопроизводительный AI-инференс."
     failure_mode_desc: "Компактные корпуса с плохой вентиляцией. 300–500W тепла → 55°C внутри → перегрев CPU и троттлинг."
     optimal_for_intents: ["aaa_4k_ultra", "aaa_4k_path_tracing", "3d_rendering_gpu", "llm_inference_20b", "video_editing_8k"]
@@ -38,6 +62,7 @@ profiles:
     failure_severity: "BLOCK"
     failure_type: "CLIFF_DROP"
   transient_spike_heavy:
+    criteria_met: true
     power_envelope: "high"
     capability_level: 3
     steel_man_desc: "Динамичный 3D-рендеринг и гейминг. Мгновенный переход в P-state без микрофризов."
@@ -47,6 +72,7 @@ profiles:
     failure_severity: "BLOCK"
     failure_type: "CLIFF_DROP"
   hardware_rt_accelerated_gen_3:
+    criteria_met: true
     steel_man_desc: "Path Tracing в реальном времени. Аппаратное ускорение ×4–5 vs растеризация."
     failure_mode_desc: "DX11/OpenGL игры. RT-блоки простаивают — dark silicon."
     optimal_for_intents: ["aaa_4k_path_tracing", "3d_rendering_gpu"]
@@ -54,6 +80,7 @@ profiles:
     failure_severity: "WARN"
     failure_type: "LINEAR_DEGRADATION"
   tensor_matrix_accelerated:
+    criteria_met: true
     steel_man_desc: "Локальное обучение/инференс нейросетей, Stable Diffusion, DLSS/XeSS."
     failure_mode_desc: "Традиционные FP32-вычисления. Тензорные блоки простаивают — паразитный нагрев."
     optimal_for_intents: ["llm_inference_7b", "llm_inference_13b", "stable_diffusion", "ai_upscaling", "llm_training_lora"]
@@ -73,7 +100,7 @@ verdict: "Оптимальная карта для 1440p-ультра и 4K-ге
 
 ## Архитектура и позиционирование
 
-RTX 5070 Ti использует полный чип GB205 — максимальную конфигурацию кристалла среднего звена Blackwell. В отличие от RTX 5070 (урезанный GB205), здесь задействованы все вычислительные блоки плюс 256-битная шина памяти — именно то, чего не хватает младшей версии.
+RTX 5070 Ti использует чип GB203 — кристалл верхнего сегмента Blackwell, урезанный до 70 SM из 84 (83.3%). В отличие от RTX 5070 (другой чип — GB205), здесь сохранена полная 256-битная шина и 16GB VRAM — именно то, чего не хватает младшей версии.
 
 Позиционируется как карта для бескомпромиссного 1440p и уверенного 4K-гейминга с трассировкой лучей. NVIDIA метит в аудиторию, которая хочет «почти флагман» без цены RTX 5080.
 
@@ -81,16 +108,16 @@ RTX 5070 Ti использует полный чип GB205 — максимал�
 
 ## Характеристики
 
-- **GPU:** GB205 (Blackwell, полный чип)
+- **GPU:** GB203-300-A1 (Blackwell, 70/84 SM)
 - **Техпроцесс:** TSMC 4NP (5nm)
-- **CUDA-ядер:** 7680
-- **Тензорных ядер:** 240 (5-е поколение)
-- **RT-ядер:** 60 (4-е поколение)
-- **Boost Clock:** 2.62 GHz
+- **CUDA-ядер:** 8960
+- **Тензорных ядер:** 280 (5-е поколение)
+- **RT-ядер:** 70 (4-е поколение)
+- **Boost Clock:** 2.45 GHz
 - **VRAM:** 16 GB GDDR7
 - **Шина:** 256-bit
 - **Пропускная способность:** 896 GB/s
-- **TBP:** 280W
+- **TBP:** 300W
 - **Питание:** 12V-2×6
 - **PCIe:** 5.0 x16
 - **Видеовыходы:** 3× DisplayPort 2.1b, 1× HDMI 2.1b
