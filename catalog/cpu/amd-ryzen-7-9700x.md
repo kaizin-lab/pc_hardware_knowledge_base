@@ -40,7 +40,7 @@ specs:
   memory: "DDR5 only, dual-channel, до 5600 JEDEC / 6000+ EXPO"
   max_memory: "128 GB (4×32 GB или 2×48 GB)"
   igpu: "RDNA 2 (2 CUs, 2200 MHz, базовый вывод)"
-  box_cooler: "Wraith Prism (в коробке)"
+  box_cooler: null
   package: "Retail (BOX)"
   release_date: "Q3 2024"
 profiles:

@@ -22,7 +22,7 @@ specs:
     total_threads: 32
   clocks:
     p_core_base: "3.2 GHz"
-    p_core_boost: "5.8 GHz (Thermal Velocity Boost)"
+    p_core_boost: "6.0 GHz (Thermal Velocity Boost), 5.8 GHz (Turbo Boost Max 3.0)"
     p_core_boost_max: "6.0 GHz (Turbo Boost Max 3.0)"
     e_core_base: "2.4 GHz"
     e_core_boost: "4.3 GHz"

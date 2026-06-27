@@ -46,7 +46,7 @@ specs:
   pcie_version: '5.0'
   memory: DDR4-3200 / DDR5-5600, dual-channel
   max_memory: 192 GB (4×48 GB)
-  igpu: Intel UHD 770 (32 EU, до 1.65 GHz, QuickSync)
+  igpu: Intel UHD 770 (32 EU, до 1.60 GHz, QuickSync)
   npu: null
   box_cooler: null
   package: Retail (BOX, без кулера)
@@ -114,7 +114,7 @@ Raptor Lake Refresh — эволюционное обновление Raptor Lak
 - **L3-кэш:** 33 MB (Smart Cache, общий)
 - **TDP PL1 / PL2:** 125W / 253W
 - **TJmax:** 100°C
-- **iGPU:** Intel UHD 770 (32 EU, до 1.65 GHz, QuickSync)
+- **iGPU:** Intel UHD 770 (32 EU, до 1.60 GHz, QuickSync)
 - **Память:** DDR4-3200 / DDR5-5600, dual-channel
 - **PCIe:** 20 линий (16× PCIe 5.0 + 4× PCIe 4.0)
 - **Кулер в коробке:** отсутствует
