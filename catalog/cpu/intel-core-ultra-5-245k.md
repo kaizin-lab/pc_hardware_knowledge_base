@@ -24,7 +24,7 @@ specs:
   p_cores: 6
   e_cores: 8
   base_clock_p: "4.2 GHz"
-  base_clock_e: "3.6 GHz"
+  base_clock_e: "2.6 GHz (all-core turbo 3.6 GHz)"
   boost_clock_p: "5.2 GHz"
   boost_clock_e: "4.6 GHz"
   l2_cache: "26 MB (3 MB × 6 P-core + 4 MB × 2 clusters E-core)"

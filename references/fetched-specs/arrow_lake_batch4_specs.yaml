@@ -90,7 +90,7 @@ specs:
     clocks:
       p_core_base_ghz: 4.2
       p_core_max_turbo_ghz: 5.2
-      e_core_base_ghz: 3.6
+      e_core_base_ghz: 2.6            # Intel ARK: базовая частота. All-core турбо ~3.6 GHz
       e_core_max_turbo_ghz: 4.6       # Подтверждено: bunnings.com.au, topflightpc.com
 
     cache:
@@ -203,7 +203,7 @@ specs:
     clocks:
       p_core_base_ghz: 3.9
       p_core_max_turbo_ghz: 5.5       # Intel ARK: "up to 5.50 GHz"
-      e_core_base_ghz: 3.3            # Подтверждено: topflightpc.com, ivago.ge
+      e_core_base_ghz: 2.6            # Intel ARK: базовая частота. All-core турбо ~3.3 GHz
       e_core_max_turbo_ghz: 4.6       # Подтверждено: topflightpc.com, bunnings
 
     cache:
@@ -258,7 +258,7 @@ specs:
     clocks:
       p_core_base_ghz: 3.7
       p_core_max_turbo_ghz: 5.7       # Intel ARK: "up to 5.70 GHz"
-      e_core_base_ghz: 3.2            # Подтверждено: hooman.store
+      e_core_base_ghz: 2.6            # Intel ARK: базовая частота. All-core турбо ~3.2 GHz
       e_core_max_turbo_ghz: 4.6       # Подтверждено: gamingpcworld.com
 
     cache:
