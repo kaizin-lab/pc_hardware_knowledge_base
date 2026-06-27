@@ -1,7 +1,7 @@
 ---
 id: "amd-ryzen-9-9900x"
 type: "cpu"
-title: "AMD Ryzen 9 9900X (Zen 5, 170W) — 12 ЯДЕР, ПРОФЕССИОНАЛЬНЫЙ"
+title: "AMD Ryzen 9 9900X (Zen 5, 120W) — 12-ядерный dual-CCD"
 vendor: "amd"
 status: "draft"
 tags:
@@ -9,11 +9,10 @@ tags:
   - "zen5"
   - "am5"
   - "ddr5"
-  - "170w"
+  - "120w"
   - "12-core"
   - "dual-ccd"
-  - "рабочая-станция"
-  - "профессиональный"
+  - "avx-512"
 last_updated: "2026-06-07"
 links:
   platform: "catalog/motherboard/am5/index.md"
@@ -48,23 +47,6 @@ specs:
   package: "Retail (BOX, без кулера)"
   release_date: "Q3 2024"
 profiles:
-  efficient_multithread_professional:
-    power_envelope: "high"
-    capability_level: 3
-    steel_man_desc: "12 ядер Zen 5 на двух CCD — профессиональный многопоток без HEDT-тарифа. +16% IPC над Zen 4. Близок к 9950X в рабочих нагрузках, но существенно дешевле. Для DAW — тяжёлое микширование с низким DPC latency. Для видеомонтажа — отличный баланс ядер и частоты."
-    failure_mode_desc: "Dual-CCD архитектура: межчиплетная latency ≥ 70 нс → frametime spike в играх при перебросе потока между CCD. Не для киберспорта. Требует мощного охлаждения (AIO 280 мм минимум) при PBO/полной нагрузке — в SFF-сборках сложно."
-    optimal_for_intents:
-      - "daw_zero_dpc_latency"
-      - "video_editing_4k"
-      - "3d_rendering_cpu"
-      - "heavy_compilation"
-    failure_for_intents:
-      - "esports_1080p_240hz"
-      - "esports_1080p_360hz"
-      - "sff_build"
-      - "silent_build"
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
   multi_ccd_disaggregated:
     power_envelope: "high"
     capability_level: 3
@@ -112,9 +94,10 @@ price_ru:
   source: "price.ru"
   date: "2026-06-07"
   note: "Офферы: Гипер Трейд (27 725 ₽), Funny Play (32 990–36 289 ₽). 84 магазина."
+external_audit_verification: planned
 ---
 
-# AMD Ryzen 9 9900X (Zen 5, 170W) — 12 ЯДЕР, ПРОФЕССИОНАЛЬНЫЙ
+# AMD Ryzen 9 9900X (Zen 5, 120W) — 12-ядерный dual-CCD
 
 ## Позиционирование
 

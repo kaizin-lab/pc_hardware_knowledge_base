@@ -7,9 +7,11 @@ status: "verified"
 tags:
   - raptor-lake-refresh
   - lga1700
-  - enthusiast
   - hybrid-architecture
   - unlocked
+  - 253w
+  - 24-core
+  - 8p16e
 specs:
   architecture: "Raptor Lake Refresh"
   socket: "LGA1700"
@@ -27,9 +29,8 @@ specs:
   cache:
     l2: "32 MB (2 MB per P-core, 4 MB per E-core cluster)"
     l3: "36 MB (Intel Smart Cache)"
-  tdp:
-    base: "125W"
-    turbo_max: "253W"
+  tdp_pl1: "125W"
+  tdp_pl2: "253W"
   igpu: "Intel UHD Graphics 770 (300 MHz base / 1.65 GHz boost)"
   memory:
     type: "DDR5-5600 / DDR4-3200"
@@ -48,8 +49,22 @@ price_ru:
   max: 46990
   currency: "RUB"
   source: "price.ru"
-  fetched_at: "2026-06-07"
+fetch_at: "2026-06-07"
 last_updated: "2026-06-07"
+profiles:
+  hybrid_asymmetric_efficiency:
+    power_envelope: "high"
+    capability_level: 3
+    steel_man_desc: "Стриминг + фоновая многозадачность. E-ядра (16×Gracemont) разгружают P-ядра: OBS/Discord/browser на E-ядрах, игра/DAW на P-ядрах. Стабильный frametime."
+    failure_mode_desc: "Среды без аппаратного планировщика (старые ОС, Linux без Intel Thread Director). Потоки реального времени могут попасть на E-ядра — падение ×2–3."
+    optimal_for_intents:
+      - streaming
+      - software_development
+      - video_editing_4k
+    failure_for_intents: []
+    failure_severity: "WARN"
+    failure_type: "LINEAR_DEGRADATION"
+external_audit_verification: planned
 ---
 
 # Intel Core i9-14900K

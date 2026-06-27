@@ -1,7 +1,7 @@
 ---
 id: amd-ryzen-7-9800x3d
 type: cpu
-title: AMD Ryzen 7 9800X3D — КИБЕРСПОРТ БОГ
+title: AMD Ryzen 7 9800X3D (Zen 5, 3D V-Cache 2G, 120W)
 vendor: amd
 status: draft
 tags:
@@ -10,13 +10,11 @@ tags:
 - am5
 - ddr5
 - 3d-v-cache
-- gaming
 - 120w
 - 8-core
 - x3d
-- киберспорт
-- второе-поколение
 last_updated: '2026-06-03'
+external_audit_verification: planned
 links:
   platform: catalog/motherboard/am5/index.md
   memory_type: catalog/memory/ddr5.md
@@ -103,7 +101,7 @@ price_ru:
   date: '2026-06-04'
 ---
 
-# AMD Ryzen 7 9800X3D — КИБЕРСПОРТ БОГ
+# AMD Ryzen 7 9800X3D (Zen 5, 3D V-Cache 2G, 120W)
 
 ## Позиционирование
 

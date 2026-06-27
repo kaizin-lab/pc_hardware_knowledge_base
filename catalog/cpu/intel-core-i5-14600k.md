@@ -6,6 +6,7 @@ vendor: "Intel"
 status: "draft"
 tags: ["intel", "raptor-lake", "lga1700", "ddr5", "hybrid", "6p8e", "unlocked", "125w", "uhd770"]
 last_updated: "2026-06-07"
+external_audit_verification: planned
 links:
   predecessor: "catalog/cpu/intel-core-i5-13600k.md"
   competitor: "catalog/cpu/amd-ryzen-7-7700.md"
@@ -38,16 +39,6 @@ specs:
   cooler_in_box: "Нет (требуется отдельный кулер)"
   release_date: "Q4 2023"
 profiles:
-  mainstream_performance:
-    # 14 ядер (6P+8E), 20 потоков — сбалансированный профиль
-    power_envelope: "mid"
-    capability_level: 2
-    steel_man_desc: "Лучшая цена/частота для DAW: 6 P-ядер с HyperThreading обеспечивают низкую DPC-латентность на 64-буфере, а 8 E-ядер разгружают фоновые задачи. Разблокированный множитель позволяет тонкий разгон под конкретный проект. iGPU UHD 770 достаточен для вывода без дискретной карты."
-    failure_mode_desc: "Тяжёлые оркестровые проекты 150+ треков с интенсивной обработкой: 20 потоков упираются в лимит, необходим переход на i7/i9 или Ryzen 9. AAA-гейминг в 4K с Path Tracing — узкое место становится GPU, но CPU не является блокером."
-    optimal_for_intents: ["daw_zero_dpc_latency", "aaa_gaming_base"]
-    failure_for_intents: []
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
   hybrid_asymmetric_efficiency:
     power_envelope: "high"
     capability_level: 2

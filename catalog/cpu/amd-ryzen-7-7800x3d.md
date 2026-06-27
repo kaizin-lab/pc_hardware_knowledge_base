@@ -1,7 +1,7 @@
 ---
 id: amd-ryzen-7-7800x3d
 type: cpu
-title: AMD Ryzen 7 7800X3D — КИБЕРСПОРТ КОРОЛЬ
+title: AMD Ryzen 7 7800X3D (Zen 4, 3D V-Cache, 120W)
 vendor: amd
 status: draft
 tags:
@@ -10,12 +10,11 @@ tags:
 - am5
 - ddr5
 - 3d-v-cache
-- gaming
 - 120w
 - 8-core
 - x3d
-- киберспорт
 last_updated: '2026-06-03'
+external_audit_verification: planned
 links:
   platform: catalog/motherboard/am5/index.md
   memory_type: catalog/memory/ddr5.md

@@ -4,8 +4,9 @@ type: "cpu"
 title: "AMD Ryzen 5 7500F (OEM)"
 vendor: "amd"
 status: "verified"
-tags: ["amd", "zen4", "am5", "ddr5", "oem", "budget", "no-igpu"]
+tags: ["amd", "zen4", "am5", "ddr5", "oem", "no-igpu", "65w", "6-core"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 links:
   platform: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"

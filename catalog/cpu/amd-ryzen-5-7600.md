@@ -6,6 +6,7 @@ vendor: "amd"
 status: "draft"
 tags: ["amd", "zen4", "am5", "ddr5", "65w", "box-cooler", "igpu", "6-core"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 price_ru:
   min: 14500
   median: 16500

@@ -13,9 +13,8 @@ tags:
 - 12-core
 - dual-ccd
 - box-cooler
-- рабочая-станция
-- тихая-сборка
 last_updated: '2026-06-03'
+external_audit_verification: planned
 links:
   platform: catalog/motherboard/am5/index.md
   memory_type: catalog/memory/ddr5.md

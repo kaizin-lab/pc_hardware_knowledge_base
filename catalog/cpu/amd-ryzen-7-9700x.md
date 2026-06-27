@@ -6,6 +6,7 @@ vendor: "amd"
 status: "draft"
 tags: ["amd", "zen5", "am5", "ddr5", "65w", "igpu", "8-core"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 price_ru:
   min: 25000
   median: 28000

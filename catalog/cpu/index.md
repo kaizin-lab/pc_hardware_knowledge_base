@@ -31,7 +31,7 @@ last_updated: "2026-06-07"
 | `amd-ryzen-7-9700x.md` | R7 9700X | 8C/16T | 65W | RDNA2 | — | ~32 400 |
 | `amd-ryzen-9-9900x.md` | R9 9900X | 12C/24T | 120W | RDNA2 | — | ~33 500 |
 | `amd-ryzen-7-9800x3d.md` | R7 9800X3D | 8C/16T | 120W | RDNA2 | ✓ | ~51 400 |
-| `amd-ryzen-9-9950x.md` | R9 9950X | 12C/24T | 170W | RDNA2 | — | ~40 400 |
+| `amd-ryzen-9-9950x.md` | R9 9950X | 16C/32T | 170W | RDNA2 | — | ~40 400 |
 
 ### Intel LGA1700 — Raptor Lake (Refresh)
 | Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |

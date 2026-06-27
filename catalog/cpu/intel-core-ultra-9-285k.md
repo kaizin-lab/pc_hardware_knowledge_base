@@ -4,14 +4,15 @@ type: "cpu"
 title: "Intel Core Ultra 9 285K (125W)"
 vendor: "intel"
 status: "draft"
-tags: ["intel", "arrow-lake", "lga1851", "ddr5", "125w", "24-core", "quicksync", "flagship"]
+tags: ["intel", "arrow-lake", "lga1851", "ddr5", "125w", "24-core", "quicksync"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 links:
   platform: "catalog/motherboard/lga1851/index.md"
   memory_type: "catalog/memory/ddr5.md"
   family: "catalog/cpu/intel-core-ultra.md"
   down_variant: "catalog/cpu/intel-core-ultra-7-265k.md"
-  competitor_amd: "catalog/cpu/amd-ryzen-9-9950x3d.md"
+  competitor_amd: "catalog/cpu/amd-ryzen-9-9950x.md"
   concepts:
     - "concepts/power-budget.md"
 specs:
@@ -41,15 +42,6 @@ specs:
   package: "Retail (BOX, без кулера)"
   release_date: "Q4 2024"
 profiles:
-  multi_ccd_disaggregated:
-    power_envelope: "high"
-    capability_level: 3
-    steel_man_desc: "Параллельные многопоточные: 3D-рендеринг, компиляция. 12–16 ядер без HEDT-тарифа."
-    failure_mode_desc: "Игры. Межчиплетная задержка ≥ 70 нс → frametime spike при перебросе потока между CCD."
-    optimal_for_intents: ["3d_rendering_cpu", "scientific_computing", "heavy_compilation"]
-    failure_for_intents: ["esports_1080p_240hz", "esports_1080p_360hz"]
-    failure_severity: "WARN"
-    failure_type: "LINEAR_DEGRADATION"
   hybrid_asymmetric_efficiency:
     power_envelope: "high"
     capability_level: 2

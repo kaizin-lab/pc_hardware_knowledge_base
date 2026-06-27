@@ -14,9 +14,9 @@ tags:
 - 20-core
 - hybrid
 - 8p12e
-- quicksync
-- рабочий-универсал
+  - "quicksync"
 last_updated: '2026-06-07'
+external_audit_verification: planned
 links:
   platform: catalog/motherboard/lga1700/index.md
   memory_type: catalog/memory/ddr5.md
@@ -52,20 +52,6 @@ specs:
   package: Retail (BOX, без кулера)
   release_date: Q4 2023
 profiles:
-  efficient_multithread_professional:
-    power_envelope: high
-    capability_level: 3
-    steel_man_desc: '20 потоков на потребительской платформе. 8 P-cores для однопоточных задач + 12 E-cores для фоновой многозадачности. Близок к Ryzen 9 9900X в многопотоке за меньшие деньги. QuickSync — аппаратное ускорение видео.'
-    failure_mode_desc: '253W PL2 — экстремальный теплопакет. Требует СЖО 360мм или двухбашенный кулер премиум-класса. В SFF-сборках невозможен без жёсткого лимита мощности и потери 15–20% производительности.'
-    optimal_for_intents:
-    - daw_zero_dpc_latency
-    - video_editing_4k
-    - data_engineering_base
-    failure_for_intents:
-    - sff_build
-    - silent_build
-    failure_severity: BLOCK
-    failure_type: CLIFF_DROP
   hybrid_asymmetric_efficiency:
     power_envelope: high
     capability_level: 2

@@ -6,6 +6,7 @@ vendor: "amd"
 status: "verified"
 tags: ["amd", "zen4", "am5", "ddr5", "5nm"]
 last_updated: "2025-06-03"
+external_audit_verification: planned
 links:
   socket: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"

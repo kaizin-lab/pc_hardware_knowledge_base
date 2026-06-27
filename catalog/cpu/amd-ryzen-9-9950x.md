@@ -1,7 +1,7 @@
 ---
 id: amd-ryzen-9-9950x
 type: cpu
-title: AMD Ryzen 9 9950X (170W) — Zen 5 флагман
+title: AMD Ryzen 9 9950X (170W) — Zen 5 флагман, 16 ядер
 vendor: AMD
 status: draft
 tags:
@@ -11,9 +11,8 @@ tags:
 - high-core-count
 - ddr5
 - 170w
-- 12-core
+- 16-core
 - dual-ccd
-- рабочая-станция
 - avx-512
 last_updated: '2026-06-07'
 links:
@@ -26,14 +25,14 @@ links:
   - concepts/dual-ccd.md
 specs:
   socket: AM5 (LGA1718)
-  architecture: Zen 5 (Granite Ridge), dual-CCD (2×6 ядер)
+  architecture: "Zen 5 (Granite Ridge), dual-CCD (2×8 ядер)"
   lithography: TSMC 4nm (CCD ×2) + 6nm (IOD)
-  cores: 12
-  threads: 24
-  base_clock: 4.3 GHz
-  boost_clock: 5.0 GHz
-  avg_tdp: 148W
-  l2_cache: 12 MB (1 MB × 12)
+  cores: 16
+  threads: 32
+  base_clock: "4.3 GHz"
+  boost_clock: "5.7 GHz"
+  avg_tdp: "148W"
+  l2_cache: "16 MB (1 MB × 16)"
   l3_cache: 64 MB (32 MB × 2 CCD)
   tdp: 170W
   ppt: 230W (default)
@@ -46,24 +45,10 @@ specs:
   package: Retail (BOX, без кулера)
   release_date: Q3 2024
 profiles:
-  efficient_multithread_professional:
-    power_envelope: high
-    capability_level: 3
-    steel_man_desc: '24 потока Zen 5 на потребительской платформе. +18% к i9-285K в DAWBench DSP при схожем потреблении. Холоднее Intel — sustained многопоток без деградации. AVX-512 для научных и AI-нагрузок.'
-    failure_mode_desc: '170W TDP — экстремальный теплопакет. Требует AIO 360мм или премиум-воздух. SFF-сборки невозможны без жёсткого лимита мощности и потери 15–20% производительности. В играх dual-CCD latency вредит фреймтайму.'
-    optimal_for_intents:
-    - daw_zero_dpc_latency
-    - data_engineering_base
-    - ai_inference_base
-    failure_for_intents:
-    - sff_build
-    - silent_build
-    failure_severity: BLOCK
-    failure_type: CLIFF_DROP
   multi_ccd_disaggregated:
     power_envelope: high
     capability_level: 3
-    steel_man_desc: 'Параллельные многопоточные: 3D-рендеринг, компиляция, AI-инференс. 12 ядер Zen 5 с AVX-512 на потребительской платформе без HEDT-тарифа.'
+    steel_man_desc: 'Параллельные многопоточные: 3D-рендеринг, компиляция, AI-инференс. 16 ядер Zen 5 с AVX-512 на потребительской платформе без HEDT-тарифа.'
     failure_mode_desc: 'Игры и реалтайм-задачи. Межчиплетная задержка (≥ 70 нс inter-CCD) вызывает frametime spike при перебросе потока между CCD.'
     optimal_for_intents:
     - 3d_rendering_cpu
@@ -74,22 +59,38 @@ profiles:
     - esports_1080p_360hz
     failure_severity: WARN
     failure_type: LINEAR_DEGRADATION
-  sub_4nm_lithography:
+  dense_thermal_concentration:
     power_envelope: high
-    steel_man_desc: 'TSMC 4nm — рекордная производительность на ватт среди high-core-count CPU. Максимальная эффективность под sustained нагрузкой.'
-    failure_mode_desc: 'Повышенная чувствительность к деградации кремния при статическом напряжении. Разгон с V > 1.30 В → ускоренная электромиграция.'
+    capability_level: 2
+    steel_man_desc: 'Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды.'
+    failure_mode_desc: 'Длительная нагрузка. Тепловое сопротивление толстой IHS (≥ 1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%.'
+    optimal_for_intents:
+    - office_productivity
+    - software_development
+    failure_for_intents:
+    - 3d_rendering_cpu
+    - scientific_computing
+    - heavy_compilation
+    - silent_build
+    failure_severity: WARN
+    failure_type: LINEAR_DEGRADATION
+  sub_5nm_lithography:
+    power_envelope: high
+    steel_man_desc: 'Максимальная производительность на ватт. ITX-сборки, лимит энергопотребления.'
+    failure_mode_desc: 'Разгон с V > 1.35В → ускоренная электромиграция и выход из строя.'
     optimal_for_intents:
     - sff_build
     - silent_build
     failure_for_intents: []
     failure_severity: WARN
     failure_type: LINEAR_DEGRADATION
-verdict: Флагманский 12-ядерный процессор Zen 5 на AM5 с выдающейся производительностью
+verdict: Флагманский 16-ядерный процессор Zen 5 на AM5 с выдающейся производительностью
   на ватт. +18% к i9-285K в DAWBench DSP при сравнимом потреблении — лучший выбор
   для профессиональной работы со звуком. AVX-512, 64 MB L3, PCIe 5.0 — серьёзный
   инструмент для рендеринга, компиляции и AI-инференса. Требует мощного охлаждения
   (AIO 360 мм минимум). Для игр — избыточен; если нужен компромисс «игры + работа»,
   смотреть 9950X3D.
+external_audit_verification: planned
 price_ru:
   min: 36750
   median: 40425
@@ -98,11 +99,11 @@ price_ru:
   date: '2026-06-07'
 ---
 
-# AMD Ryzen 9 9950X (170W) — Zen 5 флагман
+# AMD Ryzen 9 9950X (170W) — Zen 5 флагман, 16 ядер
 
 ## Позиционирование
 
-Ryzen 9 9950X — флагманский производительный процессор AMD на архитектуре Zen 5. 12 ядер, 24 потока на платформе AM5 с TDP 170W (средний 148W). Наследник 7950X, но с улучшенной энергоэффективностью: TSMC 4nm вместо 5nm, +16% IPC, улучшенный контроллер памяти DDR5-5600 native.
+Ryzen 9 9950X — флагманский производительный процессор AMD на архитектуре Zen 5. 16 ядер, 32 потока на платформе AM5 с TDP 170W (средний 148W). Наследник 7950X, но с улучшенной энергоэффективностью: TSMC 4nm вместо 5nm, +16% IPC, улучшенный контроллер памяти DDR5-5600 native.
 
 Ключевое преимущество 9950X — **+18% к Intel Core Ultra 9 285K в DAWBench DSP при схожем или меньшем энергопотреблении**. При этом 9950X холоднее Intel под sustained нагрузкой: 148W средний против 125–180W у конкурента с меньшим thermal density. Для профессиональной работы со звуком (микширование 500+ треков) — лучший CPU на рынке.
 
@@ -112,10 +113,10 @@ Ryzen 9 9950X — флагманский производительный про
 
 ## Характеристики
 
-- Архитектура: Zen 5 (Granite Ridge), dual-CCD (2×6 ядер)
+- Архитектура: Zen 5 (Granite Ridge), dual-CCD (2×8 ядер)
 - Техпроцесс: TSMC 4nm (2× CCD) + 6nm (IOD)
 - Сокет: AM5 (LGA1718)
-- Ядер / потоков: 12C/24T (2× CCD по 6 ядер)
+- Ядер / потоков: 16C/32T (2× CCD по 8 ядер)
 - Базовая частота: 4.3 GHz
 - Boost: 5.0 GHz (на 1–2 ядрах)
 - All-core нагрузка: ~4.5–4.7 GHz (зависит от охлаждения)
@@ -170,7 +171,7 @@ Ryzen 9 9950X — флагманский производительный про
 
 ## Сравнение с Ryzen 9 7950X
 
-- Ядра/потоки: 12C/24T vs 16C/32T — у 9950X на 4 ядра меньше, но +16% IPC
+- Ядра/потоки: 16C/32T vs 16C/32T — у 9950X на 4 ядра меньше, но +16% IPC
 - Техпроцесс: TSMC 4nm vs 5nm — лучше эффективность
 - R23 multi: ~32 000 vs ~37 500 (−15% из-за меньшего числа ядер)
 - R23 single: ~2 150 vs ~2 000 (+7.5%)
@@ -182,7 +183,7 @@ Ryzen 9 9950X — флагманский производительный про
 
 ## Сравнение с Intel Core i9-14900K
 
-- Ядра/потоки: 12C/24T Zen 5 vs 24C/32T (8P+16E) Raptor Lake
+- Ядра/потоки: 16C/32T Zen 5 vs 24C/32T (8P+16E) Raptor Lake
 - R23 multi: ~32 000 vs ~40 000 (−20%)
 - R23 single: ~2 150 vs ~2 300 (−7%)
 - DAWBench DSP: +21% (преимущество Zen 5 AVX-512 и DPC latency)

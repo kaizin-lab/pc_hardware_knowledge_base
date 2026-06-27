@@ -6,6 +6,7 @@ vendor: "intel"
 status: "draft"
 tags: ["intel", "arrow-lake", "lga1851", "ddr5", "125w", "14-core", "quicksync"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 links:
   platform: "catalog/motherboard/lga1851/index.md"
   memory_type: "catalog/memory/ddr5.md"

@@ -4,8 +4,9 @@ type: "cpu"
 title: "Intel Core Ultra 7 265F (65W)"
 vendor: "intel"
 status: "draft"
-tags: ["intel", "arrow-lake", "lga1851", "ddr5", "65w", "20-core", "no-igpu", "efficient"]
+tags: ["intel", "arrow-lake", "lga1851", "ddr5", "65w", "20-core", "no-igpu"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 links:
   platform: "catalog/motherboard/lga1851/index.md"
   memory_type: "catalog/memory/ddr5.md"

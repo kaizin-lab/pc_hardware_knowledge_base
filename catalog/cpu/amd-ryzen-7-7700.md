@@ -6,6 +6,7 @@ vendor: "amd"
 status: "verified"
 tags: ["amd", "zen4", "am5", "ddr5", "65w", "box-cooler", "pbo", "8-core"]
 last_updated: "2026-06-03"
+external_audit_verification: planned
 links:
   platform: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
@@ -15,8 +16,6 @@ links:
   multi_core_alt: "catalog/cpu/amd-ryzen-9-7900.md"
   concepts:
     - "concepts/power-budget.md"
-specs:
-  concept_memory: "concepts/memory-timings.md"
 specs:
   socket: "AM5 (LGA1718)"
   architecture: "Zen 4 (Raphael)"
