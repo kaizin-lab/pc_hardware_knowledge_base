@@ -24,7 +24,7 @@ specs:
   p_cores: 6
   e_cores: 4
   base_clock_p: "3.3 GHz"
-  base_clock_e: "2.6 GHz"
+  base_clock_e: "2.7 GHz"
   boost_clock_p: "4.9 GHz"
   boost_clock_e: "4.4 GHz"
   l2_cache: "22 MB (3 MB × 6 P-core + 4 MB × 1 cluster E-core)"
@@ -32,13 +32,13 @@ specs:
   tdp: "65W"
   tdp_pl2: "121W"
   tjmax: "105°C"
-  pcie_lanes: "20 CPU (16× PCIe 5.0 + 4× PCIe 4.0)"
+  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 7200+ XMP"
   max_memory: "192 GB (4×48 GB)"
   igpu: null
   npu: "Intel AI Boost (13 TOPS)"
-  box_cooler: "Intel Laminar RM1 (в коробке)"
+  box_cooler: "Intel Laminar RM2 (в коробке)"
   package: "Retail (BOX, с кулером)"
   release_date: "Q1 2025"
 profiles:
@@ -73,7 +73,7 @@ verdict: "Самый доступный вход в LGA1851. 10 ядер (6P+4E)
 
 ## Позиционирование
 
-Core Ultra 5 225F — самый доступный процессор на LGA1851. 10 ядер (6P + 4E), 65W TDP, без встроенной графики. Комплектный кулер Laminar RM1 в коробке — редкое явление для Intel, где даже i5 давно шли без кулера.
+Core Ultra 5 225F — самый доступный процессор на LGA1851. 10 ядер (6P + 4E), 65W TDP, без встроенной графики. Комплектный кулер Laminar RM2 в коробке — редкое явление для Intel, где даже i5 давно шли без кулера.
 
 По позиционированию — наследник Core i5-13400F / 14400F, но с важными отличиями:
 - Новый сокет LGA1851 (вперёд-совместимость с 1–2 будущими поколениями)
@@ -108,7 +108,7 @@ Arrow Lake с урезанным Compute tile:
 - TJmax: 105°C
 - iGPU: **отсутствует** (требуется дискретная видеокарта)
 - NPU: Intel AI Boost (13 TOPS)
-- Кулер в коробке: Intel Laminar RM1 (компактный, алюминиевый)
+- Кулер в коробке: Intel Laminar RM2 (компактный, алюминиевый)
 
 ### Память и PCIe
 
@@ -180,7 +180,7 @@ Arrow Lake с урезанным Compute tile:
 
 ### Температуры
 
-- **Комплектный Intel Laminar RM1:** Cinebench PL1=65W — 65–72°C. Игры — 55–62°C. Вентилятор слышен, но терпимо.
+- **Комплектный Intel Laminar RM2:** Cinebench PL1=65W — 65–72°C. Игры — 55–62°C. Вентилятор слышен, но терпимо.
 - **Бюджетная башня (ID-COOLING SE-214-XT, ~1 500 ₽):** 55–62°C в Cinebench. Тишина.
 - **Любой кулер за 1 000–2 000 ₽:** справляется с запасом.
 
@@ -208,7 +208,7 @@ Arrow Lake с урезанным Compute tile:
 - PCIe: 5.0 vs 5.0
 - Память: DDR5 only vs DDR5 only
 - Платформа: LGA1851 (2 gen) vs AM5 (до 2027+)
-- Кулер в коробке: Laminar RM1 vs нет (OEM)
+- Кулер в коробке: Laminar RM2 vs нет (OEM)
 - Цена в РФ (7500F): ~9 000–11 000 ₽
 - Цена в РФ (225F, ориентировочно): ~20 000–28 000 ₽
 
@@ -261,7 +261,7 @@ Arrow Lake с урезанным Compute tile:
 
 - **MB:** GIGABYTE Z890 UD / ASRock Z890 Pro RS (или B860 при выходе)
 - **RAM:** 32 GB (2×16) DDR5-6000 CL30 (TeamGroup T-Create / Kingston Fury)
-- **Охлаждение:** Комплектный Intel Laminar RM1 (бесплатно)
+- **Охлаждение:** Комплектный Intel Laminar RM2 (бесплатно)
 - **GPU:** RTX 5060 / RX 9060 (бюджетная дискретная карта)
 - **Накопитель:** PCIe 4.0 NVMe (благо, 4 линии PCIe 4.0 от CPU есть)
 

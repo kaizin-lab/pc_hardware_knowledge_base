@@ -32,7 +32,7 @@ specs:
   tdp: "125W"
   tdp_pl2: "159W"
   tjmax: "105°C"
-  pcie_lanes: "20 CPU (16× PCIe 5.0 + 4× PCIe 4.0)"
+  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 8000+ XMP (CUDIMM)"
   max_memory: "192 GB (4×48 GB)"
