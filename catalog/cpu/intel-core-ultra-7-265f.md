@@ -35,7 +35,7 @@ specs:
   pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 8000+ XMP (CUDIMM)"
-  max_memory: "192 GB (4×48 GB)"
+  max_memory: "192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)"
   igpu: null
   npu: "Intel AI Boost (13 TOPS)"
   box_cooler: "Intel Laminar RM2 (в коробке)"
@@ -172,7 +172,7 @@ Core Ultra 7 265F — уникальный процессор на рынке: *
 
 ### Реальное потребление
 
-- **Idle:** 20–30W (чиплетная архитектура даёт о себе знать)
+- **Idle:** 45–60W (чиплетная архитектура с NPU повышает потребление в простое)
 - **Игры:** 55–70W
 - **Cinebench R23 multi (PL1=65W):** 65W — строго
 - **Cinebench R23 multi (PL2=121W, первые 28–56 сек):** 118–121W

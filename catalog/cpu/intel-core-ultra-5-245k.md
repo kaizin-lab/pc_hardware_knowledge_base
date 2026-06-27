@@ -35,7 +35,7 @@ specs:
   pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 8000+ XMP (CUDIMM)"
-  max_memory: "192 GB (4×48 GB)"
+  max_memory: "192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)"
   igpu: "Intel Graphics (4 Xe-LPG cores, до 1.9 GHz, QuickSync)"
   npu: "Intel AI Boost (13 TOPS)"
   box_cooler: null
@@ -164,7 +164,7 @@ Arrow Lake, чиплетная компоновка:
 
 ### Реальное потребление
 
-- **Idle:** 25–35W
+- **Idle:** 45–60W (чиплетная архитектура с NPU повышает потребление в простое)
 - **Игры:** 65–90W (обычно 70–80W)
 - **Cinebench R23 multi (PL1=125W):** 125W
 - **Cinebench R23 multi (PL2=159W):** 155–160W
