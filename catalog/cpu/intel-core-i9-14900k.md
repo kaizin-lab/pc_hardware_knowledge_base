@@ -16,28 +16,26 @@ specs:
   architecture: "Raptor Lake Refresh"
   socket: "LGA1700"
   lithography: "Intel 7 (10nm Enhanced SuperFin)"
-  cores:
-    performance: 8 (Raptor Cove)
-    efficiency: 16 (Gracemont)
-    total_threads: 32
-  clocks:
-    p_core_base: "3.2 GHz"
-    p_core_boost: "6.0 GHz (Thermal Velocity Boost), 5.8 GHz (Turbo Boost Max 3.0)"
-    p_core_boost_max: "6.0 GHz (Turbo Boost Max 3.0)"
-    e_core_base: "2.4 GHz"
-    e_core_boost: "4.3 GHz"
-  cache:
-    l2: "32 MB (2 MB per P-core, 4 MB per E-core cluster)"
-    l3: "36 MB (Intel Smart Cache)"
-  tdp_pl1: "125W"
+  cores: 24
+  threads: 32
+  p_cores: 8
+  e_cores: 16
+  base_clock_p: "3.2 GHz"
+  base_clock_e: "2.4 GHz"
+  boost_clock_p: "6.0 GHz (Thermal Velocity Boost), 5.8 GHz (Turbo Boost Max 3.0)"
+  boost_clock_e: "4.3 GHz"
+  l2_cache: "32 MB (2 MB × 8 P-core + 4 MB × 4 clusters E-core)"
+  l3_cache: "36 MB (Intel Smart Cache)"
+  tdp: "125W"
   tdp_pl2: "253W"
-  igpu: "Intel UHD Graphics 770 (300 MHz base / 1.65 GHz boost)"
-  memory:
-    type: "DDR5-5600 / DDR4-3200"
-    channels: 2
-    max_capacity: "192 GB"
-  pcie: "PCIe 5.0 (16 lanes) + PCIe 4.0 (4 lanes)"
-  msrp: "$589–$599"
+  tjmax: "100°C"
+  pcie_lanes: "20 (16× PCIe 5.0 + 4× PCIe 4.0)"
+  memory: "DDR5-5600 / DDR4-3200, dual-channel"
+  max_memory: "192 GB"
+  igpu: "Intel UHD Graphics 770 (32 EU, 300–1650 MHz)"
+  box_cooler: null
+  package: "Retail (BOX, без кулера)"
+  release_date: "2023-10 (Q4 2023)"
 links:
   predecessor: "intel-core-i9-13900k"
   platform: "catalog/motherboard/lga1700/index.md"
