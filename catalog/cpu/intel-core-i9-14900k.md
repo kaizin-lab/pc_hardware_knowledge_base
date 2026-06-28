@@ -22,8 +22,8 @@ specs:
   e_cores: 16
   base_clock_p: "3.2 GHz"
   base_clock_e: "2.4 GHz"
-  boost_clock_p: "6.0 GHz (Thermal Velocity Boost), 5.8 GHz (Turbo Boost Max 3.0)"
-  boost_clock_e: "4.3 GHz"
+  boost_clock_p: "6.0 GHz (Thermal Velocity Boost, 1-2 ядра), 5.8 GHz (Turbo Boost Max 3.0), 5.6 GHz (Max Turbo all P-cores)"
+  boost_clock_e: "4.4 GHz"
   l2_cache: "32 MB (2 MB × 8 P-core + 4 MB × 4 clusters E-core)"
   l3_cache: "36 MB (Intel Smart Cache)"
   tdp: "125W"
@@ -62,7 +62,7 @@ profiles:
     failure_for_intents: []
     failure_severity: "WARN"
     failure_type: "LINEAR_DEGRADATION"
-external_audit_verification: planned
+external_audit_verification: passed
 ---
 
 # Intel Core i9-14900K

@@ -14,7 +14,12 @@ tags:
 - 8-core
 - x3d
 last_updated: '2026-06-03'
-external_audit_verification: planned
+external_audit_verification: passed
+cpu_expert_verified: '2026-06-28'
+cpu_expert_sources:
+  - amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-7-7800x3d
+  - techpowerup.com/cpu-specs/ryzen-7-7800x3d.c3022
+cpu_expert_result: 18/18 specs verified, 0 errors
 links:
   platform: catalog/motherboard/am5/index.md
   memory_type: catalog/memory/ddr5.md
