@@ -85,9 +85,9 @@ Intel Thread Director (аппаратный планировщик) распре
 | Параметр | Значение |
 |---|---|
 | Ядра / Потоки | 8P+16E / 32 потока |
-| P-core Boost (1–2 ядра) | 6.0 GHz (Turbo Boost Max 3.0) |
-| P-core Boost (all-core) | 5.6–5.8 GHz (Thermal Velocity Boost) |
-| E-core Boost | 4.3 GHz |
+| P-core Boost (1–2 ядра) | 6.0 GHz (Thermal Velocity Boost) |
+| P-core Boost (all-core) | 5.8 GHz (Turbo Boost Max 3.0), 5.6 GHz (Max Turbo) |
+| E-core Boost | 4.4 GHz |
 | L2 Cache | 32 MB |
 | L3 Cache | 36 MB |
 | P-core Base TDP | 125W |
@@ -102,7 +102,7 @@ Intel Thread Director (аппаратный планировщик) распре
 ### vs i9-13900K (Raptor Lake)
 
 - Частоты P-core: +200 МГц (5.8 → 6.0 ГГц на 1–2 ядрах)
-- E-core boost: +300 МГц (4.0 → 4.3 ГГц)
+- E-core boost: +400 МГц (4.0 → 4.4 ГГц)
 - Тот же техпроцесс (Intel 7), тот же сокет (LGA1700)
 - Прирост многопоточной производительности: ~3–5% (Cinebench R23)
 - Прирост игровой: ~2–3% (GPU-bound сценарии — в пределах погрешности)
