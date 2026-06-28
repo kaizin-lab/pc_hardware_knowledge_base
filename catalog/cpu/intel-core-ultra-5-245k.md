@@ -6,7 +6,7 @@ vendor: "intel"
 status: "draft"
 tags: ["intel", "arrow-lake", "lga1851", "ddr5", "125w", "14-core", "quicksync"]
 last_updated: "2026-06-03"
-external_audit_verification: planned
+external_audit_verification: passed
 links:
   platform: "catalog/motherboard/lga1851/index.md"
   memory_type: "catalog/memory/ddr5.md"
@@ -18,7 +18,7 @@ links:
 specs:
   socket: "LGA1851"
   architecture: "Arrow Lake (Lion Cove P-cores + Skymont E-cores)"
-  lithography: "TSMC N3B (Compute tile) + TSMC N6 (SoC tile)"
+  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + Intel 7 (I/O tile) + Intel 22FFL (Base tile)"
   cores: 14
   threads: 14
   p_cores: 6

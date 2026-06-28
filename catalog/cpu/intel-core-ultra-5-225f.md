@@ -6,7 +6,7 @@ vendor: "intel"
 status: "draft"
 tags: ["intel", "arrow-lake", "lga1851", "ddr5", "65w", "10-core", "no-igpu"]
 last_updated: "2026-06-03"
-external_audit_verification: planned
+external_audit_verification: passed
 links:
   platform: "catalog/motherboard/lga1851/index.md"
   memory_type: "catalog/memory/ddr5.md"
@@ -18,7 +18,7 @@ links:
 specs:
   socket: "LGA1851"
   architecture: "Arrow Lake (Lion Cove P-cores + Skymont E-cores)"
-  lithography: "TSMC N3B (Compute tile) + TSMC N6 (SoC tile)"
+  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile, отключён) + TSMC N6 (SoC tile) + Intel 7 (I/O tile) + Intel 22FFL (Base tile)"
   cores: 10
   threads: 10
   p_cores: 6
@@ -101,7 +101,7 @@ Arrow Lake с урезанным Compute tile:
 - Ядер / потоков: 10C/10T (6P + 4E)
 - Техпроцесс: TSMC N3B (Compute)
 - P-cores: база 3.3 GHz, boost до 4.9 GHz
-- E-cores: база 2.6 GHz, boost до 4.4 GHz
+- E-cores: база 2.7 GHz, boost до 4.4 GHz
 - L2-кэш: 22 MB (18 MB P-core + 4 MB E-core кластер)
 - L3-кэш: 20 MB Smart Cache
 - TDP (PL1 / PL2): 65W / 121W

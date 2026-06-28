@@ -6,7 +6,7 @@ vendor: "Intel"
 status: "draft"
 tags: ["intel", "raptor-lake", "lga1700", "ddr5", "hybrid", "6p8e", "unlocked", "125w", "uhd770"]
 last_updated: "2026-06-07"
-external_audit_verification: planned
+external_audit_verification: passed
 links:
   predecessor: "catalog/cpu/intel-core-i5-13600k.md"
   competitor: "catalog/cpu/amd-ryzen-7-7700.md"

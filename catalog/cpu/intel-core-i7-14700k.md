@@ -16,7 +16,7 @@ tags:
 - 8p12e
   - "quicksync"
 last_updated: '2026-06-07'
-external_audit_verification: planned
+external_audit_verification: passed
 links:
   platform: catalog/motherboard/lga1700/index.md
   memory_type: catalog/memory/ddr5.md
