@@ -77,7 +77,8 @@ platform_req:
   cooler_min: "Однобашенный воздух"
   cooler_opt: "Однобашенный воздух (Thermalright Assassin X120 / Deepcool AK400)"
   memory_sweet_spot: "DDR5-6400"
-  psu_min: "600W"
+  psu_min_cpu: "600W"
+  psu_min_system: "750W"
 engineering_notes: "PL2 всего 159W — холодный Arrow Lake. Undervolting-friendly. K-series unlocked но разгон ограничен 6 P-cores. NPU присутствует (13 TOPS)."
 verdict: "Младший K-процессор Arrow Lake. 14 ядер, 125W, QuickSync и NPU. Хороший вход в LGA1851 для создателей контента с ограниченным бюджетом. В играх уступает Ryzen 5 9600X, но в продуктивности — силён благодаря E-ядрам."
 ---

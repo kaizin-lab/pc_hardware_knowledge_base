@@ -56,10 +56,15 @@ platform_req:
   motherboard_min: "B760 (VRM от 12 фаз)"
   motherboard_opt: "Z790"
   cooler_min: "360mm AIO"
+  cooler_acceptable: "280mm AIO / двухбашенный воздух (требует PL2≤200W или undervolt -0.05V)"
   cooler_opt: "360mm AIO (Arctic Liquid Freezer III / EK-Nucleus)"
-  memory_sweet_spot: "DDR5-6800 CL34"
-  psu_min: "850W"
-engineering_notes: "TVB 6.0 GHz только при <70°C. All-core 5.6 GHz достижим с 360mm AIO. K-series разблокированный множитель. SOC voltage issue исправлена в AGESA-подобных обновлениях микрокода. Последнее поколение LGA1700 — нет пути апгрейда. V-F кривая: diminishing returns выше 5.5 GHz."
+  memory_sweet_spot: "DDR5-6000 CL30 (1:1 с ring bus)"
+  psu_min_cpu: "850W"
+  psu_min_system: "1000W"
+engineering_notes:
+  - "⚠️ Vmin Shift: 13/14 поколение Intel подвержено деградации от повышенного напряжения на кольцевой шине. Требуется плата с микрокодом 0x12B или новее. Без обновлённого микрокода — риск физической деградации кристалла."
+  - "Stock Vcore: ~1.35-1.40V на P-cores при max boost. Undervolt -0.05V снижает потребление на 15-25W без потери частот."
+  - "TVB 6.0 GHz только при <70°C. All-core 5.6 GHz достижим с 360mm AIO. K-series разблокированный множитель. SOC voltage issue исправлена в AGESA-подобных обновлениях микрокода. Последнее поколение LGA1700 — нет пути апгрейда. V-F кривая: diminishing returns выше 5.5 GHz."
 fetch_at: "2026-06-07"
 last_updated: "2026-06-07"
 profiles:

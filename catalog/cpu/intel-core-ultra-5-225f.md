@@ -76,8 +76,9 @@ platform_req:
   motherboard_opt: "B860"
   cooler_min: "Box-кулер / однобашенный воздух"
   cooler_opt: "Box-кулер (комплектный) / Thermalright Assassin X120"
-  memory_sweet_spot: "DDR5-5600"
-  psu_min: "500W"
+  memory_sweet_spot: "DDR5-6400"
+  psu_min_cpu: "500W"
+  psu_min_system: "650W"
 engineering_notes: "65W PL1 — energy-efficient entry. F-series без iGPU. Заблокированный множитель. NPU присутствует (13 TOPS). Бюджетный вход в LGA1851."
 verdict: "Самый доступный вход в LGA1851. 10 ядер (6P+4E) в 65W, без iGPU, с комплектным кулером. Бюджетная альтернатива для сборщиков, кому нужна платформа Intel с NPU и PCIe 5.0. В играх уступает Ryzen 5 7500F, но E-cores дают преимущество в многозадачности."
 ---

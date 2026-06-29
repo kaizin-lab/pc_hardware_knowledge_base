@@ -59,15 +59,19 @@ binning:
   full_die: "Raptor Lake-S (8P+16E)"
   active_config: "6P+8E (отключены 2 P-cores + 2 E-core кластера)"
   disabled: "2 P-cores + 8 E-cores — продуктовая сегментация"
-  percent_active: 58
+  percent_active: 62
 platform_req:
   motherboard_min: "B760"
   motherboard_opt: "B760 / Z790 (для OC)"
   cooler_min: "Двухбашенный воздух (Peerless Assassin 120)"
   cooler_opt: "Двухбашенный воздух (Thermalright Peerless Assassin 120 / Deepcool AK620)"
   memory_sweet_spot: "DDR5-6000 CL30"
-  psu_min: "650W"
-engineering_notes: "PL2 всего 181W — значительно холоднее i7/i9. Undervolting: -50mV offset типично достижим без потери стабильности. K-series unlocked, но разгон ограничен 6 P-cores. Entry-level гибридной архитектуры."
+  psu_min_cpu: "650W"
+  psu_min_system: "800W"
+engineering_notes:
+  - "⚠️ Vmin Shift: 13/14 поколение Intel подвержено деградации от повышенного напряжения на кольцевой шине. Требуется плата с микрокодом 0x12B или новее. Без обновлённого микрокода — риск физической деградации кристалла."
+  - "Stock Vcore: ~1.35-1.40V на P-cores при max boost. Undervolt -0.05V снижает потребление на 15-25W без потери частот."
+  - "PL2 всего 181W — значительно холоднее i7/i9. Undervolting: -50mV offset типично достижим без потери стабильности. K-series unlocked, но разгон ограничен 6 P-cores. Entry-level гибридной архитектуры."
 verdict: "Лучший CPU для бюджетной DAW-станции на LGA1700. 6P+8E с разблокированным множителем — идеальный баланс цены, частоты и многозадачности. Для тяжёлых оркестровых проектов 150+ треков — смотреть i7-14700K или Ryzen 9."
 ---
 

@@ -77,7 +77,8 @@ platform_req:
   cooler_min: "360mm AIO"
   cooler_opt: "360mm AIO (Arctic Liquid Freezer III / Lian Li Galahad)"
   memory_sweet_spot: "DDR5-8000 CUDIMM"
-  psu_min: "850W"
+  psu_min_cpu: "850W"
+  psu_min_system: "1000W"
 engineering_notes: "Hyper-Threading УБРАН в Arrow Lake. 24C/24T — не ошибка. Gaming regression на старте vs 14900K — исправлено микрокодом. NPU 13 TOPS — первый consumer CPU с AI-ускорителем. LGA1851 — новый сокет, несовместим с LGA1700. TSMC N3B compute tile — первый Intel на внешнем техпроцессе. CUDIMM поддержка — DDR5 с встроенным clock driver."
 verdict: "Флагман Intel на LGA1851 с улучшенной энергоэффективностью: 125W PL1 против 253W PL2 у предшественника (i9-14900K), но при снятии ограничений (PL2 250W) потребление сопоставимо. В многопотоке и productivity — силён (QuickSync + NPU). В играх проигрывает AMD Ryzen X3D, но для рабочих станций с видеомонтажом — один из лучших выборов."
 ---
