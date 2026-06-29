@@ -71,6 +71,19 @@ price_ru:
   source: price.ru
   date: '2026-06-07'
   note: 'Оценка на основе агрегированных данных. price.ru возвращает только ПК в сборе; цены уточнены по Avito (i7-14700F: ~35 000 ₽) и конкурентному позиционированию.'
+binning:
+  full_die: "Raptor Lake-S (8P+16E)"
+  active_config: "8P+12E (отключён 1 E-core кластер)"
+  disabled: "4 E-cores (1 кластер) — продуктовая сегментация"
+  percent_active: 93
+platform_req:
+  motherboard_min: "B760 (VRM от 10 фаз)"
+  motherboard_opt: "Z790"
+  cooler_min: "280mm AIO / двухбашенный воздух"
+  cooler_opt: "280mm AIO (Arctic Liquid Freezer III) / Noctua NH-D15"
+  memory_sweet_spot: "DDR5-6400 CL32"
+  psu_min: "750W"
+engineering_notes: "12 E-cores vs 16 у 14900K — разница только в throughput многозадачности. В играх идентичен 14900K (те же 8 P-cores + ring bus). K-series unlocked. Power limit можно снизить до 200W с потерей 5-7% многопотока."
 verdict: 'Профессиональный универсал Raptor Lake Refresh: 20 потоков (8P+12E) за 45 000 ₽. Близок к Ryzen 9 9900X в многопотоке при существенно меньшей цене. Главный компромисс — 253W PL2 требует серьёзного охлаждения. Для DAW — отличный баланс ядер и IPC для микширования. Для видеомонтажа — QuickSync + 20 потоков. НЕ для SFF: теплопакет исключает компактные сборки без даунвольта.'
 ---
 

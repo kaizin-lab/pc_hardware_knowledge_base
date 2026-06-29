@@ -66,6 +66,19 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
   note: "Цены в РФ завышены из-за санкций"
+binning:
+  full_die: "Arrow Lake-S (8P+16E, tile-based)"
+  active_config: "6P+4E (сильно урезан, iGPU отключён)"
+  disabled: "2 P-cores + 12 E-cores + iGPU — продуктовая сегментация"
+  percent_active: 42
+platform_req:
+  motherboard_min: "B860 / H810 (LGA1851)"
+  motherboard_opt: "B860"
+  cooler_min: "Box-кулер / однобашенный воздух"
+  cooler_opt: "Box-кулер (комплектный) / Thermalright Assassin X120"
+  memory_sweet_spot: "DDR5-5600"
+  psu_min: "500W"
+engineering_notes: "65W PL1 — energy-efficient entry. F-series без iGPU. Заблокированный множитель. NPU присутствует (13 TOPS). Бюджетный вход в LGA1851."
 verdict: "Самый доступный вход в LGA1851. 10 ядер (6P+4E) в 65W, без iGPU, с комплектным кулером. Бюджетная альтернатива для сборщиков, кому нужна платформа Intel с NPU и PCIe 5.0. В играх уступает Ryzen 5 7500F, но E-cores дают преимущество в многозадачности."
 ---
 

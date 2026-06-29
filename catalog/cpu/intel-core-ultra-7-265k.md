@@ -67,6 +67,19 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
   note: "Цены в РФ завышены из-за санкций и параллельного импорта"
+binning:
+  full_die: "Arrow Lake-S (8P+16E, tile-based)"
+  active_config: "8P+12E (отключён 1 E-core кластер)"
+  disabled: "4 E-cores (1 кластер) — продуктовая сегментация"
+  percent_active: 93
+platform_req:
+  motherboard_min: "Z890 (LGA1851)"
+  motherboard_opt: "Z890"
+  cooler_min: "280mm AIO / двухбашенный воздух"
+  cooler_opt: "280mm AIO / Noctua NH-D15 G2"
+  memory_sweet_spot: "DDR5-7200 CUDIMM"
+  psu_min: "750W"
+engineering_notes: "То же что 285K но без 4 E-cores. В играх идентичен 285K. NPU присутствует (13 TOPS). CUDIMM выгода — до +5-8% в latency-sensitive нагрузках vs стандартной DDR5."
 verdict: "Золотая середина Arrow Lake: 8 P-cores + 12 E-cores за 125W. Отличный выбор для создателей контента, кому не нужен флагманский 285K. QuickSync, NPU и эффективность — сильные стороны. В играх уступает X3D, но для продуктивности — один из лучших в классе."
 ---
 

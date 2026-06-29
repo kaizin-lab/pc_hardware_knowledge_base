@@ -66,6 +66,19 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
   note: "Цены в РФ завышены из-за санкций"
+binning:
+  full_die: "Arrow Lake-S (8P+16E, tile-based)"
+  active_config: "6P+8E (отключены 2 P-cores + 2 E-core кластера)"
+  disabled: "2 P-cores + 8 E-cores — продуктовая сегментация"
+  percent_active: 58
+platform_req:
+  motherboard_min: "Z890 / B860 (LGA1851)"
+  motherboard_opt: "B860"
+  cooler_min: "Однобашенный воздух"
+  cooler_opt: "Однобашенный воздух (Thermalright Assassin X120 / Deepcool AK400)"
+  memory_sweet_spot: "DDR5-6400"
+  psu_min: "600W"
+engineering_notes: "PL2 всего 159W — холодный Arrow Lake. Undervolting-friendly. K-series unlocked но разгон ограничен 6 P-cores. NPU присутствует (13 TOPS)."
 verdict: "Младший K-процессор Arrow Lake. 14 ядер, 125W, QuickSync и NPU. Хороший вход в LGA1851 для создателей контента с ограниченным бюджетом. В играх уступает Ryzen 5 9600X, но в продуктивности — силён благодаря E-ядрам."
 ---
 

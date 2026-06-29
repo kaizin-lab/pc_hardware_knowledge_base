@@ -47,6 +47,19 @@ price_ru:
   max: 46990
   currency: "RUB"
   source: "price.ru"
+binning:
+  full_die: "Raptor Lake-S (8P+16E)"
+  active_config: "8P+16E (полный кристалл)"
+  disabled: "Нет — флагманский SKU"
+  percent_active: 100
+platform_req:
+  motherboard_min: "B760 (VRM от 12 фаз)"
+  motherboard_opt: "Z790"
+  cooler_min: "360mm AIO"
+  cooler_opt: "360mm AIO (Arctic Liquid Freezer III / EK-Nucleus)"
+  memory_sweet_spot: "DDR5-6800 CL34"
+  psu_min: "850W"
+engineering_notes: "TVB 6.0 GHz только при <70°C. All-core 5.6 GHz достижим с 360mm AIO. K-series разблокированный множитель. SOC voltage issue исправлена в AGESA-подобных обновлениях микрокода. Последнее поколение LGA1700 — нет пути апгрейда. V-F кривая: diminishing returns выше 5.5 GHz."
 fetch_at: "2026-06-07"
 last_updated: "2026-06-07"
 profiles:

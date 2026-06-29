@@ -66,6 +66,19 @@ price_ru:
   source: "price.ru"
   date: "2026-06-03"
   note: "Цены в РФ завышены из-за санкций"
+binning:
+  full_die: "Arrow Lake-S (8P+16E, tile-based)"
+  active_config: "8P+12E (iGPU отключён)"
+  disabled: "4 E-cores + iGPU — продуктовая сегментация / дефект GPU tile"
+  percent_active: 83
+platform_req:
+  motherboard_min: "Z890 / B860 (LGA1851)"
+  motherboard_opt: "B860"
+  cooler_min: "Двухбашенный воздух"
+  cooler_opt: "Двухбашенный воздух (Thermalright Peerless Assassin 120)"
+  memory_sweet_spot: "DDR5-6400"
+  psu_min: "650W"
+engineering_notes: "F-series — без iGPU. Требует дискретную видеокарту. PL2 ниже чем у K-серии (182W vs 250W) — заблокированный множитель. Идеален для сборок с дискретной GPU где iGPU не нужен."
 verdict: "Уникальный процессор: 20 ядер (8P+12E) в 65W. Без iGPU, но с NPU. Идеален для компактных и тихих рабочих станций — видеомонтаж через дискретную GPU, а 20 ядер обеспечивают многопоточную производительность, невозможную для 65W-процессоров конкурентов. В играх — скромно, но для продуктивности в ограниченном термопакете — бескомпромиссный лидер."
 ---
 
