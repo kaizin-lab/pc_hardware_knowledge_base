@@ -44,6 +44,8 @@ tjmax: "95°C (равен non-X3D Zen 5)"
   box_cooler: null
   package: Retail (BOX, без кулера)
   release_date: Q4 2024
+  multiplier: "unlocked"
+  multiplier_source: "https://www.amd.com/en/products/processors/desktops/ryzen.html"
 profiles:
   cache_dominant_gaming:
     power_envelope: high

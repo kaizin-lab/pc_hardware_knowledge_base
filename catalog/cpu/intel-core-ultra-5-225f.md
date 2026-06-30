@@ -40,6 +40,8 @@ specs:
   box_cooler: "Intel Laminar RM2 (в коробке)"
   package: "Retail (BOX, с кулером)"
   release_date: "Q1 2025"
+  multiplier: "locked"
+  multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/241069/intel-core-ultra-5-processor-225f-20m-cache-up-to-4-90-ghz/specifications.html"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "mid"

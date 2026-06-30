@@ -40,6 +40,8 @@ specs:
   box_cooler: null
   package: "Retail (BOX, без кулера)"
   release_date: "Q4 2024"
+  multiplier: "unlocked"
+  multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/241067/intel-core-ultra-5-processor-245k-24m-cache-up-to-5-20-ghz/specifications.html"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"

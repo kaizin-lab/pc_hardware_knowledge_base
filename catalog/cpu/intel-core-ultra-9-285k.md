@@ -40,6 +40,8 @@ specs:
   box_cooler: null
   package: "Retail (BOX, без кулера)"
   release_date: "Q4 2024"
+  multiplier: "unlocked"
+  multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"

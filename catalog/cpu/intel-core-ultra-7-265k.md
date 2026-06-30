@@ -41,6 +41,8 @@ specs:
   box_cooler: null
   package: "Retail (BOX, без кулера)"
   release_date: "Q4 2024"
+  multiplier: "unlocked"
+  multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/241063/intel-core-ultra-7-processor-265k-30m-cache-up-to-5-50-ghz/specifications.html"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"

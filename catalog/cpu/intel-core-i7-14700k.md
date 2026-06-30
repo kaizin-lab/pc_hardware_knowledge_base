@@ -51,6 +51,8 @@ specs:
   box_cooler: null
   package: Retail (BOX, без кулера)
   release_date: Q4 2023
+  multiplier: "unlocked"
+  multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/236783/intel-core-i7-processor-14700k-33m-cache-up-to-5-60-ghz/specifications.html"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: high

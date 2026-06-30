@@ -36,6 +36,8 @@ specs:
   box_cooler: null
   package: "Retail (BOX, без кулера)"
   release_date: "2023-10 (Q4 2023)"
+  multiplier: "unlocked"
+  multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/236773/intel-core-i9-processor-14900k-36m-cache-up-to-6-00-ghz/specifications.html"
 links:
   predecessor: "intel-core-i9-13900k"
   platform: "catalog/motherboard/lga1700/index.md"

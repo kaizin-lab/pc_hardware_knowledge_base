@@ -44,6 +44,8 @@ specs:
   box_cooler: null
   package: Retail (BOX, без кулера)
   release_date: Q3 2024
+  multiplier: "unlocked"
+  multiplier_source: "https://www.amd.com/en/products/processors/desktops/ryzen.html"
 profiles:
   multi_ccd_disaggregated:
     power_envelope: high

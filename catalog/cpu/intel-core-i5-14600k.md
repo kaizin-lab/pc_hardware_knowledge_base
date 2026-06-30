@@ -38,6 +38,8 @@ specs:
   unlocked: true
   cooler_in_box: "Нет (требуется отдельный кулер)"
   release_date: "Q4 2023"
+  multiplier: "unlocked"
+  multiplier_source: "https://ark.intel.com/content/www/us/en/ark/products/236799/intel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz.html"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"

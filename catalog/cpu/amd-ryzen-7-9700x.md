@@ -43,6 +43,8 @@ specs:
   box_cooler: null
   package: "Retail (BOX)"
   release_date: "Q3 2024"
+  multiplier: "unlocked"
+  multiplier_source: "https://www.amd.com/en/products/processors/desktops/ryzen.html"
 profiles:
   balanced_monolithic_norm:
     power_envelope: "mid"

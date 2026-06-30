@@ -50,6 +50,8 @@ specs:
   box_cooler: null
   package: Retail (BOX, без кулера)
   release_date: Q2 2023
+  multiplier: "unlocked"
+  multiplier_source: "https://www.amd.com/en/products/processors/desktops/ryzen.html"
 profiles:
   cache_dominant_gaming:
     power_envelope: high
