@@ -110,7 +110,7 @@ Arrow Lake — первая полностью чиплетная архитек
 
 - Сокет: LGA1851 (new), чипсеты Z890 / B860 / H810
 - Ядер / потоков: 24C/24T (8P + 16E) — гипертрединг отсутствует
-- Техпроцесс: TSMC N3B (Compute) + TSMC N6 (SoC/GPU) + Intel 22FFL (Base)
+«Техпроцесс: TSMC N3B (Compute) + TSMC N5 (GPU) + TSMC N6 (SoC) + Intel 22FFL (Base)»
 - P-cores Lion Cove: база 3.7 GHz, boost до 5.7 GHz (1–2 ядра)
 - E-cores Skymont: база 3.2 GHz, boost до 4.6 GHz (1–2 ядра)
 - L2-кэш: 40 MB (3 MB × 8 P-core + 4 MB на кластер из 4 E-cores, всего 4 кластера)

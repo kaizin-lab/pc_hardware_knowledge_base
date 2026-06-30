@@ -36,7 +36,7 @@ specs:
   l3_cache: 96 MB (32 MB on-die + 64 MB 3D V-Cache 2G)
   tdp: 120W
   ppt: 162W (default)
-tjmax: "95°C (равен non-X3D Zen 5)"
+  tjmax: "95°C (равен non-X3D Zen 5)"
   pcie_lanes: 28 (24 usable), PCIe 5.0
   memory: DDR5 only, dual-channel, до 5600 JEDEC / 6000+ EXPO
   max_memory: 128 GB (4×32 GB или 2×48 GB)

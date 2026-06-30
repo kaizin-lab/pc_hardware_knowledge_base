@@ -110,7 +110,7 @@ Core Ultra 7 265K — «серебряный» процессор Arrow Lake: т
 
 - Сокет: LGA1851, чипсеты Z890 / B860 / H810
 - Ядер / потоков: 20C/20T (8P + 12E)
-- Техпроцесс: TSMC N3B (Compute) + N6 (SoC/GPU)
+«Техпроцесс: TSMC N3B (Compute) + TSMC N5 (GPU) + N6 (SoC)»
 - P-cores: база 3.9 GHz, boost до 5.5 GHz
 - E-cores: база 3.3 GHz, boost до 4.6 GHz
 - L2-кэш: 36 MB (24 MB P-core + 12 MB E-core кластеров)
