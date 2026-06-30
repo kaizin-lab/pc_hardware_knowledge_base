@@ -18,7 +18,7 @@ links:
 specs:
   socket: "LGA1851"
   architecture: "Arrow Lake (Lion Cove P-cores + Skymont E-cores)"
-  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile, отключён) + TSMC N6 (SoC tile) + Intel 7 (I/O tile) + Intel 22FFL (Base tile)"
+  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile, отключён) + TSMC N6 (SoC tile) + TSMC N6 (I/O tile) + Intel 22FFL (Base tile)"
   cores: 10
   threads: 10
   p_cores: 6
@@ -32,7 +32,7 @@ specs:
   tdp: "65W"
   tdp_pl2: "121W"
   tjmax: "105°C"
-  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
+  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 5.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 7200+ XMP"
   max_memory: "192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)"
@@ -129,7 +129,7 @@ Arrow Lake с урезанным Compute tile:
 - JEDEC: до DDR5-6400
 - XMP: до DDR5-7200+
 - Макс. объём: 192 GB официально (4×48 GB), практический лимит 256 GB (4×64 GB)
-- PCIe: 24 линии CPU (16× 5.0 + 4× 4.0 + 4× 4.0)
+- PCIe: 24 линии CPU (16× 5.0 + 4× 5.0 + 4× 4.0)
 
 ## Производительность
 

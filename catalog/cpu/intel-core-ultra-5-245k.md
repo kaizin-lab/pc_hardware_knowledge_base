@@ -18,13 +18,13 @@ links:
 specs:
   socket: "LGA1851"
   architecture: "Arrow Lake (Lion Cove P-cores + Skymont E-cores)"
-  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + Intel 7 (I/O tile) + Intel 22FFL (Base tile)"
+  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + TSMC N6 (I/O tile) + Intel 22FFL (Base tile)"
   cores: 14
   threads: 14
   p_cores: 6
   e_cores: 8
   base_clock_p: "4.2 GHz"
-  base_clock_e: "2.6 GHz (all-core turbo 3.6 GHz)"
+  base_clock_e: "3.6 GHz"
   boost_clock_p: "5.2 GHz"
   boost_clock_e: "4.6 GHz"
   l2_cache: "26 MB (3 MB × 6 P-core + 4 MB × 2 clusters E-core)"
@@ -32,7 +32,7 @@ specs:
   tdp: "125W"
   tdp_pl2: "159W"
   tjmax: "105°C"
-  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
+  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 5.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 8000+ XMP (CUDIMM)"
   max_memory: "192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)"
@@ -102,7 +102,7 @@ Arrow Lake, чиплетная компоновка:
 
 - **Compute tile (TSMC N3B):** 6 P-cores + 8 E-cores
 - **SoC tile (TSMC N6):** DDR5-контроллер, PCIe 5.0
-- **GPU tile (TSMC N6):** Intel Graphics Xe-LPG (4 Xe-ядра, до 1.9 GHz)
+- **GPU tile (TSMC N5):** Intel Graphics Xe-LPG (4 Xe-ядра, до 1.9 GHz)
 - **Base tile:** Intel 22FFL, Foveros-интерконнект
 
 ### Базовые параметры
@@ -125,7 +125,7 @@ Arrow Lake, чиплетная компоновка:
 - JEDEC: до DDR5-6400
 - XMP: до DDR5-8000+ (CUDIMM)
 - Макс. объём: 192 GB
-- PCIe: 24 линии CPU (16× 5.0 + 4× 4.0 + 4× 4.0)
+- PCIe: 24 линии CPU (16× 5.0 + 4× 5.0 + 4× 4.0)
 
 ## Производительность
 

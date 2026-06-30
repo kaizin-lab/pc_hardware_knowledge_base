@@ -19,13 +19,13 @@ links:
 specs:
   socket: "LGA1851"
   architecture: "Arrow Lake (Lion Cove P-cores + Skymont E-cores)"
-  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + Intel 7 (I/O tile) + Intel 22FFL (Base tile)"
+  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + TSMC N6 (I/O tile) + Intel 22FFL (Base tile)"
   cores: 20
   threads: 20
   p_cores: 8
   e_cores: 12
   base_clock_p: "3.9 GHz"
-  base_clock_e: "2.6 GHz (all-core turbo ~3.3 GHz по данным независимых тестов)"
+  base_clock_e: "3.3 GHz"
   boost_clock_p: "5.5 GHz"
   boost_clock_e: "4.6 GHz"
   l2_cache: "36 MB (3 MB × 8 P-core + 4 MB × 3 clusters E-core)"
@@ -33,7 +33,7 @@ specs:
   tdp: "125W"
   tdp_pl2: "250W"
   tjmax: "105°C"
-  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
+  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 5.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 8000+ XMP (CUDIMM)"
   max_memory: "192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)"
@@ -103,7 +103,7 @@ Core Ultra 7 265K — «серебряный» процессор Arrow Lake: т
 
 - **Compute tile (TSMC N3B):** 8 P-cores Lion Cove + 12 E-cores Skymont. Hyper-Threading отсутствует.
 - **SoC tile (TSMC N6):** контроллер DDR5, PCIe 5.0.
-- **GPU tile (TSMC N6):** Intel Graphics Xe-LPG (4 Xe-ядра, до 2.0 GHz).
+- **GPU tile (TSMC N5):** Intel Graphics Xe-LPG (4 Xe-ядра, до 2.0 GHz).
 - **Base tile:** Intel 22FFL, Foveros-интерконнект.
 
 ### Базовые параметры
@@ -112,7 +112,7 @@ Core Ultra 7 265K — «серебряный» процессор Arrow Lake: т
 - Ядер / потоков: 20C/20T (8P + 12E)
 - Техпроцесс: TSMC N3B (Compute) + N6 (SoC/GPU)
 - P-cores: база 3.9 GHz, boost до 5.5 GHz
-- E-cores: база 2.6 GHz, all-core turbo 3.3 GHz, boost до 4.6 GHz
+- E-cores: база 3.3 GHz, boost до 4.6 GHz
 - L2-кэш: 36 MB (24 MB P-core + 12 MB E-core кластеров)
 - L3-кэш: 30 MB Smart Cache
 - TDP (PL1 / PL2): 125W / 250W
@@ -126,7 +126,7 @@ Core Ultra 7 265K — «серебряный» процессор Arrow Lake: т
 - JEDEC: до DDR5-6400
 - XMP: до DDR5-8000+ (CUDIMM)
 - Макс. объём: 192 GB официально (4×48 GB), практический лимит 256 GB (4×64 GB)
-- PCIe: 24 линии от CPU (16× 5.0 + 4× 4.0 + 4× 4.0)
+- PCIe: 24 линии от CPU (16× 5.0 + 4× 5.0 + 4× 4.0)
 
 ## Производительность
 

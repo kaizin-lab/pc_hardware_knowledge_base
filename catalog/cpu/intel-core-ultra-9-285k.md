@@ -18,13 +18,13 @@ links:
 specs:
   socket: "LGA1851"
   architecture: "Arrow Lake (Lion Cove P-cores + Skymont E-cores)"
-  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + Intel 7 (I/O tile) + Intel 22FFL (Base tile)"
+  lithography: "TSMC N3B (Compute tile) + TSMC N5 (GPU tile) + TSMC N6 (SoC tile) + TSMC N6 (I/O tile) + Intel 22FFL (Base tile)"
   cores: 24
   threads: 24
   p_cores: 8
   e_cores: 16
   base_clock_p: "3.7 GHz"
-  base_clock_e: "2.6 GHz (all-core turbo ~3.2 GHz по данным независимых тестов)"
+  base_clock_e: "3.2 GHz"
   boost_clock_p: "5.7 GHz"
   boost_clock_e: "4.6 GHz"
   l2_cache: "40 MB (3 MB × 8 P-core + 4 MB × 4 clusters E-core)"
@@ -32,7 +32,7 @@ specs:
   tdp: "125W"
   tdp_pl2: "250W"
   tjmax: "105°C"
-  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4, доп. от чипсета Z890"
+  pcie_lanes: "24 CPU (16× PCIe 5.0 + 4× PCIe 5.0 + 4× PCIe 4.0), конфигурации: 1×16+2×4 / 2×8+2×4 / 1×8+4×4, доп. от чипсета Z890"
   pcie_version: "5.0"
   memory: "DDR5 only, dual-channel, до 6400 JEDEC / 8000+ XMP (CUDIMM)"
   max_memory: "192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)"
@@ -102,8 +102,8 @@ Arrow Lake — первая полностью чиплетная архитек
 
 - **Compute tile (TSMC N3B):** 8 P-cores (Lion Cove) + 16 E-cores (Skymont). Hyper-Threading отсутствует: 24 ядра = 24 потока. Решение спорное, но снижает уязвимости и улучшает предсказатель ветвлений.
 - **SoC tile (TSMC N6):** контроллер памяти DDR5, PCIe 5.0.
-- **GPU tile (TSMC N6):** Intel Graphics на архитектуре Xe-LPG (4 Xe-ядра). QuickSync, аппаратное декодирование AV1/HEVC/VP9.
-- **I/O tile (Intel 7):** 8 линий PCIe 4.0 от CPU, интерфейс DMI 4.0 x8 для связи с чипсетом. Через чипсет Z890 дополнительно доступно до 24 линий PCIe 4.0, SATA и USB.
+- **GPU tile (TSMC N5):** Intel Graphics на архитектуре Xe-LPG (4 Xe-ядра). QuickSync, аппаратное декодирование AV1/HEVC/VP9.
+- **I/O tile (TSMC N6):** 8 линий PCIe 4.0 от CPU, интерфейс DMI 4.0 x8 для связи с чипсетом. Через чипсет Z890 дополнительно доступно до 24 линий PCIe 4.0, SATA и USB.
 - **Base tile (Intel 22FFL):** пассивная подложка, соединяющая чиплеты через Foveros.
 
 ### Базовые параметры
@@ -112,7 +112,7 @@ Arrow Lake — первая полностью чиплетная архитек
 - Ядер / потоков: 24C/24T (8P + 16E) — гипертрединг отсутствует
 - Техпроцесс: TSMC N3B (Compute) + TSMC N6 (SoC/GPU) + Intel 22FFL (Base)
 - P-cores Lion Cove: база 3.7 GHz, boost до 5.7 GHz (1–2 ядра)
-- E-cores Skymont: база 2.6 GHz, all-core turbo 3.2 GHz, boost до 4.6 GHz (1–2 ядра)
+- E-cores Skymont: база 3.2 GHz, boost до 4.6 GHz (1–2 ядра)
 - L2-кэш: 40 MB (3 MB × 8 P-core + 4 MB на кластер из 4 E-cores, всего 4 кластера)
 - L3-кэш: 36 MB (общий Smart Cache)
 - TDP (PL1 / PL2): 125W / 250W
@@ -128,7 +128,7 @@ Arrow Lake — первая полностью чиплетная архитек
 - JEDEC: до DDR5-6400
 - XMP: до DDR5-8000+ (с CUDIMM — до 9200+)
 - Максимальный объём: 192 GB официально (4×48 GB), практический лимит на валидированных платах — 256 GB (4×64 GB)
-- PCIe от CPU: 24 линии (16× PCIe 5.0 + 4× PCIe 4.0 + 4× PCIe 4.0)
+- PCIe от CPU: 24 линии (16× PCIe 5.0 + 4× PCIe 5.0 + 4× PCIe 4.0)
 - Дополнительно от чипсета Z890: до 24 линий PCIe 4.0
 
 ## Производительность

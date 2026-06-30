@@ -77,7 +77,7 @@ binning:
   full_die: "Raptor Lake-S (8P+16E)"
   active_config: "8P+12E (отключён 1 E-core кластер)"
   disabled: "4 E-cores (1 кластер) — продуктовая сегментация"
-  percent_active: 87
+  percent_active: 83
 platform_req:
   motherboard_min: "B760 (VRM от 10 фаз)"
   motherboard_opt: "Z790"

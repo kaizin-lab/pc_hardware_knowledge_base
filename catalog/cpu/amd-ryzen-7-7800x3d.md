@@ -50,8 +50,8 @@ specs:
   box_cooler: null
   package: Retail (BOX, без кулера)
   release_date: Q2 2023
-  multiplier: "unlocked"
-  multiplier_source: "https://www.amd.com/en/products/processors/desktops/ryzen.html"
+  multiplier: "locked"
+  multiplier_source: "https://www.techpowerup.com/cpu-specs/ryzen-7-7800x3d.c3022"
 profiles:
   cache_dominant_gaming:
     power_envelope: high
@@ -172,7 +172,7 @@ Ryzen 7 7800X3D — уникальный процессор: 8 ядер Zen 4 с
 3D V-Cache создаёт термическое сопротивление: кэш-кристалл находится между CCD и крышкой, затрудняя теплоотвод. Это означает:
 
 - **TJmax снижен до 89°C** — throttling наступает раньше
-- **120W TDP / 162W PPT** — на бумаге ниже 7700X (142W PPT), но охлаждать сложнее из-за термосопротивления
+- **120W TDP / 162W PPT** — на бумаге выше 7700X (105W TDP / 142W PPT), но охлаждать сложнее из-за термосопротивления
 - **Требуется качественное охлаждение** — башенный кулер минимум, желательно AIO
 
 Рекомендации:
