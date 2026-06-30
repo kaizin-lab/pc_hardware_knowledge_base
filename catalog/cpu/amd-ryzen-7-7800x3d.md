@@ -75,7 +75,7 @@ profiles:
     steel_man_desc: 'Импульсные однопоточные нагрузки (burst): CPU сбрасывает частоту
       до того как тепло преодолеет IHS. Максимальный буст на 2–3 секунды.'
     failure_mode_desc: Длительная нагрузка. Тепловое сопротивление толстой IHS (≥
-      1.7 мм, AM5) → 89–95°C даже под СЖО. Thermal throttling 5–8%.
+      1.7 мм, AM5) → 89°C (TJmax) даже под СЖО. Thermal throttling 5–8%.
     optimal_for_intents:
     - office_productivity
     - software_development
