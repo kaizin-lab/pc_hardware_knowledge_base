@@ -15,31 +15,122 @@ links:
   concepts:
     - "concepts/power-budget.md"
 specs:
+  # ===== identity =====
   socket: "LGA1700"
   architecture: "Raptor Lake Refresh (Intel 7)"
-  lithography: "Intel 7 (10nm Enhanced SuperFin)"
-  cores: "14 (6P + 8E)"
-  threads: 20
+  architecture_generation: 14
+  codename: "Raptor Lake Refresh"
+  sku: "i5-14600K"
+  sku_family: "i5"
+  release_date: "Q4 2023"
+  status: "released"
+  generation_in_platform: "14th Gen (3rd of 3 on LGA1700)"
+
+  # ===== core_config =====
+  total_cores: 14
+  total_threads: 20
   p_cores: 6
   e_cores: 8
-  p_core_base: "3.5 GHz"
-  p_core_boost: "5.3 GHz"
-  e_core_base: "2.6 GHz"
-  e_core_boost: "4.0 GHz"
-  l2_cache: "20 MB (2 MB × 6P + 4 MB shared × 2 E-clusters)"
+  p_core_arch: "Raptor Cove"
+  e_core_arch: "Gracemont"
+  smt_ht: true
+  thread_director: true
+
+  # ===== cache =====
+  l1_cache_p: "80 KB (32 KB I + 48 KB D) per P-core"
+  l1_cache_e: "96 KB (64 KB I + 32 KB D) per E-core"
+  l2_per_pcore: "2 MB"
+  l2_per_ecluster: "4 MB"
+  l2_total: "20 MB (12 MB P + 8 MB E)"
   l3_cache: "24 MB (shared Intel Smart Cache)"
-  tdp_base: "125W"
-  tdp_turbo: "181W (Maximum Turbo Power)"
+  l3_topology_known: true
+  l3_topology: "24 MB shared, inclusive, ring bus"
+
+  # ===== clocks =====
+  base_clock_p: "3.5 GHz"
+  base_clock_e: "2.6 GHz"
+  boost_clock_p_max: "5.3 GHz"
+  boost_clock_e_max: "4.0 GHz"
+  boost_clock_p_all: "5.1 GHz"  # inference: ожидаемый all-core P-core boost
+  tvb_clock: null  # i5 не поддерживает Thermal Velocity Boost
+  tbmt3_clock: "5.3 GHz"
+
+  # ===== power_thermal =====
+  tdp_pl1: "125W"
+  tdp_pl2: "181W"
   tjmax: "100°C"
-  pcie_lanes: "20 (16× PCIe 5.0 + 4× PCIe 4.0)"
-  memory: "DDR4-3200 / DDR5-5600, dual-channel"
-  max_memory: "192 GB"
-  igpu: "Intel UHD Graphics 770 (32 EU, 300–1550 MHz)"
-  unlocked: true
-  cooler_in_box: "Нет (требуется отдельный кулер)"
-  release_date: "Q4 2023"
-  multiplier: "unlocked"
-  multiplier_source: "https://ark.intel.com/content/www/us/en/ark/products/236799/intel-core-i5-processor-14600k-24m-cache-up-to-5-30-ghz.html"
+  typical_gaming_power: null  # requires review data
+
+  # ===== lithography =====
+  lithography: "Intel 7 (10nm Enhanced SuperFin)"
+  compute_tile_node: "Intel 7"
+  gpu_tile_node: null  # monolithic
+  soc_tile_node: null  # monolithic
+  io_tile_node: null  # monolithic
+  base_tile_node: null  # monolithic
+  die_topology: "monolithic"
+  transistor_count: null  # not disclosed by Intel
+
+  # ===== platform =====
+  chipset_generation: "Intel 600/700 Series"
+  memory_type: "DDR4 / DDR5"
+  memory_channels: 2
+  memory_max_official: "192 GB"
+  memory_max_practical: null
+  jedec_max: "DDR4-3200 / DDR5-5600"
+  xmp_max: "DDR5-6400"  # inference: community consensus for Raptor Lake IMC
+  cudimm_support: false
+  platform_lifecycle_generations: "12th, 13th, 14th Gen Intel Core"
+
+  # ===== pcie =====
+  pcie_version: "5.0 / 4.0"
+  pcie_lanes_cpu: 20
+  pcie_config_primary: "1x16 PCIe 5.0 + 1x4 PCIe 4.0"
+  pcie_config_alternate: "2x8 PCIe 5.0 + 1x4 PCIe 4.0"
+
+  # ===== igpu =====
+  igpu_present: true
+  igpu_arch: "Xe-LP (Gen 12.2)"
+  igpu_execution_units: 32
+  igpu_clock_max: "1550 MHz"
+  quicksync: true
+  av1_encode_hw: false
+  av1_decode_hw: true
+  max_displays: 4
+  hdmi_version: "2.1"
+  dp_version: "1.4a"
+
+  # ===== npu =====
+  npu_present: false
+  npu_generation: null  # not applicable
+  npu_tops_int8: null  # not applicable
+  npu_copilot_plus: false
+
+  # ===== isa_extensions =====
+  avx512: false  # fused off in Raptor Lake
+  avx2: true
+  vnni: true
+  amx: true
+  dl_boost: true
+
+  # ===== packaging =====
+  box_cooler_included: false
+  box_cooler_model: null  # K-series no box cooler
+  cooler_recommended: "Двухбашенный воздух (Thermalright Peerless Assassin 120 / Deepcool AK620)"
+  multiplier_locked: false
+  contact_frame_recommended: true  # известная проблема LGA1700 bending
+  typical_oc_pcore: null  # requires validated OC data
+  typical_undervolt: "-50mV"  # stock Vcore ~1.35-1.40V, -50mV offset снижает на 15-25W
+
+  # ===== market =====
+  msrp_usd_launch: 319
+  price_ru_min: 20475
+  price_ru_median: 21975
+  price_ru_max: 24120
+  price_ru_date: "2026-06-07"
+  price_ru_source: "price.ru"
+  segment: "mid-range"
+  binning_status: "cut-down"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"
