@@ -42,6 +42,80 @@ specs:
   release_date: "Q4 2024"
   multiplier: "unlocked"
   multiplier_source: "https://www.intel.com/content/www/us/en/products/sku/241060/intel-core-ultra-9-processor-285k-36m-cache-up-to-5-70-ghz/specifications.html"
+  # === Schema fields (intel-cpu-schema.yaml v1.0.0) ===
+  architecture_generation: 200
+  codename: "Arrow Lake-S"
+  sku_family: "Core Ultra 9"
+  generation_in_platform: "first"
+  p_core_arch: "Lion Cove"
+  e_core_arch: "Skymont"
+  smt_ht: false
+  thread_director: true
+  l1_cache_p: "64 KB I-cache + 48 KB D-cache"
+  l1_cache_e: "64 KB I-cache + 32 KB D-cache"
+  l2_per_pcore: "3 MB"
+  l2_per_ecluster: "4 MB (shared among 4 E-cores)"
+  l3_topology_known: false
+  l3_topology: null
+  boost_clock_p_all: "5.4 GHz"
+  tvb_clock: "5.7 GHz"
+  tbmt3_clock: "5.6 GHz"
+  typical_gaming_power: "~110W (90–130W)"
+  compute_tile_node: "TSMC N3B"
+  gpu_tile_node: "TSMC N5"
+  soc_tile_node: "TSMC N6"
+  io_tile_node: "TSMC N6"
+  base_tile_node: "Intel 22FFL"
+  die_topology: "tile-based"
+  transistor_count: "17.8 billion"
+  chipset_generation: "Z890"
+  memory_channels: 2
+  memory_max_practical: "256 GB (4×64 GB на валидированных платах)"
+  jedec_max: "DDR5-6400"
+  xmp_max: "DDR5-8000+ (до 9200+ с CUDIMM)"
+  cudimm_support: true
+  platform_lifecycle_generations: "2 (Arrow Lake-S + next-gen)"
+  pcie_config_primary: "1×16 PCIe 5.0 + 2×4"
+  pcie_config_alternate: "2×8 PCIe 5.0 + 2×4 / 1×8 + 4×4"
+  igpu_present: true
+  igpu_arch: "Xe-LPG"
+  igpu_execution_units: 4
+  igpu_clock_max: "2.0 GHz"
+  quicksync: true
+  av1_encode_hw: true
+  av1_decode_hw: true
+  max_displays: 4
+  hdmi_version: "2.1"
+  dp_version: "2.1"
+  npu_present: true
+  npu_generation: "NPU3"
+  npu_tops_int8: 13
+  npu_copilot_plus: false
+  avx512: false
+  avx2: true
+  vnni: true
+  amx: false
+  dl_boost: true
+  box_cooler_included: false
+  box_cooler_model: null
+  cooler_recommended: "360mm AIO"
+  multiplier_locked: false
+  contact_frame_recommended: true
+  msrp_usd_launch: 589
+  segment: "flagship"
+  binning_status: "full-die"
+  tile_count: 5
+  tile_list:
+    - {name: "Compute", function: "8P Lion Cove + 16E Skymont + 36 MB L3 + ringbus", process_node: "TSMC N3B"}
+    - {name: "GPU", function: "Intel Graphics (4 Xe-LPG cores), display engines", process_node: "TSMC N5"}
+    - {name: "SoC", function: "Memory controller DDR5, PCIe 5.0 root, NPU3, DMI 4.0 x8", process_node: "TSMC N6"}
+    - {name: "I/O", function: "8× PCIe 4.0 lanes, platform I/O", process_node: "TSMC N6"}
+    - {name: "Base", function: "Passive interposer, Foveros routing", process_node: "Intel 22FFL"}
+  interconnect: "Foveros (die-to-die)"
+  d2d_latency_typical: null
+  d2d_clock: null
+  typical_oc_pcore: "5.8–5.9 GHz (+100–200 MHz)"
+  typical_undervolt: "-50…-80 mV"
 profiles:
   hybrid_asymmetric_efficiency:
     power_envelope: "high"
