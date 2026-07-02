@@ -46,6 +46,7 @@
 **C-корзина (Known Gaps):**
 - Точная себестоимость одного 285K (cost-per-die) — неизвестна, Intel не раскрывает disaggregated cost
 - Точный процент выхода годных N3B у TSMC для Arrow Lake — NDAs, неизвестен публично
+- Количество тайлов: KB считает 5 функциональных. Wccftech описывает 6 (5 functional + filler/spacer для равномерности heatspreader). Filler — механический, не функциональный. Оставлено 5 как функциональная абстракция.
 
 ### A2 — Identity (Кем является продукт: сегмент, поколение, семейство)
 
@@ -184,7 +185,7 @@ Gaming regression — центральный контраргумент, и он
 
 Чиплетная архитектура через Foveros — третий слой. Монолитный 24-ядерный кристалл на N3B стоил бы prohibitive из-за низкого выхода годных [7]. Разделение на 5 тайлов позволило: N3B только для compute, дешёвые N6 для SoC/I/O, независимый yield-менеджмент. Плата — Foveros latency. Tradeoff: **die cost/yield vs inter-tile latency**. Intel заплатила latency за экономику производства — и компенсировала её кэшем и планировщиком.
 
-NPU3 вместо NPU4 — четвёртый слой того же решения, который читается как «Intel сэкономила на AI». NPU3 (13 TOPS) на SoC-тайле — это прошлогодний NPU-блок из Meteor Lake, оставленный без апгрейда. NPU4 (45-48 TOPS) существует в Lunar Lake mobile и обеспечивает Copilot+ сертификацию. Почему Intel не поставила NPU4 в Arrow Lake-S? Три причины. Первая: desktop-сегмент не является приоритетным для NPU-нагрузок — AI-инференс и обучение на десктопе покрываются дискретной GPU (RTX 4000/5000 с сотнями TOPS), а лёгкие AI-задачи (Windows Studio Effects, размытие фона в Teams) укладываются в 13 TOPS NPU3. Вторая: площадь SoC-тайла N6 ограничена — на нём размещаются контроллер DDR5, PCIe 5.0 root, DMI 4.0 x8; NPU4 требует дополнительной площади, которая пошла бы в ущерб этим критичным функциям. Третья: Copilot+ на desktop в 2024 — нишевый сценарий; Microsoft сертифицирует Copilot+ преимущественно для ноутбуков, и Intel приняла решение не гнаться за сертификацией в desktop-флагмане. Это conscious downgrade: **NPU-generation vs SoC-tile area / desktop AI relevance**. NPU3 достаточен для текущих desktop AI-сценариев, а NPU4 оставлен mobile-сегменту, где AI-акселерация без дискретной GPU критична для времени автономной работы.
+NPU3 вместо NPU4 — четвёртый слой того же решения, который читается как «Intel сэкономила на AI». NPU3 (13 TOPS) на SoC-тайле — это прошлогодний NPU-блок из Meteor Lake, оставленный без апгрейда. NPU4 (45-48 TOPS) существует в Lunar Lake mobile и обеспечивает Copilot+ сертификацию. Почему Intel не поставила NPU4 в Arrow Lake-S? Официальная позиция Intel (PCWorld, Hallock/Chandler [12]): (1) NPU-софт на desktop ещё immature, (2) философия «сбалансированной платформы» — CPU+GPU+NPU совместно, (3) 13 TOPS «достаточно» для текущих workloads, приоритет — сохранить CPU-производительность. Инженерная реконструкция добавляет: дискретная GPU (RTX 4060: 242 TOPS) покрывает AI-нагрузки на порядок эффективнее любого NPU, Copilot+ на desktop — нишевый сценарий, а SoC-тайл N6 уже несёт DDR5-контроллер, PCIe 5.0 root и DMI 4.0 x8 — NPU4 потребовал бы дополнительной площади [12]. Это conscious downgrade: **NPU-generation vs desktop AI relevance**. NPU3 достаточен для Windows Studio Effects, а NPU4 оставлен mobile-сегменту, где AI без дискретной GPU критичен для времени автономной работы.
 
 Результат этих четырёх решений — не «провальный игровой процессор», а продукт, который при 125W sustained power достигает многопоточной производительности, сопоставимой с 14900K на пике 253W [4]. В Premiere Pro и DaVinci Resolve он обходит 9950X на 10–15% благодаря QuickSync [8]. В играх он уступает чисто игровым флагманам — но не потому, что инженеры ошиблись, а потому что они оптимизировали другую целевую функцию.
 
@@ -255,7 +256,7 @@ NPU3 вместо NPU4 — четвёртый слой того же решен�
 
 - **Belief:** NPU3 (13 TOPS) не дотягивает до Copilot+ (40 TOPS). NPU4 (45-48 TOPS) существует — почему не поставили? Маркетинговая фикция: «AI PC» без реального AI. 13 TOPS — смешно на фоне RTX 4060 с 242 TOPS.
 - **Why this works (рационально):** Разрыв 13 vs 40 TOPS объективен. Microsoft Copilot+ требует 40+ TOPS — 285K не сертифицирован. NPU4 существует в mobile-линейке Intel (Lunar Lake: 45-48 TOPS, Copilot+-сертифицирован). Читатель видит: Intel сознательно поставила слабый NPU в desktop-флагман. Вывод «маркетинговая галочка» — рационален.
-- **What must change:** Понимание, что NPU3 оставлен НЕ по недосмотру, а как conscious downgrade с конкретной логикой: (а) desktop AI-нагрузки покрываются дискретной GPU — RTX 4060 даёт 242 TOPS, RTX 4090 >1300 TOPS; NPU-TOPS на desktop не bottleneck; (б) SoC-тайл N6 занят контроллером DDR5, PCIe 5.0 root и DMI 4.0 x8 — NPU4 потребовал бы дополнительной площади в ущерб этим функциям; (в) Copilot+ на desktop в 2024 — нишевый сценарий, Microsoft фокусируется на ноутбуках; (г) NPU3 при этом достаточен для Windows Studio Effects (размытие фона, eye contact, auto-framing) — а это 90% реальных AI-нагрузок на desktop. Intel не «сэкономила» — она оценила desktop AI use-cases и решила, что апгрейд до NPU4 не оправдан.
+- **What must change:** Понимание, что NPU3 оставлен НЕ по недосмотру, а как conscious downgrade. Intel официально (PCWorld, Hallock/Chandler) называет три причины: (1) NPU-софт на desktop ещё immature — нагрузки не умеют эффективно использовать большой NPU [12]; (2) философия «сбалансированной платформы» — CPU+GPU+NPU совместно, а не NPU как единственный AI-ускоритель; (3) 13 TOPS «достаточно» для текущих desktop AI-workloads, приоритет — сохранить CPU-производительность. Инженерная реконструкция добавляет четвёртую причину `[inference]`: SoC-тайл N6 уже занят DDR5-контроллером, PCIe 5.0 root и DMI 4.0 x8 — NPU4 (Lunar Lake, 45-48 TOPS) потребовал бы либо увеличения площади тайла, либо вытеснения одного из этих компонентов. Совокупность: desktop AI покрывается дискретной GPU (RTX 4060: 242 TOPS), Copilot+ на desktop в 2024 — нишевый сценарий, NPU3 достаточен для Windows Studio Effects.
 - **Как расшатать:** «Представьте, что в ваш автомобиль предлагают встроить посудомоечную машину. Она есть в доме — почему не в машине? Потому что в машине вы не моете посуду. NPU4 в desktop-процессоре — как посудомоечная машина в автомобиле: сценарий существует, но он покрывается другим устройством (дискретной GPU), а место в салоне (площадь SoC-тайла) лучше отдать под бардачок и подстаканники (DDR5-контроллер и PCIe 5.0).»
 
 ---
@@ -411,9 +412,11 @@ NPU3 покрывает 90% реальных AI-нагрузок на desktop: W
 
 10. **[10] Intel — LGA1851 Socket Electrical Specification.** Тайловая архитектура Foveros требует иного electrical interface: новый pinout, изменённая разводка питания. *Source: Intel platform documentation, Q3 2024.*
 
-11. **[11] TechPowerUp / PCWorld / Tom's Hardware — Arrow Lake NPU3 vs NPU4.** NPU3 (13 TOPS) на SoC-тайле Arrow Lake-S; NPU4 (45-48 TOPS) в Lunar Lake mobile. Copilot+ требует 40+ TOPS — 285K не сертифицирован. *Source: multiple outlets, October–November 2024.*
+11. **[11] TechPowerUp / PCWorld / Tom's Hardware — Arrow Lake NPU3 vs NPU4.** NPU3 (13 TOPS) на SoC-тайле Arrow Lake-S; NPU4 (45-48 TOPS) в Lunar Lake mobile. *Source: multiple outlets, October–November 2024.*
 
-12. **[12] Microsoft — Copilot+ PC Requirements.** Минимальные требования Copilot+: NPU ≥40 TOPS, 16 GB RAM, 256 GB SSD. *Source: microsoft.com, May 2024.*
+12. **[12] PCWorld — Robert Hallock & Roger Chandler interview on Arrow Lake NPU.** Официальная позиция Intel: NPU3 оставлен, а не исключён, по причинам: (1) NPU-софт immature, (2) философия «сбалансированной платформы» (CPU+GPU+NPU), (3) 13 TOPS «достаточно» для desktop, приоритет — сохранить CPU-производительность. *Source: pcworld.com, October 2024.*
+
+13. **[13] Microsoft — Copilot+ PC Requirements.** Минимальные требования Copilot+: NPU ≥40 TOPS, 16 GB RAM, 256 GB SSD. *Source: microsoft.com, May 2024.*
 
 ---
 
