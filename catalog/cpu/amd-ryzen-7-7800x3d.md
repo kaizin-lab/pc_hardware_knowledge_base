@@ -249,3 +249,53 @@ DDR5 only. 7800X3D менее чувствителен к частоте пам�
 3. Hardware Unboxed — 7800X3D vs 14900K Gaming Benchmark (2024)
 4. TechPowerUp — Ryzen 7 7800X3D Review (2023)
 5. Der8auer — 7800X3D Delid & Thermal Analysis (2023)
+
+observations:
+  # === Сравнение с i5-14600K + RTX 5070 в 1440p ===
+  - id: "obs-7800x3d-001"
+    source_id: "agg"
+    source_confidence: 0.90
+    observation_quality: 0.88
+    cpu: "amd-ryzen-7-7800x3d"
+    comparison_cpu: "intel-core-i5-14600k"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 89
+    p1_fps: 64
+    competitor_avg_fps: 87
+    competitor_p1_fps: 62
+    fps_delta: "+2 FPS над i5-14600K (2.3%)"
+    price_delta: "+18K₽ (40K vs 22K)"
+    gpu_utilization: 98
+    notes: "3D V-Cache даёт +2% в 1440p GPU-bound. Ценовая премия не окупается FPS-приростом в этом разрешении."
+
+  # === 1080p — где 7800X3D раскрывается ===
+  - id: "obs-7800x3d-002"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    cpu: "amd-ryzen-7-7800x3d"
+    comparison_cpu: "intel-core-i5-14600k"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 128
+    p1_fps: 95
+    competitor_avg_fps: 112
+    competitor_p1_fps: 82
+    fps_delta: "+16 FPS над i5-14600K (14.3%)"
+    gpu_utilization: 85
+    notes: "1080p: 3D V-Cache даёт значимое преимущество. Разница видна когда GPU не saturated."

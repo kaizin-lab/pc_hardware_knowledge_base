@@ -312,3 +312,164 @@ Refresh-обновление даёт +200 MHz на P-ядрах при той �
 - Предшественник: Intel Core i5-13600K
 - Конкурент: [AMD Ryzen 7 7700](catalog/cpu/amd-ryzen-7-7700.md)
 - Сквозной концепт: [power-budget.md](concepts/power-budget.md)
+
+observations:
+  # === CRITICAL: i5 vs 7800X3D — одинаковый FPS с RTX 5070 в 1440p ===
+  - id: "obs-14600k-001"
+    source_id: "agg"
+    source_confidence: 0.90
+    observation_quality: 0.88
+    cpu: "intel-core-i5-14600k"
+    comparison_cpu: "amd-ryzen-7-7800x3d"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    i5_avg_fps: 87
+    i5_p1_fps: 62
+    competitor_avg_fps: 89
+    competitor_p1_fps: 64
+    fps_delta: "+2 FPS в пользу 7800X3D (2.3%)"
+    gpu_utilization: 98
+    notes: "Ценовой разрыв 18K₽ (22K vs 40K) даёт 2% разницы в FPS. GPU-bound: разница между CPU исчезает."
+
+  - id: "obs-14600k-002"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    cpu: "intel-core-i5-14600k"
+    comparison_cpu: "amd-ryzen-7-7800x3d"
+    gpu: "nvidia-rtx-5070"
+    game: "Alan Wake 2"
+    game_version: "1.2.x (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    i5_avg_fps: 72
+    i5_p1_fps: 54
+    competitor_avg_fps: 74
+    competitor_p1_fps: 56
+    fps_delta: "+2 FPS (2.8%)"
+    gpu_utilization: 97
+
+  # === i5 vs i7-14700K — апгрейд CPU в рамках LGA1700 ===
+  - id: "obs-14600k-003"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    cpu: "intel-core-i5-14600k"
+    comparison_cpu: "intel-core-i7-14700k"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    i5_avg_fps: 87
+    i5_p1_fps: 62
+    competitor_avg_fps: 90
+    competitor_p1_fps: 65
+    fps_delta: "+3 FPS (3.4%)"
+    gpu_utilization: 98
+    notes: "Переход i5→i7 в рамках LGA1700 не даёт значимого прироста FPS в 1440p. Деньги эффективнее в GPU."
+
+  # === 1080p — где разница между CPU видна ===
+  - id: "obs-14600k-004"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    cpu: "intel-core-i5-14600k"
+    comparison_cpu: "amd-ryzen-7-7800x3d"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    i5_avg_fps: 112
+    i5_p1_fps: 82
+    competitor_avg_fps: 128
+    competitor_p1_fps: 95
+    fps_delta: "+16 FPS в пользу 7800X3D (14.3%)"
+    gpu_utilization: 85
+    notes: "1080p: разница между CPU видна (14%). Но в 1440p она схлопывается до 2-3%."
+
+  # === Per-core utilisation + OBS streaming ===
+  - id: "obs-14600k-005"
+    source_id: "agg"
+    source_confidence: 0.82
+    observation_quality: 0.78
+    cpu: "intel-core-i5-14600k"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 87
+    p1_fps: 62
+    obs_active: true
+    obs_avg_fps: 84
+    obs_p1_fps: 59
+    obs_fps_loss: "-3 FPS (3.4%)"
+    p_core_utilization: 65
+    e_core_utilization: 82
+    notes: "OBS-стрим на E-cores: P-cores свободны для игры. Потеря FPS минимальна (3.4%). Без E-core изоляции потеря была бы 10-15%."
+    e_core_isolation: confirmed
+
+  # === DDR4 vs DDR5 ===
+  - id: "obs-14600k-006"
+    source_id: "agg"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    cpu: "intel-core-i5-14600k"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    ddr4_3600_avg_fps: 85
+    ddr5_6000_avg_fps: 87
+    fps_delta: "+2 FPS (2.4%)"
+    notes: "DDR4 vs DDR5 на i5-14600K в 1440p GPU-bound: разница <3%. Экономия на DDR4 эффективнее вложений в DDR5 для этого разрешения."
+
+  # === Frametime consistency ===
+  - id: "obs-14600k-007"
+    source_id: "agg"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    cpu: "intel-core-i5-14600k"
+    gpu: "nvidia-rtx-5070"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    frametime_avg_ms: 11.5
+    frametime_p99_ms: 18.2
+    frametime_spikes_per_minute: 2
+    notes: "Frametime стабильный: 99-й перцентиль 18.2ms (~55 FPS ощущение). Нет микростаттеров от нехватки ядер."

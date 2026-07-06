@@ -158,3 +158,146 @@ Palit GamingPro: ~65 000 ₽ (референсные частоты). Gigabyte G
 5. Blender Open Data — GPU Benchmark Database
 6. Price.ru — рыночные цены, Москва (03.06.2026)
 7. Собственное тестирование лаборатории
+
+observations:
+  # === 1440p native raster (GPU-bound baseline) ===
+  - id: "obs-5070-001"
+    source_id: "agg"
+    source_confidence: 0.90
+    observation_quality: 0.88
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 87
+    p1_fps: 62
+    gpu_utilization: 98
+    cpu_utilization: 40
+    notes: "GPU-bound: utilisation 98%. i5-14600K не bottleneck."
+
+  - id: "obs-5070-002"
+    source_id: "agg"
+    source_confidence: 0.90
+    observation_quality: 0.88
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "Alan Wake 2"
+    game_version: "1.2.x (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 72
+    p1_fps: 54
+    gpu_utilization: 97
+    cpu_utilization: 35
+
+  - id: "obs-5070-003"
+    source_id: "agg"
+    source_confidence: 0.90
+    observation_quality: 0.88
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "Hogwarts Legacy"
+    game_version: "2025 build"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 95
+    p1_fps: 68
+    gpu_utilization: 98
+    cpu_utilization: 42
+
+  # === 1440p RT Medium ===
+  - id: "obs-5070-004"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "2560x1440"
+      preset: "Ultra"
+      rt: "Medium"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 52
+    p1_fps: 38
+    gpu_utilization: 99
+    notes: "RT Medium без DLSS — GPU-bound даже сильнее из-за RT-нагрузки."
+
+  # === 1080p native (CPU difference visible) ===
+  - id: "obs-5070-005"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "1920x1080"
+      preset: "Ultra"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 112
+    p1_fps: 82
+    gpu_utilization: 85
+    cpu_utilization: 62
+    notes: "1080p: GPU utilisation падает до 85% — CPU начинает влиять. Но FPS всё ещё высокий."
+
+  # === 4K native ===
+  - id: "obs-5070-006"
+    source_id: "agg"
+    source_confidence: 0.88
+    observation_quality: 0.85
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "Cyberpunk 2077: Phantom Liberty"
+    game_version: "2.2 (2025)"
+    config:
+      resolution: "3840x2160"
+      preset: "High"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 48
+    p1_fps: 34
+    gpu_utilization: 99
+    cpu_utilization: 28
+    notes: "4K: 100% GPU-bound. CPU разница исчезает полностью."
+
+  # === Competitive 1080p (CPU-bound сценарий) ===
+  - id: "obs-5070-007"
+    source_id: "agg"
+    source_confidence: 0.85
+    observation_quality: 0.82
+    gpu: "nvidia-rtx-5070"
+    cpu: "intel-core-i5-14600k"
+    game: "CS2"
+    game_version: "2025"
+    config:
+      resolution: "1920x1080"
+      preset: "Competitive (Low)"
+      rt: "Off"
+      upscaler: "None"
+      framegen: false
+    avg_fps: 385
+    p1_fps: 210
+    gpu_utilization: 60
+    cpu_utilization: 75
+    notes: "Competitive 1080p — CPU-bound сценарий. Здесь разница CPU видна."
