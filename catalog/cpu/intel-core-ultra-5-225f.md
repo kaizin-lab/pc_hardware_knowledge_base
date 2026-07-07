@@ -61,12 +61,12 @@ profiles:
     failure_severity: "WARN"
     failure_type: "LINEAR_DEGRADATION"
 price_ru:
-  min: null
-  median: null
-  max: null
-  source: "price.ru"
-  date: "2026-06-03"
-  note: "Цены в РФ завышены из-за санкций"
+  min: 11500
+  median: 12500
+  max: 14500
+  source: "price.ru / DNS"
+  date: "2026-07-06"
+  note: "Цена снизилась с 20-28K до 12.5K — рынок насытился"
 binning:
   full_die: "Arrow Lake-S (8P+16E, tile-based)"
   active_config: "6P+4E (сильно урезан, iGPU отключён)"

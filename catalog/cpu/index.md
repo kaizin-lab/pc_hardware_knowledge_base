@@ -33,12 +33,19 @@ last_updated: "2026-06-07"
 | `amd-ryzen-7-9800x3d.md` | R7 9800X3D | 8C/16T | 120W | RDNA2 | ✓ | ~51 400 |
 | `amd-ryzen-9-9950x.md` | R9 9950X | 16C/32T | 170W | RDNA2 | — | ~40 400 |
 
+### Intel LGA1700 — Alder Lake (12th Gen)
+|| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
+||---|---|---|---|---|---|
+|| `intel-core-i3-12100f.md` | i3-12100F | 4C/8T | 58W | — | ~6 500 |
+|| `intel-core-i5-12400f.md` | i5-12400F | 6C/12T | 65W | — | ~10 000 |
+|| `intel-core-i5-13400f.md` | i5-13400F | 6P+4E/16T | 65W | — | ~13 500 |
+
 ### Intel LGA1700 — Raptor Lake (Refresh)
-| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
-|---|---|---|---|---|---|
-| `intel-core-i5-14600k.md` | i5-14600K | 6P+8E/20T | 125W | UHD 770 | ~22 000 |
-| `intel-core-i7-14700k.md` | i7-14700K | 8P+12E/28T | 253W | UHD 770 | ~45 000 |
-| `intel-core-i9-14900k.md` | i9-14900K | 8P+16E/32T | 253W | UHD 770 | ~39 999–46 990 |
+|| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
+||---|---|---|---|---|---|
+|| `intel-core-i5-14600k.md` | i5-14600K | 6P+8E/20T | 125W | UHD 770 | ~22 000 |
+|| `intel-core-i7-14700k.md` | i7-14700K | 8P+12E/28T | 253W | UHD 770 | ~45 000 |
+|| `intel-core-i9-14900k.md` | i9-14900K | 8P+16E/32T | 253W | UHD 770 | ~39 999–46 990 |
 
 ### Intel LGA1851 — Arrow Lake
 | Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |

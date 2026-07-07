@@ -47,7 +47,7 @@ last_updated: "2026-06-19"
 | Файл | Модель | VRAM | TBP | Цена (₽) | Позиционирование |
 |---|---|---|---|---|---|
 | `intel-arc-b570.md` | Arc B570 | 10 GB | 150W | ~22 000 | 1080p / бюджет-король |
-| `intel-arc-b580.md` | Arc B580 | 12 GB | 190W | ~26 000 | 1440p Entry |
+| `intel-arc-b580.md` | Arc B580 | 12 GB | 190W | ~28 000 | 1440p Entry |
 
 ## Iron Man Argument — ключевые тезисы
 

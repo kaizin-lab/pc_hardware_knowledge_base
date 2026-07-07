@@ -33,13 +33,14 @@ specs:
   threads: 28
   p_cores: 8
   e_cores: 12
-  base_clock_p: 3.4 GHz
+  smt_ht: true
+  base_clock_p: "3.4 GHz"
   base_clock_e: 2.5 GHz
   boost_clock_p: 5.6 GHz
   boost_clock_e: 4.3 GHz
   l2_cache: 28 MB (2 MB × 8 P-core + 4 MB × 3 clusters E-core)
   l3_cache: 33 MB
-  tdp_pl1: 125W
+  tdp: "125W"
   tdp_pl2: 253W
   tjmax: 100°C
   pcie_lanes: 20 (16× PCIe 5.0 + 4× PCIe 4.0)
