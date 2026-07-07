@@ -21,6 +21,7 @@ last_updated: "2026-06-03"
 | `gskill-ripjaws-s5-ddr5-6000-32gb.md` | DDR5 | 6000 MT/s | CL30 | 2×16 GB | ~10 200 |
 | `ddr5-5600-cl36.md` | DDR5 | 5600 MT/s | CL36 | 2×16 GB | ~7 000 |
 | `ddr5-5200-jedec.md` | DDR5 | 5200 MT/s | CL40 | 2×16 GB | ~7 500 |
+| `apacer-nox-ddr5-5200-32gb.md` | DDR5 | 5200 MT/s | CL40 | 1×32 GB | ~35 000 |
 
 ### DDR4
 
