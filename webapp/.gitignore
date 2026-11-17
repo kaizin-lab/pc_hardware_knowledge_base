@@ -1,0 +1,5 @@
+/node_modules/
+/.svelte-kit/
+/build/
+/src/lib/data/kb.json
+.DS_Store

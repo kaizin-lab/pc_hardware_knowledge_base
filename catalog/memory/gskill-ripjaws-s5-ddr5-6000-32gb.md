@@ -34,7 +34,6 @@ verdict: "Лучший выбор для AM5: DDR5-6000 CL30 попадает т
 profiles:
   standard_ddr5_xmp:
     capability_level: 2
-    capability_level: 2
     steel_man_desc: "DDR5-6000 CL30 на Hynix A-die — золотой стандарт AM5. Синхронный режим UCLK=MCLK (1:1) без penalty по латентности. Low-profile 33 мм — совместимость с любым воздушным кулером."
     failure_mode_desc: "Цена на 20–25% выше бюджетных DDR5-5600. JEDEC-фоллбэк 4800 CL40 при сбросе BIOS — система загрузится, но FPS просядет до восстановления EXPO."
     optimal_for_intents: ["aaa_1440p_high", "aaa_4k_ultra", "esports_1080p_240hz", "software_development"]

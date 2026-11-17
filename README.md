@@ -68,6 +68,31 @@ docs/                  narrative arcs и рабочие материалы
 
 ---
 
+## Веб-приложение
+
+Поверх базы есть SvelteKit-приложение: каталог с фильтрами и конструктор сборки
+с детерминированной проверкой совместимости.
+
+**Демо:** https://kaizin-lab.github.io/pc_hardware_knowledge_base/ — после включения GitHub Pages.
+
+- сокет CPU ↔ плата, тип памяти, форм-фактор, высота кулера, мощность БП;
+- профили `optimal` / `failure` под выбранный интент;
+- бюджет и честные `INFO` для полей, которых нет в карточках.
+
+[![Конструктор сборки](webapp/screenshots/build.png)](webapp/screenshots/build.png)
+
+```bash
+cd webapp
+npm install
+npm run dev
+```
+
+Подробности — в [`webapp/README.md`](webapp/README.md). Деплой на GitHub Pages
+настроен через Actions; в настройках репозитория нужен **Pages → Source:
+GitHub Actions**.
+
+---
+
 ## Быстрый старт
 
 ```bash

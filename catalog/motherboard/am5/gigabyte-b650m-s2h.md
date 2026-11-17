@@ -47,7 +47,6 @@ verdict: "Бюджетный вход в AM5. Достаточна для Ryzen 
 profiles:
   budget_platform:
     capability_level: 1
-    capability_level: 1
     steel_man_desc: "B650M с 6+2+1 фазами (50A DrMOS) — минимальный достаточный вход в AM5. 2 слота DDR5 без penalty по частоте (daisy chain на 2 слота стабильнее 4). Q-Flash Plus позволяет обновить BIOS без CPU."
     failure_mode_desc: "Всего 2 слота DDR5 — невозможен апгрейд памяти добавлением планок, только полная замена. 1× M.2 слот — недостаточен для сборок с разделением ОС/данные. ALC897 — устаревший аудиокодек без оптического выхода."
     optimal_for_intents: ["aaa_1080p_ultra", "office_productivity", "home_server_24_7"]

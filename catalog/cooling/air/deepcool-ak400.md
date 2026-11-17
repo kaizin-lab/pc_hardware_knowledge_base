@@ -12,8 +12,6 @@ links:
   case_compatibility: "catalog/case/"
 specs:
   type: "air_tower"
-  height_mm: 155
-  type: "air_tower"
   layout_type: "tower"
   height_mm: 155
   tdp_rating_w: 220

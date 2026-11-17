@@ -34,7 +34,6 @@ verdict: "Вход в LGA1851 на Z890. 16+1+1 DrMOS, 4 M.2 без отъёма
 profiles:
   mainstream_platform:
     capability_level: 2
-    capability_level: 2
     steel_man_desc: "Z890 с 16+1+1 фазами — достаточный VRM для любого Arrow Lake на стоке. 4× M.2 (1× Gen5), Wi-Fi 6E, BIOS Flashback. Хороший баланс цены и возможностей."
     failure_mode_desc: "ALC897 аудиокодек — экономия на звуке. Realtek 2.5GbE вместо Intel — выше загрузка CPU при сетевых операциях. Нет Thunderbolt 4 на плате."
     optimal_for_intents: ["aaa_1440p_high", "software_development", "streaming", "video_editing_4k"]
