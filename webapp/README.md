@@ -71,5 +71,10 @@ GitHub Pages Actions.
 
 **Settings → Pages → Source: GitHub Actions**
 
-После пуша в `main` workflow соберёт сайт и задеплоит его на
-`https://kaizin-lab.github.io/pc_hardware_knowledge_base/`.
+Важно: не «Deploy from a branch /docs». Если выбран `/docs`, GitHub Pages
+публикует Markdown-документацию, а не приложение, и корень отдаёт 404.
+
+После переключения источника запустите workflow **Deploy web app** вручную
+(Actions → Deploy web app → Run workflow). Сайт будет здесь:
+
+`https://kaizin-lab.github.io/pc_hardware_knowledge_base/`

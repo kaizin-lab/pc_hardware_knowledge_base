@@ -91,6 +91,10 @@ npm run dev
 настроен через Actions; в настройках репозитория нужен **Pages → Source:
 GitHub Actions**.
 
+> Если сайт отдаёт 404: проверьте, что Pages собран не из ветки `/docs`.
+> Сейчас проект должен использовать **Source: GitHub Actions**, а не
+> «Deploy from a branch».
+
 ---
 
 ## Быстрый старт
