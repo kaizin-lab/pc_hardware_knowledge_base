@@ -8,5 +8,5 @@ export function entries() {
 export function load({ params }) {
   const component = kb.components.find((item) => item.slug === params.slug);
   if (!component) throw error(404, 'Компонент не найден');
-  return { component };
+  return { component, performance: kb.performance };
 }

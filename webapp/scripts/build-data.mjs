@@ -16,6 +16,7 @@ const ROOT = path.resolve(WEBAPP, '..');
 const CATALOG = path.join(ROOT, 'catalog');
 const OUT = path.join(WEBAPP, 'src', 'lib', 'data', 'kb.json');
 const REPO_URL = 'https://github.com/kaizin-lab/pc_hardware_knowledge_base';
+const PERF_FILE = path.join(ROOT, 'references', 'performance', 'cpu.yaml');
 const EXCLUDED_SLUGS = new Set(['amd-ryzen-7000']);
 const OVERVIEW_SLUGS = new Set(['ddr5']);
 
@@ -277,6 +278,27 @@ function linkList(links, sourcePath, byPath) {
   return out;
 }
 
+function buildPerformance(components) {
+  if (!fs.existsSync(PERF_FILE)) return null;
+  const raw = yaml.load(fs.readFileSync(PERF_FILE, 'utf8')) || {};
+  const available = new Set(components.map((component) => component.slug));
+  const workloads = Object.entries(raw.workloads || {}).map(([id, workload]) => ({
+    id,
+    label: workload.label || id,
+    unit: workload.unit || '',
+    higherIsBetter: workload.higher_is_better !== false,
+    values: Object.entries(workload.values || {})
+      .filter(([slug]) => available.has(slug))
+      .map(([slug, value]) => ({ slug, value }))
+  }));
+  return {
+    asOf: raw.as_of || null,
+    source: raw.source || null,
+    confidence: raw.confidence ?? null,
+    workloads
+  };
+}
+
 function main() {
   const files = walk(CATALOG);
   const components = [];
@@ -359,9 +381,12 @@ function main() {
     for (const profile of component.profiles) profileNames.add(profile.name);
   }
 
+  const performance = buildPerformance(components);
+
   const data = {
     generatedAt: new Date().toISOString(),
     repoUrl: REPO_URL,
+    performance,
     counts: {
       components: components.length,
       byType,

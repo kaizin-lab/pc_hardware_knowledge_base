@@ -1,8 +1,16 @@
 <script>
   import { base } from '$app/paths';
   import { formatPrice } from '$lib/kb.js';
+  import PerformanceBars from '$lib/PerformanceBars.svelte';
   let { data } = $props();
   const component = data.component;
+  const performance = data.performance;
+  let tab = $state('overview');
+  let hasPerformance = $derived(
+    performance?.workloads.some((workload) =>
+      workload.values.some((item) => item.slug === component.slug)
+    )
+  );
 </script>
 
 <svelte:head>
@@ -34,49 +42,31 @@
   </div>
 </div>
 
-<div class="detail-grid">
-  <div class="panel">
-    <div class="panel-title">
-      <h2>Спецификации</h2>
-      <span class="panel-meta">{component.specs.length} полей</span>
-    </div>
-    <table class="spec-table">
-      <tbody>
-        {#each component.specs as spec}
-          <tr>
-            <td>{spec.key.replaceAll('_', ' ')}</td>
-            <td>{spec.value}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+<div class="detail-tabs">
+  <button class="tab" class:active={tab === 'overview'} onclick={() => (tab = 'overview')}>Обзор</button>
+  {#if hasPerformance}
+    <button class="tab" class:active={tab === 'performance'} onclick={() => (tab = 'performance')}>Производительность</button>
+  {/if}
+  <button class="tab" class:active={tab === 'profiles'} onclick={() => (tab = 'profiles')}>Профили</button>
+</div>
 
-  <div>
-    <div class="panel" style="margin-bottom:14px">
+{#if tab === 'overview'}
+  <div class="detail-grid">
+    <div class="panel">
       <div class="panel-title">
-        <h2>Профили</h2>
-        <span class="panel-meta">{component.profiles.length}</span>
+        <h2>Спецификации</h2>
+        <span class="panel-meta">{component.specs.length} полей</span>
       </div>
-      {#if component.profiles.length}
-        {#each component.profiles as profile}
-          <div class="profile">
-            <div class="profile-name">{profile.name}</div>
-            {#if profile.steel}<p>{profile.steel}</p>{/if}
-            {#if profile.failureMode}<p style="color:var(--dim)">{profile.failureMode}</p>{/if}
-            <div class="profile-tags">
-              {#each profile.optimal as intent}
-                <span class="tag" style="color:var(--green)">✓ {intent}</span>
-              {/each}
-              {#each profile.failure as intent}
-                <span class="tag" style="color:var(--red)">✕ {intent}</span>
-              {/each}
-            </div>
-          </div>
-        {/each}
-      {:else}
-        <div class="panel-meta">Профилей пока нет — только спецификации.</div>
-      {/if}
+      <table class="spec-table">
+        <tbody>
+          {#each component.specs as spec}
+            <tr>
+              <td>{spec.key.replaceAll('_', ' ')}</td>
+              <td>{spec.value}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
     </div>
 
     {#if component.links.length}
@@ -97,12 +87,40 @@
       </div>
     {/if}
   </div>
-</div>
 
-<div class="panel" style="margin-top:14px">
-  <div class="panel-title">
-    <h2>Описание</h2>
-    <span class="panel-meta">Markdown → HTML</span>
+  <div class="panel" style="margin-top:14px">
+    <div class="panel-title">
+      <h2>Описание</h2>
+      <span class="panel-meta">Markdown → HTML</span>
+    </div>
+    <div class="prose">{@html component.bodyHtml}</div>
   </div>
-  <div class="prose">{@html component.bodyHtml}</div>
-</div>
+{:else if tab === 'performance'}
+  <PerformanceBars {component} {performance} />
+{:else}
+  <div class="panel">
+    <div class="panel-title">
+      <h2>Профили</h2>
+      <span class="panel-meta">{component.profiles.length}</span>
+    </div>
+    {#if component.profiles.length}
+      {#each component.profiles as profile}
+        <div class="profile">
+          <div class="profile-name">{profile.name}</div>
+          {#if profile.steel}<p>{profile.steel}</p>{/if}
+          {#if profile.failureMode}<p style="color:var(--dim)">{profile.failureMode}</p>{/if}
+          <div class="profile-tags">
+            {#each profile.optimal as intent}
+              <span class="tag" style="color:var(--green)">✓ {intent}</span>
+            {/each}
+            {#each profile.failure as intent}
+              <span class="tag" style="color:var(--red)">✕ {intent}</span>
+            {/each}
+          </div>
+        </div>
+      {/each}
+    {:else}
+      <div class="panel-meta">Профилей пока нет — только спецификации.</div>
+    {/if}
+  </div>
+{/if}

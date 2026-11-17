@@ -78,12 +78,16 @@ docs/                  narrative arcs и рабочие материалы
 - сокет CPU ↔ плата, тип памяти, форм-фактор, кулер/радиатор, длина GPU и БП;
 - разъёмы питания GPU, мощность БП и ATX 3.x, TDP кулера, линии M.2;
 - профили `optimal` / `failure` под выбранный интент;
+- вкладка «Производительность»: Cinebench R23, Blender, 7-Zip, компиляция,
+  эффективность и цена/производительность по каждой нагрузке;
 - ручные измерения, полнота данных и честные `INFO` для неизвестных полей;
 - отчёт с BOM, проверками, рисками, чек-листом приёмки и печатью в PDF.
 
 [![Конструктор сборки](webapp/screenshots/build.png)](webapp/screenshots/build.png)
 
 [![Отчёт о сборке](webapp/screenshots/report.png)](webapp/screenshots/report.png)
+
+[Скриншот вкладки «Производительность»](webapp/screenshots/performance.png)
 
 ```bash
 cd webapp

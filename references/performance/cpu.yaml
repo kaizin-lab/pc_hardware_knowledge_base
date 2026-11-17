@@ -1,0 +1,96 @@
+# Curated CPU performance snapshots for relative comparison.
+# Values are approximate, taken from the benchmark sections of the KB cards
+# (Cinebench R23, Blender Classroom, 7-Zip, Linux kernel compile).
+# They are not lab measurements of this project. Keep the source/date honest.
+
+as_of: "2026-06-04"
+source: "KB cards: Cinebench R23 / Blender Classroom / 7-Zip / Linux kernel"
+confidence: 0.7
+
+workloads:
+  r23_single:
+    label: "Cinebench R23 single"
+    unit: "pts"
+    higher_is_better: true
+    values:
+      amd-ryzen-5-7500f: 1800
+      amd-ryzen-5-7600: 1870
+      amd-ryzen-5-7600x: 1950
+      amd-ryzen-5-9600x: 2050
+      amd-ryzen-7-7700: 1930
+      amd-ryzen-7-7700x: 1960
+      amd-ryzen-7-7800x3d: 1820
+      amd-ryzen-7-9700x: 2100
+      amd-ryzen-7-9800x3d: 2050
+      amd-ryzen-9-7900: 1950
+      amd-ryzen-9-7950x: 2000
+      amd-ryzen-9-9900x: 2150
+      amd-ryzen-9-9950x: 2150
+      intel-core-i7-14700k: 2200
+      intel-core-ultra-5-225f: 1950
+      intel-core-ultra-5-245k: 2180
+      intel-core-ultra-7-265f: 2200
+      intel-core-ultra-7-265k: 2280
+      intel-core-ultra-9-285k: 2300
+
+  r23_multi:
+    label: "Cinebench R23 multi"
+    unit: "pts"
+    higher_is_better: true
+    values:
+      amd-ryzen-5-7500f: 14000
+      amd-ryzen-5-7600: 14500
+      amd-ryzen-5-7600x: 15300
+      amd-ryzen-5-9600x: 16000
+      amd-ryzen-7-7700: 18500
+      amd-ryzen-7-7700x: 19700
+      amd-ryzen-7-7800x3d: 18000
+      amd-ryzen-7-9700x: 20500
+      amd-ryzen-7-9800x3d: 20500
+      amd-ryzen-9-7900: 24000
+      amd-ryzen-9-7950x: 37500
+      amd-ryzen-9-9900x: 28500
+      amd-ryzen-9-9950x: 42000
+      intel-core-i7-14700k: 36000
+      intel-core-ultra-5-225f: 12500
+      intel-core-ultra-5-245k: 22000
+      intel-core-ultra-7-265f: 18000
+      intel-core-ultra-7-265k: 32000
+      intel-core-ultra-9-285k: 39000
+
+  blender:
+    label: "Blender Classroom"
+    unit: "сек"
+    higher_is_better: false
+    values:
+      amd-ryzen-5-9600x: 690
+      amd-ryzen-9-7900: 480
+      amd-ryzen-9-7950x: 250
+      amd-ryzen-9-9900x: 350
+      amd-ryzen-9-9950x: 220
+      intel-core-i7-14700k: 210
+      intel-core-ultra-5-245k: 600
+      intel-core-ultra-7-265k: 390
+      intel-core-ultra-9-285k: 320
+
+  seven_zip:
+    label: "7-Zip compression"
+    unit: "MIPS"
+    higher_is_better: true
+    values:
+      amd-ryzen-9-7900: 130000
+      amd-ryzen-9-7950x: 210000
+      amd-ryzen-9-9900x: 175000
+      amd-ryzen-9-9950x: 195000
+      intel-core-i7-14700k: 175000
+
+  kernel_compile:
+    label: "Linux kernel compile"
+    unit: "сек"
+    higher_is_better: false
+    values:
+      amd-ryzen-9-7900: 55
+      amd-ryzen-9-7950x: 30
+      amd-ryzen-9-9900x: 38
+      amd-ryzen-9-9950x: 28
+      intel-core-i7-14700k: 38
