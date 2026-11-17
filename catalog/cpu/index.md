@@ -8,7 +8,9 @@ last_updated: "2026-06-07"
 
 # Процессоры (CPU)
 
-Актуальные процессоры для настольных ПК. Zen 4/5 (AM5), Arrow Lake (LGA1851), Raptor Lake Refresh (LGA1700).
+Актуальные процессоры для настольных ПК. Zen 4/5 (AM5), Arrow Lake (LGA1851), Raptor Lake Refresh и Alder Lake (LGA1700).
+
+> Цены в таблицах — ориентир. Актуальная цена и дата проверки — в карточке.
 
 ## Карта
 
@@ -34,18 +36,18 @@ last_updated: "2026-06-07"
 | `amd-ryzen-9-9950x.md` | R9 9950X | 16C/32T | 170W | RDNA2 | — | ~40 400 |
 
 ### Intel LGA1700 — Alder Lake (12th Gen)
-|| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
+| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
 ||---|---|---|---|---|---|
-|| `intel-core-i3-12100f.md` | i3-12100F | 4C/8T | 58W | — | ~6 500 |
-|| `intel-core-i5-12400f.md` | i5-12400F | 6C/12T | 65W | — | ~10 000 |
-|| `intel-core-i5-13400f.md` | i5-13400F | 6P+4E/16T | 65W | — | ~13 500 |
+| `intel-core-i3-12100f.md` | i3-12100F | 4C/8T | 58W | — | ~6 500 |
+| `intel-core-i5-12400f.md` | i5-12400F | 6C/12T | 65W | — | ~10 000 |
+| `intel-core-i5-13400f.md` | i5-13400F | 6P+4E/16T | 65W | — | ~13 500 |
 
 ### Intel LGA1700 — Raptor Lake (Refresh)
-|| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
+| Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
 ||---|---|---|---|---|---|
-|| `intel-core-i5-14600k.md` | i5-14600K | 6P+8E/20T | 125W | UHD 770 | ~22 000 |
-|| `intel-core-i7-14700k.md` | i7-14700K | 8P+12E/28T | 253W | UHD 770 | ~45 000 |
-|| `intel-core-i9-14900k.md` | i9-14900K | 8P+16E/32T | 253W | UHD 770 | ~39 999–46 990 |
+| `intel-core-i5-14600k.md` | i5-14600K | 6P+8E/20T | 125W | UHD 770 | ~22 000 |
+| `intel-core-i7-14700k.md` | i7-14700K | 8P+12E/28T | 253W | UHD 770 | ~45 000 |
+| `intel-core-i9-14900k.md` | i9-14900K | 8P+16E/32T | 253W | UHD 770 | ~39 999–46 990 |
 
 ### Intel LGA1851 — Arrow Lake
 | Файл | Модель | Ядер | TDP | iGPU | Цена (₽) |
@@ -59,7 +61,10 @@ last_updated: "2026-06-07"
 ### Обзорные
 | Файл | Охват |
 |---|---|
-| `amd-ryzen-7000.md` | Обзор всей линейки Zen 4 — архитектура, IO die, Infinity Fabric |
+| `amd-ryzen-7000.md` | Zen 4 — архитектура, IO die, Infinity Fabric |
+| `amd-ryzen-9000.md` | Zen 5 — что изменилось относительно Zen 4 |
+| `intel-core-ultra.md` | Core Ultra 200S — Arrow Lake, LGA1851 |
+| `intel-core-14th.md` | Core 14th gen — Raptor Lake Refresh, LGA1700 |
 
 ## Как выбирать
 

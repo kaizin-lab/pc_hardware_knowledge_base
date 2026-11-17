@@ -10,8 +10,8 @@ links:
   platform: "catalog/cpu/amd-ryzen-9000.md"
   socket: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
-  concept_pcie: "../../concepts/pcie-lanes.md"
-  concept_vrm: "../../concepts/vrm-phases.md"
+  concept_pcie: "concepts/pcie-lanes.md"
+  concept_vrm: "concepts/vrm-phases.md"
 specs:
   socket: "AM5"
   chipset: "B850"

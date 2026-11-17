@@ -13,8 +13,8 @@ links:
   up_variant: "catalog/motherboard/am5/asus-proart-x870e-creator.md"
   competitor_b650: "catalog/motherboard/am5/msi-b650-tomahawk.md"
   concepts:
-    - "../../concepts/pcie-lanes.md"
-    - "../../concepts/vrm-phases.md"
+    - "concepts/pcie-lanes.md"
+    - "concepts/vrm-phases.md"
 specs:
   socket: "AM5"
   chipset: "B650E"

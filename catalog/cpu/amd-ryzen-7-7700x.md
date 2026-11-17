@@ -18,7 +18,6 @@ links:
   memory_type: "catalog/memory/ddr5.md"
   family: "catalog/cpu/amd-ryzen-7000.md"
   down_variant: "catalog/cpu/amd-ryzen-7-7700.md"
-  up_variant: "catalog/cpu/amd-ryzen-9-7900x.md"
   x3d_alt: "catalog/cpu/amd-ryzen-7-7800x3d.md"
   concepts:
     - "concepts/power-budget.md"

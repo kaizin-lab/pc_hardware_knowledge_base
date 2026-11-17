@@ -7,7 +7,7 @@ status: "draft"
 tags: ["atx3.1", "1000w", "platinum", "fully-modular", "12v-2x6", "japanese-caps"]
 last_updated: "2026-06-03"
 links:
-  concept_power: "../concepts/power-budget.md"
+  concept_power: "concepts/power-budget.md"
 specs:
   wattage: 1000
   standard: "ATX 3.1"

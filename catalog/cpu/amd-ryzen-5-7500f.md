@@ -11,7 +11,7 @@ links:
   platform: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
   family: "catalog/cpu/amd-ryzen-7000.md"
-  competitor_intel: "catalog/cpu/intel-core-13400f.md"
+  competitor_intel: "catalog/cpu/intel-core-i5-13400f.md"
   concept_power: "concepts/power-budget.md"
 specs:
   socket: "AM5 (LGA1718)"

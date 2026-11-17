@@ -7,7 +7,7 @@ status: "draft"
 tags: ["atx2.4", "650w", "bronze", "non-modular", "budget"]
 last_updated: "2026-06-03"
 links:
-  concept_power: "../concepts/power-budget.md"
+  concept_power: "concepts/power-budget.md"
 specs:
   wattage: 650
   standard: "ATX 2.4"

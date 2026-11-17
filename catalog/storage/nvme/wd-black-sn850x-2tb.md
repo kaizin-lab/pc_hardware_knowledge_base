@@ -7,7 +7,7 @@ status: "draft"
 tags: ["nvme", "pcie-gen4", "dram", "tlc", "high-end", "gaming"]
 last_updated: "2026-06-03"
 links:
-  concept_pcie: "../../concepts/pcie-lanes.md"
+  concept_pcie: "concepts/pcie-lanes.md"
 specs:
   interface: "PCIe 4.0 x4"
   form_factor: "M.2 2280"

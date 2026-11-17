@@ -17,3 +17,9 @@ Thumbs.db
 # venv
 venv/
 .venv/
+
+# Local agent settings
+.claude/
+
+# Local audit, not part of the published knowledge base
+AUDIT_REPORT.md

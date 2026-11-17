@@ -11,23 +11,20 @@ links:
   case_compatibility: "catalog/case/"
 specs:
   type: "air_top_flow_c_type"
-  height_mm:
-  type: "air_tower_standard"
   layout_type: "top_flow"
   height_mm: 115
-  height_mm_fan_top: 142
+  height_mm_fan_bottom: 82
   tdp_rating_w: 150
   heatpipes: "6×6mm"
   fans: "1×NF-A14 PWM 140mm, 300–1500 RPM"
-  sockets: ["AM5", "AM4", "LGA1700", "LGA1851"]
+  sockets: ["AM5", "AM4", "LGA1700", "LGA1851", "LGA1200"]
   # 3D Envelope (v1.4 — keep-out zones)
   bottom_clearance_mm: 70
   horizontal_outlay_radius_mm: 75
   ram_clearance_mm: 65
-  mounting_note: "Вентилятор устанавливать СВЕРХУ радиатора (142mm высота). Изгиб тепловых трубок — в сторону задней панели. При установке fan снизу (82mm высота) bottom_clearance уменьшается до 45mm." 
-    min: 10
-    max: 24.6
-  sockets: ["AM5", "AM4", "LGA1700", "LGA1851", "LGA1200"]
+  mounting_note: "Вентилятор устанавливать СВЕРХУ радиатора (115mm высота). Изгиб тепловых трубок — в сторону задней панели. При установке fan снизу (82mm высота) bottom_clearance уменьшается до 45mm."
+  noise_dba_min: 10
+  noise_dba_max: 24.6
   am5_note: "AM4-крепление = AM5, бесплатный upgrade kit для старых партий"
 price_ru:
   min: 8000

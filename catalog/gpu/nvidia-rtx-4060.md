@@ -4,17 +4,10 @@ type: "gpu"
 title: "NVIDIA GeForce RTX 4060 8GB"
 vendor: "nvidia"
 status: "verified"
-price_ru:
-  min: 29000
-  median: 32000
-  max: 36000
-  source: "price.ru (оценка по рынку)"
-  date: "2026-06-03"
 tags: ["nvidia", "ada-lovelace", "ad107", "tsmc-4n", "128bit-narrow-bus", "8gb-vram-critical", "24mb-l2-cache", "pcie4.0-x8", "dlss3.5", "rt-3rd-gen", "115w-tgp-silent", "1x8pin-power", "nvenc-8th-gen", "cuda-ecosystem", "1080p-only", "rt-leader-budget", "silent-viable"]
 last_updated: "2026-06-03"
 links:
   competitor_amd: "catalog/gpu/amd-rx-7600.md"
-  predecessor: "catalog/gpu/nvidia-rtx-3060.md"
   architecture: "catalog/gpu/nvidia-rtx-4000.md"
   memory_type: "catalog/memory/ddr5.md"
   concept_pcie: "concepts/pcie-lanes.md"

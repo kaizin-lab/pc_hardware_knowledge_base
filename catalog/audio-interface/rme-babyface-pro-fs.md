@@ -36,6 +36,7 @@ price_ru:
   max: 121220
   source: "price.ru, 2026-06-07"
   stores: 5
+---
 
 # RME Babyface Pro FS
 

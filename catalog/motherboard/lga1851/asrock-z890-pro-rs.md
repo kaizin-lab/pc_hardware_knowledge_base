@@ -7,11 +7,11 @@ status: "draft"
 tags: ["lga1851", "z890", "atx", "ddr5", "pcie-5.0", "wifi-6e", "mid-range", "arrow-lake"]
 last_updated: "2026-06-03"
 links:
-  platform: "catalog/cpu/intel-core-ultra-200.md"
+  platform: "catalog/cpu/intel-core-ultra.md"
   socket: "catalog/motherboard/lga1851/index.md"
   memory_type: "catalog/memory/ddr5.md"
-  concept_pcie: "../../concepts/pcie-lanes.md"
-  concept_vrm: "../../concepts/vrm-phases.md"
+  concept_pcie: "concepts/pcie-lanes.md"
+  concept_vrm: "concepts/vrm-phases.md"
 specs:
   socket: "LGA1851"
   chipset: "Z890"

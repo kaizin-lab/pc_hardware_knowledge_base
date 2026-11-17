@@ -21,7 +21,6 @@ links:
   predecessor: "catalog/cpu/amd-ryzen-9-7900.md"
   up_variant: "catalog/cpu/amd-ryzen-9-9950x.md"
   competitor_intel: "catalog/cpu/intel-core-i7-14700k.md"
-  x3d_alt: "catalog/cpu/amd-ryzen-9-9900x3d.md"
   concepts:
     - "concepts/power-budget.md"
     - "concepts/dual-ccd.md"

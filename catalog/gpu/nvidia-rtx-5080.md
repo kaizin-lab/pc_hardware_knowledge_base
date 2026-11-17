@@ -10,7 +10,6 @@ links:
   bigger_brother: "catalog/gpu/nvidia-rtx-5090.md"
   smaller_brother: "catalog/gpu/nvidia-rtx-5070-ti.md"
   competitor_amd: "catalog/gpu/amd-rx-9070-xt.md"
-  predecessor: "catalog/gpu/nvidia-rtx-4080.md"
   memory_type: "catalog/memory/ddr5.md"
   concept_pcie: "concepts/pcie-lanes.md"
   concept_power: "concepts/power-budget.md"

@@ -8,7 +8,7 @@ domain: "audio_production"
 links:
   dpc_latency: "concepts/dpc-latency.md"
   audio_interface_drivers: "concepts/audio-interface-drivers.md"
-  acoustic_model: "pcbo:ontology/L3_behavior/acoustic" 
+  acoustic_model: "catalog/intents/daw_zero_dpc_latency.yaml"
 tags: ["acoustic", "silence", "studio", "daw", "A0_Studio"]
 ---
 

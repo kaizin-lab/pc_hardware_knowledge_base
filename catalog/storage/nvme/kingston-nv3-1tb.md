@@ -7,7 +7,7 @@ status: "verified"
 tags: ["nvme", "pcie-4.0", "dramless", "qlc", "budget"]
 last_updated: "2026-06-03"
 links:
-  pcie_gen: "catalog/storage/nvme/pcie-gen4.md"
+  pcie_gen: "concepts/pcie-lanes.md"
   concept_pcie: "concepts/pcie-lanes.md"
 specs:
   form_factor: "M.2 2280"

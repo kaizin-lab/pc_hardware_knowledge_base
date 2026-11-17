@@ -7,7 +7,7 @@ status: "draft"
 tags: ["atx3.1", "750w", "gold", "fully-modular", "12v-2x6", "semi-passive"]
 last_updated: "2026-06-05"
 links:
-  concept_power: "../concepts/power-budget.md"
+  concept_power: "concepts/power-budget.md"
 specs:
   wattage: 750
   standard: "ATX 3.1"

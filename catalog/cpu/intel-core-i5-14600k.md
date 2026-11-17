@@ -8,7 +8,6 @@ tags: ["intel", "raptor-lake", "lga1700", "ddr5", "hybrid", "6p8e", "unlocked", 
 last_updated: "2026-06-07"
 external_audit_verification: passed
 links:
-  predecessor: "catalog/cpu/intel-core-i5-13600k.md"
   competitor: "catalog/cpu/amd-ryzen-7-7700.md"
   platform: "catalog/motherboard/lga1700/index.md"
   memory_type: "catalog/memory/ddr5.md"
@@ -307,11 +306,11 @@ Refresh-обновление даёт +200 MHz на P-ядрах при той �
 
 ## Связи
 
-- Платформа: [LGA1700](catalog/motherboard/lga1700/index.md) — чипсеты Z790/Z690/B760/B660
-- Память: [DDR5](catalog/memory/ddr5.md) | DDR4 (для B660/B760 DDR4-плат)
+- Платформа: [LGA1700](../motherboard/lga1700/index.md) — чипсеты Z790/Z690/B760/B660
+- Память: [DDR5](../memory/ddr5.md) | DDR4 (для B660/B760 DDR4-плат)
 - Предшественник: Intel Core i5-13600K
-- Конкурент: [AMD Ryzen 7 7700](catalog/cpu/amd-ryzen-7-7700.md)
-- Сквозной концепт: [power-budget.md](concepts/power-budget.md)
+- Конкурент: [AMD Ryzen 7 7700](amd-ryzen-7-7700.md)
+- Сквозной концепт: [power-budget.md](../../concepts/power-budget.md)
 
 observations:
   # === CRITICAL: i5 vs 7800X3D — одинаковый FPS с RTX 5070 в 1440p ===

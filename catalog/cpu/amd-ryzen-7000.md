@@ -11,7 +11,7 @@ links:
   socket: "catalog/motherboard/am5/index.md"
   memory_type: "catalog/memory/ddr5.md"
   predecessor: null
-  successor: "amd-ryzen-9000.md"
+  successor: "catalog/cpu/amd-ryzen-9000.md"
 specs:
   socket: "AM5 (LGA1718)"
   lithography: "TSMC 5nm (CCD) + 6nm (IOD)"

@@ -12,13 +12,13 @@ links:
   chipset_spec: "catalog/motherboard/am5/b650.md"
   cpu_recommended: "catalog/cpu/amd-ryzen-7000.md"
   competitors:
-    - "catalog/motherboard/am5/asus-tuf-b650.md"
+    - "catalog/motherboard/am5/asrock-b650e-pg-riptide.md"
+    - "catalog/motherboard/am5/gigabyte-b650-eagle.md"
 price_ru:
   min: 15000
   median: 17000
   max: 20000
   source: "DAW reference, June 2026"
-    - "catalog/motherboard/am5/gigabyte-aorus-b650.md"
 specs:
   socket: "AM5"
   chipset: "B650"
@@ -49,7 +49,6 @@ verdict: "Флагманский уровень VRM в среднем сегме
 
 profiles:
   mainstream_platform:
-    capability_level: 2
     capability_level: 2
     steel_man_desc: "B650 с 14+2+1 фазами (80A SPS) — запас мощности для любого Ryzen 9 на стоке. 3× M.2 (1× Gen5 + 2× Gen4), 2.5G LAN, Wi-Fi 6E, ALC4080 аудио. FLASHBACK+ и EZ Debug LED."
     failure_mode_desc: "6 реальных фаз с удвоителями — под экстремальным разгоном транзиенты хуже чем у плат с нативными фазами. Цена на 50% выше бюджетных B650M."

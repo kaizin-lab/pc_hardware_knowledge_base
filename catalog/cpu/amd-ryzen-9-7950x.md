@@ -19,9 +19,7 @@ links:
   memory_type: catalog/memory/ddr5.md
   family: catalog/cpu/amd-ryzen-7000.md
   down_variant: catalog/cpu/amd-ryzen-9-7900.md
-  down_variant_x: catalog/cpu/amd-ryzen-9-7900x.md
-  x3d_alt: catalog/cpu/amd-ryzen-9-7950x3d.md
-  competitor_intel: catalog/cpu/intel-core-14900k.md
+  competitor_intel: catalog/cpu/intel-core-i9-14900k.md
   concepts:
   - concepts/power-budget.md
   - concepts/dual-ccd.md

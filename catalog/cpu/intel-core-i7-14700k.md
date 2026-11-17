@@ -20,7 +20,6 @@ external_audit_verification: passed
 links:
   platform: catalog/motherboard/lga1700/index.md
   memory_type: catalog/memory/ddr5.md
-  predecessor: catalog/cpu/intel-core-i7-13700k.md
   competitor: catalog/cpu/amd-ryzen-9-7900.md
   concepts:
   - concepts/power-budget.md

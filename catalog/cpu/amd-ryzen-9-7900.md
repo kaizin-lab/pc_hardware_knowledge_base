@@ -21,7 +21,6 @@ links:
   family: catalog/cpu/amd-ryzen-7000.md
   up_variant: catalog/cpu/amd-ryzen-9-7950x.md
   down_variant: catalog/cpu/amd-ryzen-7-7700.md
-  x_variant: catalog/cpu/amd-ryzen-9-7900x.md
   concepts:
   - concepts/power-budget.md
   - concepts/dual-ccd.md

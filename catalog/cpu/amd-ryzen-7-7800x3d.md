@@ -26,7 +26,7 @@ links:
   family: catalog/cpu/amd-ryzen-7000.md
   down_variant: catalog/cpu/amd-ryzen-7-7700x.md
   next_gen: catalog/cpu/amd-ryzen-7-9800x3d.md
-  competitor_intel: catalog/cpu/intel-core-14900k.md
+  competitor_intel: catalog/cpu/intel-core-i9-14900k.md
   concepts:
   - concepts/power-budget.md
   - concepts/3d-v-cache.md

@@ -7,8 +7,8 @@ status: "draft"
 tags: ["atx3.1", "850w", "gold", "modular", "12v-2x6"]
 last_updated: "2026-06-03"
 links:
-  concept_power: "../concepts/power-budget.md"
-  predecessor: "deepcool-pn750d.md"
+  concept_power: "concepts/power-budget.md"
+  predecessor: "catalog/psu/deepcool-pn750d.md"
 specs:
   wattage: 850
   standard: "ATX 3.1"

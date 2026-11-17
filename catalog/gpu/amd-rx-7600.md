@@ -14,7 +14,6 @@ tags: ["amd", "rdna3", "navi33", "monolithic-die", "tsmc-n6", "128bit-narrow-bus
 last_updated: "2026-06-03"
 links:
   competitor_nvidia: "catalog/gpu/nvidia-rtx-4060.md"
-  predecessor: "catalog/gpu/amd-rx-6600.md"
   architecture: "catalog/gpu/amd-rx-7000.md"
   memory_type: "catalog/memory/ddr5.md"
   concept_pcie: "concepts/pcie-lanes.md"
@@ -46,12 +45,6 @@ profiles:
     failure_for_intents: ["aaa_4k_path_tracing"]
     failure_severity: "WARN"
     failure_type: "LINEAR_DEGRADATION"
-price_ru:
-  min: 25990
-  median: 28000
-  max: 32000
-  source: "price.ru"
-  date: "2026-06-03"
 verdict: "Лучший FPS/₽ в сегменте до 30k для киберспорта и нетребовательных игр на низких/средних. Проигрывает RTX 4060 в RT и DLSS, но выигрывает в чистом растре за меньшие деньги. 8GB VRAM — ахиллесова пята обеих карт."
 ---
 

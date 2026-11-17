@@ -7,10 +7,7 @@ status: "verified"
 tags: ["nvidia", "ada-lovelace", "ad104-cut", "tsmc-4n", "192bit-mid-bus", "12gb-vram", "gddr6x", "pcie4.0-x16", "dlss3-fg", "rt-3rd-gen", "200w-tbp", "12vhpwr-power", "nvenc-8th-gen", "cuda-ecosystem", "1440p-rt", "4k-vram-limited", "energy-efficiency-leader", "itx-friendly", "samsung-8nm-to-tsmc-4n-jump"]
 last_updated: "2026-06-18"
 links:
-  bigger_brother: "catalog/gpu/nvidia-rtx-4070-super.md"
   smaller_brother: "catalog/gpu/nvidia-rtx-4060-ti.md"
-  competitor_amd: "catalog/gpu/amd-rx-7800-xt.md"
-  predecessor: "catalog/gpu/nvidia-rtx-3070.md"
 specs:
   gpu: "AD104-250-A1 (Ada Lovelace)"
   lithography: "TSMC 4N (5nm)"
