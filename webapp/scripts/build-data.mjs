@@ -170,6 +170,19 @@ function normForm(value) {
   return null;
 }
 
+function parseConnectors(value) {
+  const text = String(value ?? '').toLowerCase();
+  const eight = Number((text.match(/(\d+)\s*[×x]\s*8[- ]?pin/) || [])[1] || (text.includes('8-pin') ? 1 : 0));
+  const twelve = /12v|12vhpwr|16-pin/.test(text);
+  const alternative = /или|aib|на ряде|опционально/.test(text);
+  return { eight, twelve, alternative };
+}
+
+function numbersIn(value) {
+  if (Array.isArray(value)) return value.flatMap(numbersIn);
+  return [...String(value ?? '').matchAll(/(\d+)/g)].map((match) => Number(match[1]));
+}
+
 function formatValue(value) {
   if (value === null || value === undefined || value === '') return '—';
   if (Array.isArray(value)) return value.join(', ');
@@ -222,9 +235,21 @@ function normalize(data) {
     gpuLengthMm: firstNumber(specs.length_mm ?? specs.length),
     caseGpuMaxMm: firstNumber(specs.max_gpu_length_mm ?? specs.max_gpu_mm),
     ramCapacityGb: firstNumber(specs.capacity_gb ?? specs.capacity),
+    capacityGb: firstNumber(specs.capacity_gb ?? specs.capacity),
     ramSpeedMt: firstNumber(specs.speed_mt ?? specs.speed_mts ?? specs.speed),
     m2Slots: firstNumber(specs.m2_slots),
-    layoutType: String(specs.layout_type || specs.type || '').toLowerCase()
+    layoutType: String(specs.layout_type || specs.type || '').toLowerCase(),
+    connectors: parseConnectors(specs.power_connector),
+    coolerTdp: watts(specs.tdp_rating_w),
+    radiatorMm: firstNumber(specs.radiator_size),
+    caseRadiatorMm: Math.max(0, ...numbersIn(specs.radiator_support)),
+    psuLengthMm: firstNumber(specs.length_mm),
+    casePsuMaxMm: firstNumber(specs.max_psu_length_mm),
+    coolerRamClearanceMm: firstNumber(specs.ram_clearance_mm),
+    ramHeightMm: firstNumber(specs.height),
+    psu8pin: firstNumber(specs.pcie_8pin_count),
+    psu12v: Boolean(specs['12v_2x6']),
+    mbBifurcation: Boolean(specs.bifurcation_risk)
   };
 }
 

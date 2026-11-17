@@ -3,7 +3,7 @@
   import { browser } from '$app/environment';
   import { base } from '$app/paths';
   import { BUILD_CATEGORIES, bySlug, componentsOf, formatPrice, intents } from '$lib/kb.js';
-  import { STATUS_TEXT, validateBuild } from '$lib/compat.js';
+  import { assessBuild, encodeBuild, STATUS_TEXT } from '$lib/compat.js';
 
   const EMPTY = {
     cpu: '',
@@ -22,9 +22,16 @@
   let selection = $state({ ...EMPTY });
   let intentId = $state('aaa_1440p_high');
   let budget = $state(150000);
+  let measurements = $state({
+    gpuLengthMm: '',
+    coolerHeightMm: '',
+    psuLengthMm: '',
+    ramHeightMm: ''
+  });
   let loaded = $state(false);
 
-  let result = $derived(validateBuild(selection, intentId, budget));
+  let result = $derived(assessBuild(selection, intentId, budget, measurements));
+  let reportHref = $derived(`${base}/report/?${encodeBuild(selection, intentId, budget, measurements)}`);
 
   const colors = { PASS: 'var(--green)', WARN: 'var(--amber)', FAIL: 'var(--red)' };
 
@@ -34,6 +41,7 @@
       if (saved?.selection) selection = { ...EMPTY, ...saved.selection };
       if (saved?.intentId) intentId = saved.intentId;
       if (Number.isFinite(saved?.budget)) budget = saved.budget;
+      if (saved?.measurements) measurements = { ...measurements, ...saved.measurements };
     } catch {
       // ignore malformed local state
     }
@@ -42,13 +50,14 @@
 
   $effect(() => {
     if (!browser || !loaded) return;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ selection, intentId, budget }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ selection, intentId, budget, measurements }));
   });
 
   function reset() {
     selection = { ...EMPTY };
     intentId = 'aaa_1440p_high';
     budget = 150000;
+    measurements = { gpuLengthMm: '', coolerHeightMm: '', psuLengthMm: '', ramHeightMm: '' };
   }
 
   function picked(key) {
@@ -132,17 +141,32 @@
       <div class="build-label">Бюджет<small>потолок, ₽</small></div>
       <input class="input" type="number" min="0" step="1000" bind:value={budget} />
     </div>
+
+    <details class="measure-panel">
+      <summary>Измерения вручную</summary>
+      <p>
+        Если в карточке нет длины/высоты, введите фактическое значение. Эти поля
+        попадут в проверки и отчёт.
+      </p>
+      <div class="measure-grid">
+        <label>Длина GPU, мм<input class="input" type="number" min="0" bind:value={measurements.gpuLengthMm} /></label>
+        <label>Высота кулера, мм<input class="input" type="number" min="0" bind:value={measurements.coolerHeightMm} /></label>
+        <label>Длина БП, мм<input class="input" type="number" min="0" bind:value={measurements.psuLengthMm} /></label>
+        <label>Высота RAM, мм<input class="input" type="number" min="0" bind:value={measurements.ramHeightMm} /></label>
+      </div>
+    </details>
   </div>
 
   <aside>
     <div class="verdict" style="--status:{colors[result.status]}">
       <div class="verdict-label">итоговый вердикт</div>
+      <div style="float:right"><a class="btn ghost" href={reportHref} target="_blank" rel="noreferrer">отчёт ↗</a></div>
       <div class="verdict-status">{STATUS_TEXT[result.status]}</div>
       <div class="verdict-summary">
         {#if result.status === 'PASS'}
           Блокирующих проблем не найдено. Проверьте предупреждения и данные, которых нет в карточках.
         {:else if result.status === 'WARN'}
-          Сборка возможна, но есть замечания. Прочитайте их до покупки.
+          Сборка возможна, но есть замечания или не хватает данных. Прочитайте их до покупки.
         {:else}
           Есть несовместимость. Поменяйте компоненты или интент.
         {/if}
@@ -162,8 +186,8 @@
           <div class="l">optimal-профилей</div>
         </div>
         <div class="verdict-stat">
-          <div class="v">{result.missing.length}</div>
-          <div class="l">не хватает</div>
+          <div class="v">{result.completeness.score}%</div>
+          <div class="l">полнота данных</div>
         </div>
       </div>
 
@@ -187,9 +211,9 @@
 
     <div class="panel" style="margin-top:14px">
       <div class="panel-meta">
-        Проверки: сокет, тип памяти, форм-фактор, сокет и высота кулера, длина GPU (если есть),
-        мощность БП, ATX 3.x, профили интента и бюджет. Неизвестные поля не считаются
-        совместимыми — они отмечаются отдельно.
+        Проверки: сокет, память, форм-фактор, кулер и радиатор, длина GPU/БП,
+        разъёмы питания, мощность и ATX 3.x, TDP кулера, линии M.2, профили интента
+        и бюджет. Неизвестные поля не считаются совместимыми — они отмечаются отдельно.
       </div>
     </div>
   </aside>
